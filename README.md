@@ -1,5 +1,5 @@
-node-awssum - NodeJS modules for talking to lots of Web Service APIs
-====================================================================
+NodeJS client libraries for talking to lots of Web Service APIs
+===============================================================
 
 How to get it
 -------------
@@ -16,10 +16,7 @@ via [npm][]) you can clone this repo, then use [npm][] to link-install it:
 Of course, you can just clone this, and manually point at the library itself,
 but I really recommend using [npm][]!
 
-A web API interface library for Node.js. Does Amazon (EC2, S3, SimpleDB, SQS, SNS, SES, Route53), RackspaceCloud
-(Servers, Files, DNS), Flickr, PayPal, Xero and others.
-
-What Services does 'node-awssum' talk to?
+What services does 'node-awssum' talk to?
 -----------------------------------------
 
 Currently this library can talk to:
@@ -79,3 +76,4 @@ Events
 ToDo.: The library can also emit events (coming soon).
 
 [npm]: http://github.com/isaacs/npm
+-
