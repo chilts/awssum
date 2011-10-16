@@ -1,0 +1,39 @@
+{
+    "name": "awssum",
+    "description": "NodeJS modules for talking to lots of Web Service APIs.",
+    "version": "0.1.0",
+    "author": {
+        "name":"Andrew Chilton",
+        "email":"chilts@appsattic.com",
+        "url":"http://www.chilts.org/"
+    },
+    "homepage": "https://github.com/appsattic/node-awssum",
+    "contributors": [],
+    "devDependencies": {},
+    "dependencies": {
+        "underscore": ">= 1.2.0"
+    },
+    "main": "lib/awssum",
+    "directories": {
+        "lib": "lib"
+    },
+    "engines": {
+        "node": "*"
+    },
+    "repository": {
+        "type" : "git",
+        "url": "git://github.com/appsattic/node-awssum.git"
+    },
+	"licenses": [{
+		"type": "MIT",
+		"url": "http://github.com/appsattic/node-awssum/raw/master/LICENSE"
+	}],
+    "keywords": [
+        "api",
+        "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","clodufront","fps",
+        "rackspacecloud",
+        "flickr",
+        "paypal",
+        "xero"
+    ]
+}
