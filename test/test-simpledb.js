@@ -42,6 +42,22 @@ test("create simpledb object", function (t) {
     t.end();
 });
 
+test("test all endpoints", function (t) {
+    var sdb1 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_EAST_1);
+    var sdb2 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+    var sdb3 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.EU_WEST_1);
+    var sdb4 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.AP_SOUTHEAST_1);
+    var sdb5 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.AP_NORTHEAST_1);
+
+    t.equal('sdb.amazonaws.com', sdb1.endPoint(), '1) Endpoint is correct');
+    t.equal('sdb.us-west-1.amazonaws.com', sdb2.endPoint(), '2) Endpoint is correct');
+    t.equal('sdb.eu-west-1.amazonaws.com', sdb3.endPoint(), '3) Endpoint is correct');
+    t.equal('sdb.ap-southeast-1.amazonaws.com', sdb4.endPoint(), '4) Endpoint is correct');
+    t.equal('sdb.ap-northeast-1.amazonaws.com', sdb5.endPoint(), '5) Endpoint is correct');
+
+    t.end();
+});
+
 test("test signature", function (t) {
     var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
 
