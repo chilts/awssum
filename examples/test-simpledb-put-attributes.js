@@ -19,7 +19,9 @@ var user1 = {
 
 var user2 = [
     { name : 'username', value : 'andychilton' },
-    { name : 'url',      value : 'http://www.chilts.org/blog/' }
+    { name : 'url',      value : 'http://www.chilts.org/blog/' },
+    // only replace this value if it already exists
+    { name : 'password', value : 'testpass', exists : true, expected : 'testpass' }
 ];
 
 var user3 = [
@@ -27,17 +29,33 @@ var user3 = [
     { name : 'url',      value : 'http://www.chilts.org/blog/', replace : true  }
 ];
 
+var user4 = [
+    { name : 'username', value : 'expected' },
+    { name : 'url',      value : 'http://www.chilts.org/blog/' },
+    // set the salt, but only if we believe its current value
+    { name : 'salt', value : 'amo3Rie6', expected : 'amo3Rie6' }
+];
+
 sdb.putAttributes('test', 'chilts', user1, function(err, data) {
+    console.log('user1');
     console.log('Error :', err);
     console.log('Data  :', data);
 });
 
 sdb.putAttributes('test', 'andychilton', user2, function(err, data) {
+    console.log('user2');
     console.log('Error :', err);
     console.log('Data  :', data);
 });
 
 sdb.putAttributes('test', 'replace', user3, function(err, data) {
+    console.log('user3');
+    console.log('Error :', err);
+    console.log('Data  :', data);
+});
+
+sdb.putAttributes('test', 'expected', user4, function(err, data) {
+    console.log('user4');
     console.log('Error :', err);
     console.log('Data  :', data);
 });
