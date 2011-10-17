@@ -13,25 +13,25 @@ console.log( 'EndPoint :',  sdb.endPoint() );
 console.log( 'AccessKeyId :', sdb.accessKeyId() );
 console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 
-sdb.getAttributes('test', 'chilts', undefined, function(err, data) {
+sdb.getAttributes('test', 'chilts', undefined, false, function(err, data) {
     console.log("\nchilts");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.getAttributes('test', 'andychilton', undefined, function(err, data) {
+sdb.getAttributes('test', 'andychilton', undefined, false, function(err, data) {
     console.log("\nandychilton");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.getAttributes('test', 'replace', undefined, function(err, data) {
+sdb.getAttributes('test', 'replace', undefined, true, function(err, data) {
     console.log("\nreplace");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.getAttributes('test', 'expected', undefined, function(err, data) {
+sdb.getAttributes('test', 'expected', 'username', false, function(err, data) {
     console.log("\nexpected");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
