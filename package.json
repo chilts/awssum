@@ -9,7 +9,9 @@
     },
     "homepage": "https://github.com/appsattic/node-awssum",
     "contributors": [],
-    "devDependencies": {},
+    "devDependencies": {
+        "tap": ">= 0.0.11"
+    },
     "dependencies": {
         "underscore": ">= 1.2.0",
         "xml2js": ">= 0.1.11"
