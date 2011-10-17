@@ -14,7 +14,8 @@
 
 var tap = require("tap"),
     test = tap.test,
-    plan = tap.plan;
+    plan = tap.plan,
+    _ = require('underscore');
 var amazon;
 var simpledb;
 
@@ -29,7 +30,7 @@ test("load simpledb", function (t) {
     t.ok(amazon, "object loaded");
 
     t.end();
-})
+});
 
 test("create simpledb object", function (t) {
     var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
@@ -39,6 +40,65 @@ test("create simpledb object", function (t) {
     t.equal(2, sdb.region(), 'Region is set properly');
 
     t.end();
-})
+});
+
+test("test param values", function (t) {
+    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+
+    var params1 = sdb.dataToAttributes({ 'username' : 'chilts' });
+    var result1 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   }
+    ];
+    t.ok(_.isEqual(params1, result1), '1) Deep compare of params');
+
+    var params2 = sdb.dataToAttributes([{ 'name' : 'username', 'value' : 'chilts' }]);
+    var result2 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   }
+    ];
+    t.ok(_.isEqual(params2, result2), '2) Deep compare of params');
+
+    var params3 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', replace : true }]);
+    var result3 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
+        { 'name' : 'Attribute.0.Replace', 'value' : 'true'   }
+    ];
+    t.ok(_.isEqual(params3, result3), '3) Deep compare of params');
+
+    var params4 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', exists : false }]);
+    var result4 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
+        { 'name' : 'Expected.0.Name',   'value' : 'username' }
+    ];
+    t.ok(_.isEqual(params4, result4), '4) Deep compare of params');
+
+    var params5 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', expected : 'pie' }]);
+    var result5 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
+        { 'name' : 'Expected.0.Name',   'value' : 'username' },
+        { 'name' : 'Expected.0.Value',  'value' : 'pie'      }
+    ];
+    t.ok(_.isEqual(params5, result5), '5) Deep compare of params');
+
+    var params6 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', exists : true, expected : 'pie' }]);
+    var result6 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
+        { 'name' : 'Expected.0.Name',   'value' : 'username' },
+        { 'name' : 'Expected.0.Value',  'value' : 'pie'      }
+    ];
+    t.ok(_.isEqual(params6, result6), '6) Deep compare of params');
+
+    t.end();
+});
+
+test("test failed param conversion", function (t) {
+    // ToDo: check when we pass the wrong thing in
+    t.end();
+});
 
 // --------------------------------------------------------------------------------------------------------------------
