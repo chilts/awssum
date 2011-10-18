@@ -77,7 +77,7 @@ test("test signature", function (t) {
     t.end();
 });
 
-test("test param values", function (t) {
+test("test PutAttributes", function (t) {
     var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
 
     var params1 = sdb.dataToPutAttributes({ 'username' : 'chilts' });
@@ -132,7 +132,61 @@ test("test param values", function (t) {
     t.end();
 });
 
-test("test failed param conversion", function (t) {
+test("test DeleteAttributes", function (t) {
+    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+
+    var params1 = sdb.dataToDeleteAttributes({ 'username' : 'chilts' });
+    var result1 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   }
+    ];
+    t.ok(_.isEqual(params1, result1), '1) Deep compare of params');
+
+    var params2 = sdb.dataToDeleteAttributes([{ 'name' : 'username' }]);
+    var result2 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' }
+    ];
+    console.log('2', params2);
+    t.ok(_.isEqual(params2, result2), '2) Deep compare of params');
+
+    var params3 = sdb.dataToDeleteAttributes([{ name : 'username', value : 'chilts', exists : false }]);
+    var result3 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
+        { 'name' : 'Expected.0.Name',   'value' : 'username' },
+        { 'name' : 'Expected.0.Exists', 'value' : 'false'    }
+    ];
+    t.ok(_.isEqual(params3, result3), '3) Deep compare of params');
+
+    var params4a = sdb.dataToDeleteAttributes([{ name : 'username', value : 'chilts', expected : 'andychilton' }]);
+    var params4b = sdb.dataToDeleteAttributes([
+        { name : 'username', value : 'chilts', expected : 'andychilton', exists : true }
+    ]);
+    var result4 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
+        { 'name' : 'Expected.0.Name',   'value' : 'username' },
+        { 'name' : 'Expected.0.Value',  'value' : 'andychilton' }
+    ];
+    t.ok(_.isEqual(params4a, result4), '4a) Deep compare of params');
+    t.ok(_.isEqual(params4b, result4), '4b) Deep compare of params');
+
+    var params5 = sdb.dataToDeleteAttributes([
+        { name : 'username', value : 'chilts' },
+        { name : 'url',      value : 'http://www.appsattic.com/' },
+    ]);
+    var result5 = [
+        { 'name' : 'Attribute.0.Name',  'value' : 'username' },
+        { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
+        { 'name' : 'Attribute.1.Name',  'value' : 'url'      },
+        { 'name' : 'Attribute.1.Value', 'value' : 'http://www.appsattic.com/' },
+    ];
+    t.ok(_.isEqual(params5, result5), '5) Deep compare of params');
+
+    t.end();
+});
+
+test("'failed param conversion' test", function (t) {
     // ToDo: check when we pass the wrong thing in
     t.end();
 });
