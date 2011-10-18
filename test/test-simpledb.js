@@ -78,6 +78,32 @@ test("test signature", function (t) {
     t.end();
 });
 
+test("test our own escape(...)", function (t) {
+    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+
+    var query1 = 'DomainName';
+    var escQuery1 = sdb.escape(query1);
+    t.equal(escQuery1, 'DomainName', 'Simple String (idempotent)');
+
+    var query2 = 2;
+    var escQuery2 = sdb.escape(query2);
+    t.equal(escQuery2, '2', 'Simple Number Escape (idempotent)');
+
+    var query3 = 'String Value';
+    var escQuery3 = sdb.escape(query3);
+    t.equal(escQuery3, 'String%20Value', 'Simple With a Space');
+
+    var query4 = 'Hey @andychilton, read this! #liverpool';
+    var escQuery4 = sdb.escape(query4);
+    t.equal(escQuery4, 'Hey%20%40andychilton%2C%20read%20this%21%20%23liverpool', 'Something akin to a Tweet');
+
+    var query5 = 'SELECT * FROM my_table';
+    var escQuery5 = sdb.escape(query5);
+    t.equal(escQuery5, 'SELECT%20%2A%20FROM%20my_table', 'Escaping of a select');
+
+    t.end();
+});
+
 test("test PutAttributes", function (t) {
     var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
 
