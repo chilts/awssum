@@ -106,7 +106,8 @@ test("test param values", function (t) {
     var result4 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' },
         { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
-        { 'name' : 'Expected.0.Name',   'value' : 'username' }
+        { 'name' : 'Expected.0.Name',   'value' : 'username' },
+        { 'name' : 'Expected.0.Exists', 'value' : 'false'    }
     ];
     t.ok(_.isEqual(params4, result4), '4) Deep compare of params');
 

@@ -37,25 +37,25 @@ var user4 = [
 ];
 
 sdb.putAttributes('test', 'chilts', user1, function(err, data) {
-    console.log('user1');
+    console.log('chilts');
     console.log('Error :', err);
     console.log('Data  :', data);
 });
 
 sdb.putAttributes('test', 'andychilton', user2, function(err, data) {
-    console.log('user2');
+    console.log('andychilton');
     console.log('Error :', err);
     console.log('Data  :', data);
 });
 
 sdb.putAttributes('test', 'replace', user3, function(err, data) {
-    console.log('user3');
+    console.log('replace');
     console.log('Error :', err);
     console.log('Data  :', data);
 });
 
 sdb.putAttributes('test', 'expected', user4, function(err, data) {
-    console.log('user4');
+    console.log('expected');
     console.log('Error :', err);
     console.log('Data  :', data);
 });
