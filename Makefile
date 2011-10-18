@@ -1,4 +1,7 @@
 test:
 	./node_modules/tap/bin/tap.js ./test
 
-.PHONY: test
+clean:
+	find . -name '*~' -exec rm {} ';'
+
+.PHONY: test clean
