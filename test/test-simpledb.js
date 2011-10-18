@@ -65,6 +65,7 @@ test("test signature", function (t) {
     var sigEmpty = sdb.signature(paramsEmpty);
     t.equal(sigEmpty, '5HvhU2YfRnYOIcSCUHb5e6IbSj/zPcWzh6G+W7r76b4=', 'Signature of empty params');
 
+    // doesn't matter _what_ these values are, we just need something (ie. 'version' doesn't matter if it's wrong)
     var paramsCommon = [];
     paramsCommon.push({ 'name' : 'AWSAccessKeyId', 'value' : sdb.accessKeyId() });
     paramsCommon.push({ 'name' : 'Version', 'value' : '2009-04-15' });
