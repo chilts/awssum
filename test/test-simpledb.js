@@ -80,21 +80,21 @@ test("test signature", function (t) {
 test("test param values", function (t) {
     var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
 
-    var params1 = sdb.dataToAttributes({ 'username' : 'chilts' });
+    var params1 = sdb.dataToPutAttributes({ 'username' : 'chilts' });
     var result1 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' },
         { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   }
     ];
     t.ok(_.isEqual(params1, result1), '1) Deep compare of params');
 
-    var params2 = sdb.dataToAttributes([{ 'name' : 'username', 'value' : 'chilts' }]);
+    var params2 = sdb.dataToPutAttributes([{ 'name' : 'username', 'value' : 'chilts' }]);
     var result2 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' },
         { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   }
     ];
     t.ok(_.isEqual(params2, result2), '2) Deep compare of params');
 
-    var params3 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', replace : true }]);
+    var params3 = sdb.dataToPutAttributes([{ name : 'username', value : 'chilts', replace : true }]);
     var result3 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' },
         { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
@@ -102,7 +102,7 @@ test("test param values", function (t) {
     ];
     t.ok(_.isEqual(params3, result3), '3) Deep compare of params');
 
-    var params4 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', exists : false }]);
+    var params4 = sdb.dataToPutAttributes([{ name : 'username', value : 'chilts', exists : false }]);
     var result4 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' },
         { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
@@ -111,7 +111,7 @@ test("test param values", function (t) {
     ];
     t.ok(_.isEqual(params4, result4), '4) Deep compare of params');
 
-    var params5 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', expected : 'pie' }]);
+    var params5 = sdb.dataToPutAttributes([{ name : 'username', value : 'chilts', expected : 'pie' }]);
     var result5 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' },
         { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
@@ -120,7 +120,7 @@ test("test param values", function (t) {
     ];
     t.ok(_.isEqual(params5, result5), '5) Deep compare of params');
 
-    var params6 = sdb.dataToAttributes([{ name : 'username', value : 'chilts', exists : true, expected : 'pie' }]);
+    var params6 = sdb.dataToPutAttributes([{ name : 'username', value : 'chilts', exists : true, expected : 'pie' }]);
     var result6 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' },
         { 'name' : 'Attribute.0.Value', 'value' : 'chilts'   },
