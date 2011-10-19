@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 //
-// test-simpledb.js - test for AWS SimpleDB
+// simpledb.js - test for AWS SimpleDB
 //
 // Copyright (c) 2011 AppsAttic Ltd - http://www.appsattic.com/
 // Written by Andrew Chilton <chilts@appsattic.com>
@@ -54,26 +54,6 @@ test("test all endpoints", function (t) {
     t.equal('sdb.eu-west-1.amazonaws.com', sdb3.endPoint(), '3) Endpoint is correct');
     t.equal('sdb.ap-southeast-1.amazonaws.com', sdb4.endPoint(), '4) Endpoint is correct');
     t.equal('sdb.ap-northeast-1.amazonaws.com', sdb5.endPoint(), '5) Endpoint is correct');
-
-    t.end();
-});
-
-test("test signature", function (t) {
-    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', amazon.US_WEST_1);
-
-    var paramsEmpty = [];
-    var sigEmpty = sdb.signature(paramsEmpty);
-    t.equal(sigEmpty, '5HvhU2YfRnYOIcSCUHb5e6IbSj/zPcWzh6G+W7r76b4=', 'Signature of empty params');
-
-    // doesn't matter _what_ these values are, we just need something (ie. 'version' doesn't matter if it's wrong)
-    var paramsCommon = [];
-    paramsCommon.push({ 'name' : 'AWSAccessKeyId', 'value' : sdb.accessKeyId() });
-    paramsCommon.push({ 'name' : 'Version', 'value' : '2009-04-15' });
-    paramsCommon.push({ 'name' : 'Timestamp', 'value' : '2011-10-17T18:35:02.878Z' });
-    paramsCommon.push({ 'name' : 'SignatureVersion', 'value' : 2 });
-    paramsCommon.push({ 'name' : 'SignatureMethod', 'value' : 'HmacSHA256' });
-    var sigCommon = sdb.signature(paramsCommon);
-    t.equal(sigEmpty, '5HvhU2YfRnYOIcSCUHb5e6IbSj/zPcWzh6G+W7r76b4=', 'Signature of common params');
 
     t.end();
 });
