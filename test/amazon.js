@@ -35,18 +35,12 @@ test("create amazon object", function (t) {
     t.end();
 });
 
-test("test signature", function (t) {
+test("test strToSign", function (t) {
     var amz = new amazon.Amazon('access_key_id', 'secret_access_key', amazon.US_WEST_1);
 
-    console.log('here1');
-
     var paramsEmpty = [];
-    console.log('here3', amz);
-    var sigEmpty = amz.signature(paramsEmpty);
-    console.log('here4');
-    t.equal(sigEmpty, '26rngow7dRJeRbdBLvzbpUUy58PcZ9QrWh+4KUr8eiE=', 'Signature of empty params');
-
-    console.log('here2');
+    var strToSignEmpty = amz.strToSign(paramsEmpty);
+    t.equal(strToSignEmpty, "\n\n/\n", 'strToSign of empty params');
 
     // doesn't matter _what_ these values are, we just need something (ie. 'version' doesn't matter if it's wrong)
     var paramsCommon = [];
@@ -55,7 +49,30 @@ test("test signature", function (t) {
     paramsCommon.push({ 'name' : 'Timestamp', 'value' : '2011-10-17T18:35:02.878Z' });
     paramsCommon.push({ 'name' : 'SignatureVersion', 'value' : 2 });
     paramsCommon.push({ 'name' : 'SignatureMethod', 'value' : 'HmacSHA256' });
-    var sigCommon = amz.signature(paramsCommon);
+    var strToSignCommon = amz.strToSign(paramsCommon);
+    t.equal(strToSignCommon, "\n\n/\nAWSAccessKeyId=access_key_id&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2011-10-17T18%3A35%3A02.878Z&Version=2009-04-15", 'strToSign of common params');
+
+    t.end();
+});
+
+test("test signature", function (t) {
+    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+    var strToSign;
+
+    var paramsEmpty = [];
+    strToSign = amz.strToSign(paramsEmpty);
+    var sigEmpty = amz.signature(strToSign);
+    t.equal(sigEmpty, '26rngow7dRJeRbdBLvzbpUUy58PcZ9QrWh+4KUr8eiE=', 'Signature of empty params');
+
+    // doesn't matter _what_ these values are, we just need something (ie. 'version' doesn't matter if it's wrong)
+    var paramsCommon = [];
+    paramsCommon.push({ 'name' : 'AWSAccessKeyId', 'value' : amz.accessKeyId() });
+    paramsCommon.push({ 'name' : 'Version', 'value' : '2009-04-15' });
+    paramsCommon.push({ 'name' : 'Timestamp', 'value' : '2011-10-17T18:35:02.878Z' });
+    paramsCommon.push({ 'name' : 'SignatureVersion', 'value' : 2 });
+    paramsCommon.push({ 'name' : 'SignatureMethod', 'value' : 'HmacSHA256' });
+    strToSign = amz.strToSign(paramsCommon);
+    var sigCommon = amz.signature(strToSign);
     t.equal(sigEmpty, '26rngow7dRJeRbdBLvzbpUUy58PcZ9QrWh+4KUr8eiE=', 'Signature of common params');
 
     t.end();

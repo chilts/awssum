@@ -153,7 +153,6 @@ test("test DeleteAttributes", function (t) {
     var result2 = [
         { 'name' : 'Attribute.0.Name',  'value' : 'username' }
     ];
-    console.log('2', params2);
     t.ok(_.isEqual(params2, result2), '2) Deep compare of params');
 
     var params3 = sdb.dataToDeleteAttributes([{ name : 'username', value : 'chilts', exists : false }]);
