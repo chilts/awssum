@@ -37,7 +37,7 @@ test("create sqs object", function (t) {
 
     t.equal('access_key_id', sqs.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sqs.secretAccessKey(), 'Secret Access Key set properly');
-    t.equal(2, sqs.region(), 'Region is set properly');
+    t.equal('California', sqs.region(), 'Region is set properly');
 
     t.end();
 });

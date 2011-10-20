@@ -27,11 +27,11 @@ test("load simpledb", function (t) {
 })
 
 test("create amazon object", function (t) {
-    t.equal(1, amazon.US_EAST_1, 'US East 1');
-    t.equal(2, amazon.US_WEST_1, 'US West 1');
-    t.equal(3, amazon.EU_WEST_1, 'EU West 1');
-    t.equal(4, amazon.AP_SOUTHEAST_1, 'AP SouthEast 1');
-    t.equal(5, amazon.AP_NORTHEAST_1, 'AP NorthEast 1');
+    t.equal('Virginia',   amazon.US_EAST_1,      'US East 1'     );
+    t.equal('California', amazon.US_WEST_1,      'US West 1'     );
+    t.equal('Dublin',     amazon.EU_WEST_1,      'EU West 1'     );
+    t.equal('Singapore',  amazon.AP_SOUTHEAST_1, 'AP SouthEast 1');
+    t.equal('Tokyo',      amazon.AP_NORTHEAST_1, 'AP NorthEast 1');
     t.end();
 });
 
