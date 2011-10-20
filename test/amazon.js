@@ -41,11 +41,28 @@ test("test addParam", function (t) {
 
     var params = [];
     var result = [
-        { 'name' : 'Name',  'value' : 'value' }
+        { 'name' : 'Name',  'value' : 'Value' }
     ];
     amz.addParam(params, 'Name', 'Value');
-    console.log( _.isEqual(params, result) );
-    // t.ok(_.isEqual(params, result), 'Deep compare of params');
+    t.ok(_.isEqual(params, result), 'Deep compare of params');
+
+    t.end();
+});
+
+test("test addParamIfDefined", function (t) {
+    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+
+    var params1 = [];
+    var result1 = [
+        { 'name' : 'Name',  'value' : 'Value' }
+    ];
+    amz.addParamIfDefined(params1, 'Name', 'Value');
+    t.ok(_.isEqual(params1, result1), 'Deep compare of params');
+
+    var params2 = [];
+    var result2 = [];
+    amz.addParamIfDefined(params2, 'Name', undefined);
+    t.ok(_.isEqual(params2, result2), 'Deep compare of (empty) params');
 
     t.end();
 });
