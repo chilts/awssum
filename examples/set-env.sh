@@ -1,9 +1,8 @@
-# Please set the following ENV VARS for the specific tests:
+# Please set the following ENV VARS for the specific examples:
 
-# Amazon : SimpleDB
+# Amazon : all services
 export ACCESS_KEY_ID=access-key-id
 export SECRET_ACCESS_KEY=secret-access-key
-
-# RackspaceCloud : ToDo!
+export AWS_ACCOUNT_ID=aws_account_id
 
 # etc...
