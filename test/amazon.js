@@ -36,6 +36,20 @@ test("create amazon object", function (t) {
     t.end();
 });
 
+test("test addParam", function (t) {
+    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+
+    var params = [];
+    var result = [
+        { 'name' : 'Name',  'value' : 'value' }
+    ];
+    amz.addParam(params, 'Name', 'Value');
+    console.log( _.isEqual(params, result) );
+    // t.ok(_.isEqual(params, result), 'Deep compare of params');
+
+    t.end();
+});
+
 test("test strToSign", function (t) {
     var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
