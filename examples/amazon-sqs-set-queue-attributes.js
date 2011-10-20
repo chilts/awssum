@@ -14,20 +14,14 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.createQueue('my-queue', undefined, function(err, data) {
-    console.log("\nCreating (my-queue, undefined) - expecting success");
+sqs.setQueueAttributes('my-queue', {}, function(err, data) {
+    console.log("\nSetting empty attributes for my-queue - expecting failure");
     console.log('Error :', err);
     console.log('Data  :', data);
 });
 
-sqs.createQueue('my-queue', 20, function(err, data) {
-    console.log("\nCreating (my-queue, 20) - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
-});
-
-sqs.createQueue('new-queue', undefined, function(err, data) {
-    console.log("\nCreating (new-queue, undefined) - expecting success");
+sqs.setQueueAttributes('new-queue', { visibilityTimeout : 30 }, function(err, data) {
+    console.log("\nSetting visibilityTimeout for new-queue - expecting success");
     console.log('Error :', err);
     console.log('Data  :', data);
 });
