@@ -33,21 +33,22 @@ test("load sqs", function (t) {
 });
 
 test("create sqs object", function (t) {
-    var sqs = new sqsService.Sqs('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+    var sqs = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     t.equal('access_key_id', sqs.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sqs.secretAccessKey(), 'Secret Access Key set properly');
+    t.equal('aws_account_id', sqs.awsAccountId(), 'AWS Account ID set properly');
     t.equal('California', sqs.region(), 'Region is set properly');
 
     t.end();
 });
 
 test("test all endpoints", function (t) {
-    var sqs1 = new sqsService.Sqs('access_key_id', 'secret_access_key', amazon.US_EAST_1);
-    var sqs2 = new sqsService.Sqs('access_key_id', 'secret_access_key', amazon.US_WEST_1);
-    var sqs3 = new sqsService.Sqs('access_key_id', 'secret_access_key', amazon.EU_WEST_1);
-    var sqs4 = new sqsService.Sqs('access_key_id', 'secret_access_key', amazon.AP_SOUTHEAST_1);
-    var sqs5 = new sqsService.Sqs('access_key_id', 'secret_access_key', amazon.AP_NORTHEAST_1);
+    var sqs1 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
+    var sqs2 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sqs3 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
+    var sqs4 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
+    var sqs5 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
 
     t.equal('sqs.us-east-1.amazonaws.com', sqs1.endPoint(), '1) Endpoint is correct');
     t.equal('sqs.us-west-1.amazonaws.com', sqs2.endPoint(), '2) Endpoint is correct');
@@ -59,7 +60,7 @@ test("test all endpoints", function (t) {
 });
 
 test("test our own escape(...)", function (t) {
-    var sqs = new sqsService.Sqs('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+    var sqs = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var query1 = 'DomainName';
     var escQuery1 = sqs.escape(query1);

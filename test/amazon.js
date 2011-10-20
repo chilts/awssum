@@ -36,7 +36,7 @@ test("create amazon object", function (t) {
 });
 
 test("test strToSign", function (t) {
-    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var paramsEmpty = [];
     var strToSignEmpty = amz.strToSign(paramsEmpty);
@@ -56,7 +56,7 @@ test("test strToSign", function (t) {
 });
 
 test("test signature", function (t) {
-    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', amazon.US_WEST_1);
+    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
     var strToSign;
 
     var paramsEmpty = [];
