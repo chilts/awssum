@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 //
-// sqs.js - test for AWS Sqs
+// sqs.js - test for AWS Simple Queue Service
 //
 // Copyright (c) 2011 AppsAttic Ltd - http://www.appsattic.com/
 // Written by Andrew Chilton <chilts@appsattic.com>
