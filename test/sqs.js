@@ -85,9 +85,4 @@ test("test our own escape(...)", function (t) {
     t.end();
 });
 
-test("'failed param conversion' test", function (t) {
-    // ToDo: check when we pass the wrong thing in
-    t.end();
-});
-
 // --------------------------------------------------------------------------------------------------------------------

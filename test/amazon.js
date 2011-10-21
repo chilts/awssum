@@ -67,6 +67,32 @@ test("test addParamIfDefined", function (t) {
     t.end();
 });
 
+test("test our own escape(...)", function (t) {
+    var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+
+    var query1 = 'DomainName';
+    var escQuery1 = amz.escape(query1);
+    t.equal(escQuery1, 'DomainName', 'Simple String (idempotent)');
+
+    var query2 = 2;
+    var escQuery2 = amz.escape(query2);
+    t.equal(escQuery2, '2', 'Simple Number Escape (idempotent)');
+
+    var query3 = 'String Value';
+    var escQuery3 = amz.escape(query3);
+    t.equal(escQuery3, 'String%20Value', 'Simple With a Space');
+
+    var query4 = 'Hey @andychilton, read this! #liverpool';
+    var escQuery4 = amz.escape(query4);
+    t.equal(escQuery4, 'Hey%20%40andychilton%2C%20read%20this%21%20%23liverpool', 'Something akin to a Tweet');
+
+    var query5 = 'SELECT * FROM my_table';
+    var escQuery5 = amz.escape(query5);
+    t.equal(escQuery5, 'SELECT%20%2A%20FROM%20my_table', 'Escaping of a select');
+
+    t.end();
+});
+
 test("test strToSign", function (t) {
     var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
