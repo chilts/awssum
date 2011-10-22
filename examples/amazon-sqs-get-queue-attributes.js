@@ -31,7 +31,7 @@ sqs.getQueueAttributes('my-queue', attribute, function(err, data) {
     console.log('Data :', util.inspect(data, true, null));
 });
 
-attribute = [ 'ApproximateNumberOfMessages', 'MessageRetentionPeriod' ];
+attribute = [ 'ApproximateNumberOfMessages', 'MessageRetentionPeriod', 'DelaySeconds' ];
 sqs.getQueueAttributes('my-queue', attribute, function(err, data) {
     console.log("\nGetting 2 attrs (using an array) for my-queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
