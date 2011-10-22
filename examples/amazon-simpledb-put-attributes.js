@@ -40,24 +40,24 @@ var user4 = [
 
 sdb.putAttributes('test', 'chilts', user1, function(err, data) {
     console.log('chilts');
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
 sdb.putAttributes('test', 'andychilton', user2, function(err, data) {
     console.log('andychilton');
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
 sdb.putAttributes('test', 'replace', user3, function(err, data) {
     console.log('replace');
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
 sdb.putAttributes('test', 'expected', user4, function(err, data) {
     console.log('expected');
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });

@@ -16,12 +16,12 @@ console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 sqs.sendMessage('my-queue', 'Hello, World!', function(err, data) {
     console.log("\nSending a message to a queue - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
 sqs.sendMessage('new-queue', undefined, function(err, data) {
     console.log("\nSending an undefined message - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });

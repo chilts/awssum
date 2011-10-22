@@ -15,6 +15,6 @@ console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
 sdb.domainMetadata('test', function(err, data) {
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });

@@ -15,6 +15,6 @@ console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 sqs.listQueues(undefined, function(err, data) {
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });

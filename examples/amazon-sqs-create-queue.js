@@ -16,18 +16,18 @@ console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 sqs.createQueue('my-queue', undefined, function(err, data) {
     console.log("\nCreating (my-queue, undefined) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
 sqs.createQueue('my-queue', 20, function(err, data) {
     console.log("\nCreating (my-queue, 20) - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
 sqs.createQueue('new-queue', undefined, function(err, data) {
     console.log("\nCreating (new-queue, undefined) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });

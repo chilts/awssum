@@ -16,12 +16,12 @@ console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 sqs.setQueueAttributes('my-queue', {}, function(err, data) {
     console.log("\nSetting empty attributes for my-queue - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
 sqs.setQueueAttributes('new-queue', { visibilityTimeout : 30 }, function(err, data) {
     console.log("\nSetting visibilityTimeout for new-queue - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
