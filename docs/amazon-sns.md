@@ -30,11 +30,10 @@ Quick Example:
         });
     });
 
-
 Operations
 ==========
 
-The Simple Notification Service is 100% implemented, and consists of the following operations:
+The Simple Notification Service is 100% implemented (as at 2011-10-23), and consists of the following operations:
 
 * addPermission(topicArn, label, permissions, callBack)
 * confirmSubscription(topicArn, token, authenticateOnUnsubscribe, callBack)

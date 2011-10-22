@@ -20,8 +20,9 @@ Quick Example:
 Operations
 ==========
 
-The Simple Queue Service is 80% implemented, and consists of the following operations:
+The Simple Queue Service is 100% implemented (as at 2011-10-23), and consists of the following operations:
 
+* addPermission(queueName, label, policies, callBack)
 * changeMessageVisibility(queueName, receiptHandle, visibilityTimeout, callBack)
 * createQueue(queueName, defaultVisibilityTimeout, callBack)
 * deleteMessage(queueName, receiptHandle, callBack)
@@ -29,9 +30,8 @@ The Simple Queue Service is 80% implemented, and consists of the following opera
 * getQueueAttributes(queueName, attribute, callBack)
 * listQueues(queueNamePrefix, callBack)
 * receiveMessage(queueName, attribute, maxNumberOfMessages, visibilityTimeout, callBack)
+* removePermission(queueName, label, callBack)
 * sendMessage(queueName, messageBody, callBack)
 * setQueueAttributes(queueName, options, callBack)
-
-We still need to implement addPermission() and removePermission().
 
 (Ends)
