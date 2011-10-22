@@ -14,14 +14,20 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.sendMessage('my-queue', 'Hello, World!', function(err, data) {
+sqs.sendMessage('my-queue', 'Hello, World!', undefined, function(err, data) {
     console.log("\nSending a message to a queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sqs.sendMessage('new-queue', undefined, function(err, data) {
+sqs.sendMessage('new-queue', undefined, undefined, function(err, data) {
     console.log("\nSending an undefined message - expecting failure");
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
+});
+
+sqs.sendMessage('my-queue', 'Delayed Message', undefined, function(err, data) {
+    console.log("\nSending a delayed message - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
