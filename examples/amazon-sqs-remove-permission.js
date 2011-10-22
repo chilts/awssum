@@ -15,12 +15,8 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-var policies = [
-    { awsAccountId : '123-456-789', actionName : 'SendMessage' }
-];
-
-sqs.addPermission('my-queue', 'A Label Thus', policies, function(err, data) {
-    console.log("\nAdding a set of Policies to this queue - expecting failure (for many reasons)");
+sqs.removePermission('my-queue', 'A Label Thus', function(err, data) {
+    console.log("\nRemoving a permission from this queue - expecting failure");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
