@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.listDomains({}, function(err, data) {
+sdb.listDomains(undefined, function(err, data) {
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
