@@ -1,3 +1,4 @@
+var util = require('util');
 var amazon = require("../lib/amazon");
 var sqs = require("../lib/sqs");
 
