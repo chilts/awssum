@@ -17,8 +17,8 @@ console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options1 = {
-    BucketName : 'bulk',
-    MaxKeys : 10,
+    BucketName : 'pie-17',
+    MaxKeys : 4,
 };
 
 s3.listObjects(options1, function(err, data) {
@@ -39,9 +39,9 @@ s3.listObjects(options1, function(err, data) {
 });
 
 var options2 = {
-    BucketName : 'bulk',
-    MaxKeys : 5,
-    Prefix : 'music/Queen'
+    BucketName : 'pie-17',
+    MaxKeys : 4,
+    Prefix : 'c',
 };
 
 s3.listObjects(options2, function(err, data) {

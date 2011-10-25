@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.getBucketVersions({ BucketName : 'bulk', MaxKeys : 10 }, function(err, data) {
+s3.getBucketVersions({ BucketName : 'pie-17', MaxKeys : 10 }, function(err, data) {
     console.log("\nget bucket versions");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

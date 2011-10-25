@@ -15,49 +15,49 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.getBucketAcl({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketAcl({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket acl");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-s3.getBucketPolicy({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketPolicy({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket policy - expecting failure, no policy exists");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-s3.getBucketLocation({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketLocation({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket location");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-s3.getBucketLogging({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketLogging({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket logging");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-s3.getBucketNotification({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketNotification({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket notification");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-s3.getBucketRequestPayment({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketRequestPayment({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket request payment");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-s3.getBucketVersioning({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketVersioning({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket versioning");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-s3.getBucketWebsite({ BucketName : 'bulk' }, function(err, data) {
+s3.getBucketWebsite({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket website - expecting failure since this bucket has never had a website");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
