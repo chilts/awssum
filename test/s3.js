@@ -81,6 +81,14 @@ test("test strToSign", function (t) {
         'strToSign with subresource of versioning'
     );
 
+    // do a subresource test
+    var strToSign3 = s3.strToSign('bulk', undefined, 'POST', '/', headers, [{name:'website'}]);
+    t.equal(
+        strToSign3,
+        "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?website",
+        'strToSign with subresource of website'
+    );
+
     t.end();
 });
 
