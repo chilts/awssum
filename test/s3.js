@@ -65,11 +65,21 @@ test("test strToSign", function (t) {
     var strToSignEmpty1 = s3.strToSign(undefined, undefined, 'GET', '/', {}, []);
     t.equal(strToSignEmpty1, "GET\n\n\n\n/", 'strToSign of ListBuckets');
 
-    // doesn't matter _what_ these values are, we just need something (ie. 'version' doesn't matter if it's wrong)
+    // set up some generic headers first
     var headers = {};
     headers.Date = "Mon, 26 Oct 2011 16:07:36 Z";
-    var strToSign2 = s3.strToSign('bulk', undefined, 'POST', '/', headers, []);
-    t.equal(strToSign2, "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/", 'strToSign of common params');
+
+    // test an initial string
+    var strToSign = s3.strToSign('bulk', undefined, 'POST', '/', headers, []);
+    t.equal(strToSign, "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/", 'strToSign of common params');
+
+    // do a subresource test
+    var strToSign2 = s3.strToSign('bulk', undefined, 'POST', '/', headers, [{name:'versioning'}]);
+    t.equal(
+        strToSign2,
+        "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?versioning",
+        'strToSign with subresource of versioning'
+    );
 
     t.end();
 });
@@ -78,8 +88,12 @@ test("test signature", function (t) {
     var s3 = new s3Service.S3('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var strToSign = "GET\n\n\nTue, 25 Oct 2011 03:09:21 UTC\n/";
-    var sigEmpty = s3.signature(strToSign);
-    t.equal(sigEmpty, 'OFs3nLlSvlN6EaeNy/IluZpS+E8=', 'signature of ListBuckets request');
+    var sig = s3.signature(strToSign);
+    t.equal(sig, 'OFs3nLlSvlN6EaeNy/IluZpS+E8=', 'signature of ListBuckets request');
+
+    var strToSign2 = "GET\n\n\nTue, 25 Oct 2011 03:09:21 UTC\n/bulk/?versioning";
+    var sig2 = s3.signature(strToSign2);
+    t.equal(sig2, 'zxmJifiGCl8WgMu2XLaiEx0o5Wo=', 'signature of ListBuckets request with versioning');
 
     t.end();
 });
