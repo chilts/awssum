@@ -62,7 +62,7 @@ test("test all endpoints", function (t) {
 test("test strToSign", function (t) {
     var s3 = new s3Service.S3('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
-    var strToSignEmpty1 = s3.strToSign(undefined, undefined, 'GET', '/', {}, []);
+    var strToSignEmpty1 = s3.strToSign(undefined, undefined, 'GET', {}, []);
     t.equal(strToSignEmpty1, "GET\n\n\n\n/", 'strToSign of ListBuckets');
 
     // set up some generic headers first
@@ -70,11 +70,11 @@ test("test strToSign", function (t) {
     headers.Date = "Mon, 26 Oct 2011 16:07:36 Z";
 
     // test an initial string
-    var strToSign = s3.strToSign('bulk', undefined, 'POST', '/', headers, []);
+    var strToSign = s3.strToSign('bulk', undefined, 'POST', headers, []);
     t.equal(strToSign, "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/", 'strToSign of common params');
 
     // do a subresource test
-    var strToSign2 = s3.strToSign('bulk', undefined, 'POST', '/', headers, [{name:'versioning'}]);
+    var strToSign2 = s3.strToSign('bulk', undefined, 'POST', headers, [{name:'versioning'}]);
     t.equal(
         strToSign2,
         "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?versioning",
@@ -82,10 +82,18 @@ test("test strToSign", function (t) {
     );
 
     // do a subresource test
-    var strToSign3 = s3.strToSign('bulk', undefined, 'POST', '/', headers, [{name:'website'}]);
+    var strToSign3 = s3.strToSign('bulk', undefined, 'POST', headers, [{name:'website'}]);
     t.equal(
         strToSign3,
         "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?website",
+        'strToSign with subresource of website'
+    );
+
+    // do an object test
+    var strToSign4 = s3.strToSign('bulk', 'my-object.txt', 'PUT', headers, []);
+    t.equal(
+        strToSign4,
+        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my-object.txt",
         'strToSign with subresource of website'
     );
 
@@ -102,6 +110,10 @@ test("test signature", function (t) {
     var strToSign2 = "GET\n\n\nTue, 25 Oct 2011 03:09:21 UTC\n/bulk/?versioning";
     var sig2 = s3.signature(strToSign2);
     t.equal(sig2, 'zxmJifiGCl8WgMu2XLaiEx0o5Wo=', 'signature of ListBuckets request with versioning');
+
+    var strToSign3 = "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my-object.txt";
+    var sig3 = s3.signature(strToSign3);
+    t.equal(sig3, 'jngqlGWTmPDVu3BO7tcYSQHNglc=', 'signature of PutObject');
 
     t.end();
 });
