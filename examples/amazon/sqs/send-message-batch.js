@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var sqs = require("../lib/sqs");
+var amazon = require("amazon");
+var sqs = require("sqs");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,13 +15,16 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-var messages = [
-    { id : 'janelle', messageBody : 'janelle' },
-    { id : 'lucy',    messageBody : 'lucy'    },
-    { id : 'sarah',   messageBody : 'sarah', delaySeconds : 20 }
-];
+var options = {
+    queueName : 'my-queue',
+    messages : [
+        { id : 'janelle', messageBody : 'janelle' },
+        { id : 'lucy',    messageBody : 'lucy'    },
+        { id : 'sarah',   messageBody : 'sarah', delaySeconds : 20 }
+    ],
+};
 
-sqs.sendMessageBatch('my-queue', messages, function(err, data) {
+sqs.sendMessageBatch(options, function(err, data) {
     console.log("\nSending a message batch to a queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

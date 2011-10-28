@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var sqs = require("../lib/sqs");
+var amazon = require("amazon");
+var sqs = require("sqs");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,19 +15,19 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.createQueue('my-queue', undefined, function(err, data) {
+sqs.createQueue({ queueName : 'my-queue' }, function(err, data) {
     console.log("\nCreating (my-queue, undefined) - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sqs.createQueue('my-queue', 20, function(err, data) {
+sqs.createQueue({ queueName : 'my-queue', defaultVisibilityTimeout : 20}, function(err, data) {
     console.log("\nCreating (my-queue, 20) - expecting failure");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sqs.createQueue('new-queue', undefined, function(err, data) {
+sqs.createQueue({ queueName : 'new-queue' }, function(err, data) {
     console.log("\nCreating (new-queue, undefined) - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

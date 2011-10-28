@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var sqs = require("../lib/sqs");
+var amazon = require("amazon");
+var sqs = require("sqs");
 var _ = require('underscore');
 
 var env = process.env;
@@ -16,7 +16,12 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.receiveMessage('my-queue', undefined, 5, undefined, function(err, data) {
+var options = {
+    queueName : 'my-queue',
+    maxNumberOfMessages : 5,
+};
+
+sqs.receiveMessage(options, function(err, data) {
     var msgs = [];
     var i = 1;
 
@@ -47,7 +52,12 @@ sqs.receiveMessage('my-queue', undefined, 5, undefined, function(err, data) {
             i++;
         });
 
-        sqs.changeMessageVisibilityBatch('my-queue', msgs, function(err, data) {
+        var batchOptions = {
+            queueName : 'my-queue',
+            messages  : msgs,
+        };
+
+        sqs.changeMessageVisibilityBatch(options, function(err, data) {
             console.log("\nChanging visibility batch - expecting success");
             console.log('Error :', util.inspect(err, true, null));
             console.log('Data :', util.inspect(data, true, null));

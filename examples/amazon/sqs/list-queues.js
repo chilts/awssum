@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var sqs = require("../lib/sqs");
+var amazon = require("amazon");
+var sqs = require("sqs");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.listQueues(undefined, function(err, data) {
+sqs.listQueues({}, function(err, data) {
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });

@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var sqs = require("../lib/sqs");
+var amazon = require("amazon");
+var sqs = require("sqs");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,11 +15,15 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-var policies = [
-    { awsAccountId : '123-456-789', actionName : 'SendMessage' }
-];
+var options = {
+    queueName : 'my-queue',
+    label : 'A Label Thus',
+    policies : [
+        { awsAccountId : '123-456-789', actionName : 'SendMessage' }
+    ]
+};
 
-sqs.addPermission('my-queue', 'A Label Thus', policies, function(err, data) {
+sqs.addPermission(options, function(err, data) {
     console.log("\nAdding a set of Policies to this queue - expecting failure (for many reasons)");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

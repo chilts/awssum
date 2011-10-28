@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var sqs = require("../lib/sqs");
+var amazon = require("amazon");
+var sqs = require("sqs");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,14 +15,14 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.setQueueAttributes('my-queue', {}, function(err, data) {
+sqs.setQueueAttributes({ queueName : 'my-queue' }, function(err, data) {
     console.log("\nSetting empty attributes for my-queue - expecting failure");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sqs.setQueueAttributes('new-queue', { visibilityTimeout : 30 }, function(err, data) {
-    console.log("\nSetting visibilityTimeout for new-queue - expecting success");
+sqs.setQueueAttributes({ queueName : 'my-queue', visibilityTimeout : 30 }, function(err, data) {
+    console.log("\nSetting visibilityTimeout for my-queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
