@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var simpledb = require("../lib/simpledb");
+var amazon = require("amazon");
+var simpledb = require("simpledb");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,7 +15,8 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.deleteDomain('test', function(err, data) {
+sdb.deleteDomain({ domainName : 'test' }, function(err, data) {
+    console.log("\ndeleting domain - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });

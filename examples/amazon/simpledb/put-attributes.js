@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var simpledb = require("../lib/simpledb");
+var amazon = require("amazon");
+var simpledb = require("simpledb");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -39,26 +39,26 @@ var user4 = [
     { name : 'salt', value : 'amo3Rie6', expected : 'amo3Rie6' }
 ];
 
-sdb.putAttributes('test', 'chilts', user1, function(err, data) {
-    console.log('chilts');
+sdb.putAttributes({ domainName : 'test', itemName : 'chilts', data : user1 }, function(err, data) {
+    console.log("\nputting user chilts - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.putAttributes('test', 'andychilton', user2, function(err, data) {
-    console.log('andychilton');
+sdb.putAttributes({ domainName : 'test', itemName : 'andychilton', data : user2 }, function(err, data) {
+    console.log("\nputting with a conditional - expecting failure");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.putAttributes('test', 'replace', user3, function(err, data) {
-    console.log('replace');
+sdb.putAttributes({ domainName : 'test', itemName : 'replace', data : user3 }, function(err, data) {
+    console.log("\nputting a replace - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.putAttributes('test', 'expected', user4, function(err, data) {
-    console.log('expected');
+sdb.putAttributes({ domainName : 'test', itemName : 'expected', data : user4 }, function(err, data) {
+    console.log("\nputting with an expected - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });

@@ -1,6 +1,6 @@
 var util = require("util");
-var amazon = require("../lib/amazon");
-var simpledb = require("../lib/simpledb");
+var amazon = require("amazon");
+var simpledb = require("simpledb");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,13 +15,13 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.select('SELECT username FROM test', undefined, undefined, function(err, data) {
+sdb.select({ selectExpression : 'SELECT username FROM test' }, function(err, data) {
     console.log("\nSELECT username FROM test");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.select('SELECT * FROM test', undefined, undefined, function(err, data) {
+sdb.select({ selectExpression : 'SELECT * FROM test', consistentRead : true }, function(err, data) {
     console.log("\nSELECT * FROM test");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

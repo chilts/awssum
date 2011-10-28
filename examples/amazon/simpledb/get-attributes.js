@@ -1,6 +1,6 @@
 var util = require("util");
-var amazon = require("../lib/amazon");
-var simpledb = require("../lib/simpledb");
+var amazon = require("amazon");
+var simpledb = require("simpledb");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,26 +15,27 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.getAttributes('test', 'chilts', undefined, false, function(err, data) {
-    console.log("\nchilts");
+sdb.getAttributes({ domainName : 'test', itemName : 'chilts' }, function(err, data) {
+    console.log("\ngetting chilts - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.getAttributes('test', 'andychilton', undefined, false, function(err, data) {
-    console.log("\nandychilton");
+sdb.getAttributes({ domainName : 'test', itemName : 'andychilton', consistentRead : true }, function(err, data) {
+    console.log("\ngetting andychilton - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.getAttributes('test', 'replace', undefined, true, function(err, data) {
-    console.log("\nreplace");
+sdb.getAttributes({ domainName : 'test', itemName : 'replace', consistentRead : true }, function(err, data) {
+    console.log("\ngetting replace - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sdb.getAttributes('test', 'expected', 'username', false, function(err, data) {
-    console.log("\nexpected");
+var expected = { domainName : 'test', itemName : 'expected', attributeName : 'username', consistentRead : false };
+sdb.getAttributes(expected, function(err, data) {
+    console.log("\ngetting expected - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });

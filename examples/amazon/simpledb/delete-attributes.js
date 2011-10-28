@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("../lib/amazon");
-var simpledb = require("../lib/simpledb");
+var amazon = require("amazon");
+var simpledb = require("simpledb");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -24,8 +24,8 @@ var user2 = [
     { name : 'username', exists : true } // this one is a condition
 ];
 
-sdb.deleteAttributes('test', 'chilts', user1, function(err, data) {
-    console.log('chilts');
+sdb.deleteAttributes({ domainName : 'test', itemName : 'chilts', data : user1 }, function(err, data) {
+    console.log("\ndeleting attributes for chilts - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
