@@ -30,3 +30,19 @@ ses.sendEmail(data, function(err, data) {
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
+
+var dataUtf8 = {
+    to : [
+        'you@example.net',
+    ],
+    text : 'This is the text body with stuff like ç, é and ☺',
+    html : '<p>This is the HTML body with stuff like ç, é and ☺</p>',
+    subject : 'This is the subject with stuff like ç, é and ☺',
+    source : 'me@example.org',
+};
+
+ses.sendEmail(dataUtf8, function(err, data) {
+    console.log("\nsending a UTF8 email - expecting success");
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
+});
