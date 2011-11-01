@@ -19,14 +19,14 @@ var data = {
     to : [
         'you@example.net',
     ],
-    text : 'This is the text body',
-    html : '<p>This is the HTML body</p>',
-    subject : 'This is the subject',
+    text : 'This is the text body with stuff like ç, é and ☺',
+    html : '<p>This is the HTML body with stuff like ç, é and ☺</p>',
+    subject : 'This is the subject with stuff like ç, é and ☺',
     source : 'me@example.org',
 };
 
 ses.sendEmail(data, function(err, data) {
-    console.log("\nsending an email - expecting success");
+    console.log("\nsending a UTF8 email - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
