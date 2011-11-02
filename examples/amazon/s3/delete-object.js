@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require('../lib/amazon');
-var s3Service = require('../lib/s3');
+var amazon = require('amazon');
+var s3Service = require('s3');
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
