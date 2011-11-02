@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
-sns.listTopics(undefined, function(err, data) {
+sns.listTopics({}, function(err, data) {
     console.log("\nlisting all the topics - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

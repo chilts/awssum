@@ -15,13 +15,13 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
-sns.unsubscribe('fakeSubscriptionArn', function(err, data) {
+sns.unsubscribe({ subscriptionArn : 'fakeSubscriptionArn' }, function(err, data) {
     console.log("\nUnsubscribing this subscriptionArn - expecting failure");
     console.log('Error :', err);
     console.log('Data  :', data);
 });
 
-sns.unsubscribe(undefined, function(err, data) {
+sns.unsubscribe({}, function(err, data) {
     console.log("\nUnsubscribing an undefined subscriptionArn - expecting failure");
     console.log('Error :', err);
     console.log('Data  :', data);

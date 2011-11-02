@@ -16,7 +16,7 @@ console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.createTopic('my-topic', function(err, data) {
+sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
     console.log('Error :', err);
     console.log('Data  :', data);
@@ -24,7 +24,7 @@ sns.createTopic('my-topic', function(err, data) {
     // now call the removePermission()
     if ( ! err ) {
         var topicArn = data.CreateTopicResponse.CreateTopicResult.TopicArn;
-        sns.removePermission(topicArn, 'A Test Permission', function(err, data) {
+        sns.removePermission({ topicArn : topicArn, label : 'A Test Permission' }, function(err, data) {
             console.log("\nremovePermission() - expecting success (idempotent)");
             console.log('Error :', util.inspect(err, true, null));
             console.log('Data :', util.inspect(data, true, null));

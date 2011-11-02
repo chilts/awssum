@@ -16,7 +16,7 @@ console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // recreate the topic (idempotent)
-sns.createTopic('my-topic', function(err, data) {
+sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
     console.log('Error :', err);
     console.log('Data  :', data);
@@ -24,7 +24,7 @@ sns.createTopic('my-topic', function(err, data) {
     // now call the confirmSubscription(), even though it will fail
     if ( ! err ) {
         var topicArn = data.CreateTopicResponse.CreateTopicResult.TopicArn;
-        sns.confirmSubscription(topicArn, 'fakeToken', undefined, function(err, data) {
+        sns.confirmSubscription({ topicArn : topicArn, token : 'fakeToken' }, function(err, data) {
             console.log("\nConfirming a fake subscription - expecting failure");
             console.log('Error :', err);
             console.log('Data  :', data);
