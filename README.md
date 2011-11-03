@@ -1,23 +1,24 @@
 NodeJS client libraries for talking to lots of Web Service APIs
-===============================================================
 
-How to get it
--------------
+# How to get it
 
 The easiest way to get it is via [npm][]
 
-    npm install irc
+``` bash
+    $ npm install irc
+```
 
 If you want to run the latest version (i.e. later than the version available
 via [npm][]) you can clone this repo, then use [npm][] to link-install it:
 
-    npm link /path/to/your/clone
+``` bash
+    $ npm link /path/to/your/clone
+```
 
 Of course, you can just clone this, and manually point at the library itself,
 but I really recommend using [npm][]!
 
-What services does 'node-awssum' talk to?
------------------------------------------
+# What services does 'node-awssum' talk to?
 
 Currently this library can talk to:
 
@@ -44,25 +45,23 @@ In future releases we will be targeting (in no particular order):
 * Xero
 * maybe some Google services, but I'm not sure yet
 
-What 'node-awssum' is?
-----------------------
+# What 'node-awssum' is?
 
 node-awssum is an abstraction layer to many web service APIs. It abstracts out the service endpoints, the HTTP verbs to
 use, what headers and parameters to set, how to sign the request and finally how to decode the result. It let's you
 pass a data structure in and get a data structure out.
 
-What 'node-awssum' isn't?
--------------------------
+# What 'node-awssum' isn't?
 
 node-awssum isn't the kind of library you would use directly in your applications. You _could_ use it here and there,
 but the data structures it uses isn't very user friendly. In saying this, all of the libraries make every web service
 _more_ user friendly, but you probably want something even easier.
 
-Example of what node-awssum is and what node-awssum isn't
----------------------------------------------------------
+# Example of what node-awssum is and what node-awssum isn't
 
 Example 1. This is what node-awssum looks like when adding a topic to Amazon's Simple Notification Service:
 
+``` js
     sns.createTopic({ topicName : 'my-topic' })
     =>  {
             CreateTopicResponse:
@@ -78,17 +77,19 @@ Example 1. This is what node-awssum looks like when adding a topic to Amazon's S
                 }
             }
         }
+```
 
 What you would probably like to do is the following (with an example SNS Wrapper Library):
 
+``` js
     snsWrapperLibrary.createTopic('my-topic')
     =>  arn:aws:sns:us-east-1:616781752028:my-topic
+```
 
 This is pretty easy to do but annoying to have to find and extract the information you really want. node-awssum comes
 with some example libraries. :)
 
-What is 'node-awssum' for?
---------------------------
+# What is 'node-awssum' for?
 
 This library has a number of uses but mostly it should be used from within a more friendly wrapper library. Let's look
 at some examples.
@@ -108,8 +109,7 @@ The reason for this is because the data structures it receives, and more especia
 complicated for dealing with them in your main program. Therefore in general, a wrapper library around these simple
 operations would make each service easier to use.
 
-How to use it
--------------
+# How to use it
 
 This library provides basic client functionality to each of these services. It's pretty simple but this means it's also
 quite powerful. In general you wouldn't use these libraries directly (though there is nothing stopping you making the
@@ -124,6 +124,7 @@ you pass it, apart from when a parameter is required. As I sa
 
 As a quick example, to create a domain in AWS SimpleDB:
 
+``` js
     var amazon = require("../lib/amazon");
     var simpledb = require("../lib/simpledb");
 
@@ -133,18 +134,21 @@ As a quick example, to create a domain in AWS SimpleDB:
         console.log('Error :', err);
         console.log('Data  :', data);
     });
+```
 
 A successful run outputs:
 
+``` js
     Error : null
     Data  : { ok: true }
+```
 
 A non-successful run results in a true error value, just like any other idiomatic NodeJS. :)
 
-Events
-------
-
-ToDo.: The library can also emit events (coming soon).
-
 [npm]: http://github.com/isaacs/npm
--
+
+# Author
+
+Written by [Andrew Chilton](http://www.chilts.org/blog/)
+
+Copyright 2011 [AppsAttic](http://www.appsattic.com/)
