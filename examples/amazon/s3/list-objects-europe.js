@@ -11,7 +11,7 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 var s3 = new s3Service.S3(accessKeyId, secretAccessKey, awsAccountId, amazon.EU_WEST_1);
 
 console.log( 'Region :', s3.region() );
-console.log( 'EndPoint :',  s3.endPoint() );
+console.log( 'EndPoint :',  s3.host() );
 console.log( 'AccessKeyId :', s3.accessKeyId() );
 console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );

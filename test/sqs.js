@@ -50,11 +50,11 @@ test("test all endpoints", function (t) {
     var sqs4 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
     var sqs5 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
 
-    t.equal('sqs.us-east-1.amazonaws.com', sqs1.endPoint(), '1) Endpoint is correct');
-    t.equal('sqs.us-west-1.amazonaws.com', sqs2.endPoint(), '2) Endpoint is correct');
-    t.equal('sqs.eu-west-1.amazonaws.com', sqs3.endPoint(), '3) Endpoint is correct');
-    t.equal('sqs.ap-southeast-1.amazonaws.com', sqs4.endPoint(), '4) Endpoint is correct');
-    t.equal('sqs.ap-northeast-1.amazonaws.com', sqs5.endPoint(), '5) Endpoint is correct');
+    t.equal('sqs.us-east-1.amazonaws.com', sqs1.host(), '1) Endpoint is correct');
+    t.equal('sqs.us-west-1.amazonaws.com', sqs2.host(), '2) Endpoint is correct');
+    t.equal('sqs.eu-west-1.amazonaws.com', sqs3.host(), '3) Endpoint is correct');
+    t.equal('sqs.ap-southeast-1.amazonaws.com', sqs4.host(), '4) Endpoint is correct');
+    t.equal('sqs.ap-northeast-1.amazonaws.com', sqs5.host(), '5) Endpoint is correct');
 
     t.end();
 });

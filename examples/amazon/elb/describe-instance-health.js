@@ -10,7 +10,7 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 var elb = new elbService.Elb(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', elb.region() );
-console.log( 'EndPoint :',  elb.endPoint() );
+console.log( 'EndPoint :',  elb.host() );
 console.log( 'AccessKeyId :', elb.accessKeyId() );
 // console.log( 'SecretAccessKey :', elb.secretAccessKey() );
 console.log( 'AwsAccountId :', elb.awsAccountId() );

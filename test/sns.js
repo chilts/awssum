@@ -50,11 +50,11 @@ test("test all endpoints", function (t) {
     var sns4 = new snsService.Sns('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
     var sns5 = new snsService.Sns('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
 
-    t.equal('sns.us-east-1.amazonaws.com', sns1.endPoint(), '1) Endpoint is correct');
-    t.equal('sns.us-west-1.amazonaws.com', sns2.endPoint(), '2) Endpoint is correct');
-    t.equal('sns.eu-west-1.amazonaws.com', sns3.endPoint(), '3) Endpoint is correct');
-    t.equal('sns.ap-southeast-1.amazonaws.com', sns4.endPoint(), '4) Endpoint is correct');
-    t.equal('sns.ap-northeast-1.amazonaws.com', sns5.endPoint(), '5) Endpoint is correct');
+    t.equal('sns.us-east-1.amazonaws.com', sns1.host(), '1) Endpoint is correct');
+    t.equal('sns.us-west-1.amazonaws.com', sns2.host(), '2) Endpoint is correct');
+    t.equal('sns.eu-west-1.amazonaws.com', sns3.host(), '3) Endpoint is correct');
+    t.equal('sns.ap-southeast-1.amazonaws.com', sns4.host(), '4) Endpoint is correct');
+    t.equal('sns.ap-northeast-1.amazonaws.com', sns5.host(), '5) Endpoint is correct');
 
     t.end();
 });

@@ -10,7 +10,7 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 var sns = new snsService.Sns(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', sns.region() );
-console.log( 'EndPoint :',  sns.endPoint() );
+console.log( 'EndPoint :',  sns.host() );
 console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );

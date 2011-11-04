@@ -10,7 +10,7 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 var r53 = new route53.Route53(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', r53.region() );
-console.log( 'EndPoint :',  r53.endPoint() );
+console.log( 'EndPoint :',  r53.host() );
 console.log( 'AccessKeyId :', r53.accessKeyId() );
 // console.log( 'SecretAccessKey :', r53.secretAccessKey() );
 console.log( 'AwsAccountId :', r53.awsAccountId() );

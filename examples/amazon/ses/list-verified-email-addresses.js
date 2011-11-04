@@ -10,7 +10,7 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 var ses = new sesService.Ses(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', ses.region() );
-console.log( 'EndPoint :',  ses.endPoint() );
+console.log( 'EndPoint :',  ses.host() );
 console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );

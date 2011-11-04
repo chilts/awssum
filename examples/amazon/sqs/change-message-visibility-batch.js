@@ -11,7 +11,7 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 var sqs = new sqs.Sqs(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', sqs.region() );
-console.log( 'EndPoint :',  sqs.endPoint() );
+console.log( 'EndPoint :',  sqs.host() );
 console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );

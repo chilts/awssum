@@ -50,11 +50,11 @@ test("test all endpoints", function (t) {
     var s34 = new s3Service.S3('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
     var s35 = new s3Service.S3('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
 
-    t.equal('s3.amazonaws.com', s31.endPoint(), '1) Endpoint is correct');
-    t.equal('s3-us-west-1.amazonaws.com', s32.endPoint(), '2) Endpoint is correct');
-    t.equal('s3-eu-west-1.amazonaws.com', s33.endPoint(), '3) Endpoint is correct');
-    t.equal('s3-ap-southeast-1.amazonaws.com', s34.endPoint(), '4) Endpoint is correct');
-    t.equal('s3-ap-northeast-1.amazonaws.com', s35.endPoint(), '5) Endpoint is correct');
+    t.equal('s3.amazonaws.com', s31.host(), '1) Endpoint is correct');
+    t.equal('s3-us-west-1.amazonaws.com', s32.host(), '2) Endpoint is correct');
+    t.equal('s3-eu-west-1.amazonaws.com', s33.host(), '3) Endpoint is correct');
+    t.equal('s3-ap-southeast-1.amazonaws.com', s34.host(), '4) Endpoint is correct');
+    t.equal('s3-ap-northeast-1.amazonaws.com', s35.host(), '5) Endpoint is correct');
 
     t.end();
 });

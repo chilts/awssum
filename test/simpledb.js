@@ -50,11 +50,11 @@ test("test all endpoints", function (t) {
     var sdb4 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
     var sdb5 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
 
-    t.equal('sdb.amazonaws.com', sdb1.endPoint(), '1) Endpoint is correct');
-    t.equal('sdb.us-west-1.amazonaws.com', sdb2.endPoint(), '2) Endpoint is correct');
-    t.equal('sdb.eu-west-1.amazonaws.com', sdb3.endPoint(), '3) Endpoint is correct');
-    t.equal('sdb.ap-southeast-1.amazonaws.com', sdb4.endPoint(), '4) Endpoint is correct');
-    t.equal('sdb.ap-northeast-1.amazonaws.com', sdb5.endPoint(), '5) Endpoint is correct');
+    t.equal('sdb.amazonaws.com', sdb1.host(), '1) Endpoint is correct');
+    t.equal('sdb.us-west-1.amazonaws.com', sdb2.host(), '2) Endpoint is correct');
+    t.equal('sdb.eu-west-1.amazonaws.com', sdb3.host(), '3) Endpoint is correct');
+    t.equal('sdb.ap-southeast-1.amazonaws.com', sdb4.host(), '4) Endpoint is correct');
+    t.equal('sdb.ap-northeast-1.amazonaws.com', sdb5.host(), '5) Endpoint is correct');
 
     t.end();
 });
