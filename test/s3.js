@@ -62,7 +62,15 @@ test("test all endpoints", function (t) {
 test("test strToSign", function (t) {
     var s3 = new s3Service.S3('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
-    var strToSignEmpty1 = s3.strToSign(undefined, undefined, 'GET', {}, []);
+    // NOTE: since strToSign() is really a private method, we have to set up the options to be pretty complete
+    // (including empty headers and params) since in the class they would have been setup before this method is every
+    // called.
+
+    var strToSignEmpty1 = s3.strToSign({
+        verb : 'GET',
+        headers : {},
+        params : [],
+    });
     t.equal(strToSignEmpty1, "GET\n\n\n\n/", 'strToSign of ListBuckets');
 
     // set up some generic headers first
@@ -70,11 +78,21 @@ test("test strToSign", function (t) {
     headers.Date = "Mon, 26 Oct 2011 16:07:36 Z";
 
     // test an initial string
-    var strToSign = s3.strToSign('bulk', undefined, 'POST', headers, []);
+    var strToSign = s3.strToSign({
+        bucketName : 'bulk',
+        verb : 'POST',
+        headers : headers,
+        params : [],
+    });
     t.equal(strToSign, "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/", 'strToSign of common params');
 
     // do a subresource test
-    var strToSign2 = s3.strToSign('bulk', undefined, 'POST', headers, [{name:'versioning'}]);
+    var strToSign2 = s3.strToSign({
+        bucketName : 'bulk',
+        verb : 'POST',
+        headers : headers,
+        params : [{ name : 'versioning' }]
+    });
     t.equal(
         strToSign2,
         "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?versioning",
@@ -82,7 +100,12 @@ test("test strToSign", function (t) {
     );
 
     // do a subresource test
-    var strToSign3 = s3.strToSign('bulk', undefined, 'POST', headers, [{name:'website'}]);
+    var strToSign3 = s3.strToSign({
+        bucketName : 'bulk',
+        verb : 'POST',
+        headers : headers,
+        params : [{name:'website'}],
+    });
     t.equal(
         strToSign3,
         "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?website",
@@ -90,11 +113,17 @@ test("test strToSign", function (t) {
     );
 
     // do an object test
-    var strToSign4 = s3.strToSign('bulk', 'my-object.txt', 'PUT', headers, []);
+    var strToSign4 = s3.strToSign({
+        bucketName : 'bulk',
+        objectName : 'my-object.txt',
+        verb : 'PUT',
+        headers : headers,
+        params : [],
+    });
     t.equal(
         strToSign4,
         "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my-object.txt",
-        'strToSign with subresource of website'
+        'strToSign with an object'
     );
 
     t.end();
