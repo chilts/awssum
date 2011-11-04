@@ -12,7 +12,7 @@ var sdb = new simpledb.SimpleDB(accessKeyId, secretAccessKey, awsAccountId, amaz
 console.log( 'Region :', sdb.region() );
 console.log( 'EndPoint :',  sdb.host() );
 console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
+// console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
 sdb.listDomains({}, function(err, data) {

@@ -13,7 +13,7 @@ var s3eu = new s3Service.S3(accessKeyId, secretAccessKey, awsAccountId, amazon.E
 console.log( 'Region :', s3.region() );
 console.log( 'EndPoint :',  s3.host() );
 console.log( 'AccessKeyId :', s3.accessKeyId() );
-console.log( 'SecretAccessKey :', s3.secretAccessKey() );
+// console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {

@@ -12,7 +12,7 @@ var sns = new snsService.Sns(accessKeyId, secretAccessKey, awsAccountId, amazon.
 console.log( 'Region :', sns.region() );
 console.log( 'EndPoint :',  sns.host() );
 console.log( 'AccessKeyId :', sns.accessKeyId() );
-console.log( 'SecretAccessKey :', sns.secretAccessKey() );
+// console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 sns.unsubscribe({ subscriptionArn : 'fakeSubscriptionArn' }, function(err, data) {
