@@ -20,21 +20,24 @@ but I really recommend using [npm][]!
 
 # What services does 'node-awssum' talk to?
 
-Currently this library can talk to:
+Currently this has 100% coverage of the following services:
 
 * AWS SimpleDB
 * AWS Simple Queue Service (SQS)
 * AWS Simple Notification Service (SNS)
+* AWS Simple Email Service (SES)
+* AWS Simple Storage Service (S3)
+* AWS Route53
+
+It has partial support for these services:
+
+* AWS Elastic Compute Cloud (EC2)
 
 In future releases we will be targeting (in no particular order):
 
-* AWS Simple Email Service (SES)
-* AWS Elastic Compute Cloud (EC2)
-* AWS Simple Storage Service (S3)
 * AWS Relational Database Service (RDS)
 * AWS ElastiCache
 * AWS CloudFront
-* AWS Route53
 * AWS Flexible Payments Service (FPS)
 * RackspaceCloud Servers
 * RackspaceCloud Files
