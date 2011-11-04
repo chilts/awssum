@@ -57,7 +57,7 @@ sqs.receiveMessage(options, function(err, data) {
             messages  : msgs,
         };
 
-        sqs.changeMessageVisibilityBatch(options, function(err, data) {
+        sqs.changeMessageVisibilityBatch(batchOptions, function(err, data) {
             console.log("\nChanging visibility batch - expecting success");
             console.log('Error :', util.inspect(err, true, null));
             console.log('Data :', util.inspect(data, true, null));
