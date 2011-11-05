@@ -16,6 +16,7 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 sqs.listQueues({}, function(err, data) {
+    console.log("\nlisting queues - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
