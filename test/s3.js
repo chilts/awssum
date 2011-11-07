@@ -67,7 +67,7 @@ test("test strToSign", function (t) {
     // called.
 
     var strToSignEmpty1 = s3.strToSign({
-        verb : 'GET',
+        method : 'GET',
         headers : {},
         params : [],
     });
@@ -80,7 +80,7 @@ test("test strToSign", function (t) {
     // test an initial string
     var strToSign = s3.strToSign({
         bucketName : 'bulk',
-        verb : 'POST',
+        method : 'POST',
         headers : headers,
         params : [],
     });
@@ -89,7 +89,7 @@ test("test strToSign", function (t) {
     // do a subresource test
     var strToSign2 = s3.strToSign({
         bucketName : 'bulk',
-        verb : 'POST',
+        method : 'POST',
         headers : headers,
         params : [{ name : 'versioning' }]
     });
@@ -102,7 +102,7 @@ test("test strToSign", function (t) {
     // do a subresource test
     var strToSign3 = s3.strToSign({
         bucketName : 'bulk',
-        verb : 'POST',
+        method : 'POST',
         headers : headers,
         params : [{name:'website'}],
     });
@@ -116,7 +116,7 @@ test("test strToSign", function (t) {
     var strToSign4 = s3.strToSign({
         bucketName : 'bulk',
         objectName : 'my-object.txt',
-        verb : 'PUT',
+        method : 'PUT',
         headers : headers,
         params : [],
     });

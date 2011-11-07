@@ -97,7 +97,7 @@ test("test strToSign", function (t) {
     var amz = new amazon.Amazon('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var paramsEmpty = [];
-    var strToSignEmpty = amz.strToSign({ verb : 'GET', host : '', path : '/', params : paramsEmpty });
+    var strToSignEmpty = amz.strToSign({ method : 'GET', host : '', path : '/', params : paramsEmpty });
     t.equal(strToSignEmpty, "GET\n\n/\n", 'strToSign of empty params');
 
     // doesn't matter _what_ these values are, we just need something (ie. 'version' doesn't matter if it's wrong)
@@ -107,7 +107,7 @@ test("test strToSign", function (t) {
     paramsCommon.push({ 'name' : 'Timestamp', 'value' : '2011-10-17T18:35:02.878Z' });
     paramsCommon.push({ 'name' : 'SignatureVersion', 'value' : 2 });
     paramsCommon.push({ 'name' : 'SignatureMethod', 'value' : 'HmacSHA256' });
-    var strToSignCommon = amz.strToSign({ verb : 'GET', host : '', path : '/', params : paramsCommon });
+    var strToSignCommon = amz.strToSign({ method : 'GET', host : '', path : '/', params : paramsCommon });
     t.equal(strToSignCommon, "GET\n\n/\nAWSAccessKeyId=access_key_id&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2011-10-17T18%3A35%3A02.878Z&Version=2009-04-15", 'strToSign of common params');
 
     t.end();
@@ -118,7 +118,7 @@ test("test signature", function (t) {
     var strToSign;
 
     var paramsEmpty = [];
-    strToSign = amz.strToSign({ verb : 'GET', host : '', path : '/', params : paramsEmpty });
+    strToSign = amz.strToSign({ method : 'GET', host : '', path : '/', params : paramsEmpty });
     var sigEmpty = amz.signature(strToSign);
     t.equal(sigEmpty, 'xkZtou/+82NuDSRdyi5iEw5uPbRunNcjy7IKD+sgkOo=', 'Signature of empty params');
 
@@ -129,7 +129,7 @@ test("test signature", function (t) {
     paramsCommon.push({ 'name' : 'Timestamp', 'value' : '2011-10-17T18:35:02.878Z' });
     paramsCommon.push({ 'name' : 'SignatureVersion', 'value' : 2 });
     paramsCommon.push({ 'name' : 'SignatureMethod', 'value' : 'HmacSHA256' });
-    strToSign = amz.strToSign({ verb : 'GET', host : '', path : '/', params : paramsCommon });
+    strToSign = amz.strToSign({ method : 'GET', host : '', path : '/', params : paramsCommon });
     var sigCommon = amz.signature(strToSign);
     t.equal(sigEmpty, 'xkZtou/+82NuDSRdyi5iEw5uPbRunNcjy7IKD+sgkOo=', 'Signature of common params');
 
