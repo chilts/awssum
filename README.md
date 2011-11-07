@@ -52,15 +52,25 @@ In future releases we will be targeting (in no particular order):
 
 node-awssum is an abstraction layer to many web service APIs. It abstracts out the service endpoints, the HTTP verbs to
 use, what headers and parameters to set, how to sign the request and finally how to decode the result. It let's you
-pass a data structure in and get a data structure out.
+pass a data structure in and get a data structure out. It also helps in the odd small way when dealing with complex
+input such as creating XML (e.g. Amazon S3), JSON data structures (e.g. Amazon SQS) or parameters with lots of values
+(e.g. Amazon SimpleDB).
 
-# What 'node-awssum' isn't?
+In saying this, there are some web service operations that are inherently nasty and since node-awssum is essentially a
+proxy to operation itself, it doesn't always make the request nicer.
 
-node-awssum isn't the kind of library you would use directly in your applications. You _could_ use it here and there,
-but the data structures it uses isn't very user friendly. In saying this, all of the libraries make every web service
-_more_ user friendly, but you probably want something even easier.
+For an example of where node-awssum helps is when creating a Bucket in Amazon S3. We take a 'LocationConstrain'
+parameter in the 'createBucket' call and node-awssum takes that and builds a piece of XML which it needs to send with
+the request. This makes it much easier to perform calls to the various web services and their individual operations.
 
-# Example of what node-awssum is and what node-awssum isn't
+However, there are also examples of where node-awssum can't really help make the operation nicer. Many of the Amazon
+Web Services return XML which we blindly convert to a data structure and return that to the caller. In these cases we
+don't perform any kind of manipulation or conversion to a canonical structure to make the returned data nicer. In these
+cases, a small library which sits on top of node-awssums libraries may be a good choice. This would be especially true
+for SimpleDB where the higher level library could perform number padding, date conversions, creation of multi-field
+indexes and default field values - none of which node-awssum does.
+
+# Examples
 
 Example 1. This is what node-awssum looks like when adding a topic to Amazon's Simple Notification Service:
 
@@ -91,6 +101,10 @@ What you would probably like to do is the following (with an example SNS Wrapper
 
 This is pretty easy to do but annoying to have to find and extract the information you really want. node-awssum comes
 with some example libraries. :)
+
+Example 2. Saving some attributes for AWS SimpleDB.
+
+...
 
 # What is 'node-awssum' for?
 
