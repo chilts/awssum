@@ -7,4 +7,7 @@ export ACCESS_KEY_ID=access-key-id
 export SECRET_ACCESS_KEY=secret-access-key
 export AWS_ACCOUNT_ID=aws_account_id
 
-# etc...
+# RackspaceCloud
+export RACKSPACECLOUD_USERNAME=username
+export RACKSPACECLOUD_API_KEY=api-key
+export RACKSPACECLOUD_REGION=US
