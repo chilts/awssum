@@ -63,11 +63,12 @@ input such as creating XML (e.g. Amazon S3), JSON data structures (e.g. Amazon S
 (e.g. Amazon SimpleDB).
 
 In saying this, there are some web service operations that are inherently nasty and since node-awssum is essentially a
-proxy to operation itself, it doesn't always make the request nicer.
+proxy to the operation itself it can't abstract away all nastiness.
 
-For an example of where node-awssum helps is when creating a Bucket in Amazon S3. We take a 'LocationConstrain'
-parameter in the 'createBucket' call and node-awssum takes that and builds a piece of XML which it needs to send with
-the request. This makes it much easier to perform calls to the various web services and their individual operations.
+For an example of where node-awssum helps is when creating a Bucket in Amazon S3. We take a single 'LocationConstraint'
+parameter in the 'createBucket' call and node-awssum takes that and builds (the horrible) XML which it needs to send
+with the request. This makes it much easier to perform calls to the various web services and their individual
+operations since this simple notion is across all web services.
 
 However, there are also examples of where node-awssum can't really help make the operation nicer. Many of the Amazon
 Web Services return XML which we blindly convert to a data structure and return that to the caller. In these cases we
