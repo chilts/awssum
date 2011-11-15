@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require('amazon');
-var snsService = require('sns');
+var amazon = require('amazon/amazon');
+var snsService = require('amazon/sns');
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;

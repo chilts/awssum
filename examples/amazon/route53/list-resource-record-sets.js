@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("amazon");
-var route53 = require("route53");
+var amazon = require("amazon/amazon");
+var route53 = require("amazon/route53");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;

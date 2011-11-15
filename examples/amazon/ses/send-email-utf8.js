@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("amazon");
-var sesService = require("ses");
+var amazon = require("amazon/amazon");
+var sesService = require("amazon/ses");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;

@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require("amazon");
-var elbService = require("elb");
+var amazon = require("amazon/amazon");
+var elbService = require("amazon/elb");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;

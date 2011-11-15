@@ -1,6 +1,6 @@
 var util = require("util");
-var amazon = require("amazon");
-var simpledb = require("simpledb");
+var amazon = require("amazon/amazon");
+var simpledb = require("amazon/simpledb");
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;

@@ -1,6 +1,6 @@
 var util = require('util');
-var amazon = require('amazon');
-var s3Service = require('s3');
+var amazon = require('amazon/amazon');
+var s3Service = require('amazon/s3');
 var _ = require('underscore');
 
 var env = process.env;
