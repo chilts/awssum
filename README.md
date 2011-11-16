@@ -34,25 +34,30 @@ It has partial support for these services. This means that the complex signature
 operations have been implemented:
 
 * AWS:
-    * Elastic Compute Cloud (EC2)
-    * Elastic Load Balancing (ELB)
+    * Elastic Compute Cloud (EC2) ([Request or Sponsor Development][sponsor])
+    * Elastic Load Balancing (ELB) ([Request or Sponsor Development][sponsor])
 
 In future releases we will be targeting (in no particular order):
 
 * AWS:
-    * Relational Database Service (RDS)
-    * ElastiCache
-    * CloudFront
-    * Flexible Payments Service (FPS)
+    * Relational Database Service (RDS) ([Request or Sponsor Development][sponsor])
+    * ElastiCache ([Request or Sponsor Development][sponsor])
+    * CloudFront ([Request or Sponsor Development][sponsor])
+    * Flexible Payments Service (FPS) ([Request or Sponsor Development][sponsor])
 * RackspaceCloud:
-    * Servers
-    * Files
-    * LoadBalances
-    * DNS
-* Flickr
-* PayPal
-* Xero
-* maybe some Google services, but I'm not sure yet
+    * Servers (In Progress)
+    * Files (In Progress)
+    * LoadBalances (In Progress)
+    * DNS (In Progress)
+* Flickr ([Request or Sponsor Development][sponsor])
+* PayPal ([Request or Sponsor Development][sponsor])
+* Xero ([Request or Sponsor Development][sponsor])
+* some Google services ([Request or Sponsor Development][sponsor])
+* URL shorteners ([Request or Sponsor Development][sponsor])
+* anything else you'd like? ([Request or Sponsor Development][sponsor])
+
+There are lots of services out there, so please [Request or Sponsor Development][sponsor] if you'd like one
+implemented.
 
 # What 'node-awssum' is?
 
@@ -73,9 +78,10 @@ operations since this simple notion is across all web services.
 However, there are also examples of where node-awssum can't really help make the operation nicer. Many of the Amazon
 Web Services return XML which we blindly convert to a data structure and return that to the caller. In these cases we
 don't perform any kind of manipulation or conversion to a canonical structure to make the returned data nicer. In these
-cases, a small library which sits on top of node-awssums libraries may be a good choice. This would be especially true
-for SimpleDB where the higher level library could perform number padding, date conversions, creation of multi-field
-indexes and default field values - none of which node-awssum does.
+cases, a small library which sits on top of node-awssums libraries may be a good choice (see *winston-simpledb* for an
+example of this - http://github.com/appsattic/winston-simpledb). This would be especially true for SimpleDB where the
+higher level library could perform number padding, date conversions, creation of multi-field indexes and default field
+values - none of which node-awssum does.
 
 # Examples
 
@@ -170,6 +176,7 @@ A successful run outputs:
 A non-successful run results in a true error value, just like any other idiomatic NodeJS. :)
 
 [npm]: http://github.com/isaacs/npm
+[sponsor]: https://github.com/inbox/new/chilts
 
 # Author
 
