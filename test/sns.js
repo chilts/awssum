@@ -23,10 +23,10 @@ var snsService;
 // basic tests
 
 test("load sns", function (t) {
-    snsService = require("../lib/sns");
+    snsService = require("../lib/amazon/sns");
     t.ok(snsService, "object loaded");
 
-    amazon = require("../lib/amazon");
+    amazon = require("../lib/amazon/amazon");
     t.ok(amazon, "object loaded");
 
     t.end();

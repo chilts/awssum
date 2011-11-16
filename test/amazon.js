@@ -22,7 +22,7 @@ var amazon;
 // basic tests
 
 test("load simpledb", function (t) {
-    amazon = require("../lib/amazon");
+    amazon = require("../lib/amazon/amazon");
     t.ok(amazon, "object loaded");
     t.end();
 })

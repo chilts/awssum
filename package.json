@@ -44,6 +44,6 @@
         "xero"
     ],
     "scripts" : {
-        "test" : "./bin/test.sh"
+        "test" : "tap test/"
     }
 }

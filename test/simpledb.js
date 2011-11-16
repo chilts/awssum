@@ -23,10 +23,10 @@ var simpledb;
 // basic tests
 
 test("load simpledb", function (t) {
-    simpledb = require("../lib/simpledb");
+    simpledb = require("../lib/amazon/simpledb");
     t.ok(simpledb, "object loaded");
 
-    amazon = require("../lib/amazon");
+    amazon = require("../lib/amazon/amazon");
     t.ok(amazon, "object loaded");
 
     t.end();

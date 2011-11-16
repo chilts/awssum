@@ -23,10 +23,10 @@ var s3Service;
 // basic tests
 
 test("load s3", function (t) {
-    s3Service = require("../lib/s3");
+    s3Service = require("../lib/amazon/s3");
     t.ok(s3Service, "object loaded");
 
-    amazon = require("../lib/amazon");
+    amazon = require("../lib/amazon/amazon");
     t.ok(amazon, "object loaded");
 
     t.end();

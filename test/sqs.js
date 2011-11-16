@@ -23,10 +23,10 @@ var sqsService;
 // basic tests
 
 test("load sqs", function (t) {
-    sqsService = require("../lib/sqs");
+    sqsService = require("../lib/amazon/sqs");
     t.ok(sqsService, "object loaded");
 
-    amazon = require("../lib/amazon");
+    amazon = require("../lib/amazon/amazon");
     t.ok(amazon, "object loaded");
 
     t.end();
