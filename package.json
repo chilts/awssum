@@ -30,10 +30,14 @@
         "type" : "git",
         "url": "git://github.com/appsattic/node-awssum.git"
     },
-	"licenses": [{
-		"type": "MIT",
-		"url": "http://github.com/appsattic/node-awssum/raw/master/LICENSE"
-	}],
+   "bugs" : {
+        "url" : "http://github.com/appsattic/node-awssum/issues",
+        "mail" : "chilts@appsattic.com"
+    },
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://github.com/appsattic/node-awssum/raw/master/LICENSE"
+    }],
     "keywords": [
         "api",
         "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","clodufront","fps",
