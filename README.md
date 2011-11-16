@@ -176,7 +176,7 @@ A successful run outputs:
 A non-successful run results in a true error value, just like any other idiomatic NodeJS. :)
 
 [npm]: http://github.com/isaacs/npm
-[sponsor]: https://github.com/inbox/new/chilts
+[sponsor]: chilts@appsattic.com
 
 # Author
 
