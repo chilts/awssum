@@ -5,14 +5,7 @@ NodeJS client libraries for talking to lots of Web Service APIs
 The easiest way to get it is via [npm][]
 
 ``` bash
-    $ npm install irc
-```
-
-If you want to run the latest version (i.e. later than the version available
-via [npm][]) you can clone this repo, then use [npm][] to link-install it:
-
-``` bash
-    $ npm link /path/to/your/clone
+    $ npm install awssum
 ```
 
 Of course, you can just clone this, and manually point at the library itself,
