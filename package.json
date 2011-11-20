@@ -19,8 +19,8 @@
         "xml": ">= 0.0.5",
         "data2xml": ">= 0.1.0"
     },
-    "main": "lib/awssum",
-    "directories": {
+    "main": "lib/awssum.js",
+    "directories":  {
         "lib": "lib"
     },
     "engines": {
