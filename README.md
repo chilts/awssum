@@ -29,12 +29,12 @@ operations have been implemented:
 * AWS:
     * Elastic Compute Cloud (EC2) ([Request or Sponsor Development][sponsor])
     * Elastic Load Balancing (ELB) ([Request or Sponsor Development][sponsor])
+    * ElastiCache ([Request or Sponsor Development][sponsor])
 
 In future releases we will be targeting (in no particular order):
 
 * AWS:
     * Relational Database Service (RDS) ([Request or Sponsor Development][sponsor])
-    * ElastiCache ([Request or Sponsor Development][sponsor])
     * CloudFront ([Request or Sponsor Development][sponsor])
     * Flexible Payments Service (FPS) ([Request or Sponsor Development][sponsor])
 * RackspaceCloud:
