@@ -15,8 +15,14 @@ console.log( 'AccessKeyId :', elastiCache.accessKeyId() );
 // console.log( 'SecretAccessKey :', elastiCache.secretAccessKey() );
 console.log( 'AwsAccountId :', elastiCache.awsAccountId() );
 
-elastiCache.DescribeCacheParameterGroups(function(err, data) {
-    console.log("\ndescribing cache parameter groups - expecting success");
+elastiCache.DeleteCacheCluster(function(err, data) {
+    console.log("\ndeleting cache cluster - expecting failure since no CacheClusterId given");
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
+});
+
+elastiCache.DeleteCacheCluster({ CacheClusterId : 'blah' }, function(err, data) {
+    console.log("\ndeleting cache cluster - expecting failure since CacheClusterId does not exist");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });

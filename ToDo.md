@@ -1,5 +1,7 @@
 # ToDo
 
+* make ElastiCache do the 'array' inputs
+
 * make S3 stream files in and out!
 * there is a bug in the SimpleDB:Select, since it calls back twice for "select username from test"
 * fix the UTF8 encoding of stringifyQuery() (for UTF8 emails in ses.js)

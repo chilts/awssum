@@ -15,8 +15,19 @@ console.log( 'AccessKeyId :', elastiCache.accessKeyId() );
 // console.log( 'SecretAccessKey :', elastiCache.secretAccessKey() );
 console.log( 'AwsAccountId :', elastiCache.awsAccountId() );
 
-elastiCache.DescribeCacheParameterGroups(function(err, data) {
-    console.log("\ndescribing cache parameter groups - expecting success");
+var data = {
+    CacheClusterId : 'Invalid ID',
+    CacheNodeType : 'cache.m1.large',
+    CacheSecurityGroupNames : [
+        'default1',
+        'default2'
+    ],
+    Engine : 'memcached',
+    NumCacheNodes : 1,
+};
+
+elastiCache.CreateCacheCluster(data, function(err, data) {
+    console.log("\ncreating a cache cluster - expecting failure since CacheClusterId is invalid");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });

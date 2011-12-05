@@ -22,6 +22,7 @@ Currently this has 100% coverage of the following services:
     * Simple Email Service (SES)
     * Simple Storage Service (S3)
     * Route53
+    * ElastiCache
 
 It has partial support for these services. This means that the complex signatures have been done, but not all
 operations have been implemented:
@@ -29,7 +30,6 @@ operations have been implemented:
 * AWS:
     * Elastic Compute Cloud (EC2) ([Request or Sponsor Development][sponsor])
     * Elastic Load Balancing (ELB) ([Request or Sponsor Development][sponsor])
-    * ElastiCache ([Request or Sponsor Development][sponsor])
 
 In future releases we will be targeting (in no particular order):
 

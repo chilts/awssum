@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', elastiCache.accessKeyId() );
 // console.log( 'SecretAccessKey :', elastiCache.secretAccessKey() );
 console.log( 'AwsAccountId :', elastiCache.awsAccountId() );
 
-elastiCache.describeCacheClusters(function(err, data) {
+elastiCache.DescribeCacheClusters(function(err, data) {
     console.log("\ndescribing cache clusters - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
