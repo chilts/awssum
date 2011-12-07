@@ -8,7 +8,6 @@
     | )   ( || () () |/\____) |/\____) || (___) || )   ( |
     |/     \|(_______)\_______)\_______)(_______)|/     \|
                                                           
-
 ```
 
 NodeJS client libraries for talking to lots of Web Service APIs
@@ -41,6 +40,7 @@ It has partial support for these services. This means that the complex signature
 operations have been implemented:
 
 * AWS:
+    * CloudFront ([Request or Sponsor Development][sponsor])
     * Elastic Compute Cloud (EC2) ([Request or Sponsor Development][sponsor])
     * Elastic Load Balancing (ELB) ([Request or Sponsor Development][sponsor])
 
@@ -48,7 +48,6 @@ In future releases we will be targeting (in no particular order):
 
 * AWS:
     * Relational Database Service (RDS) ([Request or Sponsor Development][sponsor])
-    * CloudFront ([Request or Sponsor Development][sponsor])
     * Flexible Payments Service (FPS) ([Request or Sponsor Development][sponsor])
 * RackspaceCloud:
     * Servers (In Progress)
