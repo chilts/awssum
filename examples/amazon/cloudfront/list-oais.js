@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', cloudFront.accessKeyId() );
 // console.log( 'SecretAccessKey :', cloudFront.secretAccessKey() );
 console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
 
-cloudFront.ListOAIs(function(err, data) {
+cloudFront.ListOais(function(err, data) {
     console.log("\nlisting OAIs - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
