@@ -16,19 +16,19 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 
     // now call the listSubscriptionsByTopic()
     if ( ! err ) {
         var args = {
-            topicArn : data.CreateTopicResponse.CreateTopicResult.TopicArn,
-            protocol : 'email',
-            endpoint : 'chilts@appsattic.com',
+            TopicArn : data.CreateTopicResponse.CreateTopicResult.TopicArn,
+            Protocol : 'email',
+            Endpoint : 'chilts@appsattic.com',
         };
-        sns.subscribe(args, function(err, data) {
+        sns.Subscribe(args, function(err, data) {
             console.log("\nsubscribing an email address to this topic - expecting success");
             console.log('Error :', util.inspect(err, true, null));
             console.log('Data :', util.inspect(data, true, null));

@@ -16,19 +16,19 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 
     // now call the publish() operation
     if ( ! err ) {
         var args = {
-            topicArn : data.CreateTopicResponse.CreateTopicResult.TopicArn,
-            subject : (new Date()).toString() + ' - Website Down',
-            message : 'Tried ' + parseInt(Math.random() * 17) + '  times to hit the site without any response.',
+            TopicArn : data.CreateTopicResponse.CreateTopicResult.TopicArn,
+            Subject : (new Date()).toString() + ' - Website Down',
+            Message : 'Tried ' + parseInt(Math.random() * 17) + '  times to hit the site without any response.',
         };
-        sns.publish(args, function(err, data) {
+        sns.Publish(args, function(err, data) {
             console.log("\npublishing a message to this topic - expecting success");
             console.log('Error :', util.inspect(err, true, null));
             console.log('Data :', util.inspect(data, true, null));

@@ -15,29 +15,29 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 // console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
-sns.deleteTopic({ topicArn : 'fakeTopicArn' }, function(err, data) {
-    console.log("\nDeleting this topicArn - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+sns.DeleteTopic({ TopicArn : 'fakeTopicArn' }, function(err, data) {
+    console.log('\nDeleting this topicArn - expecting failure since it doesn\'t exist');
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 });
 
-sns.deleteTopic({}, function(err, data) {
-    console.log("\nDeleting an undefined topicArn - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
-});
+sns.DeleteTopic({}, function(err, data) {
+    console.log('\nDeleting an undefined topicArn - expecting failure since we didn\'t provide a TopicArn');
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
+);
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
-    console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+sns.CreateTopic({ topicName : 'my-topic' }, function(err, data) {
+    console.log('\nCreating (my-topic) - expecting success');
+    console.log('Error :', util.inspect(err, true, null));
+    console.log('Data :', util.inspect(data, true, null));
 
     // now delete it again
     if ( ! err ) {
         var topicArn = data.CreateTopicResponse.CreateTopicResult.TopicArn;
-        sns.deleteTopic({ topicArn : topicArn }, function(err, data) {
-            console.log("\ndeleting topic (my-topic) - expecting success");
+        sns.DeleteTopic({ TopicArn : topicArn }, function(err, data) {
+            console.log('\ndeleting topic (my-topic) - expecting success');
             console.log('Error :', util.inspect(err, true, null));
             console.log('Data :', util.inspect(data, true, null));
         });
