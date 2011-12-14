@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', r53.accessKeyId() );
 // console.log( 'SecretAccessKey :', r53.secretAccessKey() );
 console.log( 'AwsAccountId :', r53.awsAccountId() );
 
-r53.getChange({ changeId : 'cafebabe' }, function(err, data) {
+r53.GetChange({ ChangeId : 'cafebabe' }, function(err, data) {
     console.log("\ngetting change information - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

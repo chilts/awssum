@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', r53.accessKeyId() );
 // console.log( 'SecretAccessKey :', r53.secretAccessKey() );
 console.log( 'AwsAccountId :', r53.awsAccountId() );
 
-r53.listResourceRecordSets({ hostedZoneId : 'ZYTGF6CI42UVT' }, function(err, data) {
+r53.ListResourceRecordSets({ HostedZoneId : 'ZYTGF6CI42UVT' }, function(err, data) {
     console.log("\nlisting hosted zones - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
