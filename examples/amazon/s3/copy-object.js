@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 
@@ -24,6 +24,6 @@ var options = {
 
 s3.copyObject(options, function(err, data) {
     console.log("\ncopying one object to another - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

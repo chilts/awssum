@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var simpledb = require("amazon/simpledb");
 
@@ -26,6 +26,6 @@ var user2 = [
 
 sdb.deleteAttributes({ domainName : 'test', itemName : 'chilts', data : user1 }, function(err, data) {
     console.log("\ndeleting attributes for chilts - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

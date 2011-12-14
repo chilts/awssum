@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var elastiCacheService = require("amazon/elasticache");
 
@@ -17,12 +17,12 @@ console.log( 'AwsAccountId :', elastiCache.awsAccountId() );
 
 elastiCache.DeleteCacheCluster(function(err, data) {
     console.log("\ndeleting cache cluster - expecting failure since no CacheClusterId given");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 elastiCache.DeleteCacheCluster({ CacheClusterId : 'blah' }, function(err, data) {
     console.log("\ndeleting cache cluster - expecting failure since CacheClusterId does not exist");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -21,8 +21,8 @@ var options = {
 
 sqs.CreateQueue(options, function(err, data) {
     console.log("\nCreating (my-queue, undefined) - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 options.AttributeName  = 'DefaultVisibilityTimeout';
@@ -30,12 +30,12 @@ options.AttributeValue = 20;
 
 sqs.CreateQueue(options, function(err, data) {
     console.log("\nCreating (my-queue, 20) - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sqs.CreateQueue({ QueueName : 'new-queue' }, function(err, data) {
     console.log("\nCreating (new-queue, undefined) - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -22,6 +22,6 @@ var options = {
 
 sqs.RemovePermission(options, function(err, data) {
     console.log("\nRemoving a permission from this queue - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -24,6 +24,6 @@ var options = {
 
 sqs.SendMessageBatch(options, function(err, data) {
     console.log("\nSending a message batch to a queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

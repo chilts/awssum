@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var simpledb = require("amazon/simpledb");
 
@@ -41,24 +41,24 @@ var user4 = [
 
 sdb.putAttributes({ domainName : 'test', itemName : 'chilts', data : user1 }, function(err, data) {
     console.log("\nputting user chilts - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sdb.putAttributes({ domainName : 'test', itemName : 'andychilton', data : user2 }, function(err, data) {
     console.log("\nputting with a conditional - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sdb.putAttributes({ domainName : 'test', itemName : 'replace', data : user3 }, function(err, data) {
     console.log("\nputting a replace - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sdb.putAttributes({ domainName : 'test', itemName : 'expected', data : user4 }, function(err, data) {
     console.log("\nputting with an expected - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

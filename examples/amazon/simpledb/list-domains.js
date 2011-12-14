@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var simpledb = require("amazon/simpledb");
 
@@ -17,6 +17,6 @@ console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
 sdb.listDomains({}, function(err, data) {
     console.log("\nlist domains - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

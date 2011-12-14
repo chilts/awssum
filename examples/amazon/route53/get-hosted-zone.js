@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var route53 = require("amazon/route53");
 
@@ -17,6 +17,6 @@ console.log( 'AwsAccountId :', r53.awsAccountId() );
 
 r53.GetHostedZone({ HostedZoneId : 'deadbeef' }, function(err, data) {
     console.log("\ngetting hosted zone - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

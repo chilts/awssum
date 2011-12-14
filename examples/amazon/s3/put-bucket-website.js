@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 
@@ -24,6 +24,6 @@ var options = {
 
 s3.putBucketWebsite(options, function(err, data) {
     console.log("\nputting website configuration to1 pie-18 - expecting failure (already created)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

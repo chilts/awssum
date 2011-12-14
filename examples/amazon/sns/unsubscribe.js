@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var snsService = require('amazon/sns');
 
@@ -17,12 +17,12 @@ console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 sns.Unsubscribe({ SubscriptionArn : 'fakeSubscriptionArn' }, function(err, data) {
     console.log("\nUnsubscribing this subscriptionArn - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sns.Unsubscribe({}, function(err, data) {
     console.log("\nUnsubscribing an undefined subscriptionArn - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

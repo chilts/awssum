@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -21,8 +21,8 @@ var options = {
 
 sqs.ReceiveMessage(options, function(err, data) {
     console.log("\nReceiving message from my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // if there wasn't an error, delete the message
     if ( ! err ) {
@@ -30,8 +30,8 @@ sqs.ReceiveMessage(options, function(err, data) {
             options.ReceiptHandle = data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message.ReceiptHandle;
             sqs.DeleteMessage(options, function(err, data) {
                 console.log("\nDeleting Message - expecting success");
-                console.log('Error :', util.inspect(err, true, null));
-                console.log('Data :', util.inspect(data, true, null));
+                inspect(err, 'Error');
+                inspect(data, 'Data');
             });
         }
         else {

@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -21,12 +21,12 @@ var options = {
 
 sqs.DeleteQueue(options, function(err, data) {
     console.log("\nDeleting new-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sqs.DeleteQueue({}, function(err, data) {
     console.log("\nDeleting undefined - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

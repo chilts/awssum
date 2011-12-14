@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var snsService = require('amazon/sns');
 
@@ -18,8 +18,8 @@ console.log( 'AwsAccountId :', sns.awsAccountId() );
 // firstly, re-create this topic (it's idempotent) to get the topicArn
 sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // now call the listSubscriptionsByTopic()
     if ( ! err ) {
@@ -30,8 +30,8 @@ sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
         };
         sns.Subscribe(args, function(err, data) {
             console.log("\nsubscribing an email address to this topic - expecting success");
-            console.log('Error :', util.inspect(err, true, null));
-            console.log('Data :', util.inspect(data, true, null));
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });

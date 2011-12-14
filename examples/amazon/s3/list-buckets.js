@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 
@@ -17,24 +17,24 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 s3.listBuckets(function(err, data) {
     console.log("\nlisting all the buckets (no options given) - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 s3.listBuckets(undefined, function(err, data) {
     console.log("\nlisting all the buckets (undefined options) - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 s3.listBuckets({}, function(err, data) {
     console.log("\nlisting all the buckets (empty options) - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 s3.listBuckets({ Ignored : 'this is' }, function(err, data) {
     console.log("\nlisting all the buckets (nothing interesting in options) - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

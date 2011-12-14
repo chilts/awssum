@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -32,18 +32,18 @@ var optionsMyQueueDelayed = {
 
 sqs.SendMessage(optionsMyQueue, function(err, data) {
     console.log("\nSending a message to a queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sqs.SendMessage(optionsNewQueue, function(err, data) {
     console.log("\nSending an undefined message - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 sqs.SendMessage(optionsMyQueueDelayed, function(err, data) {
     console.log("\nSending a delayed message - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

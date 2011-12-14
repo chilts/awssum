@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var elbService = require("amazon/elb");
 
@@ -21,6 +21,6 @@ var data = {
 
 elb.deleteLoadBalancer(data, function(err, data) {
     console.log("\ndeleting a load balancer - expecting success (it's idempotent)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

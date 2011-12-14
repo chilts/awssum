@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -21,8 +21,8 @@ var options = {
 
 sqs.SetQueueAttributes(options, function(err, data) {
     console.log("\nSetting empty attributes for my-queue - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 options.AttributeName  = 'VisibilityTimeout';
@@ -30,6 +30,6 @@ options.AttributeValue = 30;
 
 sqs.SetQueueAttributes(options, function(err, data) {
     console.log("\nSetting VisibilityTimeout for my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

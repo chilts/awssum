@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var ec2Service = require("amazon/ec2");
 
@@ -17,6 +17,6 @@ console.log( 'AwsAccountId :', ec2.awsAccountId() );
 
 ec2.describeInstances(function(err, data) {
     console.log("\ndescribing instances - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

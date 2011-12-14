@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var route53 = require("amazon/route53");
 
@@ -23,6 +23,6 @@ var args = {
 
 r53.CreateHostedZone(args, function(err, data) {
     console.log("\ncreating a hosted zone - expecting failure (probably need a new callerReference)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

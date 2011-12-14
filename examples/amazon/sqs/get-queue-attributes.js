@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -22,20 +22,20 @@ var options = {
 options.AttributeName = 'All';
 sqs.GetQueueAttributes(options, function(err, data) {
     console.log("\nGetting all attributes for my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 options.AttributeName = [ 'ApproximateNumberOfMessages', 'MessageRetentionPeriod' ];
 sqs.GetQueueAttributes(options, function(err, data) {
     console.log("\nGetting 2 attrs (using an array) for my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 options.AttributeName = [ 'ApproximateNumberOfMessages', 'MessageRetentionPeriod', 'DelaySeconds' ];
 sqs.GetQueueAttributes(options, function(err, data) {
     console.log("\nGetting 2 attrs (using an array) for my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
