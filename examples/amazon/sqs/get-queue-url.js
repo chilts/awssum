@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 // console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.getQueueUrl({ queueName : 'my-queue' }, function(err, data) {
+sqs.GetQueueUrl({ QueueName : 'my-queue' }, function(err, data) {
     console.log("\nGetting the URL for my-queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

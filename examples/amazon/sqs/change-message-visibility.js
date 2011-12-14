@@ -26,7 +26,7 @@ sqs.receiveMessage(options, function(err, data) {
 
     // if there wasn't an error, let's try and change the visibility of this message
     if ( ! err ) {
-        var receiptHandle = data.ReceiveMessageResponse.ReceiveMessageResult.Message.ReceiptHandle;
+        var receiptHandle = data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message.ReceiptHandle;
 
         var visibilityOptions = {
             queueName         : 'my-queue',

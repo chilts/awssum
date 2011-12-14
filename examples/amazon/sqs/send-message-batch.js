@@ -16,15 +16,13 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 var options = {
-    queueName : 'my-queue',
-    messages : [
-        { id : 'janelle', messageBody : 'janelle' },
-        { id : 'lucy',    messageBody : 'lucy'    },
-        { id : 'sarah',   messageBody : 'sarah', delaySeconds : 20 }
-    ],
+    QueueName    : 'my-queue',
+    Id           : [ 'janelle', 'lucy', 'sarah' ],
+    MessageBody  : [ 'janelle', 'lucy', 'sarah' ],
+    DelaySeconds : [ undefined, undefined, 20 ],
 };
 
-sqs.sendMessageBatch(options, function(err, data) {
+sqs.SendMessageBatch(options, function(err, data) {
     console.log("\nSending a message batch to a queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

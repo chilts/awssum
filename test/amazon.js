@@ -16,12 +16,13 @@ var tap = require("tap"),
     _ = require('underscore'),
     test = tap.test,
     plan = tap.plan;
+var awssum = require('../lib/awssum');
 var amazon;
 
 // --------------------------------------------------------------------------------------------------------------------
 // basic tests
 
-test("load simpledb", function (t) {
+test("load amazon", function (t) {
     amazon = require("../lib/amazon/amazon");
     t.ok(amazon, "object loaded");
     t.end();
@@ -43,7 +44,7 @@ test("test addParam", function (t) {
     var result = [
         { 'name' : 'Name',  'value' : 'Value' }
     ];
-    amz.addParam(params, 'Name', 'Value');
+    awssum.addParam(params, 'Name', 'Value');
     t.ok(_.isEqual(params, result), 'Deep compare of params');
 
     t.end();
@@ -56,12 +57,12 @@ test("test addParamIfDefined", function (t) {
     var result1 = [
         { 'name' : 'Name',  'value' : 'Value' }
     ];
-    amz.addParamIfDefined(params1, 'Name', 'Value');
+    awssum.addParamIfDefined(params1, 'Name', 'Value');
     t.ok(_.isEqual(params1, result1), 'Deep compare of params');
 
     var params2 = [];
     var result2 = [];
-    amz.addParamIfDefined(params2, 'Name', undefined);
+    awssum.addParamIfDefined(params2, 'Name', undefined);
     t.ok(_.isEqual(params2, result2), 'Deep compare of (empty) params');
 
     t.end();

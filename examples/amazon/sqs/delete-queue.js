@@ -16,16 +16,16 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 var options = {
-    queueName : 'new-queue'
+    QueueName : 'new-queue'
 };
 
-sqs.deleteQueue(options, function(err, data) {
+sqs.DeleteQueue(options, function(err, data) {
     console.log("\nDeleting new-queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));
 });
 
-sqs.deleteQueue({}, function(err, data) {
+sqs.DeleteQueue({}, function(err, data) {
     console.log("\nDeleting undefined - expecting failure");
     console.log('Error :', util.inspect(err, true, null));
     console.log('Data :', util.inspect(data, true, null));

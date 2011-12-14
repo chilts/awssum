@@ -17,13 +17,13 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 var options = {
-    queueName : 'my-queue',
-    maxNumberOfMessages : 5,
+    QueueName : 'my-queue',
+    MaxNumberOfMessages : 5,
 };
 
-sqs.receiveMessage(options, function(err, data) {
-    var msgs = [];
-    var i = 1;
+sqs.ReceiveMessage(options, function(err, data) {
+    var receiptHandles = [];
+    var visibilityTimeouts = [];
 
     console.log("\nReceiving message from my-queue - expecting success");
     console.log('Error :', util.inspect(err, true, null));
@@ -32,32 +32,32 @@ sqs.receiveMessage(options, function(err, data) {
     // if there wasn't an error, delete these messages in one hit
     if ( ! err ) {
         // make sure we have some messages to delete
-        if ( _.isUndefined(data.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
+        if ( _.isUndefined(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
             console.log("\nNo messages to change visibility of");
             return;
         }
 
-        if ( ! _.isArray(data.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
+        if ( ! _.isArray(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
             // turn this into an array
-            data.ReceiveMessageResponse.ReceiveMessageResult.Message = [
-                data.ReceiveMessageResponse.ReceiveMessageResult.Message
+            data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message = [
+                data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message
             ];
         }
 
-        _.each(data.ReceiveMessageResponse.ReceiveMessageResult.Message, function(m) {
-            msgs.push({
-                receiptHandle : m.ReceiptHandle,
-                visibilityTimeout : 10
-            });
-            i++;
-        });
-
         var batchOptions = {
-            queueName : 'my-queue',
-            messages  : msgs,
+            QueueName         : 'my-queue',
+            Id                : [],
+            ReceiptHandle     : [],
+            VisibilityTimeout : [],
         };
 
-        sqs.changeMessageVisibilityBatch(batchOptions, function(err, data) {
+        _.each(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message, function(m) {
+            batchOptions.Id.push( 'id-' + Math.floor(Math.random() * 1000) );
+            batchOptions.ReceiptHandle.push(m.ReceiptHandle);
+            batchOptions.VisibilityTimeout.push(10);
+        });
+
+        sqs.ChangeMessageVisibilityBatch(batchOptions, function(err, data) {
             console.log("\nChanging visibility batch - expecting success");
             console.log('Error :', util.inspect(err, true, null));
             console.log('Data :', util.inspect(data, true, null));
