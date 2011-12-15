@@ -15,13 +15,13 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.select({ selectExpression : 'SELECT username FROM test' }, function(err, data) {
+sdb.Select({ SelectExpression : 'SELECT username FROM test' }, function(err, data) {
     console.log("\nSELECT username FROM test");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-sdb.select({ selectExpression : 'SELECT * FROM test', consistentRead : true }, function(err, data) {
+sdb.Select({ SelectExpression : 'SELECT * FROM test', ConsistentRead : true }, function(err, data) {
     console.log("\nSELECT * FROM test");
     inspect(err, 'Error');
     inspect(data, 'Data');

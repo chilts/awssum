@@ -15,8 +15,8 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.createDomain({ domainName : 'test' }, function(err, data) {
-    console.log("\ncreating domain - expecting success");
+sdb.CreateDomain({ DomainName : 'test' }, function(err, data) {
+    console.log("\nCreating domain - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

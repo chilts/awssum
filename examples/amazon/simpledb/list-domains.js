@@ -1,6 +1,6 @@
 var inspect = require('eyes').inspector();
-var amazon = require("amazon/amazon");
-var simpledb = require("amazon/simpledb");
+var amazon = require('amazon/amazon');
+var simpledb = require('amazon/simpledb');
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
@@ -15,8 +15,28 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.listDomains({}, function(err, data) {
-    console.log("\nlist domains - expecting success");
+sdb.ListDomains({}, function(err, data) {
+    console.log('\nlist domains - expecting success');
     inspect(err, 'Error');
     inspect(data, 'Data');
+});
+
+sdb.ListDomains({ MaxNumberOfDomains : 1 }, function(err, data) {
+    console.log('\nlist domains (max=1) - expecting success');
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+
+    var token;
+
+    if ( err ) {
+        console.log('\nNot getting next set of domains due to an error.');
+    }
+    else {
+        token = data.Body.ListDomainsResponse.ListDomainsResult.NextToken;
+        sdb.ListDomains({ NextToken : token }, function(err, data) {
+            console.log('\nlisting next set of domains (token=' + token + ' ) - expecting success');
+            inspect(err, 'Error');
+            inspect(data, 'Data');
+        });
+    }
 });

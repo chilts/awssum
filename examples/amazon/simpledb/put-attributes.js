@@ -15,10 +15,22 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-var user1 = {
-    username : 'chilts',
-    url : 'http://www.chilts.org/blog/'
-};
+// ---
+// user1
+
+var user1Names = [ 'username', 'url' ];
+var user1Values = [ 'chilts', 'http://www.chilts.org/blog/' ];
+
+sdb.PutAttributes({
+    DomainName : 'test',
+    ItemName : 'chilts',
+    AttributeName : user1Names,
+    AttributeValue : user1Values
+}, function(err, data) {
+    console.log("\nputting user chilts - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
 
 var user2 = [
     { name : 'username', value : 'andychilton' },
@@ -27,38 +39,64 @@ var user2 = [
     { name : 'password', value : 'testpass', exists : true, expected : 'testpass' }
 ];
 
-var user3 = [
-    { name : 'username', value : 'replace',                     replace : false },
-    { name : 'url',      value : 'http://www.chilts.org/blog/', replace : true  }
-];
+// ---
+// user2
 
-var user4 = [
-    { name : 'username', value : 'expected' },
-    { name : 'url',      value : 'http://www.chilts.org/blog/' },
-    // set the salt, but only if we believe its current value
-    { name : 'salt', value : 'amo3Rie6', expected : 'amo3Rie6' }
-];
+var user2Names = [ 'username', 'url', 'password' ];
+var user2Values = [ 'andychilton', 'http://www.chilts.org/blog/', 'testpass' ];
 
-sdb.putAttributes({ domainName : 'test', itemName : 'chilts', data : user1 }, function(err, data) {
-    console.log("\nputting user chilts - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
-});
-
-sdb.putAttributes({ domainName : 'test', itemName : 'andychilton', data : user2 }, function(err, data) {
+sdb.PutAttributes({
+    DomainName : 'test',
+    ItemName : 'andychilton',
+    AttributeName : user2Names,
+    AttributeValue : user2Values,
+    AttributeName : user2Names,
+    ExpectedName : [ 'password' ],
+    ExpectedValue : [ 'testpass' ],
+}, function(err, data) {
     console.log("\nputting with a conditional - expecting failure");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-sdb.putAttributes({ domainName : 'test', itemName : 'replace', data : user3 }, function(err, data) {
+// ---
+// user3
+
+var user3Names = [ 'username', 'url', 'password' ];
+var user3Values = [ 'andychilton', 'http://www.chilts.org/blog/', 'testpass' ];
+var user3Replace = [ false, true ];
+
+sdb.PutAttributes({
+    DomainName : 'test',
+    ItemName : 'replace',
+    AttributeName : user3Names,
+    AttributeValue : user3Values,
+    AttributeReplace : user3Replace,
+}, function(err, data) {
     console.log("\nputting a replace - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-sdb.putAttributes({ domainName : 'test', itemName : 'expected', data : user4 }, function(err, data) {
+// ---
+// user4
+
+var user4Names = [ 'username', 'url', 'salt' ];
+var user4Values = [ 'chilts', 'http://www.chilts.org/blog/', 'amo3Rie6' ];
+var user4ExNames = [ 'username' ];
+var user4ExValues = [ 'andychilton' ];
+
+sdb.PutAttributes({
+    DomainName : 'test',
+    ItemName : 'expected',
+    AttributeName : user4Names,
+    AttributeValue : user4Values,
+    ExpectedName : user4ExNames,
+    ExpectedValues : user4ExValues,
+}, function(err, data) {
     console.log("\nputting with an expected - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+// ---

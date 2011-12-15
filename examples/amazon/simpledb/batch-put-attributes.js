@@ -15,8 +15,34 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.DomainMetadata({ DomainName : 'test' }, function(err, data) {
-    console.log("\nDomain metadata - expecting success");
+// ---
+// three users
+
+var items = [ 'the-pie', 'chilts', 'ben' ];
+var attributeNames = [
+    [ 'favourite-color', 'lucky-number' ],
+    [ 'favourite-color', 'lucky-number' ],
+    [ 'favourite-color', 'lucky-number' ],
+];
+var attributeValues = [
+    [ 'red',   2 ],
+    [ 'green', 3 ],
+    [ 'blue',  4 ],
+];
+var attributeReplaces = [
+    [ true, true ],
+    [ true, true ],
+    [ true, true ],
+];
+
+sdb.BatchPutAttributes({
+    DomainName       : 'test',
+    ItemName         : items,
+    AttributeName    : attributeNames,
+    AttributeValue   : attributeValues,
+    AttributeReplace : attributeReplaces,
+}, function(err, data) {
+    console.log("\nputting three objects - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

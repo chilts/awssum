@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.deleteDomain({ domainName : 'nonexistant-domain' }, function(err, data) {
+sdb.DeleteDomain({ DomainName : 'nonexistant-domain' }, function(err, data) {
     console.log("\ndeleting domain - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

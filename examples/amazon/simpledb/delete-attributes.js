@@ -15,17 +15,26 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-var user1 = {
-    username : 'chilts'
-};
+sdb.DeleteAttributes({
+    DomainName : 'test',
+    ItemName : 'chilts',
+    AttributeName : 'username',
+    AttributeValue : 'chilts',
+}, function(err, data) {
+    console.log("\nDeleting attributes for chilts - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
 
-var user2 = [
-    { name : 'url' }, // this one will be deleted
-    { name : 'username', exists : true } // this one is a condition
-];
-
-sdb.deleteAttributes({ domainName : 'test', itemName : 'chilts', data : user1 }, function(err, data) {
-    console.log("\ndeleting attributes for chilts - expecting success");
+sdb.DeleteAttributes({
+    DomainName : 'test',
+    ItemName : 'chilts',
+    AttributeName : [ 'url' ],
+    AttributeValue : [ 'chilts' ],
+    ExpectedName : [ 'url' ],
+    ExpectedValue : [ 'blah' ],
+}, function(err, data) {
+    console.log("\nDeleting attributes for chilts (conditional) - expecting failure");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
