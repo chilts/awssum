@@ -15,8 +15,17 @@ console.log( 'AccessKeyId :', ec2.accessKeyId() );
 // console.log( 'SecretAccessKey :', ec2.secretAccessKey() );
 console.log( 'AwsAccountId :', ec2.awsAccountId() );
 
-ec2.describeInstances(function(err, data) {
-    console.log("\ndescribing instances - expecting success");
+ec2.DescribeInstances(function(err, data) {
+    console.log("\nDescribing instances - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
+
+ec2.DescribeInstances({
+    FilterName  : [ 'ip-address', 'key-name' ],
+    FilterValue : [ [ '1.2.3.4', '5.6.7.8' ], [ 'my-key' ] ],
+}, function(err, data) {
+    console.log("\nDescribing instances (with filter) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
