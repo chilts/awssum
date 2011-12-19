@@ -16,10 +16,10 @@ console.log( 'AccessKeyId :', elb.accessKeyId() );
 console.log( 'AwsAccountId :', elb.awsAccountId() );
 
 var data = {
-    loadBalancerName : 'no-name',
+    LoadBalancerName : 'no-name',
 };
 
-elb.describeInstanceHealth(data, function(err, data) {
+elb.DescribeInstanceHealth(data, function(err, data) {
     console.log("\ndescribing instance health - expecting failure (due to there not being one)");
     inspect(err, 'Error');
     inspect(data, 'Data');
@@ -29,7 +29,7 @@ data.Instances = [
     'instance-1', 'instance-2'
 ];
 
-elb.describeInstanceHealth(data, function(err, data) {
+elb.DescribeInstanceHealth(data, function(err, data) {
     console.log("\ndescribing instance health with instances - expecting failure (due to there not being one)");
     inspect(err, 'Error');
     inspect(data, 'Data');

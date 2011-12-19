@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', elb.accessKeyId() );
 // console.log( 'SecretAccessKey :', elb.secretAccessKey() );
 console.log( 'AwsAccountId :', elb.awsAccountId() );
 
-elb.describeLoadBalancers({}, function(err, data) {
+elb.DescribeLoadBalancers(function(err, data) {
     console.log("\ndescribing load balancers - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

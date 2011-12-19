@@ -16,10 +16,10 @@ console.log( 'AccessKeyId :', elb.accessKeyId() );
 console.log( 'AwsAccountId :', elb.awsAccountId() );
 
 var data = {
-    loadBalancerName : 'no-name',
+    LoadBalancerName : 'no-name',
 };
 
-elb.deleteLoadBalancer(data, function(err, data) {
+elb.DeleteLoadBalancer(data, function(err, data) {
     console.log("\ndeleting a load balancer - expecting success (it's idempotent)");
     inspect(err, 'Error');
     inspect(data, 'Data');
