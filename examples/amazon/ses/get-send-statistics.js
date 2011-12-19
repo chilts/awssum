@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
-ses.getSendStatistics({}, function(err, data) {
+ses.GetSendStatistics(function(err, data) {
     console.log("\ngetting send statistics - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

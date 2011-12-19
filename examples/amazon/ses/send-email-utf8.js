@@ -16,16 +16,16 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
 var data = {
-    to : [
-        'you@example.net',
+    ToAddresses : [
+        'andychilton@gmail.com',
     ],
-    text : 'This is the text body with stuff like ç, é and ☺',
-    html : '<p>This is the HTML body with stuff like ç, é and ☺</p>',
-    subject : 'This is the subject with stuff like ç, é and ☺',
-    source : 'me@example.org',
+    Text : 'This is the text body with stuff like ç, é and ☺',
+    Html : '<p>This is the HTML body with stuff like ç, é and ☺</p>',
+    Subject : 'This is the subject with stuff like ç, é and ☺',
+    Source : 'andychilton@gmail.com',
 };
 
-ses.sendEmail(data, function(err, data) {
+ses.SendEmail(data, function(err, data) {
     console.log("\nsending a UTF8 email - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

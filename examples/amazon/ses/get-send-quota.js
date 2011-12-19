@@ -15,8 +15,8 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
-ses.getSendQuota({}, function(err, data) {
-    console.log("\ngetting send quota - expecting success");
+ses.GetSendQuota(function(err, data) {
+    console.log("\nGetting send quota - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

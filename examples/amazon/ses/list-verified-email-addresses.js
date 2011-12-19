@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
-ses.listVerifiedEmailAddresses({}, function(err, data) {
+ses.ListVerifiedEmailAddresses(function(err, data) {
     console.log("\nlisting verified email addresses - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

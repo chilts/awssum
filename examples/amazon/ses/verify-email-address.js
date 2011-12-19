@@ -15,7 +15,7 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
-ses.verifyEmailAddress({ emailAddress : 'bob@example.com' }, function(err, data) {
+ses.VerifyEmailAddress({ EmailAddress : 'bob@example.com' }, function(err, data) {
     console.log("\nverifying an email address - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

@@ -15,9 +15,14 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
-var rawMessage = "To: andychilton@gmail.com\nFrom: andychilton@gmail.com\n\nThis is the body.\n";
+var rawMessage = '';
+rawMessage += "To: you@example.com\n";
+rawMessage += "From: me@example.com\n";
+rawMessage += "Subject: Hello, World!\n";
+rawMessage += "\n";
+rawMessage += "This is the body.\n";
 
-ses.sendRawEmail({ rawMessage : rawMessage }, function(err, data) {
+ses.SendRawEmail({ RawMessage : rawMessage }, function(err, data) {
     console.log("\nsending a raw email - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

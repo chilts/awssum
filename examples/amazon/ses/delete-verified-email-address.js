@@ -15,8 +15,8 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
-ses.deleteVerifiedEmailAddress({ emailAddress : 'bob@example.com' }, function(err, data) {
-    console.log("\ngdeleting verified email address - expecting success");
+ses.DeleteVerifiedEmailAddress({ EmailAddress : 'bob@example.com' }, function(err, data) {
+    console.log("\ngdeleting verified email address - expecting success (since it's idempotent)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
