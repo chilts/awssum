@@ -38,7 +38,7 @@ test("create s3 object", function (t) {
     t.equal('access_key_id', s3.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', s3.secretAccessKey(), 'Secret Access Key set properly');
     t.equal('aws_account_id', s3.awsAccountId(), 'AWS Account ID set properly');
-    t.equal('California', s3.region(), 'Region is set properly');
+    t.equal('us-west-1', s3.region(), 'Region is set properly');
 
     t.end();
 });

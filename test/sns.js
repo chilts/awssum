@@ -38,7 +38,7 @@ test("create sns object", function (t) {
     t.equal('access_key_id', sns.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sns.secretAccessKey(), 'Secret Access Key set properly');
     t.equal('aws_account_id', sns.awsAccountId(), 'AWS Account ID set properly');
-    t.equal('California', sns.region(), 'Region is set properly');
+    t.equal('us-west-1', sns.region(), 'Region is set properly');
 
     t.end();
 });
