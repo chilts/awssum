@@ -15,25 +15,25 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.listBuckets(function(err, data) {
+s3.ListBuckets(function(err, data) {
     console.log("\nlisting all the buckets (no options given) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.listBuckets(undefined, function(err, data) {
+s3.ListBuckets(undefined, function(err, data) {
     console.log("\nlisting all the buckets (undefined options) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.listBuckets({}, function(err, data) {
+s3.ListBuckets({}, function(err, data) {
     console.log("\nlisting all the buckets (empty options) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.listBuckets({ Ignored : 'this is' }, function(err, data) {
+s3.ListBuckets({ Ignored : 'this is' }, function(err, data) {
     console.log("\nlisting all the buckets (nothing interesting in options) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

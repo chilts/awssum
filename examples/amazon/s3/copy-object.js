@@ -22,7 +22,7 @@ var options = {
     SourceObject : 'test-object.txt',
 };
 
-s3.copyObject(options, function(err, data) {
+s3.CopyObject(options, function(err, data) {
     console.log("\ncopying one object to another - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

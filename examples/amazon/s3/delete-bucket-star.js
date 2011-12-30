@@ -15,19 +15,19 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.deleteBucketWebsite({ BucketName : 'non-existant' }, function(err, data) {
+s3.DeleteBucketWebsite({ BucketName : 'non-existant' }, function(err, data) {
     console.log("\ndelete bucket website - expecting failure (for not existing)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.deleteBucketPolicy({ BucketName : 'non-existant' }, function(err, data) {
+s3.DeleteBucketPolicy({ BucketName : 'non-existant' }, function(err, data) {
     console.log("\ndelete bucket policy - expecting failure (for not existing)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.deleteBucket({ BucketName : 'non-existant' }, function(err, data) {
+s3.DeleteBucket({ BucketName : 'non-existant' }, function(err, data) {
     console.log("\ndelete bucket - expecting failure (for not existing)");
     inspect(err, 'Error');
     inspect(data, 'Data');

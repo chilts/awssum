@@ -15,55 +15,55 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.getBucketAcl({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketAcl({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket acl");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getBucketPolicy({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketPolicy({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket policy - expecting failure, no policy exists");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getBucketLocation({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketLocation({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket location");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getBucketLogging({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketLogging({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket logging");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getBucketNotification({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketNotification({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket notification");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getBucketRequestPayment({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketRequestPayment({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket request payment");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getBucketVersioning({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketVersioning({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket versioning");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getBucketWebsite({ BucketName : 'pie-17' }, function(err, data) {
+s3.GetBucketWebsite({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nget bucket website - expecting failure since this bucket has never had a website");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.listMultipartUploads({ BucketName : 'pie-17' }, function(err, data) {
+s3.ListMultipartUploads({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\nlist multipart uploads - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

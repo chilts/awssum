@@ -16,13 +16,13 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.createBucket({ BucketName : 'pie-18' }, function(err, data) {
+s3.CreateBucket({ BucketName : 'pie-18' }, function(err, data) {
     console.log("\ncreating pie-18 - expecting failure (already created)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3eu.createBucket({ BucketName : 'pie-18-in-europe' }, function(err, data) {
+s3eu.CreateBucket({ BucketName : 'pie-18-in-europe' }, function(err, data) {
     console.log("\ncreating pie-18-in-europe - expecting failure (already created)");
     inspect(err, 'Error');
     inspect(data, 'Data');

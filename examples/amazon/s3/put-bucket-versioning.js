@@ -17,12 +17,12 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {
     BucketName : 'pie-18',
-    IndexDocument : 'index.html',
-    ErrorDocument : '404.html'
+    Status     : 'Invalid',
+    MfaDelete  : 'Invalid',
 };
 
-s3.PutBucketWebsite(options, function(err, data) {
-    console.log("\nputting website configuration to1 pie-18 - expecting failure (already created)");
+s3.PutBucketVersioning(options, function(err, data) {
+    console.log("\nputting website versioning to pie-18 - expecting failure (invalid fields)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

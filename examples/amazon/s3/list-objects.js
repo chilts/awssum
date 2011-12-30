@@ -21,16 +21,22 @@ var options1 = {
     MaxKeys : 4,
 };
 
-s3.listObjects(options1, function(err, data) {
+s3.ListObjects(options1, function(err, data) {
     console.log("\nlisting objects in this bucket - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 
-    // now do a marker
-    if ( data.ListBucketResult.IsTruncated === 'true' ) {
-        options1.Marker = _.last(data.ListBucketResult.Contents).Key;
+    // check for error
+    if ( err ) {
+        console.log('Not doing another ListObjects since there was an error');
+        return;
+    }
 
-        s3.listObjects(options1, function(err, data) {
+    // now do a marker
+    if ( data.Body.ListBucketResult.IsTruncated === 'true' ) {
+        options1.Marker = _.last(data.Body.ListBucketResult.Contents).Key;
+
+        s3.ListObjects(options1, function(err, data) {
             console.log("\ngetting the next set - expecting success");
             inspect(err, 'Error');
             inspect(data, 'Data');
@@ -44,7 +50,7 @@ var options2 = {
     Prefix : 'c',
 };
 
-s3.listObjects(options2, function(err, data) {
+s3.ListObjects(options2, function(err, data) {
     console.log("\nlisting object with a prefix - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
