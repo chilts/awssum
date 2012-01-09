@@ -1,7 +1,7 @@
 {
     "name": "awssum",
     "description": "NodeJS modules for talking to lots of Web Service APIs.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "author": {
         "name":"Andrew Chilton",
         "email":"chilts@appsattic.com",
