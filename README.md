@@ -1,13 +1,13 @@
 ```
-     _______           _______  _______           _______ 
-    (  ___  )|\     /|(  ____ \(  ____ \|\     /|(       )
-    | (   ) || )   ( || (    \/| (    \/| )   ( || () () |
-    | (___) || | _ | || (_____ | (_____ | |   | || || || |
-    |  ___  || |( )| |(_____  )(_____  )| |   | || |(_)| |
-    | (   ) || || || |      ) |      ) || |   | || |   | |
-    | )   ( || () () |/\____) |/\____) || (___) || )   ( |
-    |/     \|(_______)\_______)\_______)(_______)|/     \|
-                                                          
+                              _______           _______  _______           _______ 
+                             (  ___  )|\     /|(  ____ \(  ____ \|\     /|(       )
+                             | (   ) || )   ( || (    \/| (    \/| )   ( || () () |
+                             | (___) || | _ | || (_____ | (_____ | |   | || || || |
+                             |  ___  || |( )| |(_____  )(_____  )| |   | || |(_)| |
+                             | (   ) || || || |      ) |      ) || |   | || |   | |
+                             | )   ( || () () |/\____) |/\____) || (___) || )   ( |
+                             |/     \|(_______)\_______)\_______)(_______)|/     \|
+                                                                                   
 ```
 
 NodeJS client libraries for talking to lots of Web Service APIs
@@ -19,7 +19,7 @@ Build Status : [![Build Status](https://secure.travis-ci.org/appsattic/node-awss
 The easiest way to get it is via [npm][]
 
 ``` bash
-    $ npm install awssum
+$ npm install awssum
 ```
 
 Of course, you can just clone this, and manually point at the library itself,
@@ -28,22 +28,22 @@ but I really recommend using [npm][]!
 # Synopsis #
 
 ```
-    var awssum = require('awssum');
-    var amazon = awssum.load('amazon/amazon');
-    var s3Service = awssum.load('amazon/s3');
-    var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var s3Service = awssum.load('amazon/s3');
+var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
-    s3.ListBuckets(function(data, err) {
-        // ...etc...
-    });
+s3.ListBuckets(function(data, err) {
+    // ...etc...
+});
 
-    s3.Createbucket({ BucketName : 'my-bucket' }, function(data, err) {
-        // ...etc...
-    });
+s3.Createbucket({ BucketName : 'my-bucket' }, function(data, err) {
+    // ...etc...
+});
 
-    s3.Createbucket({ BucketName : 'my-bucket' }, function(data, err) {
-        // ...etc...
-    });
+s3.Createbucket({ BucketName : 'my-bucket' }, function(data, err) {
+    // ...etc...
+});
 ```
 
 # What services does 'node-awssum' talk to? #
@@ -116,28 +116,28 @@ values - none of which node-awssum does.
 Example 1. This is what node-awssum looks like when adding a topic to Amazon's Simple Notification Service:
 
 ``` js
-    sns.createTopic({ topicName : 'my-topic' })
-    =>  {
-            CreateTopicResponse:
-            {
-                '@': {
-                    xmlns: 'http://sns.amazonaws.com/doc/2010-03-31/'
-                },
-                CreateTopicResult: {
-                    TopicArn: 'arn:aws:sns:us-east-1:616781752028:my-topic'
-                },
-                ResponseMetadata: {
-                    RequestId: '0928273f-fc34-11e0-945d-17a52825d3d9'
-                }
+sns.CreateTopic({ TopicName : 'my-topic' })
+=>  {
+        CreateTopicResponse:
+        {
+            '@': {
+                xmlns: 'http://sns.amazonaws.com/doc/2010-03-31/'
+            },
+            CreateTopicResult: {
+                TopicArn: 'arn:aws:sns:us-east-1:616781752028:my-topic'
+            },
+            ResponseMetadata: {
+                RequestId: '0928273f-fc34-11e0-945d-17a52825d3d9'
             }
         }
+    }
 ```
 
 What you would probably like to do is the following (with an example SNS Wrapper Library):
 
 ``` js
-    snsWrapperLibrary.createTopic('my-topic')
-    =>  arn:aws:sns:us-east-1:616781752028:my-topic
+snsWrapperLibrary.createTopic('my-topic')
+=>  arn:aws:sns:us-east-1:616781752028:my-topic
 ```
 
 This is pretty easy to do but annoying to have to find and extract the information you really want. node-awssum comes
@@ -183,22 +183,23 @@ you pass it, apart from when a parameter is required. As I sa
 As a quick example, to create a domain in AWS SimpleDB:
 
 ``` js
-    var amazon = require("../lib/amazon");
-    var simpledb = require("../lib/simpledb");
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var sdbService = awssum.load('amazon/simpledb');
 
-    var sdb = new simpledb.SimpleDB('key', 'secret', amazon.US_WEST_1);
+var sdb = new sdbService('key', 'secret', amazon.US_WEST_1);
 
-    sdb.createDomain('test', function(err, data) {
-        console.log('Error :', err);
-        console.log('Data  :', data);
-    });
+sdb.CreateDomain({ DomainName : 'test' }, function(err, data) {
+    console.log('Error :', err);
+    console.log('Data  :', data);
+});
 ```
 
 A successful run outputs:
 
 ``` js
-    Error : null
-    Data  : { ok: true }
+Error : null
+Data  : { ok: true }
 ```
 
 A non-successful run results in a true error value, just like any other idiomatic NodeJS. :)
