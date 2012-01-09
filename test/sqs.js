@@ -38,7 +38,7 @@ test("create sqs object", function (t) {
     t.equal('access_key_id', sqs.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sqs.secretAccessKey(), 'Secret Access Key set properly');
     t.equal('aws_account_id', sqs.awsAccountId(), 'AWS Account ID set properly');
-    t.equal('California', sqs.region(), 'Region is set properly');
+    t.equal('us-west-1', sqs.region(), 'Region is set properly');
 
     t.end();
 });

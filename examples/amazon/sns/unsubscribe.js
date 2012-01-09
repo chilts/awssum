@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var snsService = require('amazon/sns');
 
@@ -15,14 +15,14 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 // console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
-sns.unsubscribe({ subscriptionArn : 'fakeSubscriptionArn' }, function(err, data) {
+sns.Unsubscribe({ SubscriptionArn : 'fakeSubscriptionArn' }, function(err, data) {
     console.log("\nUnsubscribing this subscriptionArn - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sns.unsubscribe({}, function(err, data) {
+sns.Unsubscribe({}, function(err, data) {
     console.log("\nUnsubscribing an undefined subscriptionArn - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

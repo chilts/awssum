@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var route53 = require("amazon/route53");
 
@@ -16,13 +16,13 @@ console.log( 'AccessKeyId :', r53.accessKeyId() );
 console.log( 'AwsAccountId :', r53.awsAccountId() );
 
 var args = {
-    name : 'example.com',
-    callerReference : 'id:46',
-    comment : 'Created on 2011-11-01',
+    Name : 'example.com',
+    CallerReference : 'id:500',
+    Comment : 'Created on 2011-11-01',
 };
 
-r53.createHostedZone(args, function(err, data) {
+r53.CreateHostedZone(args, function(err, data) {
     console.log("\ncreating a hosted zone - expecting failure (probably need a new callerReference)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

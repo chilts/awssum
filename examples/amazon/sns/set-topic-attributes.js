@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var snsService = require('amazon/sns');
 
@@ -16,22 +16,22 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // now call the listSubscriptionsByTopic()
     if ( ! err ) {
         var args = {
-            topicArn       : data.CreateTopicResponse.CreateTopicResult.TopicArn,
-            attributeName  : 'DisplayName',
-            attributeValue : 'My Topic Display Name',
+            TopicArn       : data.CreateTopicResponse.CreateTopicResult.TopicArn,
+            AttributeName  : 'DisplayName',
+            AttributeValue : 'My Topic Display Name',
         };
-        sns.setTopicAttributes(args, function(err, data) {
+        sns.SetTopicAttributes(args, function(err, data) {
             console.log("\nsetTopicAttributes - expecting success");
-            console.log('Error :', util.inspect(err, true, null));
-            console.log('Data :', util.inspect(data, true, null));
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });

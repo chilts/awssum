@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -16,32 +16,32 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 var options = {
-    queueName : 'my-queue'
+    QueueName : 'my-queue'
 };
 
-sqs.receiveMessage(options, function(err, data) {
+sqs.ReceiveMessage(options, function(err, data) {
     console.log("\nReceiving message from my-queue - expecting success (and a message)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-options.attribute = 'All';
-sqs.receiveMessage(options, function(err, data) {
+options.AttributeName = 'All';
+sqs.ReceiveMessage(options, function(err, data) {
     console.log("\nReceiving message from my-queue - expecting success (and a message with all the trimmings)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-options.maxNumberOfMessages = 3;
-options.visibilityTimeout = 10;
-sqs.receiveMessage(options, function(err, data) {
+options.MaxNumberOfMessages = 3;
+options.VisibilityTimeout = 10;
+sqs.ReceiveMessage(options, function(err, data) {
     console.log("\nReceiving 3 messages from my-queue - expecting success (with all the trimmings)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sqs.receiveMessage({ queueName : 'new-queue' }, function(err, data) {
+sqs.ReceiveMessage({ queueName : 'new-queue' }, function(err, data) {
     console.log("\nReceiving message from new-queue - expecting success (but nothing)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

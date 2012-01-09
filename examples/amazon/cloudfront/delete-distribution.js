@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var cloudFrontService = require("amazon/cloudfront");
 
@@ -21,6 +21,6 @@ var data = {
 
 cloudFront.DeleteDistribution(data, function(err, data) {
     console.log("\ndeleting distribution - expecting failure (invalid distribution id)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

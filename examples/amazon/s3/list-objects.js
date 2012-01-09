@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 var _ = require('underscore');
@@ -21,19 +21,25 @@ var options1 = {
     MaxKeys : 4,
 };
 
-s3.listObjects(options1, function(err, data) {
+s3.ListObjects(options1, function(err, data) {
     console.log("\nlisting objects in this bucket - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+
+    // check for error
+    if ( err ) {
+        console.log('Not doing another ListObjects since there was an error');
+        return;
+    }
 
     // now do a marker
-    if ( data.ListBucketResult.IsTruncated === 'true' ) {
-        options1.Marker = _.last(data.ListBucketResult.Contents).Key;
+    if ( data.Body.ListBucketResult.IsTruncated === 'true' ) {
+        options1.Marker = _.last(data.Body.ListBucketResult.Contents).Key;
 
-        s3.listObjects(options1, function(err, data) {
+        s3.ListObjects(options1, function(err, data) {
             console.log("\ngetting the next set - expecting success");
-            console.log('Error :', util.inspect(err, true, null));
-            console.log('Data :', util.inspect(data, true, null));
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });
@@ -44,8 +50,8 @@ var options2 = {
     Prefix : 'c',
 };
 
-s3.listObjects(options2, function(err, data) {
+s3.ListObjects(options2, function(err, data) {
     console.log("\nlisting object with a prefix - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

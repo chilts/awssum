@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var elbService = require("amazon/elb");
 
@@ -16,11 +16,11 @@ console.log( 'AccessKeyId :', elb.accessKeyId() );
 console.log( 'AwsAccountId :', elb.awsAccountId() );
 
 var data = {
-    loadBalancerName : 'no-name',
+    LoadBalancerName : 'no-name',
 };
 
-elb.deleteLoadBalancer(data, function(err, data) {
+elb.DeleteLoadBalancer(data, function(err, data) {
     console.log("\ndeleting a load balancer - expecting success (it's idempotent)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

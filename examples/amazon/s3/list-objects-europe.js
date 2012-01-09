@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 var _ = require('underscore');
@@ -22,6 +22,6 @@ var options1 = {
 
 s3.listObjects(options1, function(err, data) {
     console.log("\nlisting objects in this bucket - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

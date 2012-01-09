@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var snsService = require('amazon/sns');
 
@@ -16,18 +16,18 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // now call the removePermission()
     if ( ! err ) {
         var topicArn = data.CreateTopicResponse.CreateTopicResult.TopicArn;
-        sns.removePermission({ topicArn : topicArn, label : 'A Test Permission' }, function(err, data) {
-            console.log("\nremovePermission() - expecting success (idempotent)");
-            console.log('Error :', util.inspect(err, true, null));
-            console.log('Data :', util.inspect(data, true, null));
+        sns.RemovePermission({ topicArn : topicArn, label : 'A Test Permission' }, function(err, data) {
+            console.log("\nRemovePermission() - expecting success (idempotent)");
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });

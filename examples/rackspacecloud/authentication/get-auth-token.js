@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var base = require("rackspacecloud/base");
 var authenticationService = require("rackspacecloud/authentication");
 
@@ -18,6 +18,6 @@ console.log( 'ApiKey :', authentication.apiKey() );
 
 authentication.getAuthToken({}, function(err, data) {
     console.log("\ngetting a token - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

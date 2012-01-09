@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var snsService = require('amazon/sns');
 
@@ -16,18 +16,18 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // recreate the topic (idempotent)
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // now call the confirmSubscription(), even though it will fail
     if ( ! err ) {
         var topicArn = data.CreateTopicResponse.CreateTopicResult.TopicArn;
-        sns.confirmSubscription({ topicArn : topicArn, token : 'fakeToken' }, function(err, data) {
+        sns.ConfirmSubscription({ TopicArn : topicArn, Token : 'fakeToken' }, function(err, data) {
             console.log("\nConfirming a fake subscription - expecting failure");
-            console.log('Error :', err);
-            console.log('Data  :', data);
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });

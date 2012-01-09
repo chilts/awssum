@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var elbService = require("amazon/elb");
 
@@ -15,8 +15,8 @@ console.log( 'AccessKeyId :', elb.accessKeyId() );
 // console.log( 'SecretAccessKey :', elb.secretAccessKey() );
 console.log( 'AwsAccountId :', elb.awsAccountId() );
 
-elb.describeLoadBalancers({}, function(err, data) {
+elb.DescribeLoadBalancers(function(err, data) {
     console.log("\ndescribing load balancers - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

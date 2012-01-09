@@ -1,7 +1,7 @@
 {
     "name": "awssum",
     "description": "NodeJS modules for talking to lots of Web Service APIs.",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "author": {
         "name":"Andrew Chilton",
         "email":"chilts@appsattic.com",
@@ -10,7 +10,8 @@
     "homepage": "https://github.com/appsattic/node-awssum",
     "contributors": [],
     "devDependencies": {
-        "tap": ">= 0.0.11"
+        "tap": ">= 0.0.11",
+        "eyes": ">= 0.1.7"
     },
     "dependencies": {
         "underscore": ">= 1.2.0",

@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var snsService = require("amazon/sns");
 
@@ -15,14 +15,14 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 // console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sns.createTopic({}, function(err, data) {
+sns.CreateTopic({}, function(err, data) {
     console.log("\nCreating (undefined) - expecting failure");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

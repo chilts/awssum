@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -21,12 +21,12 @@ var options = {
 
 sqs.receiveMessage(options, function(err, data) {
     console.log("\nReceiving message from my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // if there wasn't an error, let's try and change the visibility of this message
     if ( ! err ) {
-        var receiptHandle = data.ReceiveMessageResponse.ReceiveMessageResult.Message.ReceiptHandle;
+        var receiptHandle = data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message.ReceiptHandle;
 
         var visibilityOptions = {
             queueName         : 'my-queue',
@@ -36,8 +36,8 @@ sqs.receiveMessage(options, function(err, data) {
 
         sqs.changeMessageVisibility(visibilityOptions, function(err, data) {
             console.log("\nChanging message visibility - expecting success");
-            console.log('Error :', util.inspect(err, true, null));
-            console.log('Data :', util.inspect(data, true, null));
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });

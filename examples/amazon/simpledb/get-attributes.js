@@ -1,4 +1,4 @@
-var util = require("util");
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var simpledb = require("amazon/simpledb");
 
@@ -15,27 +15,27 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.getAttributes({ domainName : 'test', itemName : 'chilts' }, function(err, data) {
+sdb.GetAttributes({ DomainName : 'test', ItemName : 'chilts' }, function(err, data) {
     console.log("\ngetting chilts - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sdb.getAttributes({ domainName : 'test', itemName : 'andychilton', consistentRead : true }, function(err, data) {
+sdb.GetAttributes({ DomainName : 'test', ItemName : 'andychilton', ConsistentRead : true }, function(err, data) {
     console.log("\ngetting andychilton - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sdb.getAttributes({ domainName : 'test', itemName : 'replace', consistentRead : true }, function(err, data) {
+sdb.GetAttributes({ DomainName : 'test', ItemName : 'replace', ConsistentRead : true }, function(err, data) {
     console.log("\ngetting replace - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-var expected = { domainName : 'test', itemName : 'expected', attributeName : 'username', consistentRead : false };
-sdb.getAttributes(expected, function(err, data) {
+var expected = { DomainName : 'test', ItemName : 'expected', AttributeName : 'username', ConsistentRead : false };
+sdb.GetAttributes(expected, function(err, data) {
     console.log("\ngetting expected - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

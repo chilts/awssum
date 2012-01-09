@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sesService = require("amazon/ses");
 
@@ -15,8 +15,8 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 // console.log( 'SecretAccessKey :', ses.secretAccessKey() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
-ses.getSendQuota({}, function(err, data) {
-    console.log("\ngetting send quota - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+ses.GetSendQuota(function(err, data) {
+    console.log("\nGetting send quota - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

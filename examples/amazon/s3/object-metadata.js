@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 
@@ -22,8 +22,8 @@ var options1 = {
 
 s3.objectMetadata(options1, function(err, data) {
     console.log("\ngetting an object metadata from /pie-18/test-object.txt - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
 var options2 = {
@@ -33,6 +33,6 @@ var options2 = {
 
 s3.objectMetadata(options2, function(err, data) {
     console.log("\ngetting missing object - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var cloudFrontService = require("amazon/cloudfront");
 
@@ -17,6 +17,6 @@ console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
 
 cloudFront.ListDistributions(function(err, data) {
     console.log("\nlisting distributions - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

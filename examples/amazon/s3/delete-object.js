@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 
@@ -17,11 +17,11 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {
     BucketName : 'pie-18',
-    ObjectName : 'test-object.txt',
+    ObjectName : 'test-object-2.txt',
 };
 
-s3.deleteObject(options, function(err, data) {
+s3.DeleteObject(options, function(err, data) {
     console.log("\ndeleting an object from pie-18 - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

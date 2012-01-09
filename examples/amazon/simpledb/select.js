@@ -1,4 +1,4 @@
-var util = require("util");
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var simpledb = require("amazon/simpledb");
 
@@ -15,14 +15,14 @@ console.log( 'AccessKeyId :', sdb.accessKeyId() );
 // console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
-sdb.select({ selectExpression : 'SELECT username FROM test' }, function(err, data) {
+sdb.Select({ SelectExpression : 'SELECT username FROM test' }, function(err, data) {
     console.log("\nSELECT username FROM test");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sdb.select({ selectExpression : 'SELECT * FROM test', consistentRead : true }, function(err, data) {
+sdb.Select({ SelectExpression : 'SELECT * FROM test', ConsistentRead : true }, function(err, data) {
     console.log("\nSELECT * FROM test");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

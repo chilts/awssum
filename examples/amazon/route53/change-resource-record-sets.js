@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var route53 = require("amazon/route53");
 
@@ -16,32 +16,32 @@ console.log( 'AccessKeyId :', r53.accessKeyId() );
 console.log( 'AwsAccountId :', r53.awsAccountId() );
 
 var args = {
-    hostedZoneId : 'Z1M9K5TI9KRBF2',
-    comment : 'This change does ... blah, blah, blah!',
-    changes : [
+    HostedZoneId : '/Z2JA82LCE3D9B2',
+    Comment : 'This change does ... blah, blah, blah!',
+    Changes : [
         {
-            action : 'DELETE',
-            name : 'www.example.com',
-            type : 'A',
-            ttl : '600',
-            resourceRecords : [
+            Action : 'DELETE',
+            Name : 'www.example.com',
+            Type : 'A',
+            Ttl : '600',
+            ResourceRecords : [
                 '192.0.2.1',
             ],
         },
         {
-            action : 'CREATE',
-            name : 'www.example.com',
-            type : 'A',
-            ttl : '300',
-            resourceRecords : [
+            Action : 'CREATE',
+            Name : 'www.example.com',
+            Type : 'A',
+            Ttl : '300',
+            ResourceRecords : [
                 '192.0.2.1',
             ],
         },
     ]
 };
 
-r53.changeResourceRecordSets(args, function(err, data) {
+r53.ChangeResourceRecordSets(args, function(err, data) {
     console.log("\nchanging resource record sets - expecting failure (probably need a new callerReference)");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

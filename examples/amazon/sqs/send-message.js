@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -16,34 +16,34 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 var optionsMyQueue = {
-    queueName : 'my-queue',
-    messageBody : 'Hello, World!',
+    QueueName : 'my-queue',
+    MessageBody : 'HelloWorld',
 };
 
 var optionsNewQueue = {
-    queueName : 'my-queue',
+    QueueName : 'my-queue',
 };
 
 var optionsMyQueueDelayed = {
-    queueName    : 'my-queue',
-    messageBody  : 'Hello, World!',
-    delaySeconds : 10,
+    QueueName    : 'my-queue',
+    MessageBody  : 'HelloWorld',
+    DelaySeconds : 10,
 };
 
-sqs.sendMessage(optionsMyQueue, function(err, data) {
+sqs.SendMessage(optionsMyQueue, function(err, data) {
     console.log("\nSending a message to a queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sqs.sendMessage(optionsNewQueue, function(err, data) {
+sqs.SendMessage(optionsNewQueue, function(err, data) {
     console.log("\nSending an undefined message - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sqs.sendMessage(optionsMyQueueDelayed, function(err, data) {
+sqs.SendMessage(optionsMyQueueDelayed, function(err, data) {
     console.log("\nSending a delayed message - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

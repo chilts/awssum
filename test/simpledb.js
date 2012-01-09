@@ -38,7 +38,7 @@ test("create simpledb object", function (t) {
     t.equal('access_key_id', sdb.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sdb.secretAccessKey(), 'Secret Access Key set properly');
     t.equal('aws_account_id', sdb.awsAccountId(), 'AWS Account ID set properly');
-    t.equal('California', sdb.region(), 'Region is set properly');
+    t.equal('us-west-1', sdb.region(), 'Region is set properly');
 
     t.end();
 });

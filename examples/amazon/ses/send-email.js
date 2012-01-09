@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sesService = require("amazon/ses");
 
@@ -16,17 +16,22 @@ console.log( 'AccessKeyId :', ses.accessKeyId() );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
 var data = {
-    to : [
-        'you@example.net',
+    ToAddresses : [
+        'you@example.com',
     ],
-    text : 'This is the text body',
-    html : '<p>This is the HTML body</p>',
-    subject : 'This is the subject',
-    source : 'me@example.org',
+    CcAddresses : [],
+    BccAddresses : [],
+    Text : 'This is the text body.',
+    TextCharset : 'UTF-8',
+    Html : '<p>This is the HTML body.</p>',
+    HtmlCharset : 'UTF-8',
+    Subject : 'This is the subject.',
+    SubjectCharset : 'UTF-8',
+    Source : 'me@example.com',
 };
 
-ses.sendEmail(data, function(err, data) {
+ses.SendEmail(data, function(err, data) {
     console.log("\nsending an email - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

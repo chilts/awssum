@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 var _ = require('underscore');
@@ -17,47 +17,48 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 var options = {
-    queueName : 'my-queue',
-    maxNumberOfMessages : 5,
+    QueueName : 'my-queue',
+    MaxNumberOfMessages : 5,
 }
 
-sqs.receiveMessage(options, function(err, data) {
+sqs.ReceiveMessage(options, function(err, data) {
     var msgs = [];
     var i = 1;
 
     console.log("\nReceiving message from my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // if there wasn't an error, delete these messages in one hit
     if ( ! err ) {
         // make sure we have some messages to delete
-        if ( _.isUndefined(data.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
+        if ( _.isUndefined(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
             console.log("\nNothing to delete");
             return;
         }
 
-        if ( ! _.isArray(data.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
+        if ( ! _.isArray(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
             // turn this into an array
-            data.ReceiveMessageResponse.ReceiveMessageResult.Message = [
-                data.ReceiveMessageResponse.ReceiveMessageResult.Message
+            data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message = [
+                data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message
             ];
         }
 
-        _.each(data.ReceiveMessageResponse.ReceiveMessageResult.Message, function(m) {
-            msgs.push({ receiptHandle : m.ReceiptHandle });
-            i++;
-        });
-
         var options = {
-            queueName : 'my-queue',
-            messages : msgs,
+            QueueName     : 'my-queue',
+            ReceiptHandle : [],
+            Id            : [],
         };
 
-        sqs.deleteMessageBatch(options, function(err, data) {
+        _.each(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message, function(m) {
+            options.ReceiptHandle.push( m.ReceiptHandle );
+            options.Id.push( Math.floor(Math.random() * 1000) );
+        });
+
+        sqs.DeleteMessageBatch(options, function(err, data) {
             console.log("\nDeleting Messages - expecting success");
-            console.log('Error :', util.inspect(err, true, null));
-            console.log('Data :', util.inspect(data, true, null));
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });

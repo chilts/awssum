@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var snsService = require('amazon/sns');
 
@@ -16,24 +16,23 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.createTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    console.log('Error :', err);
-    console.log('Data  :', data);
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 
     // now call the addPermission()
     if ( ! err ) {
         var args = {
-            topicArn : data.CreateTopicResponse.CreateTopicResult.TopicArn,
-            label : 'A Test Permission',
-            permissions : [
-                { awsAccountId : '123-456-789', actionName : 'NoExistantAction' }
-            ],
+            TopicArn : data.CreateTopicResponse.CreateTopicResult.TopicArn,
+            Label : 'A Test Permission',
+            AwsAccountId : [ '123-456-789' ],
+            ActionName : [ 'NoExistantAction' ],
         };
-        sns.addPermission(args, function(err, data) {
-            console.log("\naddPermission() - expecting failure (for many reasons)");
-            console.log('Error :', util.inspect(err, true, null));
-            console.log('Data :', util.inspect(data, true, null));
+        sns.AddPermission(args, function(err, data) {
+            console.log("\nAddPermission() - expecting failure (for many reasons)");
+            inspect(err, 'Error');
+            inspect(data, 'Data');
         });
     }
 });

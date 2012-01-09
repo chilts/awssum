@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require("amazon/amazon");
 var sqs = require("amazon/sqs");
 
@@ -15,14 +15,21 @@ console.log( 'AccessKeyId :', sqs.accessKeyId() );
 // console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
-sqs.setQueueAttributes({ queueName : 'my-queue' }, function(err, data) {
+var options = {
+    QueueName : 'my-queue',
+};
+
+sqs.SetQueueAttributes(options, function(err, data) {
     console.log("\nSetting empty attributes for my-queue - expecting failure");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
 
-sqs.setQueueAttributes({ queueName : 'my-queue', visibilityTimeout : 30 }, function(err, data) {
-    console.log("\nSetting visibilityTimeout for my-queue - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+options.AttributeName  = 'VisibilityTimeout';
+options.AttributeValue = 30;
+
+sqs.SetQueueAttributes(options, function(err, data) {
+    console.log("\nSetting VisibilityTimeout for my-queue - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });

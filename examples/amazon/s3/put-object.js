@@ -1,4 +1,4 @@
-var util = require('util');
+var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
 var s3Service = require('amazon/s3');
 
@@ -16,14 +16,14 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {
-    BucketName : 'pie-18',
-    ObjectName : 'test-object.txt',
+    BucketName    : 'pie-18',
+    ObjectName    : 'test-object.txt',
     ContentLength : '14',
-    Body : "Hello, World!\n",
+    Body          : "Hello, World!\n",
 };
 
-s3.putObject(options, function(err, data) {
+s3.PutObject(options, function(err, data) {
     console.log("\nputting an object to pie-18 - expecting success");
-    console.log('Error :', util.inspect(err, true, null));
-    console.log('Data :', util.inspect(data, true, null));
+    inspect(err, 'Error');
+    inspect(data, 'Data');
 });
