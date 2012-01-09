@@ -16,7 +16,7 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // recreate the topic (idempotent)
-sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

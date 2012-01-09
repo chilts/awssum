@@ -28,7 +28,7 @@ sns.DeleteTopic({}, function(err, data) {
 );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
-sns.CreateTopic({ topicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
     console.log('\nCreating (my-topic) - expecting success');
     inspect(err, 'Error');
     inspect(data, 'Data');

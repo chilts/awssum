@@ -15,13 +15,19 @@ console.log( 'AccessKeyId :', sns.accessKeyId() );
 // console.log( 'SecretAccessKey :', sns.secretAccessKey() );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
-sns.CreateTopic({ TopicName : 'my-topic' }, function(err, data) {
+sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
 sns.CreateTopic({}, function(err, data) {
+    console.log("\nCreating (undefined) - expecting failure");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
+
+sns.CreateTopic(function(err, data) {
     console.log("\nCreating (undefined) - expecting failure");
     inspect(err, 'Error');
     inspect(data, 'Data');
