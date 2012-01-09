@@ -12,6 +12,8 @@
 
 NodeJS client libraries for talking to lots of Web Service APIs
 
+Build Status : [![Build Status](https://secure.travis-ci.org/appsattic/node-awssum.png)](http://travis-ci.org/appsattic/node-awssum)
+
 # How to get it
 
 The easiest way to get it is via [npm][]
