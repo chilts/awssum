@@ -22,8 +22,8 @@ var awssum;
 // basic tests
 
 test("load awssum", function (t) {
-    awssum = require("../lib/awssum");
-    t.ok(awssum, "object loaded");
+    awssum = require('../');
+    t.ok(awssum, 'object loaded');
     t.end();
 })
 

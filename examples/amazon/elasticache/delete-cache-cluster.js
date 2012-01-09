@@ -1,13 +1,14 @@
 var inspect = require('eyes').inspector();
-var amazon = require("amazon/amazon");
-var elastiCacheService = require("amazon/elasticache");
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var elastiCacheService = awssum.load('amazon/elasticache');
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
 var secretAccessKey = process.env.SECRET_ACCESS_KEY;
 var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
-var elastiCache = new elastiCacheService.ElastiCache(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+var elastiCache = new elastiCacheService(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', elastiCache.region() );
 console.log( 'EndPoint :',  elastiCache.host() );

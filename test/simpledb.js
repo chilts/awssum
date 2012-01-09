@@ -16,6 +16,7 @@ var tap = require("tap"),
     test = tap.test,
     plan = tap.plan,
     _ = require('underscore');
+var awssum = require('../');
 var amazon;
 var simpledb;
 
@@ -23,17 +24,17 @@ var simpledb;
 // basic tests
 
 test("load simpledb", function (t) {
-    simpledb = require("../lib/amazon/simpledb");
-    t.ok(simpledb, "object loaded");
+    amazon = awssum.load('amazon/amazon');
+    t.ok(amazon, 'object loaded');
 
-    amazon = require("../lib/amazon/amazon");
-    t.ok(amazon, "object loaded");
+    simpledb = awssum.load('amazon/simpledb');
+    t.ok(simpledb, 'object loaded');
 
     t.end();
 });
 
 test("create simpledb object", function (t) {
-    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sdb = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     t.equal('access_key_id', sdb.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sdb.secretAccessKey(), 'Secret Access Key set properly');
@@ -44,11 +45,11 @@ test("create simpledb object", function (t) {
 });
 
 test("test all endpoints", function (t) {
-    var sdb1 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
-    var sdb2 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
-    var sdb3 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
-    var sdb4 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
-    var sdb5 = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
+    var sdb1 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
+    var sdb2 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sdb3 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
+    var sdb4 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
+    var sdb5 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
 
     t.equal('sdb.amazonaws.com', sdb1.host(), '1) Endpoint is correct');
     t.equal('sdb.us-west-1.amazonaws.com', sdb2.host(), '2) Endpoint is correct');
@@ -60,7 +61,7 @@ test("test all endpoints", function (t) {
 });
 
 test("test our own escape(...)", function (t) {
-    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sdb = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var query1 = 'DomainName';
     var escQuery1 = sdb.escape(query1);
@@ -86,7 +87,7 @@ test("test our own escape(...)", function (t) {
 });
 
 test("test PutAttributes", function (t) {
-    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sdb = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var params1 = sdb.dataToPutAttributes({ 'username' : 'chilts' });
     var result1 = [
@@ -141,7 +142,7 @@ test("test PutAttributes", function (t) {
 });
 
 test("test DeleteAttributes", function (t) {
-    var sdb = new simpledb.SimpleDB('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sdb = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var params1 = sdb.dataToDeleteAttributes({ 'username' : 'chilts' });
     var result1 = [

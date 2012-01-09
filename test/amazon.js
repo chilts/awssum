@@ -16,15 +16,15 @@ var tap = require("tap"),
     _ = require('underscore'),
     test = tap.test,
     plan = tap.plan;
-var awssum = require('../lib/awssum');
+var awssum = require('../');
 var amazon;
 
 // --------------------------------------------------------------------------------------------------------------------
 // basic tests
 
 test("load amazon", function (t) {
-    amazon = require("../lib/amazon/amazon");
-    t.ok(amazon, "object loaded");
+    amazon = awssum.load('amazon/amazon');
+    t.ok(amazon, 'object loaded');
     t.end();
 })
 

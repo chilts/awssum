@@ -16,6 +16,7 @@ var tap = require("tap"),
     test = tap.test,
     plan = tap.plan,
     _ = require('underscore');
+var awssum = require('../');
 var amazon;
 var sqsService;
 
@@ -23,17 +24,17 @@ var sqsService;
 // basic tests
 
 test("load sqs", function (t) {
-    sqsService = require("../lib/amazon/sqs");
-    t.ok(sqsService, "object loaded");
+    amazon = awssum.load('amazon/amazon');
+    t.ok(amazon, 'object loaded');
 
-    amazon = require("../lib/amazon/amazon");
-    t.ok(amazon, "object loaded");
+    sqsService = awssum.load('amazon/sqs');
+    t.ok(sqsService, 'object loaded');
 
     t.end();
 });
 
 test("create sqs object", function (t) {
-    var sqs = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sqs = new sqsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     t.equal('access_key_id', sqs.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sqs.secretAccessKey(), 'Secret Access Key set properly');
@@ -44,11 +45,11 @@ test("create sqs object", function (t) {
 });
 
 test("test all endpoints", function (t) {
-    var sqs1 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
-    var sqs2 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
-    var sqs3 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
-    var sqs4 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
-    var sqs5 = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
+    var sqs1 = new sqsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
+    var sqs2 = new sqsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sqs3 = new sqsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
+    var sqs4 = new sqsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
+    var sqs5 = new sqsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
 
     t.equal('sqs.us-east-1.amazonaws.com', sqs1.host(), '1) Endpoint is correct');
     t.equal('sqs.us-west-1.amazonaws.com', sqs2.host(), '2) Endpoint is correct');
@@ -60,7 +61,7 @@ test("test all endpoints", function (t) {
 });
 
 test("test our own escape(...)", function (t) {
-    var sqs = new sqsService.Sqs('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sqs = new sqsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
     var query1 = 'DomainName';
     var escQuery1 = sqs.escape(query1);

@@ -16,6 +16,7 @@ var tap = require("tap"),
     test = tap.test,
     plan = tap.plan,
     _ = require('underscore');
+var awssum = require('../');
 var amazon;
 var elastiCacheService;
 
@@ -23,11 +24,11 @@ var elastiCacheService;
 // basic tests
 
 test("load elasticache", function (t) {
-    elastiCacheService = require("../lib/amazon/elasticache");
-    t.ok(elastiCacheService, "object loaded");
+    amazon = awssum.load('amazon/amazon');
+    t.ok(amazon, 'object loaded');
 
-    amazon = require("../lib/amazon/amazon");
-    t.ok(amazon, "object loaded");
+    elastiCacheService = awssum.load('amazon/elasticache');
+    t.ok(elastiCacheService, 'object loaded');
 
     t.end();
 });

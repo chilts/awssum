@@ -24,10 +24,10 @@ var sesService;
 
 test("load ses", function (t) {
     sesService = require("../lib/amazon/ses");
-    t.ok(sesService, "object loaded");
+    t.ok(sesService, 'object loaded');
 
     amazon = require("../lib/amazon/amazon");
-    t.ok(amazon, "object loaded");
+    t.ok(amazon, 'object loaded');
 
     t.end();
 });

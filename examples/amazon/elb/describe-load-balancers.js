@@ -1,13 +1,14 @@
 var inspect = require('eyes').inspector();
-var amazon = require("amazon/amazon");
-var elbService = require("amazon/elb");
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var elbService = awssum.load('amazon/elb');
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
 var secretAccessKey = process.env.SECRET_ACCESS_KEY;
 var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
-var elb = new elbService.Elb(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+var elb = new elbService(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', elb.region() );
 console.log( 'EndPoint :',  elb.host() );

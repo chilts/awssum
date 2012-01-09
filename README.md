@@ -14,7 +14,7 @@ NodeJS client libraries for talking to lots of Web Service APIs
 
 Build Status : [![Build Status](https://secure.travis-ci.org/appsattic/node-awssum.png)](http://travis-ci.org/appsattic/node-awssum)
 
-# How to get it
+# How to get it #
 
 The easiest way to get it is via [npm][]
 
@@ -25,7 +25,28 @@ The easiest way to get it is via [npm][]
 Of course, you can just clone this, and manually point at the library itself,
 but I really recommend using [npm][]!
 
-# What services does 'node-awssum' talk to?
+# Synopsis #
+
+```
+    var awssum = require('awssum');
+    var amazon = awssum.load('amazon/amazon');
+    var s3Service = awssum.load('amazon/s3');
+    var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+
+    s3.ListBuckets(function(data, err) {
+        // ...etc...
+    });
+
+    s3.Createbucket({ BucketName : 'my-bucket' }, function(data, err) {
+        // ...etc...
+    });
+
+    s3.Createbucket({ BucketName : 'my-bucket' }, function(data, err) {
+        // ...etc...
+    });
+```
+
+# What services does 'node-awssum' talk to? #
 
 Currently this has 100% coverage of the following services:
 
@@ -37,14 +58,14 @@ Currently this has 100% coverage of the following services:
     * Simple Storage Service (S3)
     * Route53
     * ElastiCache
+    * CloudFront
+    * Elastic Load Balancing (ELB)
 
 It has partial support for these services. This means that the complex signatures have been done, but not all
 operations have been implemented:
 
 * AWS:
-    * CloudFront ([Request or Sponsor Development][sponsor])
     * Elastic Compute Cloud (EC2) ([Request or Sponsor Development][sponsor])
-    * Elastic Load Balancing (ELB) ([Request or Sponsor Development][sponsor])
 
 In future releases we will be targeting (in no particular order):
 
@@ -66,7 +87,7 @@ In future releases we will be targeting (in no particular order):
 There are lots of services out there, so please [Request or Sponsor Development][sponsor] if you'd like one
 implemented.
 
-# What 'node-awssum' is?
+# What 'node-awssum' is? #
 
 node-awssum is an abstraction layer to many web service APIs. It abstracts out the service endpoints, the HTTP verbs to
 use, what headers and parameters to set, how to sign the request and finally how to decode the result. It let's you
@@ -90,7 +111,7 @@ example of this - http://github.com/appsattic/winston-simpledb). This would be e
 higher level library could perform number padding, date conversions, creation of multi-field indexes and default field
 values - none of which node-awssum does.
 
-# Examples
+# Examples #
 
 Example 1. This is what node-awssum looks like when adding a topic to Amazon's Simple Notification Service:
 
@@ -126,7 +147,7 @@ Example 2. Saving some attributes for AWS SimpleDB.
 
 ...
 
-# What is 'node-awssum' for?
+# What is 'node-awssum' for? #
 
 This library has a number of uses but mostly it should be used from within a more friendly wrapper library. Let's look
 at some examples.
@@ -146,7 +167,7 @@ The reason for this is because the data structures it receives, and more especia
 complicated for dealing with them in your main program. Therefore in general, a wrapper library around these simple
 operations would make each service easier to use.
 
-# How to use it
+# How to use it #
 
 This library provides basic client functionality to each of these services. It's pretty simple but this means it's also
 quite powerful. In general you wouldn't use these libraries directly (though there is nothing stopping you making the
@@ -185,12 +206,12 @@ A non-successful run results in a true error value, just like any other idiomati
 [npm]: http://github.com/isaacs/npm
 [sponsor]: mailto:chilts%40appsattic.com
 
-# Author
+# Author #
 
 Written by [Andrew Chilton](http://www.chilts.org/blog/)
 
 Copyright 2011 [AppsAttic](http://www.appsattic.com/)
 
-# License
+# License #
 
 MIT. See LICENSE for more details.
