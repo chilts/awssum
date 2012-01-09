@@ -20,7 +20,7 @@ var options = {
     ObjectName : 'test-object.txt',
 };
 
-s3.getObject(options, function(err, data) {
+s3.GetObject(options, function(err, data) {
     console.log("\nputting an object to pie-18 - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

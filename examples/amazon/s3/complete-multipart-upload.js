@@ -17,14 +17,18 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {
     BucketName : 'pie-18',
-    Objects : [
-        'nothing-here.txt',
-        { ObjectName : 'another-missing-file.txt' },
-    ]
+    ObjectName : 'multipart.txt',
+    UploadId : 'does-not-exist',
+    Parts : [
+        {
+            PartNumber : 1,
+            ETag : '"DEADBEEF"',
+        },
+    ],
 };
 
-s3.DeleteMultipleObjects(options, function(err, data) {
-    console.log("\ndeleting multiple objects from pie-18 - expecting success");
+s3.CompleteMultipartUpload(options, function(err, data) {
+    console.log("\ncompleting upload - expecting failure (no such upload)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

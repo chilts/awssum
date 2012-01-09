@@ -16,15 +16,12 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {
-    BucketName : 'pie-18',
-    Objects : [
-        'nothing-here.txt',
-        { ObjectName : 'another-missing-file.txt' },
-    ]
+    BucketName    : 'pie-18',
+    ObjectName    : 'not-found.txt',
 };
 
-s3.DeleteMultipleObjects(options, function(err, data) {
-    console.log("\ndeleting multiple objects from pie-18 - expecting success");
+s3.PutObjectAcl(options, function(err, data) {
+    console.log("\nputting an object acl to pie-18 - expecting failure (object not found)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

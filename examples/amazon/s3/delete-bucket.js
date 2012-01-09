@@ -15,16 +15,8 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-var options = {
-    BucketName : 'pie-18',
-    Objects : [
-        'nothing-here.txt',
-        { ObjectName : 'another-missing-file.txt' },
-    ]
-};
-
-s3.DeleteMultipleObjects(options, function(err, data) {
-    console.log("\ndeleting multiple objects from pie-18 - expecting success");
+s3.DeleteBucket({ BucketName : 'non-existant' }, function(err, data) {
+    console.log("\ndelete bucket - expecting failure (for not existing)");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

@@ -17,10 +17,10 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {
     BucketName : 'pie-18',
-    ObjectName : 'test-object.txt',
+    ObjectName : 'test-object-2.txt',
 };
 
-s3.deleteObject(options, function(err, data) {
+s3.DeleteObject(options, function(err, data) {
     console.log("\ndeleting an object from pie-18 - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

@@ -17,14 +17,11 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 var options = {
     BucketName : 'pie-18',
-    Objects : [
-        'nothing-here.txt',
-        { ObjectName : 'another-missing-file.txt' },
-    ]
+    ObjectName : 'multipart.txt',
 };
 
-s3.DeleteMultipleObjects(options, function(err, data) {
-    console.log("\ndeleting multiple objects from pie-18 - expecting success");
+s3.InitiateMultipartUpload(options, function(err, data) {
+    console.log("\nputting an object to pie-18:multipart.txt - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

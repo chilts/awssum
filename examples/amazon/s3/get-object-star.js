@@ -20,13 +20,13 @@ var options = {
     ObjectName : 'test-object.txt',
 };
 
-s3.getObjectAcl(options, function(err, data) {
+s3.GetObjectAcl(options, function(err, data) {
     console.log("\ngetting an object acl - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.getObjectTorrent(options, function(err, data) {
+s3.GetObjectTorrent(options, function(err, data) {
     console.log("\ngetting an object torrent - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
