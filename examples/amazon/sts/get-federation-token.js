@@ -1,0 +1,23 @@
+var inspect = require('eyes').inspector();
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var stsService = awssum.load('amazon/sts');
+
+var env = process.env;
+var accessKeyId = process.env.ACCESS_KEY_ID;
+var secretAccessKey = process.env.SECRET_ACCESS_KEY;
+var awsAccountId = process.env.AWS_ACCOUNT_ID;
+
+var sts = new stsService(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+
+console.log( 'Region :', sts.region() );
+console.log( 'EndPoint :',  sts.host() );
+console.log( 'AccessKeyId :', sts.accessKeyId() );
+// console.log( 'SecretAccessKey :', sts.secretAccessKey() );
+console.log( 'AwsAccountId :', sts.awsAccountId() );
+
+sts.GetFederationToken({ Name : 'chilts' }, function(err, data) {
+    console.log("\ngetting a federation token - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
