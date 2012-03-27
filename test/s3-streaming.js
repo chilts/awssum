@@ -20,16 +20,17 @@ var options = {
 	BucketName: "asdf",
 	ObjectName: "asdf",
 	ContentLength: 2,
-	BodyStream: {on: function(){}, readable: true}
+	Body: {on: function(){}, readable: true}
 };
 
 test("AwsSum.prototype.send accepts a request with a bodyStream instead of a body", function(t) {
 	t.plan(1);
 	var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1);
 	s3.request = function() { t.ok(true, "AweSum.prototype.request called"); }
-	s3.putObject(options, function(err, data) {
-		t.notOk(err, "putObject callback fired with error");
+	s3.PutObject(options, function(err, data) {
+		t.notOk(err, "putObject callback fired with error: " + JSON.stringify(err));
 	});
+	t.end();
 });
 
 // fake self-signed cert and private key
@@ -60,13 +61,15 @@ test("AwsSum.prototype.request properly streams body contents", function(t) {
 	// some "random" data
 	var REQUEST_BODY = "adsf " + SSL_CERT + "asdf " + SSL_KEY + "asdf"; 
 
+	var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1);
 	var fakeServer = http.createServer(function(req, res) {
-		AwsSum.prototype.request({
-			host: localhost,
+		s3.request({
+			host: "localhost",
 			port: 3101,
 			path: "/",
 			headers: {},
-			bodyStream: req // http.ServerRequest is a Readable Stream
+			body: req, // http.ServerRequest is a Readable Stream
+			params: []
 		});
 	});
 	fakeServer.listen(3100);
@@ -80,7 +83,7 @@ test("AwsSum.prototype.request properly streams body contents", function(t) {
 			t.ok(data == REQUEST_BODY, "Body was uploaded successfully");
 		});
 	});
-	fakeRemoteServer.listen(3101);
+	fakeS3.listen(3101);
 
 	// create a request to the fakeServer so that it will create a Readable Stream 
 	var fakeClient = http.request({
@@ -89,6 +92,11 @@ test("AwsSum.prototype.request properly streams body contents", function(t) {
 		path: "/",
 		method: "POST"
 	});
-	req.write(REQUEST_BODY);
-	req.end();
+	fakeClient.write(REQUEST_BODY);
+	fakeClient.end();
+	setTimeout(function() {
+		fakeServer.close();
+		fakeS3.close();
+	}, 10);
+	t.end();
 });
