@@ -16,14 +16,14 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.DeleteBucket({ BucketName : 'completely-new-pie-18' }, function(err, data) {
-    console.log("\ndelete bucket - expecting success (sometimes...)");
+s3.DeleteBucketPolicy({ BucketName : 'pie-18' }, function(err, data) {
+    console.log("\ndelete bucket policy - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-s3.DeleteBucket({ BucketName : 'non-existant' }, function(err, data) {
-    console.log("\ndelete bucket - expecting failure (for not existing)");
+s3.DeleteBucketPolicy({ BucketName : 'non-existant' }, function(err, data) {
+    console.log("\ndelete bucket policy - expecting failure : NoSuchBucket - The specified bucket does not exist");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

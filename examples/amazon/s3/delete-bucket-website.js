@@ -21,9 +21,3 @@ s3.DeleteBucketWebsite({ BucketName : 'non-existant' }, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
-
-s3.DeleteBucketPolicy({ BucketName : 'non-existant' }, function(err, data) {
-    console.log("\ndelete bucket policy - expecting failure (for not existing)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
-});

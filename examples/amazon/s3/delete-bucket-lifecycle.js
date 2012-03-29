@@ -21,3 +21,9 @@ s3.DeleteBucketLifecycle({ BucketName : 'pie-18' }, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+s3.DeleteBucketLifecycle({ BucketName : 'pie-18-not-found' }, function(err, data) {
+    console.log("\ndelete bucket lifecycle - expecting failure (Bucket Does Not Exist)");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
