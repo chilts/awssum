@@ -10,26 +10,45 @@
 
 var http = require('http'),
 	https = require('https'),
-	fs = require('fs');
+	fs = require('fs'),
+	Buffer = require('buffer').Buffer;
 var test = require("tap").test;
 var awssum = require('../'),
 	amazon = awssum.load('amazon/amazon'),
 	s3service = awssum.load('amazon/s3');
 
-var options = {
-	BucketName: "asdf",
-	ObjectName: "asdf",
-	ContentLength: 2,
-	Body: {on: function(){}, readable: true}
-};
-
-test("AwsSum.prototype.send accepts a request with a bodyStream instead of a body", function(t) {
-	t.plan(1);
-	var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1);
-	s3.request = function() { t.ok(true, "AweSum.prototype.request called"); }
+test("AwsSum.prototype.send tests", function(t) {
+	t.plan(4);
+	
+	var FAKE_READABLE_STREAM = {on: function(){}, pipe: function(){}, readable: true};
+	var FAKE_CONTENT_LENGTH = "12345";
+	var FAKE_MD5 = "ASDF1234";	
+	
+	var options = {
+		BucketName: "asdf",
+		ObjectName: "asdf",
+		ContentLength: FAKE_CONTENT_LENGTH,
+		Body:  FAKE_READABLE_STREAM
+	};
+	
+	var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1)
+	s3.request = function(options) { 
+		t.equal(FAKE_READABLE_STREAM, options.body, "AweSum.prototype.request called with a ReadableStream body");
+		t.equal(FAKE_CONTENT_LENGTH, options.headers['Content-Length'], "Content-length header remained intact");
+		t.ok(typeof options.headers['Content-MD5'] == "undefined", "No Content-MD5 header was added");
+	}
 	s3.PutObject(options, function(err, data) {
 		t.notOk(err, "putObject callback fired with error: " + JSON.stringify(err));
 	});
+	
+	options.ContentMD5 = FAKE_MD5;
+	s3.request = function(options) {
+		t.equal(options.headers['Content-MD5'], FAKE_MD5, "Existing Content-MD5 header was kept");
+	}
+	s3.PutObject(options, function(err, data) {
+		t.notOk(err, "putObject callback fired with error: " + JSON.stringify(err));
+	});
+	
 	t.end();
 });
 
@@ -55,48 +74,79 @@ var SSL_KEY = "-----BEGIN RSA PRIVATE KEY-----\n" +
 "YmwpCQIFgQeiZ4RBksM4BXwpqvKKKpwlLG7Ae9Sdrw==\n" + 
 "-----END RSA PRIVATE KEY-----\n";
 
+var FAKE_APP_PORT = 3100;
+var FAKE_S3_PORT = 3101; 
+
+/**
+ * In order to test with a "real" stream, we're creating a fake client and server. The client 
+ * uploads some data to the server, and the node "req" object passed to the server is a 
+ * ReadableStream containing that data. This ReadableStream is passed directly to 
+ * AwsSum.prototype.request as the bodyStream param.
+ * Note: it should just be named "Body" when passing it to a proper api method like s3.PutObject()
+ * This test then sets up a fake s3 server to verify that the request() method properly copied the 
+ * streaming data to the s3 request. Because AweSum only allows for https requests, we've generated 
+ * a fake SSL key pair.
+ */
 test("AwsSum.prototype.request properly streams body contents", function(t) {
-	t.plan(2);
+	t.plan(3);
 
 	// some "random" data
-	var REQUEST_BODY = "adsf " + SSL_CERT + "asdf " + SSL_KEY + "asdf"; 
+	var REQUEST_BODY = "adsf " + SSL_CERT + "asdf2 " + SSL_KEY + "asdf3";
+	var REQUEST_CONTENT_LENGTH = Buffer.byteLength(REQUEST_BODY).toString();
 
+	// This portion represents an app that might use node-awssum
+	// (except that we're bypassing the s3 methods here to call AwsSum.prototype.request directly)
 	var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1);
-	var fakeServer = http.createServer(function(req, res) {
+	var fakeServer = http.createServer(function(req, res) {	
 		s3.request({
 			host: "localhost",
-			port: 3101,
+			port: FAKE_S3_PORT,
 			path: "/",
-			headers: {},
+			headers: {
+				"Content-Length": req.headers["content-length"] // required by s3 (and AwsSum's S3.PutObject)
+			},
 			body: req, // http.ServerRequest is a Readable Stream
 			params: []
+		}, function(err, data){
+			if(err) {
+				t.notOk(true, "AwsSum.prototype.request reported an error: " + JSON.stringify(err));
+				t.end();
+			}
 		});
+		res.end();
 	});
-	fakeServer.listen(3100);
+	fakeServer.listen(FAKE_APP_PORT);
+	
+	// this is a mocked s3 service - it receives requests over https and compares them to the expected result
 	var fakeS3 = https.createServer({key: SSL_KEY, cert: SSL_CERT}, function(req, res) {
 		t.ok(true, "fake s3 server called");
+		t.equal(req.headers['content-length'], REQUEST_CONTENT_LENGTH, "Request had a correct content-length header");
 		var data = ''; 
-		req.on('data', function(chunk) {
+		req.on('data', function (chunk) {
 			data += chunk.toString();
 		});
 		req.on('end', function() {
-			t.ok(data == REQUEST_BODY, "Body was uploaded successfully");
+			t.equal(data, REQUEST_BODY, "Body was uploaded successfully");
+			res.end();
+			fakeServer.close();
+			fakeS3.close();
+			t.end();
 		});
 	});
-	fakeS3.listen(3101);
+	fakeS3.listen(FAKE_S3_PORT);
 
-	// create a request to the fakeServer so that it will create a Readable Stream 
+	// This is a fake user request that might hit the app
 	var fakeClient = http.request({
 		host: "localhost",
-		port: 3100,
-		path: "/",
-		method: "POST"
+		port: FAKE_APP_PORT,
+		path: "/test",
+		method: "PUT",
+		headers: {
+			"Content-Length": REQUEST_CONTENT_LENGTH
+		}
 	});
 	fakeClient.write(REQUEST_BODY);
 	fakeClient.end();
-	setTimeout(function() {
-		fakeServer.close();
-		fakeS3.close();
-	}, 10);
-	t.end();
 });
+
+
