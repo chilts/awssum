@@ -59,3 +59,23 @@ ddb.CreateTable(data2, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+var data3 = {
+    TableName : 'test-to-delete',
+    KeySchema : {
+        HashKeyElement : {
+            AttributeName : "id",
+            AttributeType : "S"
+        },
+    },
+    ProvisionedThroughput : {
+        ReadCapacityUnits : 5,
+        WriteCapacityUnits : 5
+    }
+};
+
+ddb.CreateTable(data3, function(err, data) {
+    console.log("\ncreating a table - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
