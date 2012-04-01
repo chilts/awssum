@@ -2,10 +2,10 @@
 
 With many thanks to the following people for patches. Your contribution is very much appreciated. :)
 
-* Andrew Chilton
+* Andrew Chilton (2011-10-14)
     * Email - chilts@appsattic.com
     * GitHub - https://github.com/chilts/
-* Laurent Bédubourg
+* Laurent Bédubourg (2012-03-20)
     * Email - laurent@labe.me
     * GitHub - https://github.com/labe-me/
 
