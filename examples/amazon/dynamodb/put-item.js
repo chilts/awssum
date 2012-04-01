@@ -26,19 +26,40 @@ var user1 = {
     },
 };
 
+ddb.PutItem(user1, function(err, data) {
+    console.log("\nputting item1 - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
+
 var user2 = {
     TableName : 'test',
     Item : {},
 };
 
-ddb.PutItem(user1, function(err, data) {
-    console.log("\nputting an item - expecting success");
+ddb.PutItem(user2, function(err, data) {
+    console.log("\nputting item2 without a primary key - expecting failure");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
 
-ddb.PutItem(user2, function(err, data) {
-    console.log("\nputting an item without a primary key - expecting failure");
+var user3 = {
+    TableName : 'test',
+    Item : {
+        id       : { 'S' : '378ae6b1-eb74-4cef-8766-66f6aaa3b27d' },
+        username : { 'S' : 'chilts' },
+        logins   : { 'N' : '13' },
+        colour   : { 'S' : 'blue' },
+        password : { 'S' : '$2a$10$QfFcIJohati4wvwc9OuFg.IXvsUH6N5ZRmkYxky.5Vh2wGYqvM6Pi' },
+    },
+    Expected : {
+        logins   : { Value : { 'N' : '12' } },
+    },
+    ReturnValues : 'ALL_OLD',
+};
+
+ddb.PutItem(user3, function(err, data) {
+    console.log("\nputting item3 with an Expected - expecting failure, fails conditional");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

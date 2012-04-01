@@ -32,3 +32,9 @@ ddb.ListTables(function(err, data) {
         inspect(data, 'Data');
     });
 });
+
+ddb.DescribeTable({ TableName : 'test-tweets' }, function(err, data) {
+    console.log("\ndescribing the test-tweets table - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});

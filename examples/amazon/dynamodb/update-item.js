@@ -16,28 +16,39 @@ console.log( 'AccessKeyId :', ddb.accessKeyId() );
 // console.log( 'SecretAccessKey :', ddb.secretAccessKey() );
 console.log( 'AwsAccountId :', ddb.awsAccountId() );
 
-var data1 = {
+var user1 = {
     TableName : 'test',
-    HashKeyValue : {
-        'S' : 'chilts',
+    Key : {
+        HashKeyElement : { S : '9bcd1573-00a5-4676-9f9c-9581c8060777' },
     },
+    AttributeUpdates : {
+        logins   : {
+            Value : { N : '1' },
+            Action : 'ADD'
+        },
+        color : {
+            Value : { S : 'white' },
+            Action : 'PUT'
+        },
+        organisations : {
+            Value : { SS : [ 'PerlMongers', 'Wgtn.JS' ] },
+            Action : 'ADD'
+        },
+        updated : {
+            Value : { S : (new Date()).toISOString() },
+            Action : 'PUT'
+        },
+    },
+    Expected : {
+        username : {
+            Value : { S : 'andychilton' },
+        },
+    },
+    ReturnValues : 'ALL_NEW',
 };
 
-ddb.Query(data1, function(err, data) {
-    console.log("\nquerying the test table - expecting failure (needs a HASH,RANGE table, not a HASH table)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
-});
-
-var data2 = {
-    TableName : 'test-hash-range',
-    HashKeyValue : {
-        'S' : 'chilts',
-    },
-};
-
-ddb.Query(data, function(err, data) {
-    console.log("\nquerying the test-hash-range table - expecting success");
+ddb.UpdateItem(user1, function(err, data) {
+    console.log("\nputting item1 - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });

@@ -16,15 +16,45 @@ console.log( 'AccessKeyId :', ddb.accessKeyId() );
 // console.log( 'SecretAccessKey :', ddb.secretAccessKey() );
 console.log( 'AwsAccountId :', ddb.awsAccountId() );
 
-var data = {
+var data1 = {
     TableName : 'test',
-    HashAttrName : 'id',
-    HashAttrType : 'S',
-    ReadCapacityUnits : 5,
-    WriteCapacityUnits : 5,
+    KeySchema : {
+        HashKeyElement : {
+            AttributeName : "id",
+            AttributeType : "S"
+        },
+    },
+    ProvisionedThroughput : {
+        ReadCapacityUnits : 5,
+        WriteCapacityUnits : 5
+    }
 };
 
-ddb.CreateTable(data, function(err, data) {
+ddb.CreateTable(data1, function(err, data) {
+    console.log("\ncreating a table - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
+
+var data2 = {
+    TableName : 'test-tweets',
+    KeySchema : {
+        HashKeyElement : {
+            AttributeName : "id",
+            AttributeType : "S"
+        },
+        RangeKeyElement : {
+            AttributeName : "inserted",
+            AttributeType : "S"
+        }
+    },
+    ProvisionedThroughput : {
+        ReadCapacityUnits : 5,
+        WriteCapacityUnits : 5
+    }
+};
+
+ddb.CreateTable(data2, function(err, data) {
     console.log("\ncreating a table - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
