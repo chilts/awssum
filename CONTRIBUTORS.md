@@ -8,5 +8,8 @@ With many thanks to the following people for patches. Your contribution is very 
 * Laurent Bédubourg (2012-03-20)
     * Email - laurent@labe.me
     * GitHub - https://github.com/labe-me/
+* Nathan Friedly (2012-03-21)
+    * Email - nathan@nfriedly.com
+    * GitHub - https://github.com/nfriedly/
 
 (Ends)
