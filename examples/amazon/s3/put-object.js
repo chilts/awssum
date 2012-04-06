@@ -16,11 +16,13 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
+var body = "Hello, World!\n";
+
 var options = {
     BucketName    : 'pie-18',
     ObjectName    : 'test-object.txt',
-    ContentLength : '14',
-    Body          : "Hello, World!\n",
+    ContentLength : Buffer.byteLength(body), // This is for strings. See put-object-streaming.js for a file example
+    Body          : body,
 };
 
 s3.PutObject(options, function(err, data) {

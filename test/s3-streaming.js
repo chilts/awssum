@@ -83,8 +83,7 @@ var FAKE_S3_PORT = 3101;
  * In order to test with a "real" stream, we're creating a fake client and server. The client
  * uploads some data to the server, and the node "req" object passed to the server is a
  * ReadableStream containing that data. This ReadableStream is passed directly to
- * AwsSum.prototype.request as the bodyStream param.
- * Note: it should just be named "Body" when passing it to a proper api method like s3.PutObject()
+ * AwsSum.prototype.request as the body.
  * This test then sets up a fake s3 server to verify that the request() method properly copied the
  * streaming data to the s3 request. Because AweSum only allows for https requests, we've generated
  * a fake SSL key pair.
