@@ -68,6 +68,7 @@ Currently this has 100% coverage of the following services:
     * ElastiCache
     * CloudFront
     * Elastic Load Balancing (ELB)
+    * DynamoDB
 
 It has partial support for these services. This means that the complex signatures have been done, but not all
 operations have been implemented:
