@@ -11,5 +11,8 @@ With many thanks to the following people for patches. Your contribution is very 
 * Nathan Friedly (2012-03-21)
     * Email - nathan@nfriedly.com
     * GitHub - https://github.com/nfriedly/
+* Dusty Leary (2012-04-11)
+    * Email - dleary@gmail.com
+    * GitHub - https://github.com/dustyleary/
 
 (Ends)
