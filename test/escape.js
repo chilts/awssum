@@ -26,5 +26,10 @@ test("test our own escape(...)", function (t) {
 
     var signature = 'wOJIO9A2W5mFwDgiDvZbTSMK%2FPY%3D';
 
+    var url = 'http://example.com/request';
+    var escUrl = escape(url);
+    console.log(url, escUrl);
+    t.equal(escUrl, 'http%3A%2F%2Fexample.com%2Frequest', 'Escaping of a URL');
+
     t.end();
 });
