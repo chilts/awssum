@@ -14,5 +14,8 @@ With many thanks to the following people for patches. Your contribution is very 
 * Dusty Leary (2012-04-11)
     * Email - dleary@gmail.com
     * GitHub - https://github.com/dustyleary/
+* gildas-lormeau (2012-04-17)
+    * Email - gildas.lormeau@gmail.com
+    * GitHub - https://github.com/gildas-lormeau
 
 (Ends)
