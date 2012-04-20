@@ -18,4 +18,10 @@ With many thanks to the following people for patches. Your contribution is very 
     * Email - gildas.lormeau@gmail.com
     * GitHub - https://github.com/gildas-lormeau
 
+And also many thanks to the following for reporting bugs or pestering me to get things fixed:
+
+* Nick Verwymeren (2012-04-21)
+    * Binary downloads from Amazon:S3 were not working (fixed #f881b3c8)
+    * https://github.com/greatwitenorth
+
 (Ends)
