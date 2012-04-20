@@ -22,7 +22,7 @@ var options = {
 };
 
 s3.GetObject(options, function(err, data) {
-    console.log("\nputting an object to pie-18 - expecting success");
+    console.log("\ngetting an object from pie-18 - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
