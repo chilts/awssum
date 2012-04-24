@@ -6,15 +6,21 @@ var yahooService = awssum.load('yahoo/yahoo');
 var env = process.env;
 var consumerKey = process.env.YAHOO_CONSUMER_KEY;
 var consumerSecret = process.env.YAHOO_CONSUMER_SECRET;
+// don't need the token, tokenSecret or verifier
 
 var yahoo = new yahooService(consumerKey, consumerSecret);
 
-console.log( 'OAuthConsumerKey :', yahoo.oauthConsumerKey() );
-console.log( 'OAuthConsumerSecret :',  yahoo.oauthConsumerSecret() );
+console.log( 'ConsumerKey :', yahoo.consumerKey() );
+console.log( 'ConsumerSecret :',  yahoo.consumerSecret() );
 
-// oauth_callback is required for Yahoo!
-yahoo.RequestToken({ 'oauth_callback' : 'oob' }, function(err, data) {
+yahoo.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
     console.log("\nrequesting token - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
+
+    console.log( 'If you want to verify this token, visit: '
+                 + yahoo.protocol() + '://' + yahoo.authorizeHost()
+                 + yahoo.authorizePath()
+                 + '?oauth_token=' + data.Body.oauth_token
+               );
 });
