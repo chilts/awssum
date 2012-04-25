@@ -7,7 +7,7 @@ var env = process.env;
 var consumerKey = process.env.TUMBLR_CONSUMER_KEY;
 var consumerSecret = process.env.TUMBLR_CONSUMER_SECRET;
 
-var tumblr = new tumblrService(consumerKey, consumerSecret);
+var tumblr = new tumblrService.Tumblr(consumerKey, consumerSecret);
 
 console.log( 'OAuthConsumerKey :', tumblr.oauthConsumerKey() );
 console.log( 'OAuthConsumerSecret :',  tumblr.oauthConsumerSecret() );

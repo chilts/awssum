@@ -6,14 +6,21 @@ var xeroService = awssum.load('xero/xero');
 var env = process.env;
 var consumerKey = process.env.XERO_CONSUMER_KEY;
 var consumerSecret = process.env.XERO_CONSUMER_SECRET;
+// don't need the token, tokenSecret or verifier
 
-var xero = new xeroService(consumerKey, consumerSecret);
+var xero = new xeroService.Xero(consumerKey, consumerSecret);
 
-console.log( 'OAuthConsumerKey :', xero.oauthConsumerKey() );
-console.log( 'OAuthConsumerSecret :',  xero.oauthConsumerSecret() );
+console.log( 'ConsumerKey :', xero.consumerKey() );
+console.log( 'ConsumerSecret :',  xero.consumerSecret() );
 
-xero.RequestToken({ 'oauth_callback' : 'oob' }, function(err, data) {
+xero.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
     console.log("\nrequesting token - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
+
+    console.log( 'If you want to verify this token, visit: '
+                 + xero.protocol() + '://' + xero.authorizeHost()
+                 + xero.authorizePath()
+                 + '?oauth_token=' + data.Body.oauth_token
+               );
 });

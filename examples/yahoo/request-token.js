@@ -8,7 +8,7 @@ var consumerKey = process.env.YAHOO_CONSUMER_KEY;
 var consumerSecret = process.env.YAHOO_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
-var yahoo = new yahooService(consumerKey, consumerSecret);
+var yahoo = new yahooService.Yahoo(consumerKey, consumerSecret);
 
 console.log( 'ConsumerKey :', yahoo.consumerKey() );
 console.log( 'ConsumerSecret :',  yahoo.consumerSecret() );

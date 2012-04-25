@@ -8,7 +8,7 @@ var consumerKey = process.env.TWITTER_CONSUMER_KEY;
 var consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
-var twitter = new twitterService(consumerKey, consumerSecret);
+var twitter = new twitterService.Twitter(consumerKey, consumerSecret);
 
 console.log( 'ConsumerKey :', twitter.consumerKey() );
 console.log( 'ConsumerSecret :',  twitter.consumerSecret() );

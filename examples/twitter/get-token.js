@@ -11,7 +11,7 @@ var token = process.env.TWITTER_TOKEN;
 var tokenSecret = process.env.TWITTER_TOKEN_SECRET;
 var verifier = process.env.TWITTER_VERIFIER;
 
-var twitter = new twitterService(consumerKey, consumerSecret);
+var twitter = new twitterService.Twitter(consumerKey, consumerSecret);
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 
