@@ -15,9 +15,12 @@ console.log( 'ConsumerSecret :',  twitter.consumerSecret() );
 
 twitter.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
     console.log("\nrequesting token - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    if ( err ) {
+        inspect(err, 'Error');
+        process.exit();
+    }
 
+    inspect(data, 'Data');
     console.log( 'If you want to verify this token, visit: '
                  + twitter.protocol() + '://' + twitter.authorizeHost()
                  + twitter.authorizePath()

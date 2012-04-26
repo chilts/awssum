@@ -15,8 +15,8 @@ console.log( 'ConsumerSecret :',  tumblr.consumerSecret() );
 
 tumblr.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
     console.log("\nrequesting token - expecting success");
-    inspect(err, 'Error');
     if ( err ) {
+        inspect(err, 'Error');
         process.exit();
     }
 
