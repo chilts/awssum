@@ -26,6 +26,12 @@ xero.GetUsers(function(err, data) {
     inspect(data, 'Data');
 });
 
+xero.GetUsers({ 'Where' : 'Firstname="Andrew"' }, function(err, data) {
+    console.log('\nget users where Firstname="Andrew" - expecting success');
+    inspect(err, 'Err');
+    inspect(data, 'Data');
+});
+
 xero.GetUsers({ 'Order' : 'LastName' }, function(err, data) {
     console.log('\nget users order by LastName - expecting success');
     inspect(err, 'Err');
