@@ -220,7 +220,7 @@ A non-successful run results in a true error value, just like any other idiomati
 
 Written by [Andrew Chilton](http://www.chilts.org/blog/)
 
-Copyright 2011 [AppsAttic](http://www.appsattic.com/)
+Copyright 2011-2012 [AppsAttic](http://www.appsattic.com/)
 
 # License #
 
