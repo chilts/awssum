@@ -58,27 +58,112 @@ s3.CreateBucket({ BucketName : 'my-bucket' }, function(err, data) {
 
 Currently this has 100% coverage of the following services:
 
-* AWS:
-    * SimpleDB
-    * Simple Queue Service (SQS)
-    * Simple Notification Service (SNS)
-    * Simple Email Service (SES)
-    * Simple Storage Service (S3)
-    * Route53
-    * ElastiCache
-    * CloudFront
-    * Elastic Load Balancing (ELB)
-    * DynamoDB
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Service</th>
+      <th>Signature</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon</td>
+      <td>SimpleDB</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>SQS</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>SES</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>SNS</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>S3</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>EC2</td>
+      <td>✔</td>
+      <td>1/~100</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>Route53</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>ElastiCache</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>CloudFront</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>Elastic Load Balancing</td>
+      <td>✔</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>&quot;</td>
+      <td>DynamoDB</td>
+      <td>✔ (OAuth)</td>
+      <td>...</td>
+    </tr>
 
-It has partial support for these services. This means that the complex signatures have been done, but not all
-operations have been implemented:
+    <tr>
+      <td>Twitter</td>
+      <td>Twitter</td>
+      <td>✔ (OAuth)</td>
+      <td>1/lots</td>
+    </tr>
 
-* AWS:
-    * Elastic Compute Cloud (EC2) ([Request or Sponsor Development][sponsor])
+    <tr>
+      <td>Tumblr</td>
+      <td>Twitter</td>
+      <td>✔ (OAuth)</td>
+      <td>0/?</td>
+    </tr>
+
+    <tr>
+      <td>Xero</td>
+      <td>Xero</td>
+      <td>✔ (OAuth)</td>
+      <td>~10/30-40</td>
+    </tr>
+
+  </tbody>
+</table>
 
 In future releases we will be targeting (in no particular order):
 
 * AWS:
+    * Simple Workflow Service (SWF) ([Request or Sponsor Development][sponsor])
+    * CloudSearch ([Request or Sponsor Development][sponsor])
     * Relational Database Service (RDS) ([Request or Sponsor Development][sponsor])
     * Flexible Payments Service (FPS) ([Request or Sponsor Development][sponsor])
 * RackspaceCloud:
@@ -88,7 +173,6 @@ In future releases we will be targeting (in no particular order):
     * DNS (In Progress)
 * Flickr ([Request or Sponsor Development][sponsor])
 * PayPal ([Request or Sponsor Development][sponsor])
-* Xero ([Request or Sponsor Development][sponsor])
 * some Google services ([Request or Sponsor Development][sponsor])
 * URL shorteners ([Request or Sponsor Development][sponsor])
 * anything else you'd like? ([Request or Sponsor Development][sponsor])
