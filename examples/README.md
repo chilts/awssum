@@ -35,6 +35,27 @@ service. This also means that some redundant code is at the top of each program
 which could have been put into a library, but I decided not to do this since I
 wanted each example to be standalone and self-contained.
 
+## OAuth ##
+
+When dealing with an OAuth service, the examples force you to set 5 environment variables. For example, if a service
+called ACME used OAuth, you'd need to set the following:
+
+    export ACME_CONSUMER_KEY=blahblah
+    export ACME_CONSUMER_SECRET=herpderp
+    export ACME_TOKEN=
+    export ACME_TOKEN_SECRET=
+    export ACME_VERIFIER=
+
+Note that the ACME_TOKEN, ACME_TOKEN_SECRET and the ACME_VERIFIER are not yet filled in.
+
+To fill the first two in, issue a RequestToken against ACME then set the environment variables. Once that is done, the
+user needs to use the ACME_TOKEN to authorise your app and in return they'll get a VERIFIER. Set that and then issue a
+GetRequest. Finally, you'll get another ACME_TOKEN and ACME_TOKEN_SECRET which override the previous values (they were
+temporary credentials, these are your access credentials).
+
+Once you have done all of that, you can now issue authentivated requests against a users private data (for which you
+have authorisation).
+
 ## A Warning!!!
 
     DON'T RUN THESE PROGRAMS BLINDLY.
