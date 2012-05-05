@@ -102,7 +102,7 @@ Currently AwsSum has coverage of the following services:
       <td></td>
       <td>EC2</td>
       <td>✔</td>
-      <td>1/130 (<1%)</td>
+      <td>1/130 (&lt;1%)</td>
     </tr>
     <tr>
       <td></td>
