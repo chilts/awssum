@@ -56,7 +56,7 @@ s3.CreateBucket({ BucketName : 'my-bucket' }, function(err, data) {
 
 # What services does 'node-awssum' talk to? #
 
-Currently this has 100% coverage of the following services:
+Currently AwsSum has coverage of the following services:
 
 <table>
   <thead>
@@ -72,67 +72,67 @@ Currently this has 100% coverage of the following services:
       <td>Amazon</td>
       <td>SimpleDB</td>
       <td>✔</td>
-      <td>...</td>
+      <td>10/10 (100%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>SQS</td>
       <td>✔</td>
-      <td>...</td>
+      <td>15/15 (100%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>SES</td>
       <td>✔</td>
-      <td>...</td>
+      <td>7/7 (100%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>SNS</td>
       <td>✔</td>
-      <td>...</td>
+      <td>15/15 (100%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>S3</td>
       <td>✔</td>
-      <td>...</td>
+      <td>1/1 (Service)<br>22/26 (Buckets)<br>16/16 (Objects)<br>39/43 (90%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>EC2</td>
       <td>✔</td>
-      <td>1/~100</td>
+      <td>1/130 (<1%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>Route53</td>
       <td>✔</td>
-      <td>...</td>
+      <td>7/7 (100%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>ElastiCache</td>
       <td>✔</td>
-      <td>...</td>
+      <td>18/21 (85%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>CloudFront</td>
       <td>✔</td>
-      <td>...</td>
+      <td>21/21 (100%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>Elastic Load Balancing</td>
       <td>✔</td>
-      <td>...</td>
+      <td>23/23 (100%)</td>
     </tr>
     <tr>
-      <td>&quot;</td>
+      <td></td>
       <td>DynamoDB</td>
-      <td>✔ (OAuth)</td>
-      <td>...</td>
+      <td>✔</td>
+      <td>12/13 (92%)</td>
     </tr>
 
     <tr>
