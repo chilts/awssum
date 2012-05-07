@@ -30,6 +30,9 @@ export TERM_CONSUMER_SECRET=secret
 
 export TWITTER_CONSUMER_KEY=consumer-key
 export TWITTER_CONSUMER_SECRET=consumer-secret
+export TWITTER_TOKEN=
+export TWITTER_TOKEN_SECRET=
+export TWITTER_VERIFIER=
 
 ## ----------------------------------------------------------------------------
 # Tumblr
@@ -37,6 +40,9 @@ export TWITTER_CONSUMER_SECRET=consumer-secret
 
 export TUMBLR_CONSUMER_KEY=consumer-key
 export TUMBLR_CONSUMER_SECRET=consumer-secret
+export TUMBLR_TOKEN=
+export TUMBLR_TOKEN_SECRET=
+export TUMBLR_VERIFIER=
 
 ## ----------------------------------------------------------------------------
 # Yahoo!
@@ -46,6 +52,9 @@ export TUMBLR_CONSUMER_SECRET=consumer-secret
 export YAHOO_APPLICATION_ID=app-id
 export YAHOO_CONSUMER_KEY=consumer-key
 export YAHOO_CONSUMER_SECRET=consumer-secret
+export YAHOO_TOKEN=
+export YAHOO_TOKEN_SECRET=
+export YAHOO_VERIFIER=
 
 ## ----------------------------------------------------------------------------
 # Xero
@@ -53,5 +62,8 @@ export YAHOO_CONSUMER_SECRET=consumer-secret
 
 export XERO_CONSUMER_KEY=consumer-key
 export XERO_CONSUMER_SECRET=consumer-secret
+export XERO_TOKEN=
+export XERO_TOKEN_SECRET=
+export XERO_VERIFIER=
 
 ## ----------------------------------------------------------------------------
