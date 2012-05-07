@@ -25,3 +25,13 @@ ddb.DeleteTable(table, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+var testTable = {
+    TableName : 'test',
+};
+
+ddb.DeleteTable(testTable, function(err, data) {
+    console.log("\ndeleting the test table - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});

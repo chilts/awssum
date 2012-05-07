@@ -129,7 +129,7 @@ Currently AwsSum has coverage of the following services:
       <td></td>
       <td>DynamoDB</td>
       <td>✔</td>
-      <td>12/13 (92%)</td>
+      <td>13/13 (100%)</td>
     </tr>
 
     <tr>
