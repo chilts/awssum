@@ -16,16 +16,9 @@ Build Status : [![Build Status](https://secure.travis-ci.org/appsattic/node-awss
 
 # How to get it #
 
-The easiest way to get it is via [npm][]
+    $ npm -d install awssum
 
-``` bash
-$ npm install awssum
-```
-
-Of course, you can just clone this, and manually point at the library itself,
-but I really recommend using [npm][]!
-
-# Synopsis #
+# Example #
 
 ```
 var awssum = require('awssum');
@@ -53,6 +46,10 @@ s3.CreateBucket({ BucketName : 'my-bucket' }, function(err, data) {
 });
 
 ```
+
+# Help #
+
+Come and say hello on Freenode in #awssum. :)
 
 # What services does 'node-awssum' talk to? #
 
@@ -297,9 +294,6 @@ Data  : { ok: true }
 
 A non-successful run results in a true error value, just like any other idiomatic NodeJS. :)
 
-[npm]: http://github.com/isaacs/npm
-[sponsor]: mailto:chilts%40appsattic.com
-
 # Author #
 
 Written by [Andrew Chilton](http://www.chilts.org/blog/)
@@ -309,3 +303,5 @@ Copyright 2011-2012 [AppsAttic](http://www.appsattic.com/)
 # License #
 
 MIT. See LICENSE for more details.
+
+[sponsor]: mailto:chilts%40appsattic.com
