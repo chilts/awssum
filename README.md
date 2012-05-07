@@ -60,6 +60,7 @@ Currently AwsSum has coverage of the following services:
     <tr>
       <th>Company</th>
       <th>Service</th>
+      <th>SignatureMethod</th>
       <th>Signature</th>
       <th>Operations</th>
     </tr>
@@ -68,66 +69,77 @@ Currently AwsSum has coverage of the following services:
     <tr>
       <td>Amazon</td>
       <td>SimpleDB</td>
+      <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>10/10 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>SQS</td>
+      <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>15/15 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>SES</td>
+      <td>X-Amzn-Authorization &quot;AWS3-HTTPS&quot; header, (HmacSHA256)</td>
       <td>✔</td>
       <td>7/7 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>SNS</td>
+      <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>15/15 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>S3</td>
+      <td>Authorization &quot;AWS&quot; header (SHA1)</td>
       <td>✔</td>
       <td>43/43 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>EC2</td>
+      <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>1/130 (&lt;1%)</td>
     </tr>
     <tr>
       <td></td>
       <td>Route53</td>
+      <td>X-Amzn-Authorization &quot;AWS3-HTTPS&quot; header, (HmacSHA256)</td>
       <td>✔</td>
       <td>7/7 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>ElastiCache</td>
+      <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>21/21 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>CloudFront</td>
+      <td>Authorization &quot;AWS&quot; header (sha1)</td>
       <td>✔</td>
       <td>21/21 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>Elastic Load Balancing</td>
+      <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>23/23 (100%)</td>
     </tr>
     <tr>
       <td></td>
       <td>DynamoDB</td>
+      <td>X-Amzn-Authorization &quot;AWS3&quot; (HmacSHA256)</td>
       <td>✔</td>
       <td>13/13 (100%)</td>
     </tr>
@@ -135,21 +147,24 @@ Currently AwsSum has coverage of the following services:
     <tr>
       <td>Twitter</td>
       <td>Twitter</td>
-      <td>✔ (OAuth)</td>
+      <td>OAuth 1.0a</td>
+      <td>✔</td>
       <td>1/lots</td>
     </tr>
 
     <tr>
       <td>Tumblr</td>
       <td>Twitter</td>
-      <td>✔ (OAuth)</td>
+      <td>OAuth 1.0a</td>
+      <td>✔</td>
       <td>0/?</td>
     </tr>
 
     <tr>
       <td>Xero</td>
       <td>Xero</td>
-      <td>✔ (OAuth)</td>
+      <td>OAuth 1.0a</td>
+      <td>✔</td>
       <td>~10/30-40</td>
     </tr>
 
