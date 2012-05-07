@@ -111,7 +111,7 @@ Currently AwsSum has coverage of the following services:
       <td></td>
       <td>ElastiCache</td>
       <td>✔</td>
-      <td>18/21 (85%)</td>
+      <td>21/21 (100%)</td>
     </tr>
     <tr>
       <td></td>
