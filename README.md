@@ -93,7 +93,7 @@ Currently AwsSum has coverage of the following services:
       <td></td>
       <td>S3</td>
       <td>✔</td>
-      <td>1/1 (Service)<br>22/26 (Buckets)<br>16/16 (Objects)<br>39/43 (90%)</td>
+      <td>43/43 (100%)</td>
     </tr>
     <tr>
       <td></td>
