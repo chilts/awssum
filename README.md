@@ -149,7 +149,7 @@ Currently AwsSum has coverage of the following services:
       <td>Twitter</td>
       <td>OAuth 1.0a</td>
       <td>✔</td>
-      <td>1/lots</td>
+      <td>2/101</td>
     </tr>
 
     <tr>
