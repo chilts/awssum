@@ -10,11 +10,13 @@
                                                                                    
 ```
 
-NodeJS client libraries for talking to lots of Web Service APIs
+NodeJS client libraries for talking to lots of Web Service APIs.
 
 Build Status : [![Build Status](https://secure.travis-ci.org/appsattic/node-awssum.png)](http://travis-ci.org/appsattic/node-awssum)
 
-# How to get it #
+IRC : Come and say hello in #awssum on Freenode. :)
+
+# How to get AwsSum #
 
     $ npm -d install awssum
 
@@ -46,10 +48,6 @@ s3.CreateBucket({ BucketName : 'my-bucket' }, function(err, data) {
 });
 
 ```
-
-# Help #
-
-Come and say hello on Freenode in #awssum. :)
 
 # What services does 'node-awssum' talk to? #
 
