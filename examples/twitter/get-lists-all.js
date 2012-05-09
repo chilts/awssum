@@ -15,10 +15,10 @@ var twitter = new twitterService.Twitter(consumerKey, consumerSecret);
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', twitter.consumerKey()     );
-console.log( 'ConsumerSecret :', twitter.consumerSecret() );
-console.log( 'Token          :', twitter.token()          );
-console.log( 'TokenSecret    :', twitter.tokenSecret()    );
+console.log( 'ConsumerKey    :', twitter.consumerKey()                          );
+console.log( 'ConsumerSecret :', twitter.consumerSecret().substr(0, 3) + '...'  );
+console.log( 'Token          :', twitter.token()                                );
+console.log( 'TokenSecret    :', twitter.tokenSecret().substr(0, 3) + '...'     );
 
 // firstly, request a token
 twitter.GetListsAll(function(err, data) {
