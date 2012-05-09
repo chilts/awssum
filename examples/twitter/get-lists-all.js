@@ -21,7 +21,7 @@ console.log( 'Token          :', twitter.token()          );
 console.log( 'TokenSecret    :', twitter.tokenSecret()    );
 
 // firstly, request a token
-twitter.ListsAll({}, function(err, data) {
+twitter.GetListsAll(function(err, data) {
     console.log('\ncalling /lists/all - expecting success');
     inspect(err, 'Err');
     inspect(data, 'Data');
