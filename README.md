@@ -30,23 +30,33 @@ var s3Service = awssum.load('amazon/s3');
 var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
 s3.ListBuckets(function(err, data) {
+    if (err) {
+        // something went wrong with the request
+        console.log(err);
+        return;
+    }
+
+    // request was fine
     console.log(data);
 });
 
 s3.CreateBucket({ BucketName : 'my-bucket' }, function(err, data) {
     if (err) {
-        // ...
+        console.log(err);
+        return;
     }
+
+    // creation of bucket was ok, now let's put an object into it
     s3.PutObject({
         BucketName : 'my-bucket',
         ObjectName : 'some.txt',
         ContentLength : '14',
         Body          : "Hello, World!\n",
     }, function(err, data) {
+        console.log(err)
         console.log(data)
     });
 });
-
 ```
 
 # What services does 'node-awssum' talk to? #
