@@ -51,7 +51,6 @@ sdb.PutAttributes({
     ItemName : 'andychilton',
     AttributeName : user2Names,
     AttributeValue : user2Values,
-    AttributeName : user2Names,
     ExpectedName : [ 'password' ],
     ExpectedValue : [ 'testpass' ],
 }, function(err, data) {

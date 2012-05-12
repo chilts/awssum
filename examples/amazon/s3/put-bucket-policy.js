@@ -22,12 +22,12 @@ var options = {
         'Version' : '2008-10-17',
         'Statement' : [
             {
-	            'Sid' : 'AddCannedAcl',
+                'Sid' : 'AddCannedAcl',
                 'Effect' : 'Allow',
-	            'Principal' : {
+                'Principal' : {
                     'AWS' : [ 'arn:aws:iam::778695189650:root', 'arn:aws:iam::178784293420:root' ]
                 },
-	            'Action' : [ 's3:PutObject', 's3:PutObjectAcl' ],
+                'Action' : [ 's3:PutObject', 's3:PutObjectAcl' ],
                 'Resource' : [ 'arn:aws:s3:::bucket/*' ],
                 'Condition' : {
                     'StringEquals' : {

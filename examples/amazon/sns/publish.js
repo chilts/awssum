@@ -27,7 +27,7 @@ sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
         var args = {
             TopicArn : data.CreateTopicResponse.CreateTopicResult.TopicArn,
             Subject : (new Date()).toString() + ' - Website Down',
-            Message : 'Tried ' + parseInt(Math.random() * 17) + '  times to hit the site without any response.',
+            Message : 'Tried ' + parseInt(Math.random() * 17, 10) + '  times to hit the site without any response.',
         };
         sns.Publish(args, function(err, data) {
             console.log("\npublishing a message to this topic - expecting success");
