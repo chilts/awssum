@@ -2,7 +2,7 @@ var inspect = require('eyes').inspector();
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
-var twitterService = awssum.load('twitter/twitter');
+var Twitter = awssum.load('twitter/twitter').Twitter;
 
 var env = process.env;
 var consumerKey = process.env.TWITTER_CONSUMER_KEY;
@@ -11,7 +11,7 @@ var token = process.env.TWITTER_TOKEN;
 var tokenSecret = process.env.TWITTER_TOKEN_SECRET;
 var verifier = process.env.TWITTER_VERIFIER;
 
-var twitter = new twitterService.Twitter(consumerKey, consumerSecret);
+var twitter = new Twitter(consumerKey, consumerSecret);
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 

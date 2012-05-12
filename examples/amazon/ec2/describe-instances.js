@@ -1,7 +1,7 @@
 var inspect = require('eyes').inspector();
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
-var Ec2 = awssum.load('amazon/ec2');
+var Ec2 = awssum.load('amazon/ec2').Ec2;
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;

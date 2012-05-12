@@ -1,7 +1,7 @@
 var inspect = require('eyes').inspector();
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
-var Sqs = awssum.load('amazon/sqs');
+var Sqs = awssum.load('amazon/sqs').Sqs;
 var _ = require('underscore');
 
 var env = process.env;

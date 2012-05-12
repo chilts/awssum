@@ -1,6 +1,6 @@
 var inspect = require('eyes').inspector();
 var amazon = require('amazon/amazon');
-var S3 = require('amazon/s3');
+var S3 = require('amazon/s3').S3;
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
