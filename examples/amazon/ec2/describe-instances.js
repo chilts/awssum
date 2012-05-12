@@ -1,14 +1,14 @@
 var inspect = require('eyes').inspector();
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
-var ec2Service = awssum.load('amazon/ec2');
+var Ec2 = awssum.load('amazon/ec2');
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
 var secretAccessKey = process.env.SECRET_ACCESS_KEY;
 var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
-var ec2 = new ec2Service(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+var ec2 = new Ec2(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', ec2.region() );
 console.log( 'EndPoint :',  ec2.host() );

@@ -1,14 +1,14 @@
 var inspect = require('eyes').inspector();
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
-var dynamoDBService = awssum.load('amazon/dynamodb');
+var DynamoDB = awssum.load('amazon/dynamodb');
 
 var env = process.env;
 var accessKeyId = process.env.ACCESS_KEY_ID;
 var secretAccessKey = process.env.SECRET_ACCESS_KEY;
 var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
-var ddb = new dynamoDBService(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+var ddb = new DynamoDB(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
 console.log( 'Region :', ddb.region() );
 console.log( 'EndPoint :',  ddb.host() );
