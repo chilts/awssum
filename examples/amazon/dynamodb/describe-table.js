@@ -23,10 +23,10 @@ ddb.ListTables(function(err, data) {
     }
 
     // got the tables ok, now just get the first one to describe
-    var data = {
+    var tableData = {
         TableName : data.Body.TableNames[0],
     };
-    ddb.DescribeTable(data, function(err, data) {
+    ddb.DescribeTable(tableData, function(err, data) {
         console.log("\ndescribing the first table - expecting success");
         inspect(err, 'Error');
         inspect(data, 'Data');

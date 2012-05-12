@@ -26,7 +26,7 @@ sns.DeleteTopic({}, function(err, data) {
     console.log('\nDeleting an undefined topicArn - expecting failure since we didn\'t provide a TopicArn');
     inspect(err, 'Error');
     inspect(data, 'Data');
-);
+});
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
 sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {

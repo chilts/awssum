@@ -36,7 +36,7 @@ var data2 = {
     },
 };
 
-ddb.Query(data, function(err, data) {
+ddb.Query(data2, function(err, data) {
     console.log("\nquerying the test-hash-range table - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');

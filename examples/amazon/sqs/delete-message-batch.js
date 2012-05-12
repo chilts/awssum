@@ -20,7 +20,7 @@ console.log( 'AwsAccountId :', sqs.awsAccountId() );
 var options = {
     QueueName : 'my-queue',
     MaxNumberOfMessages : 5,
-}
+};
 
 sqs.ReceiveMessage(options, function(err, data) {
     var msgs = [];
