@@ -25,9 +25,9 @@ IRC : Come and say hello in #awssum on Freenode. :)
 ```
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
-var s3Service = awssum.load('amazon/s3');
+var S3 = awssum.load('amazon/s3');
 
-var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+var s3 = new S3('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
 
 s3.ListBuckets(function(err, data) {
     if (err) {
@@ -298,9 +298,9 @@ As a quick example, to create a domain in AWS SimpleDB:
 ``` js
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
-var sdbService = awssum.load('amazon/simpledb');
+var SimpleDB = awssum.load('amazon/simpledb');
 
-var sdb = new sdbService('key', 'secret', amazon.US_WEST_1);
+var sdb = new SimpleDB('key', 'secret', amazon.US_WEST_1);
 
 sdb.CreateDomain({ DomainName : 'test' }, function(err, data) {
     console.log('Error :', err);
