@@ -9,7 +9,11 @@ var secretAccessKey = process.env.SECRET_ACCESS_KEY;
 var awsAccountId = process.env.AWS_ACCOUNT_ID;
 var bucket = process.env.S3_BUCKET;
 
-var s3 = new S3(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+var s3 = new S3({
+    'accessKeyId' : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'region' : amazon.US_EAST_1
+});
 
 console.log( 'Region :', s3.region() );
 console.log( 'EndPoint :',  s3.host() );

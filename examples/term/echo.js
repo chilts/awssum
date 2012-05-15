@@ -11,7 +11,11 @@ var token = process.env.TERM_TOKEN;
 var tokenSecret = process.env.TERM_TOKEN_SECRET;
 // don't need the verifier
 
-var term = new termService.Term(consumerKey, consumerSecret);
+var term = new termService.Term({
+    'consumerKey' : consumerKey,
+    'consumerSecret' : consumerSecret
+});
+
 term.setToken(token);
 term.setTokenSecret(tokenSecret);
 

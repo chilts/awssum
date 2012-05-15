@@ -8,7 +8,12 @@ var accessKeyId = process.env.ACCESS_KEY_ID;
 var secretAccessKey = process.env.SECRET_ACCESS_KEY;
 var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
-var cloudFront = new CloudFront(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+var cloudFront = new CloudFront({
+    'accessKeyId' : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'awsAccountId' : awsAccountId,
+    'region' = amazon.US_EAST_1
+});
 
 console.log( 'Region :', cloudFront.region() );
 console.log( 'EndPoint :',  cloudFront.host() );

@@ -11,7 +11,11 @@ var token = process.env.TWITTER_TOKEN;
 var tokenSecret = process.env.TWITTER_TOKEN_SECRET;
 // don't need the verifier
 
-var twitter = new Twitter(consumerKey, consumerSecret);
+var twitter = new Twitter({
+    'consumerKey'    : consumerKey,
+    'consumerSecret' : consumerSecret
+});
+
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 

@@ -8,7 +8,11 @@ var consumerKey = process.env.XERO_CONSUMER_KEY;
 var consumerSecret = process.env.XERO_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
-var xero = new xeroService.Xero(consumerKey, consumerSecret);
+var xero = new xeroService.Xero({
+    'consumerKey'    : consumerKey,
+    'consumerSecret' : consumerSecret
+});
+
 
 console.log( 'ConsumerKey :', xero.consumerKey() );
 console.log( 'ConsumerSecret :',  xero.consumerSecret() );

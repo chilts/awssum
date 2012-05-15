@@ -8,7 +8,12 @@ var accessKeyId = process.env.ACCESS_KEY_ID;
 var secretAccessKey = process.env.SECRET_ACCESS_KEY;
 var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
-var elastiCache = new ElastiCache(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
+var elastiCache = new ElastiCache({
+    'accessKeyId'     : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    // 'awsAccountId'    : awsAccountId, // optional
+    'region'          : amazon.US_EAST_1
+});
 
 console.log( 'Region :', elastiCache.region() );
 console.log( 'EndPoint :',  elastiCache.host() );

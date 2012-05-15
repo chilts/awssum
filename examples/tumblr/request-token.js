@@ -8,7 +8,10 @@ var consumerKey = process.env.TUMBLR_CONSUMER_KEY;
 var consumerSecret = process.env.TUMBLR_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
-var tumblr = new tumblrService.Tumblr(consumerKey, consumerSecret);
+var tumblr = new tumblrService.Tumblr({
+    'consumerKey'    : consumerKey,
+    'consumerSecret' : consumerSecret
+});
 
 console.log( 'ConsumerKey :', tumblr.consumerKey() );
 console.log( 'ConsumerSecret :',  tumblr.consumerSecret() );

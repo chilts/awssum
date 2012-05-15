@@ -11,7 +11,11 @@ var token = process.env.XERO_TOKEN;
 var tokenSecret = process.env.XERO_TOKEN_SECRET;
 var verifier = process.env.XERO_VERIFIER;
 
-var xero = new xeroService.Xero(consumerKey, consumerSecret);
+var xero = new xeroService.Xero({
+    'consumerKey'    : consumerKey,
+    'consumerSecret' : consumerSecret
+});
+
 xero.setToken(token);
 xero.setTokenSecret(tokenSecret);
 

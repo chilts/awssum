@@ -12,7 +12,12 @@ var tokenSecret = process.env.YAHOO_TOKEN_SECRET;
 // don't need the verifier
 var yahooGuid = process.env.YAHOO_GUID;
 
-var contacts = new contactsService.Contacts(consumerKey, consumerSecret, yahooGuid);
+var contacts = new contactsService.Contacts({
+    'consumerKey'    : consumerKey,
+    'consumerSecret' : consumerSecret,
+    'yahooGuid'      : yahooGuid,
+});
+
 contacts.setToken(token);
 contacts.setTokenSecret(tokenSecret);
 

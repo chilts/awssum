@@ -11,7 +11,11 @@ var token = process.env.YAHOO_TOKEN;
 var tokenSecret = process.env.YAHOO_TOKEN_SECRET;
 var verifier = process.env.YAHOO_VERIFIER;
 
-var yahoo = new yahooService.Yahoo(consumerKey, consumerSecret);
+var yahoo = new yahooService.Yahoo({
+    'consumerKey'    : consumerKey,
+    'consumerSecret' : consumerSecret
+});
+
 yahoo.setToken(token);
 yahoo.setTokenSecret(tokenSecret);
 

@@ -8,7 +8,10 @@ var consumerKey = process.env.TERM_CONSUMER_KEY;
 var consumerSecret = process.env.TERM_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
-var term = new termService.Term(consumerKey, consumerSecret);
+var term = new termService.Term({
+    'consumerKey' : consumerKey,
+    'consumerSecret' : consumerSecret
+});
 
 console.log( 'ConsumerKey :', term.consumerKey() );
 console.log( 'ConsumerSecret :',  term.consumerSecret() );
