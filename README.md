@@ -165,7 +165,7 @@ Currently AwsSum has coverage of the following services:
       <td>Tumblr</td>
       <td>OAuth 1.0a</td>
       <td>✔</td>
-      <td>0/?</td>
+      <td>0/???</td>
     </tr>
 
     <tr>
@@ -173,8 +173,17 @@ Currently AwsSum has coverage of the following services:
       <td>Xero</td>
       <td>OAuth 1.0a</td>
       <td>✔</td>
-      <td>~12/~40</td>
+      <td>~12/~40?</td>
     </tr>
+
+    <tr>
+      <td>Yahoo!</td>
+      <td>Contacts</td>
+      <td>OAuth 1.0a</td>
+      <td>✔</td>
+      <td>3/???</td>
+    </tr>
+
 
   </tbody>
 </table>
