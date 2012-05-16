@@ -18,7 +18,8 @@ var tap = require("tap"),
     _ = require('underscore');
 var awssum = require('../');
 var amazon;
-var simpledb;
+var SimpleDB;
+var esc = require('../lib/esc.js');
 
 // --------------------------------------------------------------------------------------------------------------------
 // basic tests
@@ -27,14 +28,19 @@ test("load simpledb", function (t) {
     amazon = awssum.load('amazon/amazon');
     t.ok(amazon, 'object loaded');
 
-    simpledb = awssum.load('amazon/simpledb');
-    t.ok(simpledb, 'object loaded');
+    SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
+    t.ok(SimpleDB, 'object loaded');
 
     t.end();
 });
 
 test("create simpledb object", function (t) {
-    var sdb = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sdb = new SimpleDB({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.US_WEST_1
+    });
 
     t.equal('access_key_id', sdb.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sdb.secretAccessKey(), 'Secret Access Key set properly');
@@ -45,11 +51,36 @@ test("create simpledb object", function (t) {
 });
 
 test("test all endpoints", function (t) {
-    var sdb1 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
-    var sdb2 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
-    var sdb3 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
-    var sdb4 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
-    var sdb5 = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
+    var sdb1 = new SimpleDB({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.US_EAST_1
+    });
+    var sdb2 = new SimpleDB({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.US_WEST_1
+    });
+    var sdb3 = new SimpleDB({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.EU_WEST_1
+    });
+    var sdb4 = new SimpleDB({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.AP_SOUTHEAST_1
+    });
+    var sdb5 = new SimpleDB({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.AP_NORTHEAST_1
+    });
 
     t.equal('sdb.amazonaws.com', sdb1.host(), '1) Endpoint is correct');
     t.equal('sdb.us-west-1.amazonaws.com', sdb2.host(), '2) Endpoint is correct');
@@ -61,26 +92,31 @@ test("test all endpoints", function (t) {
 });
 
 test("test our own escape(...)", function (t) {
-    var sdb = new simpledb('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sdb = new SimpleDB({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.US_WEST_1
+    });
 
     var query1 = 'DomainName';
-    var escQuery1 = sdb.escape(query1);
+    var escQuery1 = esc(query1);
     t.equal(escQuery1, 'DomainName', 'Simple String (idempotent)');
 
     var query2 = 2;
-    var escQuery2 = sdb.escape(query2);
+    var escQuery2 = esc(query2);
     t.equal(escQuery2, '2', 'Simple Number Escape (idempotent)');
 
     var query3 = 'String Value';
-    var escQuery3 = sdb.escape(query3);
+    var escQuery3 = esc(query3);
     t.equal(escQuery3, 'String%20Value', 'Simple With a Space');
 
     var query4 = 'Hey @andychilton, read this! #liverpool';
-    var escQuery4 = sdb.escape(query4);
+    var escQuery4 = esc(query4);
     t.equal(escQuery4, 'Hey%20%40andychilton%2C%20read%20this%21%20%23liverpool', 'Something akin to a Tweet');
 
     var query5 = 'SELECT * FROM my_table';
-    var escQuery5 = sdb.escape(query5);
+    var escQuery5 = esc(query5);
     t.equal(escQuery5, 'SELECT%20%2A%20FROM%20my_table', 'Escaping of a select');
 
     t.end();

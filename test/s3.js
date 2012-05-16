@@ -18,7 +18,7 @@ var tap = require("tap"),
     _ = require('underscore');
 var awssum = require('../');
 var amazon;
-var s3Service;
+var S3;
 
 // --------------------------------------------------------------------------------------------------------------------
 // basic tests
@@ -27,14 +27,19 @@ test("load s3", function (t) {
     amazon = awssum.load('amazon/amazon');
     t.ok(amazon, 'object loaded');
 
-    s3Service = awssum.load('amazon/s3');
-    t.ok(s3Service, 'object loaded');
+    S3 = awssum.load('amazon/s3').S3;
+    t.ok(S3, 'object loaded');
 
     t.end();
 });
 
 test("create s3 object", function (t) {
-    var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var s3 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.US_WEST_1
+    });
 
     t.equal('access_key_id', s3.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', s3.secretAccessKey(), 'Secret Access Key set properly');
@@ -45,11 +50,36 @@ test("create s3 object", function (t) {
 });
 
 test("test all endpoints", function (t) {
-    var s31 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
-    var s32 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
-    var s33 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
-    var s34 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
-    var s35 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
+    var s31 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.US_EAST_1
+    });
+    var s32 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.US_WEST_1
+    });
+    var s33 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.EU_WEST_1
+    });
+    var s34 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.AP_SOUTHEAST_1
+    });
+    var s35 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.AP_NORTHEAST_1
+    });
 
     t.equal('s3.amazonaws.com', s31.host(), '1) Endpoint is correct');
     t.equal('s3-us-west-1.amazonaws.com', s32.host(), '2) Endpoint is correct');
@@ -61,7 +91,12 @@ test("test all endpoints", function (t) {
 });
 
 test("test strToSign", function (t) {
-    var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var s3 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.US_WEST_1
+    });
 
     // NOTE: since strToSign() is really a private method, we have to set up the options to be pretty complete
     // (including empty headers and params) since in the class they would have been setup before this method is every
@@ -147,7 +182,12 @@ test("test strToSign", function (t) {
 });
 
 test("test signature", function (t) {
-    var s3 = new s3Service('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var s3 = new S3({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.US_WEST_1
+    });
 
     var strToSign = "GET\n\n\nTue, 25 Oct 2011 03:09:21 UTC\n/";
     var sig = s3.signature(strToSign);

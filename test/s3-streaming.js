@@ -17,7 +17,7 @@ var test = require("tap").test;
 
 var awssum = require('../'),
     amazon = awssum.load('amazon/amazon'),
-    s3service = awssum.load('amazon/s3');
+    S3 = awssum.load('amazon/s3').S3;
 
 test("AwsSum.prototype.send tests", function(t) {
     t.plan(4);
@@ -33,7 +33,12 @@ test("AwsSum.prototype.send tests", function(t) {
         Body:  FAKE_READABLE_STREAM
     };
 
-    var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1)
+    var s3 = new S3({
+        accessKeyId     : 'key',
+        secretAccessKey : 'secret',
+        awsAccountId    : 'account_id',
+        region          : amazon.US_EAST_1
+    });
     s3.request = function(options) {
         t.equal(FAKE_READABLE_STREAM, options.body, "AweSum.prototype.request called with a ReadableStream body");
         t.equal(FAKE_CONTENT_LENGTH, options.headers['Content-Length'], "Content-length header remained intact");
@@ -97,7 +102,12 @@ test("AwsSum.prototype.request properly streams body contents", function(t) {
 
     // This portion represents an app that might use node-awssum
     // (except that we're bypassing the s3 methods here to call AwsSum.prototype.request directly)
-    var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1);
+    var s3 = new S3({
+        accessKeyId     : 'key',
+        secretAccessKey : 'secret',
+        awsAccountId    : 'account_id',
+        region          : amazon.US_EAST_1
+    });
     var fakeServer = http.createServer(function(req, res) {
         s3.request({
             protocol : 'https',

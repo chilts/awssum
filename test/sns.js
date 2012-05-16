@@ -18,7 +18,7 @@ var tap = require("tap"),
     _ = require('underscore');
 var awssum = require('../');
 var amazon;
-var snsService;
+var Sns;
 
 // --------------------------------------------------------------------------------------------------------------------
 // basic tests
@@ -27,14 +27,19 @@ test("load sns", function (t) {
     amazon = awssum.load('amazon/amazon');
     t.ok(amazon, 'object loaded');
 
-    snsService = awssum.load('amazon/sns');
-    t.ok(snsService, 'object loaded');
+    Sns = awssum.load('amazon/sns').Sns;
+    t.ok(Sns, 'object loaded');
 
     t.end();
 });
 
 test("create sns object", function (t) {
-    var sns = new snsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+    var sns = new Sns({
+        accessKeyId : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId : 'aws_account_id',
+        region : amazon.US_WEST_1
+    });
 
     t.equal('access_key_id', sns.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sns.secretAccessKey(), 'Secret Access Key set properly');
@@ -45,11 +50,36 @@ test("create sns object", function (t) {
 });
 
 test("test all endpoints", function (t) {
-    var sns1 = new snsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_EAST_1);
-    var sns2 = new snsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
-    var sns3 = new snsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.EU_WEST_1);
-    var sns4 = new snsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_SOUTHEAST_1);
-    var sns5 = new snsService('access_key_id', 'secret_access_key', 'aws_account_id', amazon.AP_NORTHEAST_1);
+    var sns1 = new Sns({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.US_EAST_1
+    });
+    var sns2 = new Sns({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.US_WEST_1
+    });
+    var sns3 = new Sns({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.EU_WEST_1
+    });
+    var sns4 = new Sns({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.AP_SOUTHEAST_1
+    });
+    var sns5 = new Sns({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : 'aws_account_id',
+        region          : amazon.AP_NORTHEAST_1
+    });
 
     t.equal('sns.us-east-1.amazonaws.com', sns1.host(), '1) Endpoint is correct');
     t.equal('sns.us-west-1.amazonaws.com', sns2.host(), '2) Endpoint is correct');
