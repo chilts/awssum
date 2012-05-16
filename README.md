@@ -93,7 +93,7 @@ Currently AwsSum has coverage of the following services:
       <td>SES</td>
       <td>X-Amzn-Authorization &quot;AWS3-HTTPS&quot; header, (HmacSHA256)</td>
       <td>✔</td>
-      <td>7/7 (100%)</td>
+      <td>12/12 (100%)</td>
     </tr>
     <tr>
       <td></td>
