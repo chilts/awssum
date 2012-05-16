@@ -16,6 +16,9 @@ NodeJS client libraries for talking to lots of Web Service APIs.
 
 IRC : Come and say hello in #awssum on Freenode. :)
 
+Note: that I am looking for sponsorship for various libraries, especially larger ones such as GitHub, PayPal and
+Flickr. Please contact me.
+
 # How to get AwsSum #
 
     $ npm -d install awssum
@@ -240,18 +243,26 @@ Example 1. This is what node-awssum looks like when adding a topic to Amazon's S
 ``` js
 sns.CreateTopic({ TopicName : 'my-topic' })
 =>  {
-        CreateTopicResponse:
-        {
-            '@': {
-                xmlns: 'http://sns.amazonaws.com/doc/2010-03-31/'
-            },
-            CreateTopicResult: {
-                TopicArn: 'arn:aws:sns:us-east-1:616781752028:my-topic'
-            },
-            ResponseMetadata: {
-                RequestId: '0928273f-fc34-11e0-945d-17a52825d3d9'
+        Headers: {
+            date: 'Wed, 16 May 2012 10:32:24 GMT',
+            content-type: 'text/xml',
+            x-amzn-requestid: '6d099dcd-9f42-11e1-a8a2-0f9b48899c6b',
+            content-length: '315'
+        },
+        Body: {
+            CreateTopicResponse: {
+                @: {
+                    xmlns: 'http://sns.amazonaws.com/doc/2010-03-31/'
+                },
+                ResponseMetadata: {
+                    RequestId: '6d099dcd-9f42-11e1-a8a2-0f9b48899c6b'
+                },
+                CreateTopicResult: {
+                    TopicArn: 'arn:aws:sns:us-east-1:616781752028:my-topic'
+                }
             }
-        }
+        },
+        StatusCode: 200
     }
 ```
 
@@ -309,7 +320,12 @@ var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
 
-var sdb = new SimpleDB('key', 'secret', amazon.US_WEST_1);
+var sdb = new SimpleDB({
+    'accessKeyId'     : 'my-access-key-id',
+    'secretAccessKey' : 'my-secret-access-key',
+    // 'awsAccountId'    : 'my-aws-account-id', // optional
+    'region'          : amazon.US_EAST_1
+});
 
 sdb.CreateDomain({ DomainName : 'test' }, function(err, data) {
     console.log('Error :', err);
@@ -317,14 +333,8 @@ sdb.CreateDomain({ DomainName : 'test' }, function(err, data) {
 });
 ```
 
-A successful run outputs:
-
-``` js
-Error : null
-Data  : { ok: true }
-```
-
-A non-successful run results in a true error value, just like any other idiomatic NodeJS. :)
+A successful run puts the pertinent information into 'data' ('err' is undefined). An unsuccessful run results in a value
+in 'err' but nothing in 'data'.
 
 # Author #
 
