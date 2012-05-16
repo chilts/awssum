@@ -12,7 +12,7 @@ var cloudFront = new CloudFront({
     'accessKeyId' : accessKeyId,
     'secretAccessKey' : secretAccessKey,
     'awsAccountId' : awsAccountId,
-    'region' = amazon.US_EAST_1
+    'region' : amazon.US_EAST_1
 });
 
 console.log( 'Region :', cloudFront.region() );

@@ -14,7 +14,7 @@ var yahooGuid = process.env.YAHOO_GUID;
 
 var contacts = new contactsService.Contacts({
     'consumerKey'    : consumerKey,
-    'consumerSecret' : consumerSecret
+    'consumerSecret' : consumerSecret,
     'yahooGuid'      : yahooGuid,
 });
 
