@@ -12,7 +12,7 @@
 
 NodeJS client libraries for talking to lots of Web Service APIs.
 
-Build Status : [![Build Status](https://secure.travis-ci.org/appsattic/node-awssum.png)](http://travis-ci.org/appsattic/node-awssum)
+[![Build Status](https://secure.travis-ci.org/appsattic/node-awssum.png?branch=master)](http://travis-ci.org/appsattic/node-awssum)
 
 IRC : Come and say hello in #awssum on Freenode. :)
 
