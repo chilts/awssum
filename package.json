@@ -11,6 +11,7 @@
     "contributors": [],
     "devDependencies": {
         "tap": ">= 0.0.11",
+        "jshint": ">= 0.6.1",
         "eyes": ">= 0.1.7"
     },
     "dependencies": {
