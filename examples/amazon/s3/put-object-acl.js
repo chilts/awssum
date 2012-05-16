@@ -20,13 +20,26 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-var options = {
+var optionsNotFound = {
     BucketName    : 'pie-18',
     ObjectName    : 'not-found.txt',
+    Acl           : 'private',
 };
 
-s3.PutObjectAcl(options, function(err, data) {
+s3.PutObjectAcl(optionsNotFound, function(err, data) {
     console.log("\nputting an object acl to pie-18 - expecting failure (object not found)");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
+
+var optionsFound = {
+    BucketName    : 'pie-18',
+    ObjectName    : 'test-object.txt',
+    Acl           : 'private',
+};
+
+s3.PutObjectAcl(optionsFound, function(err, data) {
+    console.log("\nputting an object acl to pie-18 - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
