@@ -12,8 +12,6 @@
 * 1 more operation for AWS S3
 * 2 more operation for AWS SNS
 
-elb???
-
 ### Other ###
 
 * more people in the contributors file
@@ -27,7 +25,6 @@ elb???
 * rearrange esc() to be it's own module
 * allow for both 'http' and 'https' services
 * now allows streaming when uploading files somewhere
-* 
 
 ## v0.4.0 ##
 
@@ -52,4 +49,3 @@ ToDo.
 ToDo.
 
 (Ends)
-
