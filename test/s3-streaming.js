@@ -100,6 +100,7 @@ test("AwsSum.prototype.request properly streams body contents", function(t) {
     var s3 = new s3service("key","secret","account_id",amazon.US_EAST_1);
     var fakeServer = http.createServer(function(req, res) {
         s3.request({
+            protocol : 'https',
             host: "localhost",
             port: FAKE_S3_PORT,
             path: "/",
