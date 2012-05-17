@@ -36,6 +36,19 @@ s3.PutObject(options, function(err, data) {
     inspect(data, 'Data');
 });
 
+var optionsWithSpace = {
+    BucketName    : 'pie-18',
+    ObjectName    : 'test object.txt',
+    ContentLength : Buffer.byteLength(body),
+    Body          : body,
+};
+
+s3.PutObject(optionsWithSpace, function(err, data) {
+    console.log("\nputting an object with a space in it's name to pie-18 - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
+
 var optionsWithMetaData = {
     BucketName    : 'pie-18',
     ObjectName    : 'test-object-with-metadata.txt',

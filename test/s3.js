@@ -179,9 +179,25 @@ test("test strToSign", function (t) {
     );
 
 
+    // do an object with a space in the name
+    var strToSign5 = s3.strToSign(
+        {
+            method : 'PUT',
+            path : '/',
+            params : [ { name : 'BucketName', value : 'bulk' }, { name : 'ObjectName', value : 'my object.txt' } ],
+            headers : headers,
+        },
+        { BucketName : 'bulk', ObjectName : 'my object.txt' }
+    );
+    t.equal(
+        strToSign5,
+        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my%20object.txt",
+        'strToSign with an object'
+    );
+
     // do an object with 'x-amz-*' headers
     headers['x-amz-meta-username'] = "chilts";
-    var strToSign5 = s3.strToSign(
+    var strToSign6 = s3.strToSign(
         {
             method : 'PUT',
             path : '/',
@@ -191,7 +207,7 @@ test("test strToSign", function (t) {
         { BucketName : 'bulk', ObjectName : 'my-object.txt' }
     );
     t.equal(
-        strToSign5,
+        strToSign6,
         "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\nx-amz-meta-username:chilts\n/bulk/my-object.txt",
         'strToSign with an object'
     );
