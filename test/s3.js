@@ -178,6 +178,24 @@ test("test strToSign", function (t) {
         'strToSign with an object'
     );
 
+
+    // do an object with 'x-amz-*' headers
+    headers['x-amz-meta-username'] = "chilts";
+    var strToSign5 = s3.strToSign(
+        {
+            method : 'PUT',
+            path : '/',
+            params : [ { name : 'BucketName', value : 'bulk' }, { name : 'ObjectName', value : 'my-object.txt' } ],
+            headers : headers,
+        },
+        { BucketName : 'bulk', ObjectName : 'my-object.txt' }
+    );
+    t.equal(
+        strToSign5,
+        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\nx-amz-meta-username:chilts\n/bulk/my-object.txt",
+        'strToSign with an object'
+    );
+
     t.end();
 });
 

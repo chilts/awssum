@@ -35,3 +35,20 @@ s3.PutObject(options, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+var optionsWithMetaData = {
+    BucketName    : 'pie-18',
+    ObjectName    : 'test-object-with-metadata.txt',
+    MetaData      : {
+        'Username' : 'chilts',
+        'UniqueId' : '629f3b9b-49bb-4d0b-b38b-21ad9b132e90'
+    },
+    ContentLength : Buffer.byteLength(body),
+    Body          : body,
+};
+
+s3.PutObject(optionsWithMetaData, function(err, data) {
+    console.log("\nputting an object with metadata to pie-18 - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});

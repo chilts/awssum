@@ -30,3 +30,14 @@ s3.GetObject(options, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+var optionsWithMetaData = {
+    BucketName : 'pie-18',
+    ObjectName : 'test-object-with-metadata.txt',
+};
+
+s3.GetObject(optionsWithMetaData, function(err, data) {
+    console.log("\ngetting an object with metadata from pie-18 - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
