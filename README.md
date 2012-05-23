@@ -154,6 +154,13 @@ Currently AwsSum has coverage of the following services:
       <td>✔</td>
       <td>13/13 (100%)</td>
     </tr>
+    <tr>
+      <td></td>
+      <td>Simple Workflow Service</td>
+      <td>X-Amzn-Authorization &quot;AWS3&quot; (HmacSHA256)</td>
+      <td>✔</td>
+      <td>9/31 (29%)</td>
+    </tr>
 
     <tr>
       <td>Twitter</td>
@@ -194,7 +201,6 @@ Currently AwsSum has coverage of the following services:
 In future releases we will be targeting (in no particular order):
 
 * AWS:
-    * Simple Workflow Service (SWF) ([Request or Sponsor Development][sponsor])
     * CloudSearch ([Request or Sponsor Development][sponsor])
     * Relational Database Service (RDS) ([Request or Sponsor Development][sponsor])
     * Flexible Payments Service (FPS) ([Request or Sponsor Development][sponsor])
