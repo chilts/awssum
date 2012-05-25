@@ -159,7 +159,7 @@ Currently AwsSum has coverage of the following services:
       <td>Simple Workflow Service</td>
       <td>X-Amzn-Authorization &quot;AWS3&quot; (HmacSHA256)</td>
       <td>✔</td>
-      <td>9/31 (29%)</td>
+      <td>31/31 (100%)</td>
     </tr>
 
     <tr>
