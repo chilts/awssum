@@ -20,7 +20,7 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
-s3.listBuckets(function(err, data) {
+s3.ListBuckets(function(err, data) {
     console.log("\nlisting all the buckets (no options given) - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
