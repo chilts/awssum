@@ -41,3 +41,15 @@ s3.GetObject(optionsWithMetaData, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+var optionsWithResponseContentType = {
+    BucketName          : 'pie-18',
+    ObjectName          : 'test-object-with-metadata.txt',
+    ResponseContentType : 'text/plain',
+};
+
+s3.GetObject(optionsWithResponseContentType, function(err, data) {
+    console.log("\ngetting an object with a content type - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
