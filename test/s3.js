@@ -127,7 +127,7 @@ test("test strToSign", function (t) {
         },
         { BucketName : 'bulk' }
     );
-    t.equal(strToSign, "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?BucketName=bulk", 'strToSign of common params');
+    t.equal(strToSign, "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/", 'strToSign of common params');
 
     // do a subresource test
     var strToSign2 = s3.strToSign(
@@ -142,7 +142,7 @@ test("test strToSign", function (t) {
 
     t.equal(
         strToSign2,
-        "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?BucketName=bulk&versioning",
+        "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?versioning",
         'strToSign with subresource of versioning'
     );
 
@@ -158,7 +158,7 @@ test("test strToSign", function (t) {
     );
     t.equal(
         strToSign3,
-        "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?BucketName=bulk&website",
+        "POST\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/?website",
         'strToSign with subresource of website'
     );
 
@@ -174,7 +174,7 @@ test("test strToSign", function (t) {
     );
     t.equal(
         strToSign4,
-        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my-object.txt?BucketName=bulk&ObjectName=my-object.txt",
+        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my-object.txt",
         'strToSign with an object'
     );
 
@@ -191,7 +191,7 @@ test("test strToSign", function (t) {
     );
     t.equal(
         strToSign5,
-        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my%20object.txt?BucketName=bulk&ObjectName=my object.txt",
+        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\n/bulk/my%20object.txt",
         'strToSign with an object'
     );
 
@@ -208,7 +208,7 @@ test("test strToSign", function (t) {
     );
     t.equal(
         strToSign6,
-        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\nx-amz-meta-username:chilts\n/bulk/my-object.txt?BucketName=bulk&ObjectName=my-object.txt",
+        "PUT\n\n\nMon, 26 Oct 2011 16:07:36 Z\nx-amz-meta-username:chilts\n/bulk/my-object.txt",
         'strToSign with an object'
     );
 
