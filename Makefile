@@ -4,7 +4,7 @@ jshint:
 	find lib/ -name '*.js' | xargs ./node_modules/.bin/jshint
 	find examples/ -name '*.js' | xargs ./node_modules/.bin/jshint
 
-test:
+test: clean
 	./node_modules/.bin/tap test/
 
 clean:
