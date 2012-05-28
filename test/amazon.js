@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 //
-// amazon.js - test for AWS Amazon
+// amazon.js - test for Amazon
 //
 // Copyright (c) 2011 AppsAttic Ltd - http://www.appsattic.com/
 // Written by Andrew Chilton <chilts@appsattic.com>
