@@ -344,9 +344,7 @@ in 'err' but nothing in 'data'.
 
 # Author #
 
-Written by [Andrew Chilton](http://www.chilts.org/blog/)
-
-Copyright 2011-2012 [AppsAttic](http://www.appsattic.com/)
+Written by [Andrew Chilton](http://www.chilts.org/).
 
 # License #
 
