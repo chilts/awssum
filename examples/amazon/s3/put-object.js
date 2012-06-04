@@ -20,7 +20,7 @@ console.log( 'AccessKeyId :', s3.accessKeyId() );
 // console.log( 'SecretAccessKey :', s3.secretAccessKey() );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
- // This is for strings. See put-object-streaming.js for a file example
+// This is for strings. See put-object-streaming.js for a file example
 var body = "Hello, World!\n";
 
 var options = {
