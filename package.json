@@ -44,7 +44,7 @@
     }],
     "keywords": [
         "api",
-        "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","clodufront","fps",
+        "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","cloudfront","fps",
         "rackspacecloud",
         "flickr",
         "paypal",
