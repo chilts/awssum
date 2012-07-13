@@ -57,6 +57,23 @@ test('S3:ListObjects - Standard', function(t) {
     });
 });
 
+test('S3:ListObjects - MaxKeys and Prefix', function(t) {
+    var args = {
+        BucketName : bucket,
+        MaxKeys    : 10,
+        Prefix     : 'm',
+    };
+
+    s3.ListObjects(args, function(err, data) {
+        t.equal(err, null, 'S3:ListObjects(MaxKeys/Prefix) : Error should be null');
+        t.ok(data, 'S3:ListObjects - MaxKeys and Prefix : data ok');
+        t.ok(data.Headers['x-amz-request-id'], 'S3:ListObjects(MaxKeys/Prefix) : Request should have an id');
+        t.ok(data.Headers['x-amz-id-2'], 'S3:ListObjects(MaxKeys/Prefix) : request should have a 2nd id');
+        t.ok(data.Body.ListBucketResult.Contents.length > 0, 'S3:ListObjects(MaxKeys/Prefix) : should have more than 1 item');
+        t.end();
+    });
+});
+
 test('S3:GetObject - with ResponseContentType', function(t) {
     var optionsWithResponseContentType = {
         BucketName          : bucket,
