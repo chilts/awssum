@@ -74,6 +74,20 @@ test('S3:ListObjects - MaxKeys and Prefix', function(t) {
     });
 });
 
+test('S3:GetObject - without ResponseContentType', function(t) {
+    var opts = {
+        BucketName          : bucket,
+        ObjectName          : 'test-object-with-metadata.txt',
+    };
+
+    s3.GetObject(opts, function(err, data) {
+        t.equal(err, null, 'S3:GetObject - without ResponseContentType : Error should be null');
+        t.ok(data, 'S3:GetObject - without ResponseContentType : data ok');
+        t.equal(data.Headers['content-type'], 'binary/octet-stream', 'S3:GetObject - without ResponseContentType : header correct');
+        t.end();
+    });
+});
+
 test('S3:GetObject - with ResponseContentType', function(t) {
     var optionsWithResponseContentType = {
         BucketName          : bucket,
@@ -84,6 +98,7 @@ test('S3:GetObject - with ResponseContentType', function(t) {
     s3.GetObject(optionsWithResponseContentType, function(err, data) {
         t.equal(err, null, 'S3:GetObject - with ResponseContentType : Error should be null');
         t.ok(data, 'S3:GetObject - with ResponseContentType : data ok');
+        t.equal(data.Headers['content-type'], 'text/plain', 'S3:GetObject - with ResponseContentType : header correct');
         t.end();
     });
 });
