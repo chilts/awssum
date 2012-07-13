@@ -51,6 +51,6 @@
         "xero"
     ],
     "scripts" : {
-        "test" : "tap test/"
+        "test" : "tap test/*.js test/integration/*.js"
     }
 }
