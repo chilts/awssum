@@ -127,4 +127,19 @@ test('S3:CopyObject - Simple', function(t) {
     });
 });
 
+test('S3:GetObject - With a Range Header', function(t) {
+    var opts = {
+        BucketName          : bucket,
+        ObjectName          : 'test-object.txt',
+        ResponseContentType : 'text/plain',
+        Range               : 'bytes=3-8',
+    };
+
+    s3.GetObject(opts, function(err, data) {
+        t.equal(err, null, 'S3:GetObject - using a Range : Error should be null');
+        t.equal(data.Body.toString('utf8'), 'lo, Wo', 'S3:GetObject - using a Range : data ok');
+        t.end();
+    });
+});
+
 // --------------------------------------------------------------------------------------------------------------------
