@@ -26,10 +26,10 @@ var esc = require('../lib/esc.js');
 
 test("load simpledb", function (t) {
     amazon = awssum.load('amazon/amazon');
-    t.ok(amazon, 'object loaded');
+    t.ok(amazon, 'amazon object loaded');
 
     SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
-    t.ok(SimpleDB, 'object loaded');
+    t.ok(SimpleDB, 'simpledb object loaded');
 
     t.end();
 });
