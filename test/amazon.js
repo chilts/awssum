@@ -38,47 +38,6 @@ test("create amazon object", function (t) {
     t.end();
 });
 
-test("test addParam", function (t) {
-    var amz = new amazon.Amazon({
-        accessKeyId     : 'access_key_id',
-        secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
-        region          : amazon.US_WEST_1
-    });
-
-    var params = [];
-    var result = [
-        { 'name' : 'Name',  'value' : 'Value' }
-    ];
-    awssum.addParam(params, 'Name', 'Value');
-    t.ok(_.isEqual(params, result), 'Deep compare of params');
-
-    t.end();
-});
-
-test("test addParamIfDefined", function (t) {
-    var amz = new amazon.Amazon({
-        accessKeyId     : 'access_key_id',
-        secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
-        region          : amazon.US_WEST_1
-    });
-
-    var params1 = [];
-    var result1 = [
-        { 'name' : 'Name',  'value' : 'Value' }
-    ];
-    awssum.addParamIfDefined(params1, 'Name', 'Value');
-    t.ok(_.isEqual(params1, result1), 'Deep compare of params');
-
-    var params2 = [];
-    var result2 = [];
-    awssum.addParamIfDefined(params2, 'Name', undefined);
-    t.ok(_.isEqual(params2, result2), 'Deep compare of (empty) params');
-
-    t.end();
-});
-
 test("test our own esc(...)", function (t) {
     var amz = new amazon.Amazon({
         accessKeyId     : 'access_key_id',
