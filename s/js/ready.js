@@ -6,7 +6,7 @@ $(function() {
         callback = callback || function(){};
 
         // see if we already have it cached
-        if ( cache[item] || $('.content-' + item).size() > 0 ) {
+        if ( cache[item] ) {
             callback();
             return;
         }
@@ -18,6 +18,7 @@ $(function() {
             success  : function(data, textStatus) {
                 // we're not going load the data into the document, but just cache it here
                 cache[item] = data;
+                console.log('Cache now has ' + cache.length + ' items');
                 callback();
             }
         });
@@ -85,7 +86,7 @@ $(function() {
     setTimeout(function() {
         var initial = [ 'installing', 'loading', 'async', 'operations'];
         for(var i = 0; i < initial.length; i++ ) {
-            load(initial[i]);
+            preload(initial[i]);
         }
     }, 5000);
 
