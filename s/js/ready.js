@@ -35,12 +35,14 @@ $(function() {
         // see if we have a copy
         if ( cache[item] ) {
             $('#content').append(cache[item]);
+            callback();
             return;
         }
 
         // not anywhere yet, so ask for it and put it in the document
         preload(item, function() {
             $('#content').append(cache[item]);
+            callback();
         });
     }
 
