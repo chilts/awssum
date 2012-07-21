@@ -1,6 +1,6 @@
 $(function() {
 
-    var cache = "";
+    var cache = {};
 
     function preload(item, callback) {
         callback = callback || function(){};
