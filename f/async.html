@@ -1,0 +1,28 @@
+<h1>Async</h1>
+
+<p>
+  Due to the fact that Node.js is non-blocking and we're doing a round trip through the internet, it's obvious that
+  each and every operation in AwsSum has a callback so that you know when your result has come back.
+</p>
+
+<p>
+  And as with most other async callbacks the <code>(err, result)</code> is standardised across all
+  operations. Therefore, in general, the first thing to do is check whether your operation received an error. If
+  everything went well you're free to use the result for whatever purpose you require:
+</p>
+
+<code>
+service.Operation(function(err, result) {
+    if (err) {
+        console.log('An error has occurred', err);
+        return;
+    }
+    console.log('Buckets', result);
+});
+</code>
+
+<p>
+  Pretty much all calls you'll ever make will look fairly similar to the one above. If you're using some kind of flow
+  control library to make things easier, then I don't need to explain further since you've already figured the whole
+  async+callbacks thing out. :)
+</p>

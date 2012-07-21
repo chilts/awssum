@@ -1,0 +1,27 @@
+<h1>Loading AwsSum</h1>
+
+<p>
+  After installing AwsSum, you are now able to load it into your programs ready for use. So that the entire suite of
+  AwsSum libraries aren't loaded, you just load the base package and then any others you required. For example, to load
+  Amazon S3 you load AwsSum, then the Amazon package (so that we can get at some constants defined there) and finally
+  the S3 package:
+</p>
+
+<pre>
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var S3 = awssum.load('amazon/s3').S3;
+</pre>
+
+<p>
+  From there it's a case of creating a new object for this service using your own credentials. Each service might be
+  slightly different so look at the docs for creating each object. Here is an example using Amazon S3:
+</p>
+
+<pre>
+var s3 = new S3({
+    'accessKeyId' : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'region' : amazon.US_EAST_1
+});
+</pre>
