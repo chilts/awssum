@@ -47,12 +47,14 @@ $(function() {
     }
 
     function showHash() {
-        // firstly, hide everything
-        $('.content').hide();
-
         // now just show the one in the hash
         var item = location.hash.substr(1);
-        load(item);
+        load(item, function() {
+            // firstly, hide everything
+            $('.content').hide();
+            // now show the one we've just added
+            $('.content-' + item).show();
+        });
     }
 
     // Bind the event.
