@@ -36,9 +36,14 @@ $(function() {
         window.scrollTo(0, 0);
 
         // let's load up this particular part of the page if we don't yet have it
-        load(item, function() {
+        if ( $('.content-' + item).size() > 0 ) {
             showHash();
-        });
+        }
+        else {
+            load(item, function() {
+                showHash();
+            });
+        }
     });
 
     // see if there is an initial hash (and that we know about it)
