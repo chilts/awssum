@@ -1,9 +1,12 @@
 $(function() {
 
-    function load(item, callback) {
+    var cache = "";
+
+    function preload(item, callback) {
         callback = callback || function(){};
 
-        if ( $('.content-' + item).size() > 0 ) {
+        // see if we already have it cached
+        if ( cache[item] || $('.content-' + item).size() > 0 ) {
             callback();
             return;
         }
@@ -13,9 +16,31 @@ $(function() {
             data     : {},
             dataType : 'html',
             success  : function(data, textStatus) {
-                $('#content').append(data);
+                // we're not going load the data into the document, but just cache it here
+                cache[item] = data;
                 callback();
             }
+        });
+    }
+
+    function load(item, callback) {
+        callback = callback || function(){};
+
+        // already in the document
+        if ( $('.content-' + item).size() > 0 ) {
+            callback();
+            return;
+        }
+
+        // see if we have a copy
+        if ( cache[item] ) {
+            $('#content').append(cache[item]);
+            return;
+        }
+
+        // not anywhere yet, so ask for it and put it in the document
+        preload(item, function() {
+            $('#content').append(cache[item]);
         });
     }
 

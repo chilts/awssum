@@ -13,7 +13,7 @@
   operation. Luckily AwsSum also has a method of that name:
 </p>
 
-<code>
+<code><pre>
 s3.ListBuckets(function(err, result) {
     if (err) {
         console.log('An error has occurred', err);
@@ -21,7 +21,7 @@ s3.ListBuckets(function(err, result) {
     }
     console.log('Buckets', result);
 });
-</code>
+</pre></code>
 
 <p>
   To figure out what you need to send to each operation you should take a look at a couple of things. Firstly, the
@@ -35,7 +35,7 @@ s3.ListBuckets(function(err, result) {
   call:
 </p>
 
-<code>
+<pre>
 var opts = {
     BucketName : 'my-bucket',
     MaxKeys    : 100,
@@ -48,7 +48,7 @@ s3.ListObjects(opts, function(err, result) {
     }
     console.log('Buckets', result);
 });
-</code>
+</pre>
 
 <p>
   The 2nd place to look is the API docs for the service you are using. In general there is a link to each service from
