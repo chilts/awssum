@@ -7,8 +7,8 @@ $(function() {
         window.scrollTo(0, 0);
     });
 
-    // trigger the hashchange event on pageload
-    if ( location.hash ) {
+    // see if we know about this hash
+    if ( location.hash && $('.tab-' + location.hash.substr(1)).size() ) {
         $(window).hashchange();
     }
     else {
