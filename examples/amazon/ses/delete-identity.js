@@ -12,7 +12,6 @@ var ses = new Ses({
     'accessKeyId'     : accessKeyId,
     'secretAccessKey' : secretAccessKey,
     // 'awsAccountId'    : awsAccountId, // optional
-    'region'          : amazon.US_EAST_1
 });
 
 console.log( 'Region :', ses.region() );

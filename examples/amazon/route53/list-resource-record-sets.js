@@ -12,7 +12,6 @@ var r53 = new Route53({
     'accessKeyId'     : accessKeyId,
     'secretAccessKey' : secretAccessKey,
     // 'awsAccountId'    : awsAccountId, // optional
-    'region'          : amazon.US_EAST_1
 });
 
 console.log( 'Region :', r53.region() );
