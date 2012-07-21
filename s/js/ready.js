@@ -6,7 +6,7 @@ $(function() {
         }
 
         $.ajax({
-            url      : '/f/' + item + 'html',
+            url      : '/f/' + item + '.html',
             data     : {},
             dataType : 'html',
             success  : function(data, textStatus) {
