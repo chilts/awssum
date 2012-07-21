@@ -18,7 +18,6 @@ $(function() {
             success  : function(data, textStatus) {
                 // we're not going load the data into the document, but just cache it here
                 cache[item] = data;
-                console.log('Cache now has ' + cache.length + ' items');
                 callback();
             }
         });
@@ -50,9 +49,10 @@ $(function() {
     function showHash() {
         // firstly, hide everything
         $('.content').hide();
+
         // now just show the one in the hash
         var item = location.hash.substr(1);
-        $('.content-' + item).show();
+        load(item);
     }
 
     // Bind the event.
@@ -64,14 +64,7 @@ $(function() {
         window.scrollTo(0, 0);
 
         // let's load up this particular part of the page if we don't yet have it
-        if ( $('.content-' + item).size() > 0 ) {
-            showHash();
-        }
-        else {
-            load(item, function() {
-                showHash();
-            });
-        }
+        showHash();
     });
 
     // see if there is an initial hash (and that we know about it)
