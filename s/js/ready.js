@@ -1,7 +1,10 @@
 $(function() {
 
     function load(item, callback) {
+        callback = callback || function(){};
+
         if ( $('.content-' + item).size() > 0 ) {
+            callback();
             return;
         }
 
