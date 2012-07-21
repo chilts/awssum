@@ -13,7 +13,7 @@
   operation. Luckily AwsSum also has a method of that name:
 </p>
 
-<code><pre>
+<pre>
 s3.ListBuckets(function(err, result) {
     if (err) {
         console.log('An error has occurred', err);
@@ -21,7 +21,7 @@ s3.ListBuckets(function(err, result) {
     }
     console.log('Buckets', result);
 });
-</pre></code>
+</pre>
 
 <p>
   To figure out what you need to send to each operation you should take a look at a couple of things. Firstly, the
