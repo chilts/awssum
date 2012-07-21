@@ -11,5 +11,8 @@ $(function() {
     if ( location.hash ) {
         $(window).hashchange();
     }
+    else {
+        location.hash = '#home';
+    }
 
 });
