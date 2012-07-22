@@ -6,3 +6,7 @@ body {
 .sidebar-nav {
     padding: 9px 0;
 }
+
+.hero-unit {
+    padding: 40px;
+}
