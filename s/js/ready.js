@@ -86,7 +86,7 @@ $(function() {
     }, 5000);
 
     // Twitter "Follow" button (from https://twitter.com/about/resources/buttons#follow)
-    var js, fjs = documents.getElementsByTagName('script')[0];
+    var js, fjs = document.getElementsByTagName('script')[0];
     if ( !document.getElementById('twitter-wjs') ) {
         js = document.createElement('script');
         js.id = 'twitter-wjs';
