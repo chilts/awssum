@@ -403,4 +403,29 @@ test("test addParamData", function (t) {
     t.end();
 });
 
+test("test addParamData (Real Life 1)", function (t) {
+    var values1 = [
+        {
+            Name : 'instance-type',
+            Value : [ 'm1.small', 'm1.large' ]
+        },
+        {
+            Name : 'block-mapping-device-status',
+            Value : [ 'attached' ]
+        }
+    ];
+    var params1 = [];
+    var result1 = [
+        { 'name' : 'Filter.1.Name', 'value' : 'instance-type' },
+        { 'name' : 'Filter.1.Value.1', 'value' : 'm1.small' },
+        { 'name' : 'Filter.1.Value.2', 'value' : 'm1.large' },
+        { 'name' : 'Filter.2.Name', 'value' : 'block-mapping-device-status' },
+        { 'name' : 'Filter.2.Value.1', 'value' : 'attached' },
+    ];
+    awssum.addParamData(params1, 'Filter', values1);
+    t.ok(_.isEqual(params1, result1), 'Deep compare of addParamData (Real Life 1)');
+
+    t.end();
+});
+
 // --------------------------------------------------------------------------------------------------------------------
