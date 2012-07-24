@@ -17,8 +17,8 @@ var ec2 = new Ec2({
 
 console.log( 'Region :', ec2.region() );
 console.log( 'EndPoint :',  ec2.host() );
-console.log( 'AccessKeyId :', ec2.accessKeyId() );
-// console.log( 'SecretAccessKey :', ec2.secretAccessKey() );
+console.log( 'AccessKeyId :', ec2.accessKeyId().substr(0,3) + '...' );
+console.log( 'SecretAccessKey :', ec2.secretAccessKey().substr(0,3) + '...' );
 console.log( 'AwsAccountId :', ec2.awsAccountId() );
 
 ec2.DescribeInstances(function(err, data) {
