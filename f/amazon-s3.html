@@ -66,7 +66,6 @@
 
       <h2>Loading AwsSum's Amazon S3</h2>
 
-<pre>
 {% highlight javascript %}
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
@@ -78,12 +77,10 @@ var s3 = new S3({
     'region'          : amazon.US_EAST_1
 });
 {% endhighlight %}
-</pre>
 
       <h2>Examples</h2>
       <h3>List Buckets</h3>
 
-<pre>
 {% highlight javascript %}
 s3.ListBuckets(function(err, data) {
     console.log("\nlisting all the buckets (no options given) - expecting success");
@@ -91,7 +88,6 @@ s3.ListBuckets(function(err, data) {
     console.log(data, 'Data');
 });
 {% endhighlight %}
-</pre>
 
     </div><!-- /.span8 -->
 
