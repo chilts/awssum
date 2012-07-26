@@ -25,3 +25,9 @@ r53.ListHostedZones(function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+r53.ListHostedZones({ MaxItems : 3 }, function(err, data) {
+    console.log("\nlisting hosted zones (max items = 3) - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});

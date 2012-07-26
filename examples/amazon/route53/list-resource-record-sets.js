@@ -25,3 +25,9 @@ r53.ListResourceRecordSets({ HostedZoneId : 'ZYTGF6CI42UVT' }, function(err, dat
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+r53.ListResourceRecordSets({ HostedZoneId : 'ZYTGF6CI42UVT', MaxItems : 3 }, function(err, data) {
+    console.log("\nlisting hosted zones - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
