@@ -175,6 +175,20 @@ Currently AwsSum has coverage of the following services:
       <td>✔</td>
       <td>11/11 (100%)</td>
     </tr>
+    <tr>
+      <td></td>
+      <td>Identity and Access Management (IAM)</td>
+      <td>Signature v2, (HmacSHA256)</td>
+      <td>✔</td>
+      <td>69/69 (100%)</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Relational Database Service (RDS)</td>
+      <td>Signature v2, (HmacSHA256)</td>
+      <td>✔</td>
+      <td>39/39 (100%)</td>
+    </tr>
 
     <tr>
       <td>Twitter</td>
