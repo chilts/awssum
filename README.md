@@ -117,7 +117,7 @@ Currently AwsSum has coverage of the following services:
       <td>EC2</td>
       <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
-      <td>1/130 (&lt;1%)</td>
+      <td>134/134 (100%)</td>
     </tr>
     <tr>
       <td></td>
@@ -163,7 +163,7 @@ Currently AwsSum has coverage of the following services:
     </tr>
     <tr>
       <td></td>
-      <td>Flexible Payments Service</td>
+      <td>Flexible Payments Service (FPS)</td>
       <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>22/22 (100%)</td>
@@ -188,6 +188,13 @@ Currently AwsSum has coverage of the following services:
       <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>39/39 (100%)</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>CloudFormation</td>
+      <td>Signature v2, (HmacSHA256)</td>
+      <td>✔</td>
+      <td>12/12 (100%)</td>
     </tr>
 
     <tr>
@@ -229,7 +236,12 @@ In future releases we will be targeting (in no particular order):
 
 * AWS:
     * CloudSearch ([Request or Sponsor Development][sponsor])
-    * Relational Database Service (RDS) ([Request or Sponsor Development][sponsor])
+    * Elastic MapReduce (EMR) ([Request or Sponsor Development][sponsor])
+    * Virtual Private Cloud
+    * AutoScaling
+    * Elastic Beanstalk
+    * Storage Gateway
+    * Mechanical Turk
 * RackspaceCloud:
     * Servers ([Request or Sponsor Development][sponsor])
     * Files ([Request or Sponsor Development][sponsor])
