@@ -25,3 +25,9 @@ swf.DescribeDomain({ 'Name' : 'test' }, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+swf.DescribeDomain({ 'Name' : 'unknown-domain' }, function(err, data) {
+    console.log("\ndescribing 'unknown' domain - expecting failure");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
