@@ -65,3 +65,17 @@ s3.PutObject(optionsWithMetaData, function(err, data) {
     inspect(err, 'Error');
     inspect(data, 'Data');
 });
+
+var optionsWithCacheControl = {
+    BucketName    : 'pie-18',
+    ObjectName    : 'test-cache.txt',
+    ContentLength : Buffer.byteLength(body),
+    Body          : body,
+    CacheControl  : 'max-age=3600'
+};
+
+s3.PutObject(optionsWithCacheControl, function(err, data) {
+    console.log("\nputting an object with cache-control to pie-18 - expecting success");
+    inspect(err, 'Error');
+    inspect(data, 'Data');
+});
