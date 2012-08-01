@@ -1,63 +1,63 @@
 <div class="content content-operations">
 
-<h1>Operations</h1>
+  <h1>Operations</h1>
 
-<p>
-  Now that you have your service object with the necessary credentials, you are now able to start making calls against
-  operations from that service.
-</p>
+  <p>
+    Now that you have your service object with the necessary credentials, you are now able to start making calls
+    against operations from that service.
+  </p>
 
-<p>
-  In general to perform an operation on the service, you just call a method with the name of the operation. For
-  example, if you would like to list all of your buckets in S3, you should call the <code>ListBuckets</code>
-  operation. Luckily AwsSum also has a method of that name:
-</p>
+  <p>
+    In general to perform an operation on the service, you just call a method with the name of the operation. For
+    example, if you would like to list all of your buckets in S3, you should call the <code>ListBuckets</code>
+    operation. Luckily AwsSum also has a method of that name:
+  </p>
 
-<pre>
-s3.ListBuckets(function(err, result) {
-    if (err) {
-        console.log('An error has occurred', err);
-        return;
-    }
-    console.log('Buckets', result);
-});
-</pre>
+  <pre>
+  s3.ListBuckets(function(err, result) {
+      if (err) {
+          console.log('An error has occurred', err);
+          return;
+      }
+      console.log('Buckets', result);
+  });
+  </pre>
 
-<p>
-  To figure out what you need to send to each operation you should take a look at a couple of things. Firstly, the
-  examples on this site help you understand each operation and in some cases show you the peculiarities of the
-  operation. To see these, just click on the service from the left hand menu and then click the operation you are
-  performing.
-</p>
+  <p>
+    To figure out what you need to send to each operation you should take a look at a couple of things. Firstly, the
+    examples on this site help you understand each operation and in some cases show you the peculiarities of the
+    operation. To see these, just click on the service from the left hand menu and then click the operation you are
+    performing.
+  </p>
 
-<p>
-  For example, if you would like to list all the objects in a bucket, but limit it to the first 100, then you would
-  call:
-</p>
+  <p>
+    For example, if you would like to list all the objects in a bucket, but limit it to the first 100, then you would
+    call:
+  </p>
 
-<pre>
-var opts = {
-    BucketName : 'my-bucket',
-    MaxKeys    : 100,
-};
+  <pre>
+  var opts = {
+      BucketName : 'my-bucket',
+      MaxKeys    : 100,
+  };
 
-s3.ListObjects(opts, function(err, result) {
-    if (err) {
-        console.log('An error has occurred', err);
-        return;
-    }
-    console.log('Buckets', result);
-});
-</pre>
+  s3.ListObjects(opts, function(err, result) {
+      if (err) {
+          console.log('An error has occurred', err);
+          return;
+      }
+      console.log('Buckets', result);
+  });
+  </pre>
 
-<p>
-  The 2nd place to look is the API docs for the service you are using. In general there is a link to each service from
-  the relavant service page here. There is also a link to each operation from each of the operation pages.
-</p>
+  <p>
+    The 2nd place to look is the API docs for the service you are using. In general there is a link to each service
+    from the relavant service page here. There is also a link to each operation from each of the operation pages.
+  </p>
 
-<p>
-  Now you're ready to start making calls to the service. You could take a look here for <a href="#amazon-s3">Amazon
-  S3<a>, or click on the service of interest to you from the left-hand menu.
-</p>
+  <p>
+    Now you're ready to start making calls to the service. You could take a look here for <a href="#amazon-s3">Amazon
+    S3<a>, or click on the service of interest to you from the left-hand menu.
+  </p>
 
 </div>
