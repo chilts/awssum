@@ -27,7 +27,7 @@ md.Get({ Version : 'latest', Category : '/' }, function(err, data) {
     inspect(data, 'Data');
 });
 
-md.Get({ Version : 'latest', Category : '/latest/meta-data/' }, function(err, data) {
+md.Get({ Version : 'latest', Category : '/meta-data/' }, function(err, data) {
     console.log("\ngetting metadata - expecting success");
     inspect(err, 'Error');
     inspect(data, 'Data');
