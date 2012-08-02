@@ -196,6 +196,13 @@ Currently AwsSum has coverage of the following services:
       <td>✔</td>
       <td>12/12 (100%)</td>
     </tr>
+    <tr>
+      <td></td>
+      <td>Instance MetaData (IMD)</td>
+      <td>[none]</td>
+      <td>✔</td>
+      <td>2/2 (100%)</td>
+    </tr>
 
     <tr>
       <td>Twitter</td>
