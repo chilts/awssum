@@ -203,6 +203,13 @@ Currently AwsSum has coverage of the following services:
       <td>✔</td>
       <td>2/2 (100%)</td>
     </tr>
+    <tr>
+      <td></td>
+      <td>ElasticBeanstalk</td>
+      <td>Signature v2, (Hmac256)</td>
+      <td>✔</td>
+      <td>29/29 (100%)</td>
+    </tr>
 
     <tr>
       <td>Twitter</td>
