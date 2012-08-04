@@ -217,6 +217,13 @@ Currently AwsSum has coverage of the following services:
       <td>✔</td>
       <td>33/33 (100%)</td>
     </tr>
+    <tr>
+      <td></td>
+      <td>Import/Export</td>
+      <td>Signature v2, (Hmac256)</td>
+      <td>✔</td>
+      <td>5/5 (100%)</td>
+    </tr>
 
     <tr>
       <td>Twitter</td>
