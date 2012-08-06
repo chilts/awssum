@@ -278,11 +278,6 @@ In future releases we will be targeting (in no particular order):
 
 * AWS:
     * CloudSearch ([Request or Sponsor Development][sponsor])
-    * Elastic MapReduce (EMR) ([Request or Sponsor Development][sponsor])
-    * Virtual Private Cloud
-    * AutoScaling
-    * Elastic Beanstalk
-    * Storage Gateway
     * Mechanical Turk
 * RackspaceCloud:
     * Servers ([Request or Sponsor Development][sponsor])
