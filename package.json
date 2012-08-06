@@ -1,6 +1,6 @@
 {
     "name": "awssum",
-    "description": "NodeJS modules for talking to lots of Web Service APIs.",
+    "description": "NodeJS modules for talking to SaaS providers, such as Amazon, RackspaceCloud etc.",
     "version": "0.7.0",
     "author": {
         "name":"Andrew Chilton",
