@@ -27,7 +27,7 @@ test("load amazon", function (t) {
     amazon = awssum.load('amazon/amazon');
     t.ok(amazon, 'object loaded');
     t.end();
-})
+});
 
 test("create amazon object", function (t) {
     t.equal('us-east-1',      amazon.US_EAST_1,      'US East 1'     );

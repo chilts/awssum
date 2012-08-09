@@ -10,8 +10,7 @@
 
 var http = require('http'),
     https = require('https'),
-    fs = require('fs'),
-    Buffer = require('buffer').Buffer;
+    fs = require('fs');
 
 var test = require("tap").test;
 
@@ -42,8 +41,8 @@ test("AwsSum.prototype.send tests", function(t) {
     s3.request = function(options) {
         t.equal(FAKE_READABLE_STREAM, options.body, "AweSum.prototype.request called with a ReadableStream body");
         t.equal(FAKE_CONTENT_LENGTH, options.headers['Content-Length'], "Content-length header remained intact");
-        t.ok(typeof options.headers['Content-MD5'] == "undefined", "No Content-MD5 header was added");
-    }
+        t.ok(typeof options.headers['Content-MD5'] === "undefined", "No Content-MD5 header was added");
+    };
     s3.PutObject(options, function(err, data) {
         t.notOk(err, "putObject callback fired with error: " + JSON.stringify(err));
     });
@@ -51,7 +50,7 @@ test("AwsSum.prototype.send tests", function(t) {
     options.ContentMD5 = FAKE_MD5;
     s3.request = function(options) {
         t.equal(options.headers['Content-MD5'], FAKE_MD5, "Existing Content-MD5 header was kept");
-    }
+    };
     s3.PutObject(options, function(err, data) {
         t.notOk(err, "putObject callback fired with error: " + JSON.stringify(err));
     });
