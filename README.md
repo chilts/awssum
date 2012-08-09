@@ -245,6 +245,13 @@ Currently AwsSum has coverage of the following services:
       <td>✔</td>
       <td>20/20 (100%)</td>
     </tr>
+    <tr>
+      <td></td>
+      <td>Elastic LoadBalancing (ELB)</td>
+      <td>Signature v2, (Hmac256)</td>
+      <td>✔</td>
+      <td>23/23 (100%)</td>
+    </tr>
 
     <tr>
       <td>Twitter</td>
@@ -284,8 +291,8 @@ Currently AwsSum has coverage of the following services:
 In future releases we will be targeting (in no particular order):
 
 * AWS:
-    * CloudSearch ([Request or Sponsor Development][sponsor])
-    * Mechanical Turk
+    * Mechanical Turk ([Request or Sponsor Development][sponsor])
+    * Marketplace Web Services ([Request or Sponsor Development][sponsor])
 * RackspaceCloud:
     * Servers ([Request or Sponsor Development][sponsor])
     * Files ([Request or Sponsor Development][sponsor])
