@@ -22,7 +22,7 @@ var s3eu = new S3({
 console.log( 'Region :', s3.region() );
 console.log( 'EndPoint :',  s3.host() );
 console.log( 'AccessKeyId :', s3.accessKeyId() );
-// console.log( 'SecretAccessKey :', s3.secretAccessKey() );
+console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 s3.CreateBucket({ BucketName : 'pie-18' }, function(err, data) {

@@ -17,7 +17,7 @@ var swf = new Swf({
 console.log( 'Region :', swf.region() );
 console.log( 'EndPoint :',  swf.host() );
 console.log( 'AccessKeyId :', swf.accessKeyId() );
-// console.log( 'SecretAccessKey :', swf.secretAccessKey() );
+console.log( 'SecretAccessKey :', swf.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', swf.awsAccountId() );
 
 swf.DescribeDomain({ 'Name' : 'test' }, function(err, data) {

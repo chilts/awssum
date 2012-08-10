@@ -17,7 +17,7 @@ var ses = new Ses({
 console.log( 'Region :', ses.region() );
 console.log( 'EndPoint :',  ses.host() );
 console.log( 'AccessKeyId :', ses.accessKeyId() );
-// console.log( 'SecretAccessKey :', ses.secretAccessKey() );
+console.log( 'SecretAccessKey :', ses.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', ses.awsAccountId() );
 
 ses.DeleteVerifiedEmailAddress({ EmailAddress : 'bob@example.com' }, function(err, data) {

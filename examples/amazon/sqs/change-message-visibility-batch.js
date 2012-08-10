@@ -19,7 +19,7 @@ var sqs = new Sqs({
 console.log( 'Region :', sqs.region() );
 console.log( 'EndPoint :',  sqs.host() );
 console.log( 'AccessKeyId :', sqs.accessKeyId() );
-// console.log( 'SecretAccessKey :', sqs.secretAccessKey() );
+console.log( 'SecretAccessKey :', sqs.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', sqs.awsAccountId() );
 
 var options = {

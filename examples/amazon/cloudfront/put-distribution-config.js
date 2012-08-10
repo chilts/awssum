@@ -18,7 +18,7 @@ var cloudFront = new CloudFront({
 console.log( 'Region :', cloudFront.region() );
 console.log( 'EndPoint :',  cloudFront.host() );
 console.log( 'AccessKeyId :', cloudFront.accessKeyId() );
-// console.log( 'SecretAccessKey :', cloudFront.secretAccessKey() );
+console.log( 'SecretAccessKey :', cloudFront.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
 
 // from example on http://docs.amazonwebservices.com/AmazonCloudFront/latest/APIReference/DistributionConfigDatatype.html

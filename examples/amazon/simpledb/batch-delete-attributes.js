@@ -18,7 +18,7 @@ var sdb = new SimpleDB({
 console.log( 'Region :', sdb.region() );
 console.log( 'EndPoint :',  sdb.host() );
 console.log( 'AccessKeyId :', sdb.accessKeyId() );
-// console.log( 'SecretAccessKey :', sdb.secretAccessKey() );
+console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
 // ---

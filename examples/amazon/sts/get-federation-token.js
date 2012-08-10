@@ -18,7 +18,7 @@ var sts = new Sts({
 console.log( 'Region :', sts.region() );
 console.log( 'EndPoint :',  sts.host() );
 console.log( 'AccessKeyId :', sts.accessKeyId() );
-// console.log( 'SecretAccessKey :', sts.secretAccessKey() );
+console.log( 'SecretAccessKey :', sts.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', sts.awsAccountId() );
 
 sts.GetFederationToken({ Name : 'chilts' }, function(err, data) {

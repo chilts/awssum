@@ -18,7 +18,7 @@ var ddb = new DynamoDB({
 console.log( 'Region :', ddb.region() );
 console.log( 'EndPoint :',  ddb.host() );
 console.log( 'AccessKeyId :', ddb.accessKeyId() );
-// console.log( 'SecretAccessKey :', ddb.secretAccessKey() );
+console.log( 'SecretAccessKey :', ddb.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', ddb.awsAccountId() );
 
 // start the data

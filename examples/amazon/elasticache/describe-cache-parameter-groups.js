@@ -18,7 +18,7 @@ var elastiCache = new ElastiCache({
 console.log( 'Region :', elastiCache.region() );
 console.log( 'EndPoint :',  elastiCache.host() );
 console.log( 'AccessKeyId :', elastiCache.accessKeyId() );
-// console.log( 'SecretAccessKey :', elastiCache.secretAccessKey() );
+console.log( 'SecretAccessKey :', elastiCache.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', elastiCache.awsAccountId() );
 
 elastiCache.DescribeCacheParameterGroups(function(err, data) {

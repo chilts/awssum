@@ -17,7 +17,7 @@ var r53 = new Route53({
 console.log( 'Region :', r53.region() );
 console.log( 'EndPoint :',  r53.host() );
 console.log( 'AccessKeyId :', r53.accessKeyId() );
-// console.log( 'SecretAccessKey :', r53.secretAccessKey() );
+console.log( 'SecretAccessKey :', r53.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', r53.awsAccountId() );
 
 r53.DeleteHostedZone({ HostedZoneId : 'deadbeef' }, function(err, data) {

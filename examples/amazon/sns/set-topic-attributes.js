@@ -18,7 +18,7 @@ var sns = new Sns({
 console.log( 'Region :', sns.region() );
 console.log( 'EndPoint :',  sns.host() );
 console.log( 'AccessKeyId :', sns.accessKeyId() );
-// console.log( 'SecretAccessKey :', sns.secretAccessKey() );
+console.log( 'SecretAccessKey :', sns.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn

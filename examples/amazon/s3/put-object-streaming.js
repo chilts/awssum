@@ -18,7 +18,7 @@ var s3 = new S3({
 console.log( 'Region :', s3.region() );
 console.log( 'EndPoint :',  s3.host() );
 console.log( 'AccessKeyId :', s3.accessKeyId() );
-// console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0,3) + "..." );
+console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0,3) + "...".substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 // you must run fs.stat to get the file size for the content-length header (s3 requires this)

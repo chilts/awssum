@@ -18,7 +18,7 @@ var elb = new Elb({
 console.log( 'Region :', elb.region() );
 console.log( 'EndPoint :',  elb.host() );
 console.log( 'AccessKeyId :', elb.accessKeyId() );
-// console.log( 'SecretAccessKey :', elb.secretAccessKey() );
+console.log( 'SecretAccessKey :', elb.secretAccessKey().substr(0, 3) + '...' );
 console.log( 'AwsAccountId :', elb.awsAccountId() );
 
 elb.DescribeLoadBalancerPolicies(function(err, data) {
