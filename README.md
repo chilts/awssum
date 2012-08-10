@@ -30,7 +30,11 @@ var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
 
-var s3 = new S3('access_key_id', 'secret_access_key', 'aws_account_id', amazon.US_WEST_1);
+var s3 = new S3({
+    'accessKeyId' : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'region' : amazon.US_EAST_1
+});
 
 s3.ListBuckets(function(err, data) {
     if (err) {
