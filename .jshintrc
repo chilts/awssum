@@ -12,6 +12,7 @@
     "trailing" : true,
     "bitwise" : true,
     "laxbreak" : true,
+    "sub" : true,
 
     "node" : true,
     "nonstandard" : true
