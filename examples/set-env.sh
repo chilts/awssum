@@ -12,6 +12,13 @@ export SECRET_ACCESS_KEY=secret-access-key
 export AWS_ACCOUNT_ID=aws_account_id
 
 ## ----------------------------------------------------------------------------
+# GreenQloud
+
+export GREENQLOUD_ACCESS_KEY_ID=access-key-id
+export GREENQLOUD_SECRET_ACCESS_KEY=secret-access-key
+export GREENQLOUD_ACCOUNT_ID=
+
+## ----------------------------------------------------------------------------
 # RackspaceCloud (ToDo)
 
 export RACKSPACECLOUD_USERNAME=username
