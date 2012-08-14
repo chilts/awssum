@@ -19,6 +19,9 @@ IRC : Come and say hello in #awssum on Freenode. :)
 Note: that I am looking for sponsorship for various libraries, especially larger ones such as GitHub, PayPal and
 Flickr. Please contact me.
 
+Btw: [AwsSum is being used](https://twitter.com/andychilton/status/235501828878520321) at
+[Medium.com](https://medium.com/)! Yay!
+
 # How to get AwsSum #
 
     $ npm -d install awssum
