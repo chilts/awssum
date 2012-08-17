@@ -43,7 +43,8 @@
         <div id="menu" class="span3">
           <h2>AwsSum v0.7.0</h2>
 
-          {% include 'menu-' + page.id + '.html' %}
+          {% var menu = 'menu-' + page.id + '.html' %}
+          {% include menu %}
         </div><!-- /#menu -->
 
         <div id="content" class="span9">
