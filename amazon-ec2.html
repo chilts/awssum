@@ -1,0 +1,40 @@
+---
+id      : amazon-ec2
+layout  : default
+title   : Amazon EC2
+tagline : Elastic Compute Cloud
+sitemap : true
+---
+<div class="content">
+
+  <h2>Loading AwsSum's Amazon EC2</h2>
+
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var Ec2 = awssum.load('amazon/ec2').Ec2;
+
+var ec2 = new Ec2({
+    'accessKeyId'     : process.env.accessKeyId,
+    'secretAccessKey' : process.env.secretAccessKey,
+    'region'          : amazon.US_EAST_1
+});
+{% endhighlight %}
+
+  <h2>Examples</h2>
+  <h3>Describe Instances</h3>
+
+{% highlight javascript %}
+ec2.DescribeInstances(function(err, data) {
+    // ...
+});
+
+ec2.DescribeInstances({
+    FilterName  : [ 'ip-address', 'key-name' ],
+    FilterValue : [ [ '1.2.3.4', '5.6.7.8' ], [ 'my-key' ] ],
+}, function(err, data) {
+    // ...
+});
+{% endhighlight %}
+
+</div><!-- /.content -->

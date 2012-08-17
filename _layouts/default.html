@@ -24,14 +24,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">AwsSum</a>
+          <a class="brand" href="/">AwsSum</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="tab-home"><a href="#home">Home</a></li>
-              <li class="tab-bugs"><a href="#bugs">Bugs</a></li>
-              <li class="tab-links"><a href="#links">Links</a></li>
-              <li class="tab-about"><a href="#about">About</a></li>
-              <li class="tab-links"><a href="#links">Links</a></li>
+              <li class="tab-home"><a href="/">Home</a></li>
+              <li class="tab-bugs"><a href="bugs.html">Bugs</a></li>
+              <li class="tab-links"><a href="links.html">Links</a></li>
+              <li class="tab-about"><a href="about.html">About</a></li>
             </ul>
           </div><!-- /.nav-collapse -->
         </div><!-- /.container-fluid -->
@@ -44,7 +43,7 @@
         <div id="menu" class="span3">
           <h2>AwsSum v0.7.0</h2>
 
-          {% include menu.html %}
+          {% include 'menu-' + page.id + '.html' %}
         </div><!-- /#menu -->
 
         <div id="content" class="span9">
@@ -62,7 +61,6 @@
     </div><!--/.fluid-container-->
 
     <script src="/s/js/jquery-1.7.2.min.js"></script>
-    <script src="/s/js/jquery.ba-hashchange.min.js"></script>
     <script src="/s/js/ready.js"></script>
     <!--
         <script src="../assets/js/bootstrap-transition.js"></script>
