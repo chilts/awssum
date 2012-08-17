@@ -44,8 +44,10 @@
           <h2>AwsSum v0.7.0</h2>
 
           {% capture menu %}menu-{{ page.id }}.html{% endcapture %}
-          <p>Including {{ menu }}.</p>
-          {% include menu %}
+
+          {% if page.id == 'index' %}
+            {% include 'menu-index.html' %}
+          {% endif %}
 
         </div><!-- /#menu -->
 
