@@ -1,6 +1,6 @@
 {
     "name": "awssum",
-    "description": "NodeJS modules for talking to SaaS providers, such as Amazon, RackspaceCloud etc.",
+    "description": "NodeJS modules for talking to IaaS providers, such as Amazon AWS, RackspaceCloud, OpenStack!",
     "version": "0.8.0",
     "author": {
         "name":"Andrew Chilton",
@@ -44,7 +44,10 @@
     }],
     "keywords": [
         "api",
-        "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","cloudfront","fps","cloudformation","cloudwatch","dynamodb","iam","swf",
+        "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","cloudfront","fps",
+                 "cloudformation","cloudwatch","dynamodb","iam","swf","autoscaling","cloudsearch","elb",
+                 "loadbalancing","emr","mapreduce","importexport","storagegateway","workflow","ebs","vpc","beanstalk",
+        "greenqloud",
         "rackspacecloud",
         "openstack"
     ],
