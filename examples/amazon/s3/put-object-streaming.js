@@ -15,11 +15,11 @@ var s3 = new S3({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', s3.region() );
-console.log( 'EndPoint :',  s3.host() );
-console.log( 'AccessKeyId :', s3.accessKeyId() );
-console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0,3) + "...".substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', s3.awsAccountId() );
+fmt.field('Region', s3.region() );
+fmt.field('EndPoint', s3.host() );
+fmt.field('AccessKeyId', s3.accessKeyId() );
+fmt.field('SecretAccessKey', s3.secretAccessKey().substr(0,3) + "...".substr(0, 3) + '...' );
+fmt.field('AwsAccountId', s3.awsAccountId() );
 
 // you must run fs.stat to get the file size for the content-length header (s3 requires this)
 fs.stat(__filename, function(err, file_info) {
@@ -30,8 +30,8 @@ fs.stat(__filename, function(err, file_info) {
 
     var bodyStream = fs.createReadStream( __filename );
 
-    console.log(__filename);
-    console.log(file_info.size);
+    fmt.msg(__filename);
+    fmt.msg(file_info.size);
 
     var options = {
         BucketName    : 'pie-18',
@@ -41,7 +41,7 @@ fs.stat(__filename, function(err, file_info) {
     };
 
     s3.PutObject(options, function(err, data) {
-        console.log("\nputting an object to " + bucket + " - expecting success");
+        fmt.msg("putting an object to " + bucket + " - expecting success");
         fmt.dump(err, 'Error');
         fmt.dump(data, 'Data');
     });

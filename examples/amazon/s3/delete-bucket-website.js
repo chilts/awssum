@@ -14,14 +14,14 @@ var s3 = new S3({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', s3.region() );
-console.log( 'EndPoint :',  s3.host() );
-console.log( 'AccessKeyId :', s3.accessKeyId() );
-console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', s3.awsAccountId() );
+fmt.field('Region', s3.region() );
+fmt.field('EndPoint', s3.host() );
+fmt.field('AccessKeyId', s3.accessKeyId() );
+fmt.field('SecretAccessKey', s3.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', s3.awsAccountId() );
 
 s3.DeleteBucketWebsite({ BucketName : 'non-existant' }, function(err, data) {
-    console.log("\ndelete bucket website - expecting failure (for not existing)");
+    fmt.msg("delete bucket website - expecting failure (for not existing)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

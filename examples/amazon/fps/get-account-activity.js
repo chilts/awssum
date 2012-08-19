@@ -15,11 +15,11 @@ var fps = new Fps({
     'region'          : 'FPS-SANDBOX'
 });
 
-console.log( 'Region :',          fps.region() );
-console.log( 'EndPoint :',        fps.host() );
-console.log( 'AccessKeyId :',     fps.accessKeyId() );
-console.log( 'SecretAccessKey :', fps.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :',    fps.awsAccountId() );
+fmt.field('Region', fps.region() );
+fmt.field('EndPoint', fps.host() );
+fmt.field('AccessKeyId', fps.accessKeyId() );
+fmt.field('SecretAccessKey', fps.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', fps.awsAccountId() );
 
 var opts1 = {
     StartDate    : '2012-01-01',
@@ -29,7 +29,7 @@ var opts1 = {
 };
 
 fps.GetAccountActivity(opts1, function(err, data) {
-    console.log("\ngetting the account activity - expecting success");
+    fmt.msg("getting the account activity - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -40,7 +40,7 @@ var opts2 = {
 };
 
 fps.GetAccountActivity(opts2, function(err, data) {
-    console.log("\ngetting asctivity - expecting failure (invalid status)");
+    fmt.msg("getting asctivity - expecting failure (invalid status)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

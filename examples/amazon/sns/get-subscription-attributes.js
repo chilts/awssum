@@ -15,15 +15,15 @@ var sns = new Sns({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sns.region() );
-console.log( 'EndPoint :',  sns.host() );
-console.log( 'AccessKeyId :', sns.accessKeyId() );
-console.log( 'SecretAccessKey :', sns.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sns.awsAccountId() );
+fmt.field('Region', sns.region() );
+fmt.field('EndPoint', sns.host() );
+fmt.field('AccessKeyId', sns.accessKeyId() );
+fmt.field('SecretAccessKey', sns.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sns.awsAccountId() );
 
 // firstly, get all of the subscriptions
 sns.ListSubscriptions(function(err, data) {
-    console.log("\nlisting all subscriptions - expecting success");
+    fmt.msg("listing all subscriptions - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 
@@ -32,7 +32,7 @@ sns.ListSubscriptions(function(err, data) {
         var subscriptions = data.Body.ListSubscriptionsResponse.ListSubscriptionsResult.Subscriptions.member;
         var subscriptionArn = subscriptions[0].SubscriptionArn;
         sns.GetSubscriptionAttributes({ 'SubscriptionArn' : subscriptionArn }, function(err, data) {
-            console.log("\nGetSubscriptionAttributes - expecting success");
+            fmt.msg("GetSubscriptionAttributes - expecting success");
             fmt.dump(err, 'Error');
             fmt.dump(data, 'Data');
         });

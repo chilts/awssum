@@ -15,18 +15,18 @@ var sqs = new Sqs({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sqs.region() );
-console.log( 'EndPoint :',  sqs.host() );
-console.log( 'AccessKeyId :', sqs.accessKeyId() );
-console.log( 'SecretAccessKey :', sqs.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sqs.awsAccountId() );
+fmt.field('Region', sqs.region() );
+fmt.field('EndPoint', sqs.host() );
+fmt.field('AccessKeyId', sqs.accessKeyId() );
+fmt.field('SecretAccessKey', sqs.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sqs.awsAccountId() );
 
 var options = {
     queueName : 'my-queue',
 };
 
 sqs.receiveMessage(options, function(err, data) {
-    console.log("\nReceiving message from my-queue - expecting success");
+    fmt.msg("Receiving message from my-queue - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 
@@ -41,7 +41,7 @@ sqs.receiveMessage(options, function(err, data) {
         };
 
         sqs.changeMessageVisibility(visibilityOptions, function(err, data) {
-            console.log("\nChanging message visibility - expecting success");
+            fmt.msg("Changing message visibility - expecting success");
             fmt.dump(err, 'Error');
             fmt.dump(data, 'Data');
         });

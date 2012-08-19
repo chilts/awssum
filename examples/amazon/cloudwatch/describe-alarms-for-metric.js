@@ -15,11 +15,11 @@ var cloudwatch = new CloudWatch({
     'region'          : amazon.US_EAST_1,
 });
 
-console.log( 'Region :',          cloudwatch.region() );
-console.log( 'EndPoint :',        cloudwatch.host() );
-console.log( 'AccessKeyId :',     cloudwatch.accessKeyId() );
-console.log( 'SecretAccessKey :', cloudwatch.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :',    cloudwatch.awsAccountId() );
+fmt.field('Region', cloudwatch.region() );
+fmt.field('EndPoint', cloudwatch.host() );
+fmt.field('AccessKeyId', cloudwatch.accessKeyId() );
+fmt.field('SecretAccessKey', cloudwatch.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', cloudwatch.awsAccountId() );
 
 var opts = {
     MetricName : 'ConsumedReadCapacityUnits',
@@ -32,7 +32,7 @@ var opts = {
 };
 
 cloudwatch.DescribeAlarmsForMetric(opts, function(err, data) {
-    console.log("\ndescribing alarms for metric - expecting success");
+    fmt.msg("describing alarms for metric - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

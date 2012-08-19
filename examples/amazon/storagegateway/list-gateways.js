@@ -15,20 +15,20 @@ var sg = new StorageGateway({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sg.region() );
-console.log( 'EndPoint :',  sg.host() );
-console.log( 'AccessKeyId :', sg.accessKeyId().substr(0,3) + '...' );
-console.log( 'SecretAccessKey :', sg.secretAccessKey().substr(0,3) + '...' );
-console.log( 'AwsAccountId :', sg.awsAccountId() );
+fmt.field('Region', sg.region() );
+fmt.field('EndPoint', sg.host() );
+fmt.field('AccessKeyId', sg.accessKeyId().substr(0,3) + '...' );
+fmt.field('SecretAccessKey', sg.secretAccessKey().substr(0,3) + '...' );
+fmt.field('AwsAccountId', sg.awsAccountId() );
 
 sg.ListGateways(function(err, data) {
-    console.log("\nlisting gateways - expecting success");
+    fmt.msg("listing gateways - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sg.ListGateways({ Limit : 5 }, function(err, data) {
-    console.log("\nlisting gateways with a limit of 5 - expecting success");
+    fmt.msg("listing gateways with a limit of 5 - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

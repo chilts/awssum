@@ -15,14 +15,14 @@ var fps = new Fps({
     'region'          : 'FPS-SANDBOX'
 });
 
-console.log( 'Region :',          fps.region() );
-console.log( 'EndPoint :',        fps.host() );
-console.log( 'AccessKeyId :',     fps.accessKeyId() );
-console.log( 'SecretAccessKey :', fps.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :',    fps.awsAccountId() );
+fmt.field('Region', fps.region() );
+fmt.field('EndPoint', fps.host() );
+fmt.field('AccessKeyId', fps.accessKeyId() );
+fmt.field('SecretAccessKey', fps.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', fps.awsAccountId() );
 
 fps.GetTokens({}, function(err, data) {
-    console.log("\ngetting tokens - expecting success");
+    fmt.msg("getting tokens - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

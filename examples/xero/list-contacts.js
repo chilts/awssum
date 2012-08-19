@@ -19,13 +19,13 @@ var xero = new xeroService.Xero({
 xero.setToken(token);
 xero.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', xero.consumerKey()     );
-console.log( 'ConsumerSecret :', xero.consumerSecret() );
-console.log( 'Token          :', xero.token()          );
-console.log( 'TokenSecret    :', xero.tokenSecret()    );
+fmt.field('ConsumerKey', xero.consumerKey()     );
+fmt.field('ConsumerSecret', xero.consumerSecret() );
+fmt.field('Token', xero.token()          );
+fmt.field('TokenSecret', xero.tokenSecret()    );
 
 xero.GetContacts({ 'Where' : 'Name="Berry Brew"' }, function(err, data) {
-    console.log('\nget contacts where Name="Berry Brew" - expecting success');
+    fmt.msg('\nget contacts where Name="Berry Brew" - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

@@ -19,14 +19,14 @@ var twitter = new Twitter({
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', twitter.consumerKey()    );
-console.log( 'ConsumerSecret :', twitter.consumerSecret() );
-console.log( 'Token          :', twitter.token()          );
-console.log( 'TokenSecret    :', twitter.tokenSecret()    );
+fmt.field('ConsumerKey', twitter.consumerKey()    );
+fmt.field('ConsumerSecret', twitter.consumerSecret() );
+fmt.field('Token', twitter.token()          );
+fmt.field('TokenSecret', twitter.tokenSecret()    );
 
 commander.prompt('Enter your verification code : ', function(verifier) {
     twitter.GetToken({ OAuthVerifier : verifier }, function(err, data) {
-        console.log("\ngetting token - expecting success");
+        fmt.msg("getting token - expecting success");
         fmt.dump(err, 'Error');
         fmt.dump(data, 'Data');
     });

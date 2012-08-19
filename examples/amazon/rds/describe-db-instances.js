@@ -15,14 +15,14 @@ var rds = new Rds({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', rds.region() );
-console.log( 'EndPoint :',  rds.host() );
-console.log( 'AccessKeyId :', rds.accessKeyId().substr(0,3) + '...' );
-console.log( 'SecretAccessKey :', rds.secretAccessKey().substr(0,3) + '...' );
-console.log( 'AwsAccountId :', rds.awsAccountId() );
+fmt.field('Region', rds.region() );
+fmt.field('EndPoint', rds.host() );
+fmt.field('AccessKeyId', rds.accessKeyId().substr(0,3) + '...' );
+fmt.field('SecretAccessKey', rds.secretAccessKey().substr(0,3) + '...' );
+fmt.field('AwsAccountId', rds.awsAccountId() );
 
 rds.DescribeDBInstances(function(err, data) {
-    console.log("\ndescribing db instances - expecting success");
+    fmt.msg("describing db instances - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

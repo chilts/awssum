@@ -15,15 +15,15 @@ var sns = new Sns({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sns.region() );
-console.log( 'EndPoint :',  sns.host() );
-console.log( 'AccessKeyId :', sns.accessKeyId() );
-console.log( 'SecretAccessKey :', sns.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sns.awsAccountId() );
+fmt.field('Region', sns.region() );
+fmt.field('EndPoint', sns.host() );
+fmt.field('AccessKeyId', sns.accessKeyId() );
+fmt.field('SecretAccessKey', sns.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sns.awsAccountId() );
 
 // recreate the topic (idempotent)
 sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
-    console.log("\nCreating (my-topic) - expecting success");
+    fmt.msg("Creating (my-topic) - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 
@@ -31,7 +31,7 @@ sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
     if ( ! err ) {
         var topicArn = data.CreateTopicResponse.CreateTopicResult.TopicArn;
         sns.ConfirmSubscription({ TopicArn : topicArn, Token : 'fakeToken' }, function(err, data) {
-            console.log("\nConfirming a fake subscription - expecting failure");
+            fmt.msg("Confirming a fake subscription - expecting failure");
             fmt.dump(err, 'Error');
             fmt.dump(data, 'Data');
         });

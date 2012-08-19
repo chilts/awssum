@@ -14,18 +14,18 @@ var s3 = new S3({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', s3.region() );
-console.log( 'EndPoint :',  s3.host() );
-console.log( 'AccessKeyId :', s3.accessKeyId() );
-console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', s3.awsAccountId() );
+fmt.field('Region', s3.region() );
+fmt.field('EndPoint', s3.host() );
+fmt.field('AccessKeyId', s3.accessKeyId() );
+fmt.field('SecretAccessKey', s3.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', s3.awsAccountId() );
 
 var options1 = {
     BucketName : 'pie-19',
 };
 
 s3.PutBucket(options1, function(err, data) {
-    console.log("\nputting bucket pie-19 - expecting failure (already created)");
+    fmt.msg("putting bucket pie-19 - expecting failure (already created)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -36,7 +36,7 @@ var options2 = {
 };
 
 s3.PutBucket(options2, function(err, data) {
-    console.log("\nputting bucket pie-20 with acl - expecting failure (already created)");
+    fmt.msg("putting bucket pie-20 with acl - expecting failure (already created)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

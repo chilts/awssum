@@ -13,18 +13,18 @@ var term = new termService.Term({
     'consumerSecret' : consumerSecret
 });
 
-console.log( 'ConsumerKey :', term.consumerKey() );
-console.log( 'ConsumerSecret :',  term.consumerSecret() );
+fmt.field('ConsumerKey', term.consumerKey() );
+fmt.field('ConsumerSecret', term.consumerSecret() );
 
 term.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
-    console.log("\nrequesting token - expecting success");
+    fmt.msg("requesting token - expecting success");
     if ( err ) {
         fmt.dump(err, 'Error');
         process.exit();
     }
 
     fmt.dump(data, 'Data');
-    console.log( 'If you want to verify this token, visit: '
+    fmt.msg( 'If you want to verify this token, visit: '
                  + term.protocol() + '://' + term.authorizeHost()
                  + term.authorizePath()
                  + '?oauth_token=' + data.Body.oauth_token

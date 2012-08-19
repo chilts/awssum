@@ -14,14 +14,14 @@ var r53 = new Route53({
     // 'awsAccountId'    : awsAccountId, // optional
 });
 
-console.log( 'Region :', r53.region() );
-console.log( 'EndPoint :',  r53.host() );
-console.log( 'AccessKeyId :', r53.accessKeyId() );
-console.log( 'SecretAccessKey :', r53.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', r53.awsAccountId() );
+fmt.field('Region', r53.region() );
+fmt.field('EndPoint', r53.host() );
+fmt.field('AccessKeyId', r53.accessKeyId() );
+fmt.field('SecretAccessKey', r53.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', r53.awsAccountId() );
 
 r53.DeleteHostedZone({ HostedZoneId : 'deadbeef' }, function(err, data) {
-    console.log("\ndeleting hosted zone - expecting failure");
+    fmt.msg("deleting hosted zone - expecting failure");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

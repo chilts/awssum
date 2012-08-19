@@ -15,14 +15,14 @@ var emr = new Emr({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', emr.region() );
-console.log( 'EndPoint :',  emr.host() );
-console.log( 'AccessKeyId :', emr.accessKeyId().substr(0,3) + '...' );
-console.log( 'SecretAccessKey :', emr.secretAccessKey().substr(0,3) + '...' );
-console.log( 'AwsAccountId :', emr.awsAccountId() );
+fmt.field('Region', emr.region() );
+fmt.field('EndPoint', emr.host() );
+fmt.field('AccessKeyId', emr.accessKeyId().substr(0,3) + '...' );
+fmt.field('SecretAccessKey', emr.secretAccessKey().substr(0,3) + '...' );
+fmt.field('AwsAccountId', emr.awsAccountId() );
 
 emr.DescribeJobFlows(function(err, data) {
-    console.log("\ndescribing job flows - expecting success");
+    fmt.msg("describing job flows - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -30,7 +30,7 @@ emr.DescribeJobFlows(function(err, data) {
 emr.DescribeJobFlows({
     JobFlowStates  : [ 'RUNNING', 'STARTING' ],
 }, function(err, data) {
-    console.log("\ndescribing job flows (RUNNING, STARTING) - expecting success");
+    fmt.msg("describing job flows (RUNNING, STARTING) - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -38,7 +38,7 @@ emr.DescribeJobFlows({
 emr.DescribeJobFlows({
     JobFlowStates  : [ 'PENDING', 'STARTING' ],
 }, function(err, data) {
-    console.log("\ndescribing job flows (PENDING, STARTING) - expecting failure (invalid PENDING) state");
+    fmt.msg("describing job flows (PENDING, STARTING) - expecting failure (invalid PENDING) state");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

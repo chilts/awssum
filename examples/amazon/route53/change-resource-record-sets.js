@@ -14,11 +14,11 @@ var r53 = new Route53({
     // 'awsAccountId'    : awsAccountId, // optional
 });
 
-console.log( 'Region :', r53.region() );
-console.log( 'EndPoint :',  r53.host() );
-console.log( 'AccessKeyId :', r53.accessKeyId() );
-console.log( 'SecretAccessKey :', r53.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', r53.awsAccountId() );
+fmt.field('Region', r53.region() );
+fmt.field('EndPoint', r53.host() );
+fmt.field('AccessKeyId', r53.accessKeyId() );
+fmt.field('SecretAccessKey', r53.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', r53.awsAccountId() );
 
 var args = {
     HostedZoneId : '/Z2JA82LCE3D9B2',
@@ -46,7 +46,7 @@ var args = {
 };
 
 r53.ChangeResourceRecordSets(args, function(err, data) {
-    console.log("\nchanging resource record sets - expecting failure (probably need a new callerReference)");
+    fmt.msg("changing resource record sets - expecting failure (probably need a new callerReference)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

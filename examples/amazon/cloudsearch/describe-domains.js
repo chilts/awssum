@@ -14,26 +14,26 @@ var cs = new CloudSearch({
     // 'awsAccountId'    : awsAccountId, // optional
 });
 
-console.log( 'Region :',          cs.region() );
-console.log( 'EndPoint :',        cs.host() );
-console.log( 'AccessKeyId :',     cs.accessKeyId().substr(0, 3) + '...' );
-console.log( 'SecretAccessKey :', cs.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :',    cs.awsAccountId() );
+fmt.field('Region', cs.region() );
+fmt.field('EndPoint', cs.host() );
+fmt.field('AccessKeyId', cs.accessKeyId().substr(0, 3) + '...' );
+fmt.field('SecretAccessKey', cs.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', cs.awsAccountId() );
 
 cs.DescribeDomains(function(err, data) {
-    console.log("\ndescribing all domains - expecting success");
+    fmt.msg("describing all domains - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 cs.DescribeDomains({ DomainNames : 'hi' }, function(err, data) {
-    console.log("\ndescribing a (invalid) domain - expecting success");
+    fmt.msg("describing a (invalid) domain - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 cs.DescribeDomains({ DomainNames : [ 'hi', 'there' ] }, function(err, data) {
-    console.log("\ndescribing some (invalid) domains - expecting success");
+    fmt.msg("describing some (invalid) domains - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

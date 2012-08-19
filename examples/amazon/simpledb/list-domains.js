@@ -15,32 +15,32 @@ var sdb = new SimpleDB({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sdb.region() );
-console.log( 'EndPoint :',  sdb.host() );
-console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sdb.awsAccountId() );
+fmt.field('Region', sdb.region() );
+fmt.field('EndPoint', sdb.host() );
+fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sdb.awsAccountId() );
 
 sdb.ListDomains({}, function(err, data) {
-    console.log('\nlist domains - expecting success');
+    fmt.msg('\nlist domains - expecting success');
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sdb.ListDomains({ MaxNumberOfDomains : 1 }, function(err, data) {
-    console.log('\nlist domains (max=1) - expecting success');
+    fmt.msg('\nlist domains (max=1) - expecting success');
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 
     var token;
 
     if ( err ) {
-        console.log('\nNot getting next set of domains due to an error.');
+        fmt.msg('\nNot getting next set of domains due to an error.');
     }
     else {
         token = data.Body.ListDomainsResponse.ListDomainsResult.NextToken;
         sdb.ListDomains({ NextToken : token }, function(err, data) {
-            console.log('\nlisting next set of domains (token=' + token + ' ) - expecting success');
+            fmt.msg('\nlisting next set of domains (token=' + token + ' ) - expecting success');
             fmt.dump(err, 'Error');
             fmt.dump(data, 'Data');
         });

@@ -7,17 +7,17 @@ var username = process.env.RACKSPACECLOUD_USERNAME;
 var apiKey = process.env.RACKSPACECLOUD_API_KEY;
 var region = process.env.RACKSPACECLOUD_REGION;
 
-console.log(username, apiKey, region);
+fmt.msg(username, apiKey, region);
 
 var authentication = new authenticationService.Authentication(username, apiKey, region);
 
-console.log( 'Region :', authentication.region() );
-console.log( 'EndPoint :',  authentication.host() );
-console.log( 'Username :', authentication.username() );
-console.log( 'ApiKey :', authentication.apiKey() );
+fmt.field('Region', authentication.region() );
+fmt.field('EndPoint', authentication.host() );
+fmt.field('Username', authentication.username() );
+fmt.field('ApiKey', authentication.apiKey() );
 
 authentication.getAuthToken({}, function(err, data) {
-    console.log("\ngetting a token - expecting success");
+    fmt.msg("getting a token - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

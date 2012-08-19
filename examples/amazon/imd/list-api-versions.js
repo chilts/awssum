@@ -5,7 +5,7 @@ var Imd = awssum.load('amazon/imd').Imd;
 var imd = new Imd();
 
 imd.ListApiVersions(function(err, data) {
-    console.log("\ngetting metadata - expecting success");
+    fmt.msg("getting metadata - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

@@ -15,14 +15,14 @@ var cloudformation = new CloudFormation({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', cloudformation.region() );
-console.log( 'EndPoint :',  cloudformation.host() );
-console.log( 'AccessKeyId :', cloudformation.accessKeyId().substr(0,3) + '...' );
-console.log( 'SecretAccessKey :', cloudformation.secretAccessKey().substr(0,3) + '...' );
-console.log( 'AwsAccountId :', cloudformation.awsAccountId() );
+fmt.field('Region', cloudformation.region() );
+fmt.field('EndPoint', cloudformation.host() );
+fmt.field('AccessKeyId', cloudformation.accessKeyId().substr(0,3) + '...' );
+fmt.field('SecretAccessKey', cloudformation.secretAccessKey().substr(0,3) + '...' );
+fmt.field('AwsAccountId', cloudformation.awsAccountId() );
 
 cloudformation.ListStacks(function(err, data) {
-    console.log("\nlisting stacks - expecting success");
+    fmt.msg("listing stacks - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

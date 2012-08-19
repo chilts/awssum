@@ -13,18 +13,18 @@ var tumblr = new tumblrService.Tumblr({
     'consumerSecret' : consumerSecret
 });
 
-console.log( 'ConsumerKey :', tumblr.consumerKey() );
-console.log( 'ConsumerSecret :',  tumblr.consumerSecret() );
+fmt.field('ConsumerKey', tumblr.consumerKey() );
+fmt.field('ConsumerSecret', tumblr.consumerSecret() );
 
 tumblr.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
-    console.log("\nrequesting token - expecting success");
+    fmt.msg("requesting token - expecting success");
     if ( err ) {
         fmt.dump(err, 'Error');
         process.exit();
     }
 
     fmt.dump(data, 'Data');
-    console.log( 'If you want to verify this token, visit: '
+    fmt.msg( 'If you want to verify this token, visit: '
                  + tumblr.protocol() + '://' + tumblr.authorizeHost()
                  + tumblr.authorizePath()
                  + '?oauth_token=' + data.Body.oauth_token

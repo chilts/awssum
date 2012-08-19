@@ -19,14 +19,14 @@ var yahoo = new yahooService.Yahoo({
 yahoo.setToken(token);
 yahoo.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', yahoo.consumerKey()    );
-console.log( 'ConsumerSecret :', yahoo.consumerSecret() );
-console.log( 'Token          :', yahoo.token()          );
-console.log( 'TokenSecret    :', yahoo.tokenSecret()    );
+fmt.field('ConsumerKey', yahoo.consumerKey()    );
+fmt.field('ConsumerSecret', yahoo.consumerSecret() );
+fmt.field('Token', yahoo.token()          );
+fmt.field('TokenSecret', yahoo.tokenSecret()    );
 
 commander.prompt('Enter your verification code : ', function(verifier) {
     yahoo.GetToken({ OAuthVerifier : verifier }, function(err, data) {
-        console.log("\ngetting token - expecting success");
+        fmt.msg("getting token - expecting success");
         fmt.dump(err, 'Error');
         fmt.dump(data, 'Data');
     });

@@ -14,13 +14,13 @@ var eb = new ElasticBeanstalk({
     'region'          : amazon.US_EAST_1,
 });
 
-console.log( 'Region :',          eb.region() );
-console.log( 'EndPoint :',        eb.host() );
-console.log( 'AccessKeyId :',     eb.accessKeyId() );
-console.log( 'SecretAccessKey :', eb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('Region', eb.region() );
+fmt.field('EndPoint', eb.host() );
+fmt.field('AccessKeyId', eb.accessKeyId() );
+fmt.field('SecretAccessKey', eb.secretAccessKey().substr(0, 3) + '...' );
 
 eb.ListAvailableSolutionStacks(function(err, data) {
-    console.log("\nlisting available solution stacks - expecting success");
+    fmt.msg("listing available solution stacks - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

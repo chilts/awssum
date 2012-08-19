@@ -14,17 +14,17 @@ var swf = new Swf({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', swf.region() );
-console.log( 'EndPoint :',  swf.host() );
-console.log( 'AccessKeyId :', swf.accessKeyId() );
-console.log( 'SecretAccessKey :', swf.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', swf.awsAccountId() );
+fmt.field('Region', swf.region() );
+fmt.field('EndPoint', swf.host() );
+fmt.field('AccessKeyId', swf.accessKeyId() );
+fmt.field('SecretAccessKey', swf.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', swf.awsAccountId() );
 
 swf.ListWorkflowTypes({
     'Domain'             : 'test',
     'RegistrationStatus' : 'REGISTERED'
 }, function(err, data) {
-    console.log("\nlisting all workflow types - expecting success");
+    fmt.msg("listing all workflow types - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

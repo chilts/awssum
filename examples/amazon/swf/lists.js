@@ -14,17 +14,17 @@ var swf = new Swf({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', swf.region() );
-console.log( 'EndPoint :',  swf.host() );
-console.log( 'AccessKeyId :', swf.accessKeyId() );
-console.log( 'SecretAccessKey :', swf.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', swf.awsAccountId() );
+fmt.field('Region', swf.region() );
+fmt.field('EndPoint', swf.host() );
+fmt.field('AccessKeyId', swf.accessKeyId() );
+fmt.field('SecretAccessKey', swf.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', swf.awsAccountId() );
 
 var args1 = {
     'RegistrationStatus' : 'REGISTERED',
 };
 swf.ListDomains(args1, function(err, data) {
-    console.log("\nlisting all REGISTERED domains - expecting success");
+    fmt.msg("listing all REGISTERED domains - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -34,7 +34,7 @@ var args2 = {
     'RegistrationStatus' : 'REGISTERED',
 };
 swf.ListActivityTypes(args2, function(err, data) {
-    console.log("\nlisting activity types - expecting success");
+    fmt.msg("listing activity types - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -47,7 +47,7 @@ var args3 = {
     },
 };
 swf.ListOpenWorkflowExecutions(args3, function(err, data) {
-    console.log("\nlisting open workflow executions - expecting success");
+    fmt.msg("listing open workflow executions - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -60,7 +60,7 @@ var args4 = {
     },
 };
 swf.ListClosedWorkflowExecutions(args4, function(err, data) {
-    console.log("\nlisting closed workflow executions - expecting success");
+    fmt.msg("listing closed workflow executions - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

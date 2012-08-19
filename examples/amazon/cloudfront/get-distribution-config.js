@@ -15,18 +15,18 @@ var cloudFront = new CloudFront({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', cloudFront.region() );
-console.log( 'EndPoint :',  cloudFront.host() );
-console.log( 'AccessKeyId :', cloudFront.accessKeyId() );
-console.log( 'SecretAccessKey :', cloudFront.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
+fmt.field('Region', cloudFront.region() );
+fmt.field('EndPoint', cloudFront.host() );
+fmt.field('AccessKeyId', cloudFront.accessKeyId() );
+fmt.field('SecretAccessKey', cloudFront.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', cloudFront.awsAccountId() );
 
 var args = {
     DistributionId : 'HelloWorld',
 };
 
 cloudFront.GetDistributionConfig(args, function(err, data) {
-    console.log("\nget distribution config - expecting failure (doesn't exist)");
+    fmt.msg("get distribution config - expecting failure (doesn't exist)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

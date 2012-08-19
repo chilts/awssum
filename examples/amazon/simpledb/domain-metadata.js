@@ -15,14 +15,14 @@ var sdb = new SimpleDB({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sdb.region() );
-console.log( 'EndPoint :',  sdb.host() );
-console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sdb.awsAccountId() );
+fmt.field('Region', sdb.region() );
+fmt.field('EndPoint', sdb.host() );
+fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sdb.awsAccountId() );
 
 sdb.DomainMetadata({ DomainName : 'test' }, function(err, data) {
-    console.log("\nDomain metadata - expecting success");
+    fmt.msg("Domain metadata - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

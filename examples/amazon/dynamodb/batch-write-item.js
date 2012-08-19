@@ -15,11 +15,11 @@ var ddb = new DynamoDB({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', ddb.region() );
-console.log( 'EndPoint :',  ddb.host() );
-console.log( 'AccessKeyId :', ddb.accessKeyId() );
-console.log( 'SecretAccessKey :', ddb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', ddb.awsAccountId() );
+fmt.field('Region', ddb.region() );
+fmt.field('EndPoint', ddb.host() );
+fmt.field('AccessKeyId', ddb.accessKeyId() );
+fmt.field('SecretAccessKey', ddb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', ddb.awsAccountId() );
 
 // start the data
 var data = {
@@ -56,10 +56,8 @@ data.RequestItems.test.push({
     },
 });
 
-console.log(data);
-
 ddb.BatchWriteItem(data, function(err, data) {
-    console.log("\nputting data - expecting success");
+    fmt.msg("putting data - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

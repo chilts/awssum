@@ -19,14 +19,14 @@ var xero = new xeroService.Xero({
 xero.setToken(token);
 xero.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', xero.consumerKey()    );
-console.log( 'ConsumerSecret :', xero.consumerSecret() );
-console.log( 'Token          :', xero.token()          );
-console.log( 'TokenSecret    :', xero.tokenSecret()    );
+fmt.field('ConsumerKey', xero.consumerKey()    );
+fmt.field('ConsumerSecret', xero.consumerSecret() );
+fmt.field('Token', xero.token()          );
+fmt.field('TokenSecret', xero.tokenSecret()    );
 
 commander.prompt('Enter your verification code : ', function(verifier) {
     xero.GetToken({ OAuthVerifier : verifier }, function(err, data) {
-        console.log("\ngetting token - expecting success");
+        fmt.msg("getting token - expecting success");
         fmt.dump(err, 'Error');
         fmt.dump(data, 'Data');
     });

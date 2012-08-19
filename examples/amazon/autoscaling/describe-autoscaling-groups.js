@@ -14,13 +14,13 @@ var as = new AutoScaling({
     'region'          : amazon.US_EAST_1,
 });
 
-console.log( 'Region :',          as.region() );
-console.log( 'EndPoint :',        as.host() );
-console.log( 'AccessKeyId :',     as.accessKeyId() );
-console.log( 'SecretAccessKey :', as.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('Region', as.region() );
+fmt.field('EndPoint', as.host() );
+fmt.field('AccessKeyId', as.accessKeyId() );
+fmt.field('SecretAccessKey', as.secretAccessKey().substr(0, 3) + '...' );
 
 as.DescribeAutoScalingGroups(function(err, data) {
-    console.log("\ndescribing autoscaling groups - expecting success");
+    fmt.msg("describing autoscaling groups - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

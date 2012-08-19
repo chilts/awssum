@@ -15,11 +15,11 @@ var fps = new Fps({
     'region'          : 'FPS-SANDBOX'
 });
 
-console.log( 'Region :',          fps.region() );
-console.log( 'EndPoint :',        fps.host() );
-console.log( 'AccessKeyId :',     fps.accessKeyId() );
-console.log( 'SecretAccessKey :', fps.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :',    fps.awsAccountId() );
+fmt.field('Region', fps.region() );
+fmt.field('EndPoint', fps.host() );
+fmt.field('AccessKeyId', fps.accessKeyId() );
+fmt.field('SecretAccessKey', fps.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', fps.awsAccountId() );
 
 var opts = {
     TransactionId : '12345678901234567890123456789012345',
@@ -27,7 +27,7 @@ var opts = {
 };
 
 fps.Cancel(opts, function(err, data) {
-    console.log("\ncancel - expecting failure (invalid transaction id)");
+    fmt.msg("cancel - expecting failure (invalid transaction id)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

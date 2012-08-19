@@ -13,7 +13,7 @@ var opts = {
 };
 
 ss.Search(opts, function(err, data) {
-    console.log("\nsearching for something - expecting success");
+    fmt.msg("searching for something - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

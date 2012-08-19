@@ -15,11 +15,11 @@ var iam = new Iam({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', iam.region() );
-console.log( 'EndPoint :',  iam.host() );
-console.log( 'AccessKeyId :', iam.accessKeyId().substr(0,3) + '...' );
-console.log( 'SecretAccessKey :', iam.secretAccessKey().substr(0,3) + '...' );
-console.log( 'AwsAccountId :', iam.awsAccountId() );
+fmt.field('Region', iam.region() );
+fmt.field('EndPoint', iam.host() );
+fmt.field('AccessKeyId', iam.accessKeyId().substr(0,3) + '...' );
+fmt.field('SecretAccessKey', iam.secretAccessKey().substr(0,3) + '...' );
+fmt.field('AwsAccountId', iam.awsAccountId() );
 
 var opts = {
     GroupName : 'test-group',
@@ -30,7 +30,7 @@ var opts = {
 };
 
 iam.PutGroupPolicy(opts, function(err, data) {
-    console.log("\nputting group policy - expecting failure (group not found)");
+    fmt.msg("putting group policy - expecting failure (group not found)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

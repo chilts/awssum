@@ -14,18 +14,18 @@ var twitter = new Twitter({
 });
 
 
-console.log( 'ConsumerKey :', twitter.consumerKey() );
-console.log( 'ConsumerSecret :',  twitter.consumerSecret() );
+fmt.field('ConsumerKey', twitter.consumerKey() );
+fmt.field('ConsumerSecret', twitter.consumerSecret() );
 
 twitter.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
-    console.log("\nrequesting token - expecting success");
+    fmt.msg("requesting token - expecting success");
     if ( err ) {
         fmt.dump(err, 'Error');
         process.exit();
     }
 
     fmt.dump(data, 'Data');
-    console.log( 'If you want to verify this token, visit: '
+    fmt.msg( 'If you want to verify this token, visit: '
                  + twitter.protocol() + '://' + twitter.authorizeHost()
                  + twitter.authorizePath()
                  + '?oauth_token=' + data.Body.oauth_token

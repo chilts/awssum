@@ -19,14 +19,14 @@ var term = new termService.Term({
 term.setToken(token);
 term.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', term.consumerKey()     );
-console.log( 'ConsumerSecret :', term.consumerSecret() );
-console.log( 'Token          :', term.token()          );
-console.log( 'TokenSecret    :', term.tokenSecret()    );
+fmt.field('ConsumerKey', term.consumerKey()     );
+fmt.field('ConsumerSecret', term.consumerSecret() );
+fmt.field('Token', term.token()          );
+fmt.field('TokenSecret', term.tokenSecret()    );
 
 // firstly, request a token
 term.Echo({ Foo : 'foo', Bar : 'bar' }, function(err, data) {
-    console.log('\ncalling echo - expecting success');
+    fmt.msg('\ncalling echo - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

@@ -14,11 +14,11 @@ var s3 = new S3({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', s3.region() );
-console.log( 'EndPoint :',  s3.host() );
-console.log( 'AccessKeyId :', s3.accessKeyId() );
-console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', s3.awsAccountId() );
+fmt.field('Region', s3.region() );
+fmt.field('EndPoint', s3.host() );
+fmt.field('AccessKeyId', s3.accessKeyId() );
+fmt.field('SecretAccessKey', s3.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', s3.awsAccountId() );
 
 var optionsNotFound = {
     BucketName    : 'pie-18',
@@ -27,7 +27,7 @@ var optionsNotFound = {
 };
 
 s3.PutObjectAcl(optionsNotFound, function(err, data) {
-    console.log("\nputting an object acl to pie-18 - expecting failure (object not found)");
+    fmt.msg("putting an object acl to pie-18 - expecting failure (object not found)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -39,7 +39,7 @@ var optionsFound = {
 };
 
 s3.PutObjectAcl(optionsFound, function(err, data) {
-    console.log("\nputting an object acl to pie-18 - expecting success");
+    fmt.msg("putting an object acl to pie-18 - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

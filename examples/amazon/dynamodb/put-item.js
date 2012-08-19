@@ -15,11 +15,11 @@ var ddb = new DynamoDB({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', ddb.region() );
-console.log( 'EndPoint :',  ddb.host() );
-console.log( 'AccessKeyId :', ddb.accessKeyId() );
-console.log( 'SecretAccessKey :', ddb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', ddb.awsAccountId() );
+fmt.field('Region', ddb.region() );
+fmt.field('EndPoint', ddb.host() );
+fmt.field('AccessKeyId', ddb.accessKeyId() );
+fmt.field('SecretAccessKey', ddb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', ddb.awsAccountId() );
 
 var user1 = {
     TableName : 'test',
@@ -32,7 +32,7 @@ var user1 = {
 };
 
 ddb.PutItem(user1, function(err, data) {
-    console.log("\nputting item1 - expecting success");
+    fmt.msg("putting item1 - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -43,7 +43,7 @@ var user2 = {
 };
 
 ddb.PutItem(user2, function(err, data) {
-    console.log("\nputting item2 without a primary key - expecting failure");
+    fmt.msg("putting item2 without a primary key - expecting failure");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -64,7 +64,7 @@ var user3 = {
 };
 
 ddb.PutItem(user3, function(err, data) {
-    console.log("\nputting item3 with an Expected - expecting failure, fails conditional");
+    fmt.msg("putting item3 with an Expected - expecting failure, fails conditional");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

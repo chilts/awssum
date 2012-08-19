@@ -19,25 +19,25 @@ var xero = new xeroService.Xero({
 xero.setToken(token);
 xero.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', xero.consumerKey()     );
-console.log( 'ConsumerSecret :', xero.consumerSecret() );
-console.log( 'Token          :', xero.token()          );
-console.log( 'TokenSecret    :', xero.tokenSecret()    );
+fmt.field('ConsumerKey', xero.consumerKey()     );
+fmt.field('ConsumerSecret', xero.consumerSecret() );
+fmt.field('Token', xero.token()          );
+fmt.field('TokenSecret', xero.tokenSecret()    );
 
 xero.GetUsers(function(err, data) {
-    console.log('\nget users - expecting success');
+    fmt.msg('\nget users - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 xero.GetUsers({ 'Where' : 'Firstname="Andrew"' }, function(err, data) {
-    console.log('\nget users where Firstname="Andrew" - expecting success');
+    fmt.msg('\nget users where Firstname="Andrew" - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 xero.GetUsers({ 'Order' : 'LastName' }, function(err, data) {
-    console.log('\nget users order by LastName - expecting success');
+    fmt.msg('\nget users order by LastName - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

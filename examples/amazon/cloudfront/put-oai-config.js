@@ -15,11 +15,11 @@ var cloudFront = new CloudFront({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', cloudFront.region() );
-console.log( 'EndPoint :',  cloudFront.host() );
-console.log( 'AccessKeyId :', cloudFront.accessKeyId() );
-console.log( 'SecretAccessKey :', cloudFront.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
+fmt.field('Region', cloudFront.region() );
+fmt.field('EndPoint', cloudFront.host() );
+fmt.field('AccessKeyId', cloudFront.accessKeyId() );
+fmt.field('SecretAccessKey', cloudFront.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', cloudFront.awsAccountId() );
 
 var data = {
     OriginAccessId : 'HelloWorld',
@@ -28,7 +28,7 @@ var data = {
 };
 
 cloudFront.PutOaiConfig(data, function(err, data) {
-    console.log("\nputting an origin access config - expecting failure for tonnes of reasons");
+    fmt.msg("putting an origin access config - expecting failure for tonnes of reasons");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

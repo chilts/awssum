@@ -10,25 +10,25 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
 var sqs = new Sqs(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
-console.log( 'Region :', sqs.region() );
-console.log( 'EndPoint :',  sqs.host() );
-console.log( 'AccessKeyId :', sqs.accessKeyId() );
-console.log( 'SecretAccessKey :', sqs.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sqs.awsAccountId() );
+fmt.field('Region', sqs.region() );
+fmt.field('EndPoint', sqs.host() );
+fmt.field('AccessKeyId', sqs.accessKeyId() );
+fmt.field('SecretAccessKey', sqs.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sqs.awsAccountId() );
 
 var options = {
     QueueName : 'my-queue'
 };
 
 sqs.ReceiveMessage(options, function(err, data) {
-    console.log("\nReceiving message from my-queue - expecting success (and a message)");
+    fmt.msg("Receiving message from my-queue - expecting success (and a message)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 options.AttributeName = 'All';
 sqs.ReceiveMessage(options, function(err, data) {
-    console.log("\nReceiving message from my-queue - expecting success (and a message with all the trimmings)");
+    fmt.msg("Receiving message from my-queue - expecting success (and a message with all the trimmings)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -36,13 +36,13 @@ sqs.ReceiveMessage(options, function(err, data) {
 options.MaxNumberOfMessages = 3;
 options.VisibilityTimeout = 10;
 sqs.ReceiveMessage(options, function(err, data) {
-    console.log("\nReceiving 3 messages from my-queue - expecting success (with all the trimmings)");
+    fmt.msg("Receiving 3 messages from my-queue - expecting success (with all the trimmings)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sqs.ReceiveMessage({ queueName : 'new-queue' }, function(err, data) {
-    console.log("\nReceiving message from new-queue - expecting success (but nothing)");
+    fmt.msg("Receiving message from new-queue - expecting success (but nothing)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

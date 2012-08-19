@@ -19,14 +19,14 @@ var xero = new xeroService.Xero({
 xero.setToken(token);
 xero.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', xero.consumerKey()     );
-console.log( 'ConsumerSecret :', xero.consumerSecret() );
-console.log( 'Token          :', xero.token()          );
-console.log( 'TokenSecret    :', xero.tokenSecret()    );
+fmt.field('ConsumerKey', xero.consumerKey()     );
+fmt.field('ConsumerSecret', xero.consumerSecret() );
+fmt.field('Token', xero.token()          );
+fmt.field('TokenSecret', xero.tokenSecret()    );
 
 // firstly, request a token
 xero.GetOrganisation({}, function(err, data) {
-    console.log('\nget organisation - expecting success');
+    fmt.msg('\nget organisation - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

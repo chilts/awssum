@@ -15,20 +15,20 @@ var elastiCache = new ElastiCache({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', elastiCache.region() );
-console.log( 'EndPoint :',  elastiCache.host() );
-console.log( 'AccessKeyId :', elastiCache.accessKeyId() );
-console.log( 'SecretAccessKey :', elastiCache.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', elastiCache.awsAccountId() );
+fmt.field('Region', elastiCache.region() );
+fmt.field('EndPoint', elastiCache.host() );
+fmt.field('AccessKeyId', elastiCache.accessKeyId() );
+fmt.field('SecretAccessKey', elastiCache.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', elastiCache.awsAccountId() );
 
 elastiCache.DeleteCacheCluster(function(err, data) {
-    console.log("\ndeleting cache cluster - expecting failure since no CacheClusterId given");
+    fmt.msg("deleting cache cluster - expecting failure since no CacheClusterId given");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 elastiCache.DeleteCacheCluster({ CacheClusterId : 'blah' }, function(err, data) {
-    console.log("\ndeleting cache cluster - expecting failure since CacheClusterId does not exist");
+    fmt.msg("deleting cache cluster - expecting failure since CacheClusterId does not exist");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

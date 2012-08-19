@@ -19,14 +19,14 @@ var term = new termService.Term({
 term.setToken(token);
 term.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', term.consumerKey()    );
-console.log( 'ConsumerSecret :', term.consumerSecret() );
-console.log( 'Token          :', term.token()          );
-console.log( 'TokenSecret    :', term.tokenSecret()    );
+fmt.field('ConsumerKey', term.consumerKey()    );
+fmt.field('ConsumerSecret', term.consumerSecret() );
+fmt.field('Token', term.token()          );
+fmt.field('TokenSecret', term.tokenSecret()    );
 
 commander.prompt('Enter your verification code : ', function(verifier) {
     term.GetToken({ OAuthVerifier : verifier }, function(err, data) {
-        console.log("\ngetting token - expecting success");
+        fmt.msg("getting token - expecting success");
         fmt.dump(err, 'Error');
         fmt.dump(data, 'Data');
     });

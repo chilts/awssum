@@ -15,18 +15,18 @@ var ddb = new DynamoDB({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', ddb.region() );
-console.log( 'EndPoint :',  ddb.host() );
-console.log( 'AccessKeyId :', ddb.accessKeyId() );
-console.log( 'SecretAccessKey :', ddb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', ddb.awsAccountId() );
+fmt.field('Region', ddb.region() );
+fmt.field('EndPoint', ddb.host() );
+fmt.field('AccessKeyId', ddb.accessKeyId() );
+fmt.field('SecretAccessKey', ddb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', ddb.awsAccountId() );
 
 var table = {
     TableName : 'test-to-delete',
 };
 
 ddb.DeleteTable(table, function(err, data) {
-    console.log("\ndeleting a table - expecting success");
+    fmt.msg("deleting a table - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -36,7 +36,7 @@ var testTable = {
 };
 
 ddb.DeleteTable(testTable, function(err, data) {
-    console.log("\ndeleting the test table - expecting success");
+    fmt.msg("deleting the test table - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

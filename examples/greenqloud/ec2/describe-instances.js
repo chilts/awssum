@@ -15,14 +15,14 @@ var ec2 = new Ec2({
     'region'          : greenqloud.IS_1
 });
 
-console.log( 'Region                    : ' + ec2.region() );
-console.log( 'EndPoint                  : ' + ec2.host() );
-console.log( 'GreenQloudAccessKeyId     : ' + ec2.accessKeyId().substr(0,3) + '...' );
-console.log( 'GreenQloudSecretAccessKey : ' + ec2.secretAccessKey().substr(0,3) + '...' );
-console.log( 'GreenQloudAccountId       : ' + ec2.awsAccountId() );
+fmt.msg( 'Region                    : ' + ec2.region() );
+fmt.msg( 'EndPoint                  : ' + ec2.host() );
+fmt.msg( 'GreenQloudAccessKeyId     : ' + ec2.accessKeyId().substr(0,3) + '...' );
+fmt.msg( 'GreenQloudSecretAccessKey : ' + ec2.secretAccessKey().substr(0,3) + '...' );
+fmt.msg( 'GreenQloudAccountId       : ' + ec2.awsAccountId() );
 
 ec2.DescribeInstances(function(err, data) {
-    console.log("\nDescribing instances - expecting success");
+    fmt.msg("Describing instances - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -31,7 +31,7 @@ ec2.DescribeInstances({
     FilterName  : [ 'ip-address', 'key-name' ],
     FilterValue : [ [ '1.2.3.4', '5.6.7.8' ], [ 'my-key' ] ],
 }, function(err, data) {
-    console.log("\nDescribing instances (with filter) - expecting success");
+    fmt.msg("Describing instances (with filter) - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

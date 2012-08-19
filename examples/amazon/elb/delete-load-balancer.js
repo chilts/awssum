@@ -15,18 +15,18 @@ var elb = new Elb({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', elb.region() );
-console.log( 'EndPoint :',  elb.host() );
-console.log( 'AccessKeyId :', elb.accessKeyId() );
-console.log( 'SecretAccessKey :', elb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', elb.awsAccountId() );
+fmt.field('Region', elb.region() );
+fmt.field('EndPoint', elb.host() );
+fmt.field('AccessKeyId', elb.accessKeyId() );
+fmt.field('SecretAccessKey', elb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', elb.awsAccountId() );
 
 var data = {
     LoadBalancerName : 'no-name',
 };
 
 elb.DeleteLoadBalancer(data, function(err, data) {
-    console.log("\ndeleting a load balancer - expecting success (it's idempotent)");
+    fmt.msg("deleting a load balancer - expecting success (it's idempotent)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

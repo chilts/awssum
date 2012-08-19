@@ -14,18 +14,18 @@ var xero = new xeroService.Xero({
 });
 
 
-console.log( 'ConsumerKey :', xero.consumerKey() );
-console.log( 'ConsumerSecret :',  xero.consumerSecret() );
+fmt.field('ConsumerKey', xero.consumerKey() );
+fmt.field('ConsumerSecret', xero.consumerSecret() );
 
 xero.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
-    console.log("\nrequesting token - expecting success");
+    fmt.msg("requesting token - expecting success");
     if ( err ) {
         fmt.dump(err, 'Error');
         process.exit();
     }
 
     fmt.dump(data, 'Data');
-    console.log( 'If you want to verify this token, visit: '
+    fmt.msg( 'If you want to verify this token, visit: '
                  + xero.protocol() + '://' + xero.authorizeHost()
                  + xero.authorizePath()
                  + '?oauth_token=' + data.Body.oauth_token

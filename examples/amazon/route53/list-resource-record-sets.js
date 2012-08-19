@@ -14,20 +14,20 @@ var r53 = new Route53({
     // 'awsAccountId'    : awsAccountId, // optional
 });
 
-console.log( 'Region :', r53.region() );
-console.log( 'EndPoint :',  r53.host() );
-console.log( 'AccessKeyId :', r53.accessKeyId() );
-console.log( 'SecretAccessKey :', r53.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', r53.awsAccountId() );
+fmt.field('Region', r53.region() );
+fmt.field('EndPoint', r53.host() );
+fmt.field('AccessKeyId', r53.accessKeyId() );
+fmt.field('SecretAccessKey', r53.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', r53.awsAccountId() );
 
 r53.ListResourceRecordSets({ HostedZoneId : 'ZYTGF6CI42UVT' }, function(err, data) {
-    console.log("\nlisting hosted zones - expecting success");
+    fmt.msg("listing hosted zones - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 r53.ListResourceRecordSets({ HostedZoneId : 'ZYTGF6CI42UVT', MaxItems : 3 }, function(err, data) {
-    console.log("\nlisting hosted zones - expecting success");
+    fmt.msg("listing hosted zones - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

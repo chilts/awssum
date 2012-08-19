@@ -15,18 +15,18 @@ var cloudFront = new CloudFront({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', cloudFront.region() );
-console.log( 'EndPoint :',  cloudFront.host() );
-console.log( 'AccessKeyId :', cloudFront.accessKeyId() );
-console.log( 'SecretAccessKey :', cloudFront.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
+fmt.field('Region', cloudFront.region() );
+fmt.field('EndPoint', cloudFront.host() );
+fmt.field('AccessKeyId', cloudFront.accessKeyId() );
+fmt.field('SecretAccessKey', cloudFront.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', cloudFront.awsAccountId() );
 
 var data = {
     DistributionId : 'HelloWorld'
 };
 
 cloudFront.DeleteDistribution(data, function(err, data) {
-    console.log("\ndeleting distribution - expecting failure (invalid distribution id)");
+    fmt.msg("deleting distribution - expecting failure (invalid distribution id)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

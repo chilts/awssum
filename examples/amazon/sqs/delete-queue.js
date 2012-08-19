@@ -10,24 +10,24 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
 var sqs = new Sqs(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
-console.log( 'Region :', sqs.region() );
-console.log( 'EndPoint :',  sqs.host() );
-console.log( 'AccessKeyId :', sqs.accessKeyId() );
-console.log( 'SecretAccessKey :', sqs.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sqs.awsAccountId() );
+fmt.field('Region', sqs.region() );
+fmt.field('EndPoint', sqs.host() );
+fmt.field('AccessKeyId', sqs.accessKeyId() );
+fmt.field('SecretAccessKey', sqs.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sqs.awsAccountId() );
 
 var options = {
     QueueName : 'new-queue'
 };
 
 sqs.DeleteQueue(options, function(err, data) {
-    console.log("\nDeleting new-queue - expecting success");
+    fmt.msg("Deleting new-queue - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sqs.DeleteQueue({}, function(err, data) {
-    console.log("\nDeleting undefined - expecting failure");
+    fmt.msg("Deleting undefined - expecting failure");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

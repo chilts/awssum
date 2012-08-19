@@ -15,33 +15,33 @@ var sdb = new SimpleDB({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sdb.region() );
-console.log( 'EndPoint :',  sdb.host() );
-console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sdb.awsAccountId() );
+fmt.field('Region', sdb.region() );
+fmt.field('EndPoint', sdb.host() );
+fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sdb.awsAccountId() );
 
 sdb.GetAttributes({ DomainName : 'test', ItemName : 'chilts' }, function(err, data) {
-    console.log("\ngetting chilts - expecting success");
+    fmt.msg("getting chilts - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sdb.GetAttributes({ DomainName : 'test', ItemName : 'andychilton', ConsistentRead : true }, function(err, data) {
-    console.log("\ngetting andychilton - expecting success");
+    fmt.msg("getting andychilton - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sdb.GetAttributes({ DomainName : 'test', ItemName : 'replace', ConsistentRead : true }, function(err, data) {
-    console.log("\ngetting replace - expecting success");
+    fmt.msg("getting replace - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 var expected = { DomainName : 'test', ItemName : 'expected', AttributeName : 'username', ConsistentRead : false };
 sdb.GetAttributes(expected, function(err, data) {
-    console.log("\ngetting expected - expecting success");
+    fmt.msg("getting expected - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

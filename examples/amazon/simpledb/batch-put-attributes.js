@@ -10,11 +10,11 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
 var sdb = new SimpleDB(accessKeyId, secretAccessKey, awsAccountId, amazon.US_WEST_1);
 
-console.log( 'Region :', sdb.region() );
-console.log( 'EndPoint :',  sdb.host() );
-console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sdb.awsAccountId() );
+fmt.field('Region', sdb.region() );
+fmt.field('EndPoint', sdb.host() );
+fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sdb.awsAccountId() );
 
 // ---
 // three users
@@ -43,7 +43,7 @@ sdb.BatchPutAttributes({
     AttributeValue   : attributeValues,
     AttributeReplace : attributeReplaces,
 }, function(err, data) {
-    console.log("\nputting three objects - expecting success");
+    fmt.msg("putting three objects - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

@@ -16,11 +16,11 @@ var sqs = new Sqs({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sqs.region() );
-console.log( 'EndPoint :',  sqs.host() );
-console.log( 'AccessKeyId :', sqs.accessKeyId() );
-console.log( 'SecretAccessKey :', sqs.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sqs.awsAccountId() );
+fmt.field('Region', sqs.region() );
+fmt.field('EndPoint', sqs.host() );
+fmt.field('AccessKeyId', sqs.accessKeyId() );
+fmt.field('SecretAccessKey', sqs.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sqs.awsAccountId() );
 
 var options = {
     QueueName : 'my-queue',
@@ -31,7 +31,7 @@ sqs.ReceiveMessage(options, function(err, data) {
     var receiptHandles = [];
     var visibilityTimeouts = [];
 
-    console.log("\nReceiving message from my-queue - expecting success");
+    fmt.msg("Receiving message from my-queue - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 
@@ -39,7 +39,7 @@ sqs.ReceiveMessage(options, function(err, data) {
     if ( ! err ) {
         // make sure we have some messages to delete
         if ( _.isUndefined(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
-            console.log("\nNo messages to change visibility of");
+            fmt.msg("No messages to change visibility of");
             return;
         }
 
@@ -64,7 +64,7 @@ sqs.ReceiveMessage(options, function(err, data) {
         });
 
         sqs.ChangeMessageVisibilityBatch(batchOptions, function(err, data) {
-            console.log("\nChanging visibility batch - expecting success");
+            fmt.msg("Changing visibility batch - expecting success");
             fmt.dump(err, 'Error');
             fmt.dump(data, 'Data');
         });

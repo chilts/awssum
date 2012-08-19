@@ -21,14 +21,14 @@ var contacts = new contactsService.Contacts({
 contacts.setToken(token);
 contacts.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', contacts.consumerKey()     );
-console.log( 'ConsumerSecret :', contacts.consumerSecret() );
-console.log( 'Token          :', contacts.token()          );
-console.log( 'TokenSecret    :', contacts.tokenSecret()    );
+fmt.field('ConsumerKey', contacts.consumerKey()     );
+fmt.field('ConsumerSecret', contacts.consumerSecret() );
+fmt.field('Token', contacts.token()          );
+fmt.field('TokenSecret', contacts.tokenSecret()    );
 
 // firstly, request a token
 contacts.DeleteContact({ Cid : '7272' }, function(err, data) {
-    console.log('\ncalling DeleteContact - expecting failure');
+    fmt.msg('\ncalling DeleteContact - expecting failure');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

@@ -13,18 +13,18 @@ var yahoo = new yahooService.Yahoo({
     'consumerSecret' : consumerSecret
 });
 
-console.log( 'ConsumerKey :', yahoo.consumerKey() );
-console.log( 'ConsumerSecret :',  yahoo.consumerSecret() );
+fmt.field('ConsumerKey', yahoo.consumerKey() );
+fmt.field('ConsumerSecret', yahoo.consumerSecret() );
 
 yahoo.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
-    console.log("\nrequesting token - expecting success");
+    fmt.msg("requesting token - expecting success");
     if ( err ) {
         fmt.dump(err, 'Error');
         process.exit();
     }
 
     fmt.dump(data, 'Data');
-    console.log( 'If you want to verify this token, visit: '
+    fmt.msg( 'If you want to verify this token, visit: '
                  + yahoo.protocol() + '://' + yahoo.authorizeHost()
                  + yahoo.authorizePath()
                  + '?oauth_token=' + data.Body.oauth_token

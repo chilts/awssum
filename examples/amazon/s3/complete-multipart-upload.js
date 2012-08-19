@@ -14,11 +14,11 @@ var s3 = new S3({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', s3.region() );
-console.log( 'EndPoint :',  s3.host() );
-console.log( 'AccessKeyId :', s3.accessKeyId() );
-console.log( 'SecretAccessKey :', s3.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', s3.awsAccountId() );
+fmt.field('Region', s3.region() );
+fmt.field('EndPoint', s3.host() );
+fmt.field('AccessKeyId', s3.accessKeyId() );
+fmt.field('SecretAccessKey', s3.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', s3.awsAccountId() );
 
 var options = {
     BucketName : 'pie-18',
@@ -33,7 +33,7 @@ var options = {
 };
 
 s3.CompleteMultipartUpload(options, function(err, data) {
-    console.log("\ncompleting upload - expecting failure (no such upload)");
+    fmt.msg("completing upload - expecting failure (no such upload)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

@@ -14,11 +14,11 @@ var ses = new Ses({
     // 'awsAccountId'    : awsAccountId, // optional
 });
 
-console.log( 'Region :', ses.region() );
-console.log( 'EndPoint :',  ses.host() );
-console.log( 'AccessKeyId :', ses.accessKeyId() );
-console.log( 'SecretAccessKey :', ses.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', ses.awsAccountId() );
+fmt.field('Region', ses.region() );
+fmt.field('EndPoint', ses.host() );
+fmt.field('AccessKeyId', ses.accessKeyId() );
+fmt.field('SecretAccessKey', ses.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', ses.awsAccountId() );
 
 var data = {
     ToAddresses : [
@@ -36,7 +36,7 @@ var data = {
 };
 
 ses.SendEmail(data, function(err, data) {
-    console.log("\nsending an email - expecting success");
+    fmt.msg("sending an email - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

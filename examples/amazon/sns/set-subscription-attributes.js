@@ -15,11 +15,11 @@ var sns = new Sns({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sns.region() );
-console.log( 'EndPoint :',  sns.host() );
-console.log( 'AccessKeyId :', sns.accessKeyId() );
-console.log( 'SecretAccessKey :', sns.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sns.awsAccountId() );
+fmt.field('Region', sns.region() );
+fmt.field('EndPoint', sns.host() );
+fmt.field('AccessKeyId', sns.accessKeyId() );
+fmt.field('SecretAccessKey', sns.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sns.awsAccountId() );
 
 var data = {
     SubscriptionArn : 'invalid-arnsubscription-arn',
@@ -29,7 +29,7 @@ var data = {
 
 // firstly, re-create this topic (it's idempotent) to get the topicArn
 sns.SetSubscriptionAttributes(data, function(err, data) {
-    console.log("\nsetting subscription attributes - expecting failure (invalid SubscriptionArn)");
+    fmt.msg("setting subscription attributes - expecting failure (invalid SubscriptionArn)");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

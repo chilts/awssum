@@ -14,11 +14,11 @@ var swf = new Swf({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', swf.region() );
-console.log( 'EndPoint :',  swf.host() );
-console.log( 'AccessKeyId :', swf.accessKeyId() );
-console.log( 'SecretAccessKey :', swf.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', swf.awsAccountId() );
+fmt.field('Region', swf.region() );
+fmt.field('EndPoint', swf.host() );
+fmt.field('AccessKeyId', swf.accessKeyId() );
+fmt.field('SecretAccessKey', swf.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', swf.awsAccountId() );
 
 var openExecutions = {
     'Domain' : 'test',
@@ -28,7 +28,7 @@ var openExecutions = {
     },
 };
 swf.CountOpenWorkflowExecutions(openExecutions, function(err, data) {
-    console.log("\ncount open workflow executions - expecting success");
+    fmt.msg("count open workflow executions - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -37,7 +37,7 @@ var closedExecutions = {
     'Domain' : 'test',
 };
 swf.CountClosedWorkflowExecutions(closedExecutions, function(err, data) {
-    console.log("\ncount closed workflow executions - expecting success");
+    fmt.msg("count closed workflow executions - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -49,7 +49,7 @@ var pendingActivities = {
     },
 };
 swf.CountPendingActivityTasks(pendingActivities, function(err, data) {
-    console.log("\ncount pending activity tasks - expecting success");
+    fmt.msg("count pending activity tasks - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -61,7 +61,7 @@ var pendingDecisions = {
     },
 };
 swf.CountPendingDecisionTasks(pendingDecisions, function(err, data) {
-    console.log("\ncount pending decision tasks - expecting success");
+    fmt.msg("count pending decision tasks - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

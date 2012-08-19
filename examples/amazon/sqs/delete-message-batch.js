@@ -11,11 +11,11 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
 var sqs = new Sqs(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
-console.log( 'Region :', sqs.region() );
-console.log( 'EndPoint :',  sqs.host() );
-console.log( 'AccessKeyId :', sqs.accessKeyId() );
-console.log( 'SecretAccessKey :', sqs.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sqs.awsAccountId() );
+fmt.field('Region', sqs.region() );
+fmt.field('EndPoint', sqs.host() );
+fmt.field('AccessKeyId', sqs.accessKeyId() );
+fmt.field('SecretAccessKey', sqs.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sqs.awsAccountId() );
 
 var options = {
     QueueName : 'my-queue',
@@ -26,7 +26,7 @@ sqs.ReceiveMessage(options, function(err, data) {
     var msgs = [];
     var i = 1;
 
-    console.log("\nReceiving message from my-queue - expecting success");
+    fmt.msg("Receiving message from my-queue - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 
@@ -34,7 +34,7 @@ sqs.ReceiveMessage(options, function(err, data) {
     if ( ! err ) {
         // make sure we have some messages to delete
         if ( _.isUndefined(data.Body.ReceiveMessageResponse.ReceiveMessageResult.Message) ) {
-            console.log("\nNothing to delete");
+            fmt.msg("Nothing to delete");
             return;
         }
 
@@ -57,7 +57,7 @@ sqs.ReceiveMessage(options, function(err, data) {
         });
 
         sqs.DeleteMessageBatch(options, function(err, data) {
-            console.log("\nDeleting Messages - expecting success");
+            fmt.msg("Deleting Messages - expecting success");
             fmt.dump(err, 'Error');
             fmt.dump(data, 'Data');
         });

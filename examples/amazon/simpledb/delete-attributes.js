@@ -15,11 +15,11 @@ var sdb = new SimpleDB({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sdb.region() );
-console.log( 'EndPoint :',  sdb.host() );
-console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sdb.awsAccountId() );
+fmt.field('Region', sdb.region() );
+fmt.field('EndPoint', sdb.host() );
+fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sdb.awsAccountId() );
 
 sdb.DeleteAttributes({
     DomainName : 'test',
@@ -27,7 +27,7 @@ sdb.DeleteAttributes({
     AttributeName : 'username',
     AttributeValue : 'chilts',
 }, function(err, data) {
-    console.log("\nDeleting attributes for chilts - expecting success");
+    fmt.msg("Deleting attributes for chilts - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -40,7 +40,7 @@ sdb.DeleteAttributes({
     ExpectedName : [ 'url' ],
     ExpectedValue : [ 'blah' ],
 }, function(err, data) {
-    console.log("\nDeleting attributes for chilts (conditional) - expecting failure");
+    fmt.msg("Deleting attributes for chilts (conditional) - expecting failure");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

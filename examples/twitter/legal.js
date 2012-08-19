@@ -19,19 +19,19 @@ var twitter = new Twitter({
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', twitter.consumerKey()                          );
-console.log( 'ConsumerSecret :', twitter.consumerSecret().substr(0, 3) + '...'  );
-console.log( 'Token          :', twitter.token()                                );
-console.log( 'TokenSecret    :', twitter.tokenSecret().substr(0, 3) + '...'     );
+fmt.field('ConsumerKey', twitter.consumerKey()                          );
+fmt.field('ConsumerSecret', twitter.consumerSecret().substr(0, 3) + '...'  );
+fmt.field('Token', twitter.token()                                );
+fmt.field('TokenSecret', twitter.tokenSecret().substr(0, 3) + '...'     );
 
 twitter.PrivacyPolicy(function(err, data) {
-    console.log('\ncalling legal/privacy - expecting success');
+    fmt.msg('\ncalling legal/privacy - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 twitter.TermsOfService(function(err, data) {
-    console.log('\ncalling legal/tos - expecting success');
+    fmt.msg('\ncalling legal/tos - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

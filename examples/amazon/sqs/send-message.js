@@ -10,11 +10,11 @@ var awsAccountId = process.env.AWS_ACCOUNT_ID;
 
 var sqs = new Sqs(accessKeyId, secretAccessKey, awsAccountId, amazon.US_EAST_1);
 
-console.log( 'Region :', sqs.region() );
-console.log( 'EndPoint :',  sqs.host() );
-console.log( 'AccessKeyId :', sqs.accessKeyId() );
-console.log( 'SecretAccessKey :', sqs.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sqs.awsAccountId() );
+fmt.field('Region', sqs.region() );
+fmt.field('EndPoint', sqs.host() );
+fmt.field('AccessKeyId', sqs.accessKeyId() );
+fmt.field('SecretAccessKey', sqs.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sqs.awsAccountId() );
 
 var optionsMyQueue = {
     QueueName : 'my-queue',
@@ -32,19 +32,19 @@ var optionsMyQueueDelayed = {
 };
 
 sqs.SendMessage(optionsMyQueue, function(err, data) {
-    console.log("\nSending a message to a queue - expecting success");
+    fmt.msg("Sending a message to a queue - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sqs.SendMessage(optionsNewQueue, function(err, data) {
-    console.log("\nSending an undefined message - expecting failure");
+    fmt.msg("Sending an undefined message - expecting failure");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sqs.SendMessage(optionsMyQueueDelayed, function(err, data) {
-    console.log("\nSending a delayed message - expecting success");
+    fmt.msg("Sending a delayed message - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

@@ -15,11 +15,11 @@ var ddb = new DynamoDB({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', ddb.region() );
-console.log( 'EndPoint :',  ddb.host() );
-console.log( 'AccessKeyId :', ddb.accessKeyId() );
-console.log( 'SecretAccessKey :', ddb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', ddb.awsAccountId() );
+fmt.field('Region', ddb.region() );
+fmt.field('EndPoint', ddb.host() );
+fmt.field('AccessKeyId', ddb.accessKeyId() );
+fmt.field('SecretAccessKey', ddb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', ddb.awsAccountId() );
 
 var data1 = {
     TableName : 'test',
@@ -36,7 +36,7 @@ var data1 = {
 };
 
 ddb.CreateTable(data1, function(err, data) {
-    console.log("\ncreating a table - expecting success");
+    fmt.msg("creating a table - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -60,7 +60,7 @@ var data2 = {
 };
 
 ddb.CreateTable(data2, function(err, data) {
-    console.log("\ncreating a table - expecting success");
+    fmt.msg("creating a table - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -80,7 +80,7 @@ var data3 = {
 };
 
 ddb.CreateTable(data3, function(err, data) {
-    console.log("\ncreating a table - expecting success");
+    fmt.msg("creating a table - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

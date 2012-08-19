@@ -15,11 +15,11 @@ var cloudFront = new CloudFront({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', cloudFront.region() );
-console.log( 'EndPoint :',  cloudFront.host() );
-console.log( 'AccessKeyId :', cloudFront.accessKeyId() );
-console.log( 'SecretAccessKey :', cloudFront.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
+fmt.field('Region', cloudFront.region() );
+fmt.field('EndPoint', cloudFront.host() );
+fmt.field('AccessKeyId', cloudFront.accessKeyId() );
+fmt.field('SecretAccessKey', cloudFront.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', cloudFront.awsAccountId() );
 
 var data = {
     DistributionId : 'InvalidDistId',
@@ -28,7 +28,7 @@ var data = {
 };
 
 cloudFront.CreateInvalidation(data, function(err, data) {
-    console.log("\ncreating an invalidation - expecting failure due to distribution being invalid");
+    fmt.msg("creating an invalidation - expecting failure due to distribution being invalid");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

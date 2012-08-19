@@ -19,25 +19,25 @@ var twitter = new Twitter({
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', twitter.consumerKey()                          );
-console.log( 'ConsumerSecret :', twitter.consumerSecret().substr(0, 3) + '...'  );
-console.log( 'Token          :', twitter.token()                                );
-console.log( 'TokenSecret    :', twitter.tokenSecret().substr(0, 3) + '...'     );
+fmt.field('ConsumerKey', twitter.consumerKey()                          );
+fmt.field('ConsumerSecret', twitter.consumerSecret().substr(0, 3) + '...'  );
+fmt.field('Token', twitter.token()                                );
+fmt.field('TokenSecret', twitter.tokenSecret().substr(0, 3) + '...'     );
 
 twitter.GetSavedSearches(function(err, data) {
-    console.log('\ncalling saved_searches - expecting success');
+    fmt.msg('\ncalling saved_searches - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 twitter.CreateSavedSearch({ query : '#awssum' }, function(err, data) {
-    console.log('\ncalling saved_searches/create - expecting error (already exists)');
+    fmt.msg('\ncalling saved_searches/create - expecting error (already exists)');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 twitter.GetSavedSearch({ id : '106302918' }, function(err, data) {
-    console.log('\ncalling saved_searches/show/:id - expecting success');
+    fmt.msg('\ncalling saved_searches/show/:id - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

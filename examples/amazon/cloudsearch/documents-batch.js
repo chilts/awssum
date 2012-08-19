@@ -30,7 +30,7 @@ var opts = {
 };
 
 ds.DocumentsBatch(opts, function(err, data) {
-    console.log("\nputting some documents - expecting success");
+    fmt.msg("putting some documents - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

@@ -14,20 +14,20 @@ var swf = new Swf({
     'region' : amazon.US_EAST_1
 });
 
-console.log( 'Region :', swf.region() );
-console.log( 'EndPoint :',  swf.host() );
-console.log( 'AccessKeyId :', swf.accessKeyId() );
-console.log( 'SecretAccessKey :', swf.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', swf.awsAccountId() );
+fmt.field('Region', swf.region() );
+fmt.field('EndPoint', swf.host() );
+fmt.field('AccessKeyId', swf.accessKeyId() );
+fmt.field('SecretAccessKey', swf.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', swf.awsAccountId() );
 
 swf.DescribeDomain({ 'Name' : 'test' }, function(err, data) {
-    console.log("\ndescribing domain - expecting success");
+    fmt.msg("describing domain - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 swf.DescribeDomain({ 'Name' : 'unknown-domain' }, function(err, data) {
-    console.log("\ndescribing 'unknown' domain - expecting failure");
+    fmt.msg("describing 'unknown' domain - expecting failure");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

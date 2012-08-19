@@ -19,10 +19,10 @@ var xero = new xeroService.Xero({
 xero.setToken(token);
 xero.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', xero.consumerKey()     );
-console.log( 'ConsumerSecret :', xero.consumerSecret() );
-console.log( 'Token          :', xero.token()          );
-console.log( 'TokenSecret    :', xero.tokenSecret()    );
+fmt.field('ConsumerKey', xero.consumerKey()     );
+fmt.field('ConsumerSecret', xero.consumerSecret() );
+fmt.field('Token', xero.token()          );
+fmt.field('TokenSecret', xero.tokenSecret()    );
 
 var data1 = {
     Contacts : [
@@ -41,13 +41,13 @@ var data2 = {
 };
 
 xero.CreateContacts(data1, function(err, data) {
-    console.log('\nadding a contact for "Berry Brew" - expecting failure');
+    fmt.msg('\nadding a contact for "Berry Brew" - expecting failure');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 xero.CreateContacts(data2, function(err, data) {
-    console.log('\nadding a contact for "Brew Berry" - expecting success');
+    fmt.msg('\nadding a contact for "Brew Berry" - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });

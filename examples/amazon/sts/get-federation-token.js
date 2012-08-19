@@ -15,14 +15,14 @@ var sts = new Sts({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sts.region() );
-console.log( 'EndPoint :',  sts.host() );
-console.log( 'AccessKeyId :', sts.accessKeyId() );
-console.log( 'SecretAccessKey :', sts.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sts.awsAccountId() );
+fmt.field('Region', sts.region() );
+fmt.field('EndPoint', sts.host() );
+fmt.field('AccessKeyId', sts.accessKeyId() );
+fmt.field('SecretAccessKey', sts.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sts.awsAccountId() );
 
 sts.GetFederationToken({ Name : 'chilts' }, function(err, data) {
-    console.log("\ngetting a federation token - expecting success");
+    fmt.msg("getting a federation token - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

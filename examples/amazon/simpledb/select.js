@@ -15,20 +15,20 @@ var sdb = new SimpleDB({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sdb.region() );
-console.log( 'EndPoint :',  sdb.host() );
-console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sdb.awsAccountId() );
+fmt.field('Region', sdb.region() );
+fmt.field('EndPoint', sdb.host() );
+fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sdb.awsAccountId() );
 
 sdb.Select({ SelectExpression : 'SELECT username FROM test' }, function(err, data) {
-    console.log("\nSELECT username FROM test");
+    fmt.msg("SELECT username FROM test");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 
 sdb.Select({ SelectExpression : 'SELECT * FROM test', ConsistentRead : true }, function(err, data) {
-    console.log("\nSELECT * FROM test");
+    fmt.msg("SELECT * FROM test");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

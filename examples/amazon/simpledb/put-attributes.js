@@ -15,11 +15,11 @@ var sdb = new SimpleDB({
     'region'          : amazon.US_EAST_1
 });
 
-console.log( 'Region :', sdb.region() );
-console.log( 'EndPoint :',  sdb.host() );
-console.log( 'AccessKeyId :', sdb.accessKeyId() );
-console.log( 'SecretAccessKey :', sdb.secretAccessKey().substr(0, 3) + '...' );
-console.log( 'AwsAccountId :', sdb.awsAccountId() );
+fmt.field('Region', sdb.region() );
+fmt.field('EndPoint', sdb.host() );
+fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId', sdb.awsAccountId() );
 
 // ---
 // user1
@@ -33,7 +33,7 @@ sdb.PutAttributes({
     AttributeName : user1Names,
     AttributeValue : user1Values
 }, function(err, data) {
-    console.log("\nputting user chilts - expecting success");
+    fmt.msg("putting user chilts - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -59,7 +59,7 @@ sdb.PutAttributes({
     ExpectedName : [ 'password' ],
     ExpectedValue : [ 'testpass' ],
 }, function(err, data) {
-    console.log("\nputting with a conditional - expecting failure");
+    fmt.msg("putting with a conditional - expecting failure");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -78,7 +78,7 @@ sdb.PutAttributes({
     AttributeValue : user3Values,
     AttributeReplace : user3Replace,
 }, function(err, data) {
-    console.log("\nputting a replace - expecting success");
+    fmt.msg("putting a replace - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -99,7 +99,7 @@ sdb.PutAttributes({
     ExpectedName : user4ExNames,
     ExpectedValues : user4ExValues,
 }, function(err, data) {
-    console.log("\nputting with an expected - expecting success");
+    fmt.msg("putting with an expected - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

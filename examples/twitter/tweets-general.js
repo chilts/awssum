@@ -19,42 +19,42 @@ var twitter = new Twitter({
 twitter.setToken(token);
 twitter.setTokenSecret(tokenSecret);
 
-console.log( 'ConsumerKey    :', twitter.consumerKey()                          );
-console.log( 'ConsumerSecret :', twitter.consumerSecret().substr(0, 3) + '...'  );
-console.log( 'Token          :', twitter.token()                                );
-console.log( 'TokenSecret    :', twitter.tokenSecret().substr(0, 3) + '...'     );
+fmt.field('ConsumerKey', twitter.consumerKey()                          );
+fmt.field('ConsumerSecret', twitter.consumerSecret().substr(0, 3) + '...'  );
+fmt.field('Token', twitter.token()                                );
+fmt.field('TokenSecret', twitter.tokenSecret().substr(0, 3) + '...'     );
 
 var data = {
     id : '21947795900469248',
 };
 
 twitter.RetweetedBy(data, function(err, data) {
-    console.log('\ncalling statuses/:id/retweeted_by - expecting success');
+    fmt.msg('\ncalling statuses/:id/retweeted_by - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 twitter.RetweetedByIds(data, function(err, data) {
-    console.log('\ncalling statuses/:id/retweeted_by/ids - expecting success');
+    fmt.msg('\ncalling statuses/:id/retweeted_by/ids - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 twitter.Retweets(data, function(err, data) {
-    console.log('\ncalling statuses/retweets/:id - expecting success');
+    fmt.msg('\ncalling statuses/retweets/:id - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 twitter.Show(data, function(err, data) {
-    console.log('\ncalling statuses/show/:id - expecting success');
+    fmt.msg('\ncalling statuses/show/:id - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
 
 data.omit_script = true; // for lols
 twitter.OEmbed(data, function(err, data) {
-    console.log('\ncalling statuses/oembed - expecting success');
+    fmt.msg('\ncalling statuses/oembed - expecting success');
     fmt.dump(err, 'Err');
     fmt.dump(data, 'Data');
 });
