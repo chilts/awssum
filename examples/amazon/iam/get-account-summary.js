@@ -3,10 +3,10 @@ var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Iam = awssum.load('amazon/iam').Iam;
 
-var env = process.env;
-var accessKeyId = process.env.ACCESS_KEY_ID;
-var secretAccessKey = process.env.SECRET_ACCESS_KEY;
-var awsAccountId = process.env.AWS_ACCOUNT_ID;
+var env             = process.env;
+var accessKeyId     = env.ACCESS_KEY_ID;
+var secretAccessKey = env.SECRET_ACCESS_KEY;
+var awsAccountId    = env.AWS_ACCOUNT_ID;
 
 var iam = new Iam({
     'accessKeyId'     : accessKeyId,

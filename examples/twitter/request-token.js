@@ -3,9 +3,9 @@ var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var Twitter = awssum.load('twitter/twitter').Twitter;
 
-var env = process.env;
-var consumerKey = process.env.TWITTER_CONSUMER_KEY;
-var consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
+var env            = process.env;
+var consumerKey    = env.TWITTER_CONSUMER_KEY;
+var consumerSecret = env.TWITTER_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
 var twitter = new Twitter({

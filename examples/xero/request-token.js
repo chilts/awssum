@@ -3,9 +3,9 @@ var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var xeroService = awssum.load('xero/xero');
 
-var env = process.env;
-var consumerKey = process.env.XERO_CONSUMER_KEY;
-var consumerSecret = process.env.XERO_CONSUMER_SECRET;
+var env            = process.env;
+var consumerKey    = env.XERO_CONSUMER_KEY;
+var consumerSecret = env.XERO_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
 var xero = new xeroService.Xero({

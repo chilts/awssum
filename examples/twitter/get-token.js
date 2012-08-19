@@ -4,12 +4,12 @@ var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var Twitter = awssum.load('twitter/twitter').Twitter;
 
-var env = process.env;
-var consumerKey = process.env.TWITTER_CONSUMER_KEY;
-var consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
-var token = process.env.TWITTER_TOKEN;
-var tokenSecret = process.env.TWITTER_TOKEN_SECRET;
-var verifier = process.env.TWITTER_VERIFIER;
+var env            = process.env;
+var consumerKey    = env.TWITTER_CONSUMER_KEY;
+var consumerSecret = env.TWITTER_CONSUMER_SECRET;
+var token          = env.TWITTER_TOKEN;
+var tokenSecret    = env.TWITTER_TOKEN_SECRET;
+var verifier       = env.TWITTER_VERIFIER;
 
 var twitter = new Twitter({
     'consumerKey'    : consumerKey,

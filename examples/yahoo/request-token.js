@@ -3,9 +3,9 @@ var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var yahooService = awssum.load('yahoo/yahoo');
 
-var env = process.env;
-var consumerKey = process.env.YAHOO_CONSUMER_KEY;
-var consumerSecret = process.env.YAHOO_CONSUMER_SECRET;
+var env            = process.env;
+var consumerKey    = env.YAHOO_CONSUMER_KEY;
+var consumerSecret = env.YAHOO_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
 var yahoo = new yahooService.Yahoo({

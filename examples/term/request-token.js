@@ -3,9 +3,9 @@ var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var termService = awssum.load('term/term');
 
-var env = process.env;
-var consumerKey = process.env.TERM_CONSUMER_KEY;
-var consumerSecret = process.env.TERM_CONSUMER_SECRET;
+var env            = process.env;
+var consumerKey    = env.TERM_CONSUMER_KEY;
+var consumerSecret = env.TERM_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
 var term = new termService.Term({

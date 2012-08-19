@@ -2,10 +2,10 @@ var fmt = require('fmt');
 var base = require("rackspacecloud/base");
 var authenticationService = require("rackspacecloud/authentication");
 
-var env = process.env;
-var username = process.env.RACKSPACECLOUD_USERNAME;
-var apiKey = process.env.RACKSPACECLOUD_API_KEY;
-var region = process.env.RACKSPACECLOUD_REGION;
+var env      = process.env;
+var username = env.RACKSPACECLOUD_USERNAME;
+var apiKey   = env.RACKSPACECLOUD_API_KEY;
+var region   = env.RACKSPACECLOUD_REGION;
 
 fmt.msg(username, apiKey, region);
 

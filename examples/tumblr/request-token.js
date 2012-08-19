@@ -3,9 +3,9 @@ var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var tumblrService = awssum.load('tumblr/tumblr');
 
-var env = process.env;
-var consumerKey = process.env.TUMBLR_CONSUMER_KEY;
-var consumerSecret = process.env.TUMBLR_CONSUMER_SECRET;
+var env            = process.env;
+var consumerKey    = env.TUMBLR_CONSUMER_KEY;
+var consumerSecret = env.TUMBLR_CONSUMER_SECRET;
 // don't need the token, tokenSecret or verifier
 
 var tumblr = new tumblrService.Tumblr({

@@ -4,9 +4,9 @@ var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
 var fs = require('fs');
 
-var accessKeyId = process.env.ACCESS_KEY_ID;
-var secretAccessKey = process.env.SECRET_ACCESS_KEY;
-var awsAccountId = process.env.AWS_ACCOUNT_ID;
+var accessKeyId     = env.ACCESS_KEY_ID;
+var secretAccessKey = env.SECRET_ACCESS_KEY;
+var awsAccountId    = env.AWS_ACCOUNT_ID;
 var bucket = process.env.S3_BUCKET;
 
 var s3 = new S3({

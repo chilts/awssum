@@ -4,11 +4,11 @@ var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var contactsService = awssum.load('yahoo/contacts');
 
-var env = process.env;
-var consumerKey = process.env.YAHOO_CONSUMER_KEY;
-var consumerSecret = process.env.YAHOO_CONSUMER_SECRET;
-var token = process.env.YAHOO_TOKEN;
-var tokenSecret = process.env.YAHOO_TOKEN_SECRET;
+var env            = process.env;
+var consumerKey    = env.YAHOO_CONSUMER_KEY;
+var consumerSecret = env.YAHOO_CONSUMER_SECRET;
+var token          = env.YAHOO_TOKEN;
+var tokenSecret    = env.YAHOO_TOKEN_SECRET;
 // don't need the verifier
 var yahooGuid = process.env.YAHOO_GUID;
 
