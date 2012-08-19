@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Swf = awssum.load('amazon/swf').Swf;
@@ -22,6 +22,6 @@ console.log( 'AwsAccountId :', swf.awsAccountId() );
 
 swf.ListDomains({ 'RegistrationStatus' : 'REGISTERED' }, function(err, data) {
     console.log("\nlisting all REGISTERED domains - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

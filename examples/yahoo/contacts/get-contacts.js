@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -29,6 +29,6 @@ console.log( 'TokenSecret    :', contacts.tokenSecret()    );
 // firstly, request a token
 contacts.GetContacts(function(err, data) {
     console.log('\ncalling getcontacts - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudSearch = awssum.load('amazon/cloudsearch').CloudSearch;
@@ -26,6 +26,6 @@ var opts = {
 
 cs.DeleteDomain(opts, function(err, data) {
     console.log("\ncreating a domain - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

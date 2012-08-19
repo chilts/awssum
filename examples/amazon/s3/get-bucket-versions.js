@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -22,6 +22,6 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 s3.getBucketVersions({ BucketName : 'pie-17', MaxKeys : 10 }, function(err, data) {
     console.log("\nget bucket versions");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

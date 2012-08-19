@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Ec2 = awssum.load('amazon/ec2').Ec2;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', ec2.awsAccountId() );
 
 ec2.DescribeTags({ Filter : [ { Name : 'resource-type', Value : 'instance' } ]}, function(err, data) {
     console.log("\ndescribing tags - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

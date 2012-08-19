@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -24,7 +24,7 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 // you must run fs.stat to get the file size for the content-length header (s3 requires this)
 fs.stat(__filename, function(err, file_info) {
     if (err) {
-        inspect(err, 'Error reading file');
+        fmt.dump(err, 'Error reading file');
         return;
     }
 
@@ -42,7 +42,7 @@ fs.stat(__filename, function(err, file_info) {
 
     s3.PutObject(options, function(err, data) {
         console.log("\nputting an object to " + bucket + " - expecting success");
-        inspect(err, 'Error');
-        inspect(data, 'Data');
+        fmt.dump(err, 'Error');
+        fmt.dump(data, 'Data');
     });
 });

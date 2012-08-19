@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var DynamoDB = awssum.load('amazon/dynamodb').DynamoDB;
@@ -23,7 +23,7 @@ console.log( 'AwsAccountId :', ddb.awsAccountId() );
 
 ddb.ListTables(function(err, data) {
     if ( err ) {
-        inspect(err, 'Error when Listing Tables');
+        fmt.dump(err, 'Error when Listing Tables');
         return;
     }
 
@@ -33,13 +33,13 @@ ddb.ListTables(function(err, data) {
     };
     ddb.DescribeTable(tableData, function(err, data) {
         console.log("\ndescribing the first table - expecting success");
-        inspect(err, 'Error');
-        inspect(data, 'Data');
+        fmt.dump(err, 'Error');
+        fmt.dump(data, 'Data');
     });
 });
 
 ddb.DescribeTable({ TableName : 'test-tweets' }, function(err, data) {
     console.log("\ndescribing the test-tweets table - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

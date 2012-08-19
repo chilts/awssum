@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var AutoScaling = awssum.load('amazon/autoscaling').AutoScaling;
@@ -21,6 +21,6 @@ console.log( 'SecretAccessKey :', as.secretAccessKey().substr(0, 3) + '...' );
 
 as.DescribeAutoScalingGroups(function(err, data) {
     console.log("\ndescribing autoscaling groups - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

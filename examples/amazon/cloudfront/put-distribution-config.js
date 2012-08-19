@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudFront = awssum.load('amazon/cloudfront').CloudFront;
@@ -44,6 +44,6 @@ var data = {
 
 cloudFront.PutDistributionConfig(data, function(err, data) {
     console.log("\nputting a distribution config - expecting failure for tonnes of reasons");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

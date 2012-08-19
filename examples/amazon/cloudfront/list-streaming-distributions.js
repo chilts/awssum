@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudFront = awssum.load('amazon/cloudfront').CloudFront;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', cloudFront.awsAccountId() );
 
 cloudFront.ListStreamingDistributions(function(err, data) {
     console.log("\nlisting distributions - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

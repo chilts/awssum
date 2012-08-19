@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -26,12 +26,12 @@ console.log( 'TokenSecret    :', twitter.tokenSecret().substr(0, 3) + '...'     
 
 twitter.PrivacyPolicy(function(err, data) {
     console.log('\ncalling legal/privacy - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.TermsOfService(function(err, data) {
     console.log('\ncalling legal/tos - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

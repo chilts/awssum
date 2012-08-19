@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -30,31 +30,31 @@ var data = {
 
 twitter.RetweetedBy(data, function(err, data) {
     console.log('\ncalling statuses/:id/retweeted_by - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.RetweetedByIds(data, function(err, data) {
     console.log('\ncalling statuses/:id/retweeted_by/ids - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.Retweets(data, function(err, data) {
     console.log('\ncalling statuses/retweets/:id - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.Show(data, function(err, data) {
     console.log('\ncalling statuses/show/:id - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 data.omit_script = true; // for lols
 twitter.OEmbed(data, function(err, data) {
     console.log('\ncalling statuses/oembed - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

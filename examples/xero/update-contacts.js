@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -35,6 +35,6 @@ var data = {
 
 xero.UpdateContacts(data, function(err, data) {
     console.log('\nupdate contact email address for Berry Brew - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

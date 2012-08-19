@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var DynamoDB = awssum.load('amazon/dynamodb').DynamoDB;
@@ -33,8 +33,8 @@ var user1 = {
 
 ddb.PutItem(user1, function(err, data) {
     console.log("\nputting item1 - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var user2 = {
@@ -44,8 +44,8 @@ var user2 = {
 
 ddb.PutItem(user2, function(err, data) {
     console.log("\nputting item2 without a primary key - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var user3 = {
@@ -65,6 +65,6 @@ var user3 = {
 
 ddb.PutItem(user3, function(err, data) {
     console.log("\nputting item3 with an Expected - expecting failure, fails conditional");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

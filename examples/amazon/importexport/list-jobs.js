@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var ImportExport = awssum.load('amazon/importexport').ImportExport;
@@ -21,6 +21,6 @@ console.log( 'SecretAccessKey :', ie.secretAccessKey().substr(0,3) + '...' );
 
 ie.ListJobs(function(err, data) {
     console.log("\nlisting jobs - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

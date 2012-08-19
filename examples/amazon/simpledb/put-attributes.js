@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
@@ -34,8 +34,8 @@ sdb.PutAttributes({
     AttributeValue : user1Values
 }, function(err, data) {
     console.log("\nputting user chilts - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var user2 = [
@@ -60,8 +60,8 @@ sdb.PutAttributes({
     ExpectedValue : [ 'testpass' ],
 }, function(err, data) {
     console.log("\nputting with a conditional - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 // ---
@@ -79,8 +79,8 @@ sdb.PutAttributes({
     AttributeReplace : user3Replace,
 }, function(err, data) {
     console.log("\nputting a replace - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 // ---
@@ -100,8 +100,8 @@ sdb.PutAttributes({
     ExpectedValues : user4ExValues,
 }, function(err, data) {
     console.log("\nputting with an expected - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 // ---

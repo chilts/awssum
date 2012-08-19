@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var DynamoDB = awssum.load('amazon/dynamodb').DynamoDB;
@@ -31,6 +31,6 @@ var table = {
 
 ddb.UpdateTable(table, function(err, data) {
     console.log("\nupdating a table - expecting failure (no change)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

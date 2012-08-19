@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -22,12 +22,12 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 s3.CheckBucket({ BucketName : 'pie-17' }, function(err, data) {
     console.log("\ncheck bucket pie-17 - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 s3.CheckBucket({ BucketName : 'unknown' }, function(err, data) {
     console.log("\ncheck bucket unknown - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

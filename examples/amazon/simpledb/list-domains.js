@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
@@ -23,14 +23,14 @@ console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
 sdb.ListDomains({}, function(err, data) {
     console.log('\nlist domains - expecting success');
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sdb.ListDomains({ MaxNumberOfDomains : 1 }, function(err, data) {
     console.log('\nlist domains (max=1) - expecting success');
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 
     var token;
 
@@ -41,8 +41,8 @@ sdb.ListDomains({ MaxNumberOfDomains : 1 }, function(err, data) {
         token = data.Body.ListDomainsResponse.ListDomainsResult.NextToken;
         sdb.ListDomains({ NextToken : token }, function(err, data) {
             console.log('\nlisting next set of domains (token=' + token + ' ) - expecting success');
-            inspect(err, 'Error');
-            inspect(data, 'Data');
+            fmt.dump(err, 'Error');
+            fmt.dump(data, 'Data');
         });
     }
 });

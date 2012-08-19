@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sqs = awssum.load('amazon/sqs').Sqs;
@@ -22,12 +22,12 @@ var options = {
 
 sqs.DeleteQueue(options, function(err, data) {
     console.log("\nDeleting new-queue - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sqs.DeleteQueue({}, function(err, data) {
     console.log("\nDeleting undefined - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

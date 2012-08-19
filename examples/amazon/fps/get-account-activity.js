@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Fps = awssum.load('amazon/fps').Fps;
@@ -30,8 +30,8 @@ var opts1 = {
 
 fps.GetAccountActivity(opts1, function(err, data) {
     console.log("\ngetting the account activity - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var opts2 = {
@@ -41,6 +41,6 @@ var opts2 = {
 
 fps.GetAccountActivity(opts2, function(err, data) {
     console.log("\ngetting asctivity - expecting failure (invalid status)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

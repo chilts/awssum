@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Swf = awssum.load('amazon/swf').Swf;
@@ -29,8 +29,8 @@ var openExecutions = {
 };
 swf.CountOpenWorkflowExecutions(openExecutions, function(err, data) {
     console.log("\ncount open workflow executions - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var closedExecutions = {
@@ -38,8 +38,8 @@ var closedExecutions = {
 };
 swf.CountClosedWorkflowExecutions(closedExecutions, function(err, data) {
     console.log("\ncount closed workflow executions - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var pendingActivities = {
@@ -50,8 +50,8 @@ var pendingActivities = {
 };
 swf.CountPendingActivityTasks(pendingActivities, function(err, data) {
     console.log("\ncount pending activity tasks - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var pendingDecisions = {
@@ -62,6 +62,6 @@ var pendingDecisions = {
 };
 swf.CountPendingDecisionTasks(pendingDecisions, function(err, data) {
     console.log("\ncount pending decision tasks - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

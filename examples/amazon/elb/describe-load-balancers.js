@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Elb = awssum.load('amazon/elb').Elb;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', elb.awsAccountId() );
 
 elb.DescribeLoadBalancers(function(err, data) {
     console.log("\ndescribing load balancers - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

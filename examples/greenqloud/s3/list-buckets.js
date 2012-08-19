@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var greenqloud = awssum.load('greenqloud/greenqloud');
 var S3 = awssum.load('greenqloud/s3').S3;
@@ -23,24 +23,24 @@ console.log( 'AwsAccountId    :', s3.awsAccountId() );
 
 s3.ListBuckets(function(err, data) {
     console.log("\nlisting all the buckets (no options given) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 s3.ListBuckets(undefined, function(err, data) {
     console.log("\nlisting all the buckets (undefined options) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 s3.ListBuckets({}, function(err, data) {
     console.log("\nlisting all the buckets (empty options) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 s3.ListBuckets({ Ignored : 'this is' }, function(err, data) {
     console.log("\nlisting all the buckets (nothing interesting in options) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

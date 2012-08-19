@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -27,12 +27,12 @@ console.log( 'AwsAccountId :', s3.awsAccountId() );
 
 s3.CreateBucket({ BucketName : 'pie-18' }, function(err, data) {
     console.log("\ncreating pie-18 - expecting failure (already created)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 s3eu.CreateBucket({ BucketName : 'pie-18-in-europe' }, function(err, data) {
     console.log("\ncreating pie-18-in-europe - expecting failure (already created)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

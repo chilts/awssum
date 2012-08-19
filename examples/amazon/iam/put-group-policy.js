@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Iam = awssum.load('amazon/iam').Iam;
@@ -31,6 +31,6 @@ var opts = {
 
 iam.PutGroupPolicy(opts, function(err, data) {
     console.log("\nputting group policy - expecting failure (group not found)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

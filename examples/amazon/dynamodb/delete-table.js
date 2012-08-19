@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var DynamoDB = awssum.load('amazon/dynamodb').DynamoDB;
@@ -27,8 +27,8 @@ var table = {
 
 ddb.DeleteTable(table, function(err, data) {
     console.log("\ndeleting a table - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var testTable = {
@@ -37,6 +37,6 @@ var testTable = {
 
 ddb.DeleteTable(testTable, function(err, data) {
     console.log("\ndeleting the test table - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

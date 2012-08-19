@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Swf = awssum.load('amazon/swf').Swf;
@@ -25,6 +25,6 @@ swf.ListWorkflowTypes({
     'RegistrationStatus' : 'REGISTERED'
 }, function(err, data) {
     console.log("\nlisting all workflow types - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

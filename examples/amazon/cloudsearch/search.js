@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var SearchService = awssum.load('amazon/cloudsearch').SearchService;
@@ -14,6 +14,6 @@ var opts = {
 
 ss.Search(opts, function(err, data) {
     console.log("\nsearching for something - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

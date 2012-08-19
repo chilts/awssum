@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -30,13 +30,13 @@ var data = {
 
 twitter.GetUsersProfileImage(data, function(err, data) {
     console.log('\ncalling users/profile_image/:screen_name - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 data.size = 'bigger';
 twitter.GetUsersProfileImage(data, function(err, data) {
     console.log('\ncalling users/profile_image/:screen_name - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

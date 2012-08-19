@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudWatch = awssum.load('amazon/cloudwatch').CloudWatch;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :',    cloudwatch.awsAccountId() );
 
 cloudwatch.ListMetrics(function(err, data) {
     console.log("\nlisting metrics - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

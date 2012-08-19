@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudFront = awssum.load('amazon/cloudfront').CloudFront;
@@ -27,6 +27,6 @@ var data = {
 
 cloudFront.DeleteDistribution(data, function(err, data) {
     console.log("\ndeleting distribution - expecting failure (invalid distribution id)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

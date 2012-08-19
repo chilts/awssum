@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Elb = awssum.load('amazon/elb').Elb;
@@ -27,8 +27,8 @@ var data = {
 
 elb.DescribeInstanceHealth(data, function(err, data) {
     console.log("\ndescribing instance health - expecting failure (due to there not being one)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 data.Instances = [
@@ -37,6 +37,6 @@ data.Instances = [
 
 elb.DescribeInstanceHealth(data, function(err, data) {
     console.log("\ndescribing instance health with instances - expecting failure (due to there not being one)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Fps = awssum.load('amazon/fps').Fps;
@@ -28,6 +28,6 @@ var opts = {
 
 fps.Cancel(opts, function(err, data) {
     console.log("\ncancel - expecting failure (invalid transaction id)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

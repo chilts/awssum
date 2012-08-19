@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudSearch = awssum.load('amazon/cloudsearch').CloudSearch;
@@ -22,18 +22,18 @@ console.log( 'AwsAccountId :',    cs.awsAccountId() );
 
 cs.DescribeDomains(function(err, data) {
     console.log("\ndescribing all domains - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 cs.DescribeDomains({ DomainNames : 'hi' }, function(err, data) {
     console.log("\ndescribing a (invalid) domain - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 cs.DescribeDomains({ DomainNames : [ 'hi', 'there' ] }, function(err, data) {
     console.log("\ndescribing some (invalid) domains - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

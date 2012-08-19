@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sqs = awssum.load('amazon/sqs').Sqs;
@@ -30,6 +30,6 @@ var options = {
 
 sqs.AddPermission(options, function(err, data) {
     console.log("\nAdding a set of Policies to this queue - expecting failure (for many reasons)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

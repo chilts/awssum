@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Ec2 = awssum.load('amazon/ec2').Ec2;
@@ -23,8 +23,8 @@ console.log( 'AwsAccountId :', ec2.awsAccountId() );
 
 ec2.DescribeInstances(function(err, data) {
     console.log("\nDescribing instances - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 ec2.DescribeInstances({
@@ -32,6 +32,6 @@ ec2.DescribeInstances({
     FilterValue : [ [ '1.2.3.4', '5.6.7.8' ], [ 'my-key' ] ],
 }, function(err, data) {
     console.log("\nDescribing instances (with filter) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

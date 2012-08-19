@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -28,8 +28,8 @@ var optionsNotFound = {
 
 s3.PutObjectAcl(optionsNotFound, function(err, data) {
     console.log("\nputting an object acl to pie-18 - expecting failure (object not found)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var optionsFound = {
@@ -40,6 +40,6 @@ var optionsFound = {
 
 s3.PutObjectAcl(optionsFound, function(err, data) {
     console.log("\nputting an object acl to pie-18 - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

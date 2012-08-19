@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var DocumentService = awssum.load('amazon/cloudsearch').DocumentService;
@@ -31,6 +31,6 @@ var opts = {
 
 ds.DocumentsBatch(opts, function(err, data) {
     console.log("\nputting some documents - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

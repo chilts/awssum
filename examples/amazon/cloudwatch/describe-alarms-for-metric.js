@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudWatch = awssum.load('amazon/cloudwatch').CloudWatch;
@@ -33,6 +33,6 @@ var opts = {
 
 cloudwatch.DescribeAlarmsForMetric(opts, function(err, data) {
     console.log("\ndescribing alarms for metric - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

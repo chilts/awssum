@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sns = awssum.load('amazon/sns').Sns;
@@ -30,6 +30,6 @@ var data = {
 // firstly, re-create this topic (it's idempotent) to get the topicArn
 sns.SetSubscriptionAttributes(data, function(err, data) {
     console.log("\nsetting subscription attributes - expecting failure (invalid SubscriptionArn)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

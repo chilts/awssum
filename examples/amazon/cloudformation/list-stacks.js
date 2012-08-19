@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudFormation = awssum.load('amazon/cloudformation').CloudFormation;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', cloudformation.awsAccountId() );
 
 cloudformation.ListStacks(function(err, data) {
     console.log("\nlisting stacks - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

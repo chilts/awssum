@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sns = awssum.load('amazon/sns').Sns;
@@ -24,8 +24,8 @@ console.log( 'AwsAccountId :', sns.awsAccountId() );
 // firstly, re-create this topic (it's idempotent) to get the topicArn
 sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 
     // now call the addPermission()
     if ( ! err ) {
@@ -37,8 +37,8 @@ sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
         };
         sns.AddPermission(args, function(err, data) {
             console.log("\nAddPermission() - expecting failure (for many reasons)");
-            inspect(err, 'Error');
-            inspect(data, 'Data');
+            fmt.dump(err, 'Error');
+            fmt.dump(data, 'Data');
         });
     }
 });

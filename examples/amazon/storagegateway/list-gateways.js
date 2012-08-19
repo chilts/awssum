@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var StorageGateway = awssum.load('amazon/storagegateway').StorageGateway;
@@ -23,12 +23,12 @@ console.log( 'AwsAccountId :', sg.awsAccountId() );
 
 sg.ListGateways(function(err, data) {
     console.log("\nlisting gateways - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sg.ListGateways({ Limit : 5 }, function(err, data) {
     console.log("\nlisting gateways with a limit of 5 - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

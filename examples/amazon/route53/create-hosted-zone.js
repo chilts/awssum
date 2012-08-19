@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Route53 = awssum.load('amazon/route53').Route53;
@@ -28,6 +28,6 @@ var args = {
 
 r53.CreateHostedZone(args, function(err, data) {
     console.log("\ncreating a hosted zone - expecting failure (probably need a new callerReference)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

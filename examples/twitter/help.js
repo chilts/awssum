@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -26,18 +26,18 @@ console.log( 'TokenSecret    :', twitter.tokenSecret().substr(0, 3) + '...'     
 
 twitter.Test(function(err, data) {
     console.log('\ncalling help/test - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.Configuration(function(err, data) {
     console.log('\ncalling help/configuration - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.Languages(function(err, data) {
     console.log('\ncalling help/languages - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

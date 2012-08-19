@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sqs = awssum.load('amazon/sqs').Sqs;
@@ -22,8 +22,8 @@ var options = {
 
 sqs.SetQueueAttributes(options, function(err, data) {
     console.log("\nSetting empty attributes for my-queue - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 options.AttributeName  = 'VisibilityTimeout';
@@ -31,6 +31,6 @@ options.AttributeValue = 30;
 
 sqs.SetQueueAttributes(options, function(err, data) {
     console.log("\nSetting VisibilityTimeout for my-queue - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

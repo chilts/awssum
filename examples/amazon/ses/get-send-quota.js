@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Ses = awssum.load('amazon/ses').Ses;
@@ -22,6 +22,6 @@ console.log( 'AwsAccountId :', ses.awsAccountId() );
 
 ses.GetSendQuota(function(err, data) {
     console.log("\nGetting send quota - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

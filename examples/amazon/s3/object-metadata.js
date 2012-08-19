@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -27,8 +27,8 @@ var options1 = {
 
 s3.objectMetadata(options1, function(err, data) {
     console.log("\ngetting an object metadata from /pie-18/test-object.txt - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var options2 = {
@@ -38,6 +38,6 @@ var options2 = {
 
 s3.objectMetadata(options2, function(err, data) {
     console.log("\ngetting missing object - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

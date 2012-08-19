@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -27,6 +27,6 @@ console.log( 'TokenSecret    :', term.tokenSecret()    );
 // firstly, request a token
 term.Echo({ Foo : 'foo', Bar : 'bar' }, function(err, data) {
     console.log('\ncalling echo - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

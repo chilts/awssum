@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Route53 = awssum.load('amazon/route53').Route53;
@@ -22,6 +22,6 @@ console.log( 'AwsAccountId :', r53.awsAccountId() );
 
 r53.GetHostedZone({ HostedZoneId : 'deadbeef' }, function(err, data) {
     console.log("\ngetting hosted zone - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

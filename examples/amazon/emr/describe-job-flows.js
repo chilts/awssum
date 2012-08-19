@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Emr = awssum.load('amazon/emr').Emr;
@@ -23,22 +23,22 @@ console.log( 'AwsAccountId :', emr.awsAccountId() );
 
 emr.DescribeJobFlows(function(err, data) {
     console.log("\ndescribing job flows - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 emr.DescribeJobFlows({
     JobFlowStates  : [ 'RUNNING', 'STARTING' ],
 }, function(err, data) {
     console.log("\ndescribing job flows (RUNNING, STARTING) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 emr.DescribeJobFlows({
     JobFlowStates  : [ 'PENDING', 'STARTING' ],
 }, function(err, data) {
     console.log("\ndescribing job flows (PENDING, STARTING) - expecting failure (invalid PENDING) state");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

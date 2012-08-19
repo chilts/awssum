@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudSearch = awssum.load('amazon/cloudsearch').CloudSearch;
@@ -22,6 +22,6 @@ console.log( 'AwsAccountId :',    cs.awsAccountId() );
 
 cs.DescribeServiceAccessPolicies({ DomainName : 'test' }, function(err, data) {
     console.log("\ndescribing all domains - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

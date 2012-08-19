@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
 var termService = awssum.load('term/term');
@@ -19,11 +19,11 @@ console.log( 'ConsumerSecret :',  term.consumerSecret() );
 term.RequestToken({ 'OAuthCallback' : 'oob' }, function(err, data) {
     console.log("\nrequesting token - expecting success");
     if ( err ) {
-        inspect(err, 'Error');
+        fmt.dump(err, 'Error');
         process.exit();
     }
 
-    inspect(data, 'Data');
+    fmt.dump(data, 'Data');
     console.log( 'If you want to verify this token, visit: '
                  + term.protocol() + '://' + term.authorizeHost()
                  + term.authorizePath()

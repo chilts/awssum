@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sqs = awssum.load('amazon/sqs').Sqs;
@@ -27,8 +27,8 @@ sqs.ReceiveMessage(options, function(err, data) {
     var i = 1;
 
     console.log("\nReceiving message from my-queue - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 
     // if there wasn't an error, delete these messages in one hit
     if ( ! err ) {
@@ -58,8 +58,8 @@ sqs.ReceiveMessage(options, function(err, data) {
 
         sqs.DeleteMessageBatch(options, function(err, data) {
             console.log("\nDeleting Messages - expecting success");
-            inspect(err, 'Error');
-            inspect(data, 'Data');
+            fmt.dump(err, 'Error');
+            fmt.dump(data, 'Data');
         });
     }
 });

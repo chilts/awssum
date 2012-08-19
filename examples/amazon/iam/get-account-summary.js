@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Iam = awssum.load('amazon/iam').Iam;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', iam.awsAccountId() );
 
 iam.GetAccountSummary(function(err, data) {
     console.log("\ngetting account summary - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

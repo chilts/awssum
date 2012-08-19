@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -26,8 +26,8 @@ var options1 = {
 
 s3.PutBucket(options1, function(err, data) {
     console.log("\nputting bucket pie-19 - expecting failure (already created)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var options2 = {
@@ -37,6 +37,6 @@ var options2 = {
 
 s3.PutBucket(options2, function(err, data) {
     console.log("\nputting bucket pie-20 with acl - expecting failure (already created)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

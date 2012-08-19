@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Route53 = awssum.load('amazon/route53').Route53;
@@ -22,12 +22,12 @@ console.log( 'AwsAccountId :', r53.awsAccountId() );
 
 r53.ListResourceRecordSets({ HostedZoneId : 'ZYTGF6CI42UVT' }, function(err, data) {
     console.log("\nlisting hosted zones - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 r53.ListResourceRecordSets({ HostedZoneId : 'ZYTGF6CI42UVT', MaxItems : 3 }, function(err, data) {
     console.log("\nlisting hosted zones - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

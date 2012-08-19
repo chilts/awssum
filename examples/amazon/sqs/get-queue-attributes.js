@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sqs = awssum.load('amazon/sqs').Sqs;
@@ -23,20 +23,20 @@ var options = {
 options.AttributeName = 'All';
 sqs.GetQueueAttributes(options, function(err, data) {
     console.log("\nGetting all attributes for my-queue - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 options.AttributeName = [ 'ApproximateNumberOfMessages', 'MessageRetentionPeriod' ];
 sqs.GetQueueAttributes(options, function(err, data) {
     console.log("\nGetting 2 attrs (using an array) for my-queue - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 options.AttributeName = [ 'ApproximateNumberOfMessages', 'MessageRetentionPeriod', 'DelaySeconds' ];
 sqs.GetQueueAttributes(options, function(err, data) {
     console.log("\nGetting 2 attrs (using an array) for my-queue - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

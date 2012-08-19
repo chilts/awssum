@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Elb = awssum.load('amazon/elb').Elb;
@@ -27,6 +27,6 @@ var data = {
 
 elb.DeleteLoadBalancer(data, function(err, data) {
     console.log("\ndeleting a load balancer - expecting success (it's idempotent)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

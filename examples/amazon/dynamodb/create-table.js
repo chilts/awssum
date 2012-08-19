@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var DynamoDB = awssum.load('amazon/dynamodb').DynamoDB;
@@ -37,8 +37,8 @@ var data1 = {
 
 ddb.CreateTable(data1, function(err, data) {
     console.log("\ncreating a table - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var data2 = {
@@ -61,8 +61,8 @@ var data2 = {
 
 ddb.CreateTable(data2, function(err, data) {
     console.log("\ncreating a table - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var data3 = {
@@ -81,6 +81,6 @@ var data3 = {
 
 ddb.CreateTable(data3, function(err, data) {
     console.log("\ncreating a table - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

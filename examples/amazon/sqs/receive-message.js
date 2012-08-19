@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sqs = awssum.load('amazon/sqs').Sqs;
@@ -22,27 +22,27 @@ var options = {
 
 sqs.ReceiveMessage(options, function(err, data) {
     console.log("\nReceiving message from my-queue - expecting success (and a message)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 options.AttributeName = 'All';
 sqs.ReceiveMessage(options, function(err, data) {
     console.log("\nReceiving message from my-queue - expecting success (and a message with all the trimmings)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 options.MaxNumberOfMessages = 3;
 options.VisibilityTimeout = 10;
 sqs.ReceiveMessage(options, function(err, data) {
     console.log("\nReceiving 3 messages from my-queue - expecting success (with all the trimmings)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sqs.ReceiveMessage({ queueName : 'new-queue' }, function(err, data) {
     console.log("\nReceiving message from new-queue - expecting success (but nothing)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

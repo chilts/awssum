@@ -1,5 +1,5 @@
 var fs = require('fs');
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -33,6 +33,6 @@ var options = {
 
 s3.PutObject(options, function(err, data) {
     console.log("\nputting a buffer to pie-18 - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

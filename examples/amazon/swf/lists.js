@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Swf = awssum.load('amazon/swf').Swf;
@@ -25,8 +25,8 @@ var args1 = {
 };
 swf.ListDomains(args1, function(err, data) {
     console.log("\nlisting all REGISTERED domains - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var args2 = {
@@ -35,8 +35,8 @@ var args2 = {
 };
 swf.ListActivityTypes(args2, function(err, data) {
     console.log("\nlisting activity types - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var args3 = {
@@ -48,8 +48,8 @@ var args3 = {
 };
 swf.ListOpenWorkflowExecutions(args3, function(err, data) {
     console.log("\nlisting open workflow executions - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var args4 = {
@@ -61,6 +61,6 @@ var args4 = {
 };
 swf.ListClosedWorkflowExecutions(args4, function(err, data) {
     console.log("\nlisting closed workflow executions - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

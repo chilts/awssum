@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -27,8 +27,8 @@ var options = {
 
 s3.GetObject(options, function(err, data) {
     console.log("\ngetting an object from pie-18 - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var optionsWithMetaData = {
@@ -38,8 +38,8 @@ var optionsWithMetaData = {
 
 s3.GetObject(optionsWithMetaData, function(err, data) {
     console.log("\ngetting an object with metadata from pie-18 - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var optionsWithResponseContentType = {
@@ -50,6 +50,6 @@ var optionsWithResponseContentType = {
 
 s3.GetObject(optionsWithResponseContentType, function(err, data) {
     console.log("\ngetting an object with a content type - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

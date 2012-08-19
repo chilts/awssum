@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -27,7 +27,7 @@ console.log( 'TokenSecret    :', xero.tokenSecret()    );
 commander.prompt('Enter your verification code : ', function(verifier) {
     xero.GetToken({ OAuthVerifier : verifier }, function(err, data) {
         console.log("\ngetting token - expecting success");
-        inspect(err, 'Error');
-        inspect(data, 'Data');
+        fmt.dump(err, 'Error');
+        fmt.dump(data, 'Data');
     });
 });

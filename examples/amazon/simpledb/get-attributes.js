@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
@@ -23,25 +23,25 @@ console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
 sdb.GetAttributes({ DomainName : 'test', ItemName : 'chilts' }, function(err, data) {
     console.log("\ngetting chilts - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sdb.GetAttributes({ DomainName : 'test', ItemName : 'andychilton', ConsistentRead : true }, function(err, data) {
     console.log("\ngetting andychilton - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sdb.GetAttributes({ DomainName : 'test', ItemName : 'replace', ConsistentRead : true }, function(err, data) {
     console.log("\ngetting replace - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 var expected = { DomainName : 'test', ItemName : 'expected', AttributeName : 'username', ConsistentRead : false };
 sdb.GetAttributes(expected, function(err, data) {
     console.log("\ngetting expected - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

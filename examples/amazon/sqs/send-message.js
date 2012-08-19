@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sqs = awssum.load('amazon/sqs').Sqs;
@@ -33,18 +33,18 @@ var optionsMyQueueDelayed = {
 
 sqs.SendMessage(optionsMyQueue, function(err, data) {
     console.log("\nSending a message to a queue - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sqs.SendMessage(optionsNewQueue, function(err, data) {
     console.log("\nSending an undefined message - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sqs.SendMessage(optionsMyQueueDelayed, function(err, data) {
     console.log("\nSending a delayed message - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

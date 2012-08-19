@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Fps = awssum.load('amazon/fps').Fps;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :',    fps.awsAccountId() );
 
 fps.GetTokens({}, function(err, data) {
     console.log("\ngetting tokens - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

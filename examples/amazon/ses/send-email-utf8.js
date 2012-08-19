@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Ses = awssum.load('amazon/ses').Ses;
@@ -32,6 +32,6 @@ var data = {
 
 ses.SendEmail(data, function(err, data) {
     console.log("\nsending a UTF8 email - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

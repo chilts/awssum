@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -42,12 +42,12 @@ var data2 = {
 
 xero.CreateContacts(data1, function(err, data) {
     console.log('\nadding a contact for "Berry Brew" - expecting failure');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 xero.CreateContacts(data2, function(err, data) {
     console.log('\nadding a contact for "Brew Berry" - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

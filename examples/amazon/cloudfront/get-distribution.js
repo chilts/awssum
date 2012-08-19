@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var CloudFront = awssum.load('amazon/cloudfront').CloudFront;
@@ -27,6 +27,6 @@ var args = {
 
 cloudFront.GetDistribution(args, function(err, data) {
     console.log("\nget distribution - expecting failure (doesn't exist)");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

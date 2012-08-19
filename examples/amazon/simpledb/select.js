@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
@@ -23,12 +23,12 @@ console.log( 'AwsAccountId :', sdb.awsAccountId() );
 
 sdb.Select({ SelectExpression : 'SELECT username FROM test' }, function(err, data) {
     console.log("\nSELECT username FROM test");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sdb.Select({ SelectExpression : 'SELECT * FROM test', ConsistentRead : true }, function(err, data) {
     console.log("\nSELECT * FROM test");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

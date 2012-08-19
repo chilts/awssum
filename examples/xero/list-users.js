@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -26,18 +26,18 @@ console.log( 'TokenSecret    :', xero.tokenSecret()    );
 
 xero.GetUsers(function(err, data) {
     console.log('\nget users - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 xero.GetUsers({ 'Where' : 'Firstname="Andrew"' }, function(err, data) {
     console.log('\nget users where Firstname="Andrew" - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 xero.GetUsers({ 'Order' : 'LastName' }, function(err, data) {
     console.log('\nget users order by LastName - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Rds = awssum.load('amazon/rds').Rds;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', rds.awsAccountId() );
 
 rds.DescribeDBInstances(function(err, data) {
     console.log("\ndescribing db instances - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

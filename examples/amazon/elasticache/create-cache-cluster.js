@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var ElastiCache = awssum.load('amazon/elasticache').ElastiCache;
@@ -34,6 +34,6 @@ var data = {
 
 elastiCache.CreateCacheCluster(data, function(err, data) {
     console.log("\ncreating a cache cluster - expecting failure since CacheClusterId is invalid");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var SimpleDB = awssum.load('amazon/simpledb').SimpleDB;
@@ -28,8 +28,8 @@ sdb.DeleteAttributes({
     AttributeValue : 'chilts',
 }, function(err, data) {
     console.log("\nDeleting attributes for chilts - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sdb.DeleteAttributes({
@@ -41,6 +41,6 @@ sdb.DeleteAttributes({
     ExpectedValue : [ 'blah' ],
 }, function(err, data) {
     console.log("\nDeleting attributes for chilts (conditional) - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
@@ -28,8 +28,8 @@ var options1 = {
 
 s3.ListObjects(options1, function(err, data) {
     console.log("\nlisting objects in this bucket - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 
     // check for error
     if ( err ) {
@@ -43,8 +43,8 @@ s3.ListObjects(options1, function(err, data) {
 
         s3.ListObjects(options1, function(err, data) {
             console.log("\ngetting the next set - expecting success");
-            inspect(err, 'Error');
-            inspect(data, 'Data');
+            fmt.dump(err, 'Error');
+            fmt.dump(data, 'Data');
         });
     }
 });
@@ -57,6 +57,6 @@ var options2 = {
 
 s3.ListObjects(options2, function(err, data) {
     console.log("\nlisting object with a prefix - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

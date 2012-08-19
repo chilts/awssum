@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector({ maxLength : 65536 });
+var fmt = require('fmt');
 var commander = require('commander');
 var awssum = require('awssum');
 var oauth = awssum.load('oauth');
@@ -26,18 +26,18 @@ console.log( 'TokenSecret    :', twitter.tokenSecret().substr(0, 3) + '...'     
 
 twitter.GetSavedSearches(function(err, data) {
     console.log('\ncalling saved_searches - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.CreateSavedSearch({ query : '#awssum' }, function(err, data) {
     console.log('\ncalling saved_searches/create - expecting error (already exists)');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });
 
 twitter.GetSavedSearch({ id : '106302918' }, function(err, data) {
     console.log('\ncalling saved_searches/show/:id - expecting success');
-    inspect(err, 'Err');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Err');
+    fmt.dump(data, 'Data');
 });

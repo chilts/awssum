@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sns = awssum.load('amazon/sns').Sns;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 sns.ListSubscriptions({}, function(err, data) {
     console.log("\nlisting all subscriptions - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sts = awssum.load('amazon/sts').Sts;
@@ -23,6 +23,6 @@ console.log( 'AwsAccountId :', sts.awsAccountId() );
 
 sts.GetFederationToken({ Name : 'chilts' }, function(err, data) {
     console.log("\ngetting a federation token - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

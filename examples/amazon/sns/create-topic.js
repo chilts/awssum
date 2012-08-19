@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Sns = awssum.load('amazon/sns').Sns;
@@ -23,18 +23,18 @@ console.log( 'AwsAccountId :', sns.awsAccountId() );
 
 sns.CreateTopic({ Name : 'my-topic' }, function(err, data) {
     console.log("\nCreating (my-topic) - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sns.CreateTopic({}, function(err, data) {
     console.log("\nCreating (undefined) - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 sns.CreateTopic(function(err, data) {
     console.log("\nCreating (undefined) - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

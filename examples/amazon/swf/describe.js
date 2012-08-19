@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var Swf = awssum.load('amazon/swf').Swf;
@@ -22,12 +22,12 @@ console.log( 'AwsAccountId :', swf.awsAccountId() );
 
 swf.DescribeDomain({ 'Name' : 'test' }, function(err, data) {
     console.log("\ndescribing domain - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 swf.DescribeDomain({ 'Name' : 'unknown-domain' }, function(err, data) {
     console.log("\ndescribing 'unknown' domain - expecting failure");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });

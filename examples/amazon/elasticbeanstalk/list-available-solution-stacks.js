@@ -1,4 +1,4 @@
-var inspect = require('eyes').inspector();
+var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var ElasticBeanstalk = awssum.load('amazon/elasticbeanstalk').ElasticBeanstalk;
@@ -21,6 +21,6 @@ console.log( 'SecretAccessKey :', eb.secretAccessKey().substr(0, 3) + '...' );
 
 eb.ListAvailableSolutionStacks(function(err, data) {
     console.log("\nlisting available solution stacks - expecting success");
-    inspect(err, 'Error');
-    inspect(data, 'Data');
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
