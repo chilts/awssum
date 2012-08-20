@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">AwsSum</a>
+          <a class="brand" href="/">AwsSum v{{ site.version }}</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="tab-home"><a href="/">Home</a></li>
@@ -38,24 +38,7 @@
     </div><!-- /#navbar -->
 
     <div class="container-fluid">
-      <div class="row-fluid">
-
-        <div id="menu" class="span3">
-          <h2>AwsSum v0.7.0</h2>
-
-          {% capture menu %}menu-{{ page.id }}.html{% endcapture %}
-
-          {% if page.id == 'index' %}
-            {% include 'menu-index.html' %}
-          {% endif %}
-
-        </div><!-- /#menu -->
-
-        <div id="content" class="span9">
-          {{ content }}
-        </div><!-- /#content -->
-
-      </div><!-- /.row-fluid -->
+      {{ content }}
 
       <hr>
 
@@ -63,7 +46,7 @@
         <p>&copy; <a href="http://appsattic.com/">AppsAttic Ltd</a> 2012</p>
       </footer>
 
-    </div><!--/.fluid-container-->
+    </div><!--/.container-fluid-->
 
     <script src="/s/js/jquery-1.7.2.min.js"></script>
     <script src="/s/js/ready.js"></script>
