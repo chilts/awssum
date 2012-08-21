@@ -149,7 +149,7 @@ Currently AwsSum has coverage of the following services:
     </tr>
     <tr>
       <td></td>
-      <td>Elastic Load Balancing</td>
+      <td>Elastic Load Balancing (ELB)</td>
       <td>Signature v2, (HmacSHA256)</td>
       <td>✔</td>
       <td>23/23 (100%)</td>
@@ -251,13 +251,6 @@ Currently AwsSum has coverage of the following services:
       <td>Signature v2, (Hmac256)</td>
       <td>✔</td>
       <td>20/20 (100%)</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Elastic LoadBalancing (ELB)</td>
-      <td>Signature v2, (Hmac256)</td>
-      <td>✔</td>
-      <td>23/23 (100%)</td>
     </tr>
 
     <tr>
