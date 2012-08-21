@@ -22,7 +22,7 @@ var inspect = require('eyes').inspector();
 var env = process.env;
 var cs;
 try {
-    cs = new Cloudsearch({
+    cs = new CloudSearch({
         'accessKeyId'     : env.ACCESS_KEY_ID,
         'secretAccessKey' : env.SECRET_ACCESS_KEY,
         'region'          : amazon.US_EAST_1

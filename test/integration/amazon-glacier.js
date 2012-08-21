@@ -14,7 +14,7 @@ var fs = require('fs');
 var test = require('tap').test;
 var awssum = require('../../');
 var amazon = awssum.load('amazon/amazon');
-var glacier = awssum.load('amazon/glacier').Glacier;
+var Glacier = awssum.load('amazon/glacier').Glacier;
 var inspect = require('eyes').inspector();
 
 // --------------------------------------------------------------------------------------------------------------------

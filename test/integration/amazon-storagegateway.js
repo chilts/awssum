@@ -14,7 +14,7 @@ var fs = require('fs');
 var test = require('tap').test;
 var awssum = require('../../');
 var amazon = awssum.load('amazon/amazon');
-var sg = awssum.load('amazon/storagegateway').StorageGateway;
+var StorageGateway = awssum.load('amazon/storagegateway').StorageGateway;
 var inspect = require('eyes').inspector();
 
 // --------------------------------------------------------------------------------------------------------------------
