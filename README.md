@@ -254,7 +254,7 @@ Currently AwsSum has coverage of the following services:
     </tr>
     <tr>
       <td></td>
-      <td>CloudSearch (CS)</td>
+      <td>Glacier</td>
       <td>Signature v4, (Hmac256)</td>
       <td>✔</td>
       <td>19/19 (100%)</td>
