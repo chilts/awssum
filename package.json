@@ -48,6 +48,7 @@
         "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","cloudfront","fps",
                  "cloudformation","cloudwatch","dynamodb","iam","swf","autoscaling","cloudsearch","elb",
                  "loadbalancing","emr","mapreduce","importexport","storagegateway","workflow","ebs","vpc","beanstalk",
+                 "glacier",
         "greenqloud",
         "rackspacecloud",
         "openstack"
