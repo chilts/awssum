@@ -68,6 +68,18 @@ s3.GetBucketWebsite({ BucketName : 'pie-17' }, function(err, data) {
     fmt.dump(data, 'Data');
 });
 
+s3.GetBucketTagging({ BucketName : 'pie-17' }, function(err, data) {
+    fmt.msg("get bucket tagging - expecting failure (NoSuchTagSetError)");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+s3.GetBucketTagging({ BucketName : 'pie-18' }, function(err, data) {
+    fmt.msg("get bucket tagging - expecting success");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
 s3.ListMultipartUploads({ BucketName : 'pie-17' }, function(err, data) {
     fmt.msg("list multipart uploads - expecting success");
     fmt.dump(err, 'Error');
