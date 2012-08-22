@@ -32,4 +32,50 @@ s3.ListBuckets(function(err, data) {
 });
 {% endhighlight %}
 
+  <h3>List Objects</h3>
+
+{% highlight javascript %}
+var options = {
+	BucketName : 'object-17',
+	MaxKeys : 4
+};
+s3.ListObjects(options,function(err, data) {
+	console.log("\nlisting all the objects - expecting success");
+	console.log(err, 'Error');
+	console.log(data, 'Data');
+
+	// check for error
+	if ( err ) {
+		console.log('Not doing another ListObjects since there was an error');
+		return;
+	}
+
+	// now do a marker
+	if ( data.Body.ListBucketResult.IsTruncated === 'true' ) {
+		options.Marker = _.last(data.Body.ListBucketResult.Contents).Key;
+
+		s3.ListObjects(options, function(err, data) {
+			console.log("getting the next set - expecting success");
+			console.log(err, 'Error');
+			console.log(data, 'Data');
+		});
+	}
+});
+{% endhighlight %}
+
+  <h3>List Objects (With prefix)</h3>
+
+{% highlight javascript %}
+var options = {
+	BucketName : 'object-17',
+	MaxKeys : 4,
+	Prefix : 'c'
+};
+s3.ListObjects(options,function(err, data) {
+	console.log("\nlisting all the buckets (with a prefix) - expecting success");
+	console.log(err, 'Error');
+	console.log(data, 'Data');
+});
+{% endhighlight %}
+
 </div><!-- /.content -->
