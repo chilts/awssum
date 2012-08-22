@@ -105,30 +105,30 @@ s3.ListBuckets(function(err, data) {
 
 {% highlight javascript %}
 var options = {
-	BucketName : 'object-17',
-	MaxKeys : 4
+    BucketName : 'object-17',
+    MaxKeys : 4
 };
 s3.ListObjects(options,function(err, data) {
-	console.log("\nlisting all the objects - expecting success");
-	console.log(err, 'Error');
-	console.log(data, 'Data');
+    console.log("\nlisting all the objects - expecting success");
+    console.log(err, 'Error');
+    console.log(data, 'Data');
 
-	// check for error
-	if ( err ) {
-		console.log('Not doing another ListObjects since there was an error');
-		return;
-	}
+    // check for error
+    if ( err ) {
+        console.log('Not doing another ListObjects since there was an error');
+        return;
+    }
 
-	// now do a marker
-	if ( data.Body.ListBucketResult.IsTruncated === 'true' ) {
-		options.Marker = _.last(data.Body.ListBucketResult.Contents).Key;
+    // now do a marker
+    if ( data.Body.ListBucketResult.IsTruncated === 'true' ) {
+        options.Marker = _.last(data.Body.ListBucketResult.Contents).Key;
 
-		s3.ListObjects(options, function(err, data) {
-			console.log("getting the next set - expecting success");
-			console.log(err, 'Error');
-			console.log(data, 'Data');
-		});
-	}
+        s3.ListObjects(options, function(err, data) {
+            console.log("getting the next set - expecting success");
+            console.log(err, 'Error');
+            console.log(data, 'Data');
+        });
+    }
 });
 {% endhighlight %}
 
@@ -136,14 +136,14 @@ s3.ListObjects(options,function(err, data) {
 
 {% highlight javascript %}
 var options = {
-	BucketName : 'object-17',
-	MaxKeys : 4,
-	Prefix : 'c'
+    BucketName : 'object-17',
+    MaxKeys : 4,
+    Prefix : 'c'
 };
 s3.ListObjects(options,function(err, data) {
-	console.log("\nlisting all the buckets (with a prefix) - expecting success");
-	console.log(err, 'Error');
-	console.log(data, 'Data');
+    console.log("\nlisting all the buckets (with a prefix) - expecting success");
+    console.log(err, 'Error');
+    console.log(data, 'Data');
 });
 {% endhighlight %}
 
