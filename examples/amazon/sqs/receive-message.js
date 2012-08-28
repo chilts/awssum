@@ -9,11 +9,11 @@ var secretAccessKey = env.SECRET_ACCESS_KEY;
 var awsAccountId    = env.AWS_ACCOUNT_ID;
 
 var sqs = new Sqs({
-      'accessKeyId' : accessKeyId,
-      'secretAccessKey' : secretAccessKey,
-      'region' : amazon.US_EAST_1,
-      'awsAccountId': awsAccountId
-    });
+    'accessKeyId' : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'awsAccountId' : awsAccountId,
+    'region' : amazon.US_EAST_1
+});
 
 fmt.field('Region', sqs.region() );
 fmt.field('EndPoint', sqs.host() );
