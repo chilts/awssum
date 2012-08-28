@@ -8,7 +8,12 @@ var accessKeyId     = env.ACCESS_KEY_ID;
 var secretAccessKey = env.SECRET_ACCESS_KEY;
 var awsAccountId    = env.AWS_ACCOUNT_ID;
 
-var sdb = new SimpleDB(accessKeyId, secretAccessKey, awsAccountId, amazon.US_WEST_1);
+var sdb = new SimpleDB({
+    'accessKeyId'     : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    // 'awsAccountId'    : awsAccountId, // optional
+    'region'          : amazon.US_EAST_1
+});
 
 fmt.field('Region', sdb.region() );
 fmt.field('EndPoint', sdb.host() );
