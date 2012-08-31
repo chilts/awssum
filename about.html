@@ -5,53 +5,61 @@ title   : About
 tagline : The Story about AwsSum
 sitemap : true
 ---
-<div class="content content-about">
+{% capture menu %}
+  {% include menu-index.html %}
+{% endcapture %}
 
-<p>
-  AwsSum is a Node.js library written by <a href="http://chilts.org/blog/">Andrew Chilton</a>
-  (<a href="https://twitter.com/andychilton">Twitter</a>). It is designed to be helpful in utilising many, extensive
-  and sometimes quite different Web APIs in a consistent fashion. Which means that you don't have to deal with:
-</p>
+{% capture main %}
 
-<ul>
-  <li>Request
-    <ul>
-      <li>which HTTP verb to use</li>
-      <li>web service endpoints</li>
-      <li>how to format your input parameters (URL params, XML/JSON bodies, forms, etc)</li>
-    </ul>
-  </li>
-  <li>Response
-    <ul>
-      <li>HTTP Status Codes</li>
-      <li>getting other HTTP headers</li>
-      <li>decoding the returned body (whether XML, JSON, a file or nothing at all)</li>
-    </ul>
-  </li>
-</ul>
+  <p>
+    AwsSum is a Node.js library written by <a href="http://chilts.org/blog/">Andrew Chilton</a>
+    (<a href="https://twitter.com/andychilton">Twitter</a>). It is designed to be helpful in utilising many, extensive
+    and sometimes quite different Web APIs in a consistent fashion. Which means that you don't have to deal with:
+  </p>
 
-<p>
-  This is true of any web service you use through AwsSum.
-</p>
+  <ul>
+    <li>Request
+      <ul>
+        <li>which HTTP verb to use</li>
+        <li>web service endpoints</li>
+        <li>how to format your input parameters (URL params, XML/JSON bodies, forms, etc)</li>
+      </ul>
+    </li>
+    <li>Response
+      <ul>
+        <li>HTTP Status Codes</li>
+        <li>getting other HTTP headers</li>
+        <li>decoding the returned body (whether XML, JSON, a file or nothing at all)</li>
+      </ul>
+    </li>
+  </ul>
 
-<p>
-  It is designed as a low level wrapper around each of the operations each Web API defines. For example, Amazon EC2 has
-  (currently) 134 operations, which means there is 134 operations defined in AwsSum.
-</p>
+  <p>
+    This is true of any web service you use through AwsSum.
+  </p>
 
-<p>
-  Therefore, AwsSum is ideal for being built upon. See the following projects for where AwsSum is being utilised:
-</p>
+  <p>
+    It is designed as a low level wrapper around each of the operations each Web API defines. For example, Amazon EC2 has
+    (currently) 134 operations, which means there is 134 operations defined in AwsSum.
+  </p>
 
-<ul>
-  <li><a href="https://npmjs.org/package/connect-stream-s3">connect-stream-s3</a></li>
-  <li><a href="https://npmjs.org/package/connect-error-amazon-ses">connect-error-amazon-ses</a></li>
-  <li><a href="https://npmjs.org/package/winston-simpledb">winston-simpledb</a></li>
-  <li><a href="https://npmjs.org/package/winston-sns">winston-sns</a></li>
-  <li><a href="https://npmjs.org/package/jsbundle-s3">jsbundle-s3</a></li>
-</ul>
+  <p>
+    Therefore, AwsSum is ideal for being built upon. See the following projects for where AwsSum is being utilised:
+  </p>
 
-<p>
-  And it is also being used in production in various companies around the world. Come back soon for a list,
-  or <a href="https://github.com/appsattic/node-awssum/issues">let me</a> know if your company is using it. Cheers.
-</p>
+  <ul>
+    <li><a href="https://npmjs.org/package/connect-stream-s3">connect-stream-s3</a></li>
+    <li><a href="https://npmjs.org/package/connect-error-amazon-ses">connect-error-amazon-ses</a></li>
+    <li><a href="https://npmjs.org/package/winston-simpledb">winston-simpledb</a></li>
+    <li><a href="https://npmjs.org/package/winston-sns">winston-sns</a></li>
+    <li><a href="https://npmjs.org/package/jsbundle-s3">jsbundle-s3</a></li>
+  </ul>
+
+  <p>
+    And it is also being used in production in various companies around the world. Come back soon for a list,
+    or <a href="https://github.com/appsattic/node-awssum/issues">let me</a> know if your company is using it. Cheers.
+  </p>
+
+{% endcapture %}
+
+{% include main.html %}
