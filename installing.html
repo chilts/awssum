@@ -5,7 +5,11 @@ title   : Installing
 tagline : npm rocks!
 sitemap : true
 ---
-<div class="content content-installing">
+{% capture menu %}
+
+{% endcapture %}
+
+{% capture main %}
 
   <h1>Installing</h1>
 
@@ -33,4 +37,6 @@ sitemap : true
   $ git clone git://github.com/appsattic/node-awssum.git
   </pre>
 
-</div>
+{% endcapture %}
+
+{% include main.html %}

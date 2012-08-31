@@ -5,39 +5,32 @@ title   : Amazon
 tagline : Web Services
 sitemap : true
 ---
-<div class="row-fluid">
+{% capture menu %}
+  <h2>Amazon</h2>
 
-  <div id="menu" class="span3">
-    <h2>Amazon</h2>
+  <div class="well sidebar-nav">
+    <ul class="nav nav-list">
 
-    <div class="well sidebar-nav">
-      <ul class="nav nav-list">
+      <li class="nav-header">Services</li>
+      <li class="tab-amazon-s3"><a href="amazon-s3.html">Amazon S3</a></li>
+      <li class="tab-amazon-ec2"><a href="amazon-ec2.html">Amazon EC2</a></li>
 
-        <li class="nav-header">Services</li>
-        <li class="tab-amazon-s3"><a href="amazon-s3.html">Amazon S3</a></li>
-        <li class="tab-amazon-ec2"><a href="amazon-ec2.html">Amazon EC2</a></li>
+      <li class="nav-header">Misc</li>
+      <li class="tab-amazon-signatures"><a href="amazon-signatures.html">Signatures</a></li>
 
-        <li class="nav-header">Misc</li>
-        <li class="tab-amazon-signatures"><a href="amazon-signatures.html">Signatures</a></li>
+    </ul>
+  </div><!-- /.well -->
+{% endcapture %}
 
-      </ul>
-    </div><!-- /.well -->
+{% capture main %}
 
-  </div><!-- /#menu -->
-
-  <div id="content" class="span9">
-
-    <div class="content content-home">
-
-      <h2>Loading the Amazon API</h2>
+  <h2>Loading the Amazon API</h2>
 
 {% highlight javascript %}
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 {% endhighlight %}
 
-    </div><!-- /.content-home -->
+{% endcapture %}
 
-  </div><!-- /#content -->
-
-</div><!-- /.row-fluid -->
+{% include main.html %}
