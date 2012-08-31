@@ -1,0 +1,46 @@
+---
+id      : skeleton
+layout  : default
+title   : Amazon
+tagline : Web Services
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h2>Loading the Amazon API</h2>
+
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+{% endhighlight %}
+
+  <h2>EndPoints</h2>
+
+<pre>
+
+</pre>
+
+  <p>
+    All Amazon services require an endpoint when talking to them. However in many cases (e.g. SES), there is only one
+    endpoint. In these cases, you do not need to provide it to the service constructor, instead it is assumed for
+    you. In all of these cases, it is assumed to be <code>US_EAST_1</code>.
+  </p>
+
+  <ul>
+    <li>US_EAST_1</li>
+    <li>US_WEST_1</li>
+    <li>US_WEST_2</li>
+    <li>EU_WEST_1</li>
+    <li>AP_NORTHEAST_1</li>
+    <li>AP_SOUTHEAST_1</li>
+    <li>SA_EAST_1</li>
+    <li>US_GOV_WEST_1</li>
+  </ul>
+
+{% endcapture %}
+
+{% include main.html %}
