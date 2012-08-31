@@ -20,24 +20,24 @@ sitemap : true
     finally the S3 package:
   </p>
 
-  <pre>
-  var awssum = require('awssum');
-  var amazon = awssum.load('amazon/amazon');
-  var S3 = awssum.load('amazon/s3').S3;
-  </pre>
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var S3 = awssum.load('amazon/s3').S3;
+{% endhighlight %}
 
   <p>
     From there it's a case of creating a new object for this service using your own credentials. Each service might be
     slightly different so look at the docs for creating each object. Here is an example using Amazon S3:
   </p>
 
-  <pre>
-  var s3 = new S3({
-      'accessKeyId' : accessKeyId,
-      'secretAccessKey' : secretAccessKey,
-      'region' : amazon.US_EAST_1
-  });
-  </pre>
+{% highlight javascript %}
+var s3 = new S3({
+    'accessKeyId' : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'region' : amazon.US_EAST_1
+});
+{% endhighlight %}
 
 {% endcapture %}
 

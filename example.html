@@ -19,7 +19,7 @@ sitemap : true
     and then show you some boilerplate that you'll need for each example.
   </p>
 
-<pre>
+{% highlight javascript %}
 var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
@@ -43,7 +43,7 @@ s3.ListBuckets(function(err, data) {
     fmt.dump(data, 'Data');
     fmt.line();
 });
-</pre>
+{% endhighlight %}
 
   <p>
     Let's take each stanza one at a time.

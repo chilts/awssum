@@ -13,21 +13,59 @@ sitemap : true
 
   <h2>Loading the Amazon API</h2>
 
+  <p>
+    AwsSum allows easy loading of further specific services so that you don't have to load all the code within AwsSum,
+    just what you need. See <a href="/example.html"></a> for more details.
+  </p>
+
 {% highlight javascript %}
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
+
+// now load a service
+var S3         = awssum.load('amazon/s3').S3;
+var Ec2        = awssum.load('amazon/ec2').Ec2;
+var Ses        = awssum.load('amazon/ses').Ses;
+var Sqs        = awssum.load('amazon/sqs').Sqs;
+var Route53    = awssum.load('amazon/route53').Route53;
+var CloudWatch = awssum.load('amazon/cloudwatch').CloudWatch;
+var Rds        = awssum.load('amazon/rds').Rds;
+// ...etc ...
 {% endhighlight %}
 
   <h2>EndPoints</h2>
 
-<pre>
-
-</pre>
+  <p>
+    All Amazon services require an endpoint when talking to them. Usually each service is available in all regions,
+    however newer ones may only be available in a few regions to start off with. Also, in many cases (e.g. SES), the
+    service supports only one endpoint. In these cases, you do not need to provide it to the service constructor,
+    instead it is assumed for you to be <code>US_EAST_1</code>.
+  </p>
 
   <p>
-    All Amazon services require an endpoint when talking to them. However in many cases (e.g. SES), there is only one
-    endpoint. In these cases, you do not need to provide it to the service constructor, instead it is assumed for
-    you. In all of these cases, it is assumed to be <code>US_EAST_1</code>.
+    For example, for DynamoDB and Simple Email Service:
+  </p>
+
+{% highlight javascript %}
+var ddb = new DynamoDB({
+    'accessKeyId'     : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'awsAccountId'    : awsAccountId,    // optional
+    'region'          : amazon.US_WEST_2 // required
+});
+
+var ses = new Ses({
+    'accessKeyId'     : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'awsAccountId'    : awsAccountId,    // optional
+    // 'region'                          // assumed to be amazon.US_EAST_1
+});
+{% endhighlight %}
+
+  <p>
+    The following regions are defined in the 'amazon' module, but not all services are available in all of these
+    regions. Please see the AWS <a href="http://docs.amazonwebservices.com/general/latest/gr/rande.html">Regions and
+    Endpoints</a> page for further details.
   </p>
 
   <ul>

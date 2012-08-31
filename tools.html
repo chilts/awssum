@@ -1,0 +1,89 @@
+---
+id      : tools
+layout  : default
+title   : Useful Tools
+tagline : Small tools, make fun code
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-index.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>Useful Tools</h1>
+
+  <p>
+    AwsSum is one thing and one thing only. It is a small helper wrapper around web services. One library per
+    service. One function per operation. Just an easy to use interface to abstract away the differences between each.
+  </p>
+
+  <p>
+    It doesn't do retries after failures and it doesn't wrap the results in objects either. This is the Node.js way. Do
+    one thing simply and do it well. Combine with other modules if your needs are higher.
+  </p>
+
+  <h2>fmt</h2>
+
+  <p>
+    When trying test programs, new services or new operations, I usually write a small program to show me exactly what
+    is going on. Dumping out data seems to be a little tricky sometimes since <code>console.log()</code> only shows
+    down to a few levels of structure. To overcome this, use the <code>fmt</code> package, which can also be used to
+    neatly display the results of your program.
+  </p>
+
+{% highlight bash %}
+npm install fmt
+{% endhighlight %}
+
+  <p>
+    As an example, you could use the following structure for some of your test programs. This structure also gives you
+    the ability to do multiple operations and still have the output look nice. (Note: these kinds of programs are great
+    for you to look at visually but not for another program to decipher.)
+  </p>
+
+{% highlight javascript %}
+var fmt = require('fmt');
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var S3 = awssum.load('amazon/s3').S3;
+
+var env             = process.env;
+var accessKeyId     = env.ACCESS_KEY_ID;
+var secretAccessKey = env.SECRET_ACCESS_KEY;
+var awsAccountId    = env.AWS_ACCOUNT_ID;
+
+var s3 = new S3({
+    'accessKeyId'     : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'region'          : amazon.US_EAST_1,
+});
+
+fmt.line();
+fmt.title('s3.ListBuckets');
+
+fmt.field('Region',          s3.region());
+fmt.field('EndPoint',        s3.host() );
+fmt.field('AccessKeyId',     s3.accessKeyId() );
+fmt.field('SecretAccessKey', s3.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId',    s3.awsAccountId() );
+
+fmt.line();
+
+s3.ListBuckets(function(err, data) {
+    fmt.title('Amazon:S3:Listbuckets');
+    fmt.msg("listing all the buckets (no options given) - expecting success");
+    fmt.dump(err,  'Error');
+    fmt.dump(data, 'Data');
+    fmt.line();
+});
+{% endhighlight %}
+
+  <p>
+    There are some examples in the <code>examples/*</code> folders that you can use as the basis of your test
+    programs. Feel free to copy, edit and re-use any of those.
+  </p>
+
+{% endcapture %}
+
+{% include main.html %}
