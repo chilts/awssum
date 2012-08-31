@@ -1,118 +1,68 @@
 ---
 id      : index
 layout  : default
-title   : Homepage
+title   : AwsSum v0.9.0
 tagline : Node.js modules for talking to lots of Web Service APIs.
 sitemap : true
 ---
-<div class="row-fluid">
+{% capture menu %}
+  {% include menu-index.html %}
+{% endcapture %}
 
-  <div id="menu" class="span3">
-    <h2>AwsSum v0.8.0</h2>
+{% capture main %}
 
-    <div class="well sidebar-nav">
-      <ul class="nav nav-list">
+  <div class="hero-unit">
+    <h1>AwsSum <small>{{ site.version }}</small></h1>
+    <p>
+      Node.js modules for talking to <strong>lots</strong> of Web Service APIs.
+    </p>
+    <p>
+      <a class="btn btn-primary btn-large" href="https://github.com/appsattic/node-awssum/">In Git &raquo;</a>
+      <a class="btn btn-primary btn-large" href="https://npmjs.org/package/awssum">On NPM &raquo;</a>
+    </p>
+    <p>
+      <strong>IRC</strong>: #awssum on Freenode
+      <br>
+      <strong>Email</strong>: chilts@appsattic.com
+      <br>
+      <strong>Issues</strong>: <a href="https://github.com/appsattic/node-awssum/issues">node-awssum/issues</a> <small>please provide an example request/response</small>
+      <br>
+      <strong>Twitter Updates</strong>: <a href="https://twitter.com/andychilton" class="twitter-follow-button" data-show-count="false">Follow @andychilton</a>
+    </p>
+  </div>
 
-        <li class="tab-basics nav-header">Basics</li>
-        <li class="tab-installing"><a href="installing.html">Installing</a></li>
-        <li class="tab-loading"><a href="loading.html">Loading</a></li>
-        <li class="tab-async"><a href="async.html">Async</a></li>
-        <li class="tab-examples"><a href="example.html">Full Example</a></li>
+  <div class="row-fluid">
 
-        <li class="tab-amazon nav-header">Web Services</li>
-        <li class="tab-amazon"><a href="amazon.html">Amazon</a>
-          <ul>
-            <li class="tab-amazon-s3"><a href="amazon-s3.html">Simple Storage Service (S3)</a>
-              <!--
-            <li class="tab-amazon-ec2"><a href="amazon-ec2.html">Elastic Compute Cloud (EC2)</a>
-            <li class="tab-amazon-emr"><a href="amazon-emr.html">Elastic MapReduce (EMR)</a>
-            <li class="tab-amazon-simpledb"><a href="amazon-simpledb.html">SimpleDB</a>
-            <li class="tab-amazon-sqs"><a href="amazon-sqs.html">Simple Queue Service (SQS)</a>
-            <li class="tab-amazon-sns"><a href="amazon-sns.html">Simple Notification Service (SNS)</a>
-            <li class="tab-amazon-ses"><a href="amazon-ses.html">Simple Email Service (SES)</a>
-            <li class="tab-amazon-route53"><a href="amazon-route53.html">Route53</a>
-            <li class="tab-amazon-elasticache"><a href="amazon-elasticache.html">ElastiCache</a>
-            <li class="tab-amazon-cloudfront"><a href="amazon-cloudfront.html">CloudFront</a>
-            <li class="tab-amazon-elb"><a href="amazon-elb.html">Elastic Load Balancing (ELB)</a>
-            <li class="tab-amazon-dynamodb"><a href="amazon-dynamodb.html">DynamoDB</a>
-            <li class="tab-amazon-swf"><a href="amazon-swf.html">Simple Workflow Service (SWF)</a>
-            <li class="tab-amazon-fps"><a href="amazon-fps.html">Flexible Payments Service (FPS)</a>
-            <li class="tab-amazon-cloudwatch"><a href="amazon-cloudwatch.html">CloudWatch</a>
-            <li class="tab-amazon-iam"><a href="amazon-iam.html">Identity and Access Management (IAM)</a>
-            <li class="tab-amazon-rds"><a href="amazon-rds.html">Relational Database Service (RDS)</a>
-            <li class="tab-amazon-imd"><a href="amazon-imd.html">Instance Metadata (IMD)</a>
-            <li class="tab-amazon-elasticbeanstalk"><a href="amazon-elasticbeanstalk.html">ElasticBeanstalk</a>
-            <li class="tab-amazon-autoscaling"><a href="amazon-autoscaling.html">AutoScaling</a>
-            <li class="tab-amazon-importexport"><a href="amazon-importexport.html">Import/Export</a>
-            <li class="tab-amazon-storagegateway"><a href="amazon-storagegateway.html">Storage Gateway</a>
-            <li class="tab-amazon-cloudsearch"><a href="amazon-cloudsearch.html">CloudSearch</a>
-              -->
-          </ul>
-        </li>
+    <div class="span4">
+      <h2>Used by AppsAttic</h2>
+      <p>
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+        euismod. Donec sed odio dui.
+      </p>
+      <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div><!-- /.span4 -->
+    <div class="span4">
+      <h2>Used by SomeoneFinish</h2>
+      <p>
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+        euismod. Donec sed odio dui.
+      </p>
+      <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div><!-- /.span4 -->
+    <div class="span4">
+      <h2>Used by IndoGames</h2>
+      <p>
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+        euismod. Donec sed odio dui.
+      </p>
+      <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div><!-- /.span4 -->
 
-      </ul>
-    </div><!-- /.well -->
+  </div><!-- /.row-fluid -->
 
-  </div><!-- /#menu -->
+{% endcapture %}
 
-  <div id="content" class="span9">
-
-    <div class="content content-home">
-
-      <div class="hero-unit">
-        <h1>AwsSum <small>{{ site.version }}</small></h1>
-        <p>
-          Node.js modules for talking to <strong>lots</strong> of Web Service APIs.
-        </p>
-        <p>
-          <a class="btn btn-primary btn-large" href="https://github.com/appsattic/node-awssum/">In Git &raquo;</a>
-          <a class="btn btn-primary btn-large" href="https://npmjs.org/package/awssum">On NPM &raquo;</a>
-        </p>
-        <p>
-          <strong>IRC</strong>: #awssum on Freenode
-          <br>
-          <strong>Email</strong>: chilts@appsattic.com
-          <br>
-          <strong>Issues</strong>: <a href="https://github.com/appsattic/node-awssum/issues">node-awssum/issues</a> <small>please provide an example request/response</small>
-          <br>
-          <strong>Twitter Updates</strong>: <a href="https://twitter.com/andychilton" class="twitter-follow-button" data-show-count="false">Follow @andychilton</a>
-        </p>
-      </div>
-
-      <div class="row-fluid">
-
-        <div class="span4">
-          <h2>Used by AppsAttic</h2>
-          <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-            euismod. Donec sed odio dui.
-          </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <h2>Used by SomeoneFinish</h2>
-          <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-            euismod. Donec sed odio dui.
-          </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <h2>Used by IndoGames</h2>
-          <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-            euismod. Donec sed odio dui.
-          </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-
-      </div><!-- /.row-fluid -->
-
-    </div><!-- /.content-home -->
-
-  </div><!-- /#content -->
-
-</div><!-- /.row-fluid -->
+{% include main.html %}

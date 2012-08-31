@@ -5,34 +5,20 @@ title   : Amazon EC2
 tagline : Elastic Compute Cloud
 sitemap : true
 ---
-<div class="row-fluid">
+{% capture menu %}
+  <li class="tab-amazon-ec2 nav-header">&laquo; Amazon EC2</li>
+  <li><a href="#loading">Loading</a></li>
+  <li><a href="#regions">Regions/EndPoints</a></li>
 
-  <div id="menu" class="span3">
-    <h2>Amazon EC2</h2>
+  <li class="nav-header">Operations</li>
+  <li><a target="_new" href="#">ListInstances</a></li>
 
-    <div class="well sidebar-nav">
-      <ul class="nav nav-list">
+{% endcapture %}
 
-        <li class="tab-amazon-ec2 nav-header">&laquo; Amazon EC2</li>
-        <li><a href="#loading">Loading</a></li>
-        <li><a href="#regions">Regions/EndPoints</a></li>
-
-        <li class="nav-header">Operations</li>
-        <li><a target="_new" href="#">ListInstances</a></li>
-
-      </ul>
-    </div><!-- /.well -->
-
-  </div><!-- /#menu -->
-
-  <div id="content" class="span9">
-
-    <div class="content content-home">
+{% capture main %}
 
       ...etc...
 
-    </div><!-- /.content-home -->
+{% endcapture %}
 
-  </div><!-- /#content -->
-
-</div><!-- /.row-fluid -->
+{% include main.html %}

@@ -5,7 +5,11 @@ title   : Operations
 tagline : All your ops are belong to us
 sitemap : true
 ---
-<div class="content content-operations">
+{% capture menu %}
+  {% include menu-index.html %}
+{% endcapture %}
+
+{% capture main %}
 
   <h1>Operations</h1>
 
@@ -67,4 +71,6 @@ sitemap : true
     S3<a>, or click on the service of interest to you from the left-hand menu.
   </p>
 
-</div>
+{% endcapture %}
+
+{% include main.html %}

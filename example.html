@@ -5,15 +5,19 @@ title   : Example
 tagline : Giving you the gist
 sitemap : true
 ---
-<div class="content content-async">
+{% capture menu %}
+  {% include menu-index.html %}
+{% endcapture %}
 
-<h1>Examples on this Site</h1>
+{% capture main %}
 
-<p>
-  This site is going to provide you a lot of examples to help you get the most out of AwsSum, however each example
-  requires a fair bit of boilerplate so that we can bootstrap your program. So let's take a look at a complete program
-  and then show you some boilerplate that you'll need for each example.
-</p>
+  <h1>Examples on this Site</h1>
+
+  <p>
+    This site is going to provide you a lot of examples to help you get the most out of AwsSum, however each example
+    requires a fair bit of boilerplate so that we can bootstrap your program. So let's take a look at a complete program
+    and then show you some boilerplate that you'll need for each example.
+  </p>
 
 <pre>
 var fmt = require('fmt');
@@ -41,11 +45,11 @@ s3.ListBuckets(function(err, data) {
 });
 </pre>
 
-<p>
-  Let's take each stanza one at a time.
-</p>
+  <p>
+    Let's take each stanza one at a time.
+  </p>
 
-<h2>Loading AwsSum and your Service</h2>
+  <h2>Loading AwsSum and your Service</h2>
 
 <pre>
 var fmt = require('fmt');
@@ -54,12 +58,12 @@ var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
 </pre>
 
-<p>
-  Here we're loading one helper module (<code>fmt</code>) and the relevant parts of AwsSum. In this case we're using
-  the Amazon service (so we can get access to the region names) and the Amazon:S3 service.
-</p>
+  <p>
+    Here we're loading one helper module (<code>fmt</code>) and the relevant parts of AwsSum. In this case we're using
+    the Amazon service (so we can get access to the region names) and the Amazon:S3 service.
+  </p>
 
-<h2>Reading your Credentials from your Environment</h2>
+  <h2>Reading your Credentials from your Environment</h2>
 
 <pre>
 var env             = process.env;
@@ -68,13 +72,13 @@ var secretAccessKey = env.SECRET_ACCESS_KEY;
 var awsAccountId    = env.AWS_ACCOUNT_ID;
 </pre>
 
-<p>
-  For our examples, we're not going to past our AwsAccountId, AccessKeyId or SecretAccessKey here, so instead we're
-  going to read them from the environment. In the case for Amazon, you should set these in your shell prior to running
-  your program.
-</p>
+  <p>
+    For our examples, we're not going to past our AwsAccountId, AccessKeyId or SecretAccessKey here, so instead we're
+    going to read them from the environment. In the case for Amazon, you should set these in your shell prior to running
+    your program.
+  </p>
 
-<h2>Creating the Service Object</h2>
+  <h2>Creating the Service Object</h2>
 
 <pre>
 var s3 = new S3({
@@ -84,13 +88,15 @@ var s3 = new S3({
 });
 </pre>
 
-<p>
-Here we're creating the S3 object on which you can call your operations. If you need to call operations in a different
-region then you need to create another service object.
-</p>
+  <p>
+    Here we're creating the S3 object on which you can call your operations. If you need to call operations in a
+    different region then you need to create another service object.
+  </p>
 
-<p>e.g. creating an SQS service object for <code>us-west-1</code>. Of course, you'd have to tell AwsSum to pre-load
-your SQS service prior to creating this service object.</p>
+  <p>
+    e.g. creating an SQS service object for <code>us-west-1</code>. Of course, you'd have to tell AwsSum to pre-load
+    your SQS service prior to creating this service object.
+  </p>
 
 <pre>
 var sqs = new Sqs({
@@ -100,7 +106,7 @@ var sqs = new Sqs({
 });
 </pre>
 
-<h2>Performing the Operation</h2>
+  <h2>Performing the Operation</h2>
 
 <pre>
 s3.ListBuckets(function(err, data) {
@@ -112,10 +118,12 @@ s3.ListBuckets(function(err, data) {
 });
 </pre>
 
-<p>
-  Don't let the <code>fmt.*</code> calls put you off (just <code>npm install fmt</code> to use them). Instead, we're
-  just interested in <code>err</code> and <code>data</code> here. If <code>err</code> is defined, then something went
-  wrong. If <code>data</code> is defined, then everything was fine. It's the standard way for Node.js callbacks. :)
-</p>
+  <p>
+    Don't let the <code>fmt.*</code> calls put you off (just <code>npm install fmt</code> to use them). Instead, we're
+    just interested in <code>err</code> and <code>data</code> here. If <code>err</code> is defined, then something went
+    wrong. If <code>data</code> is defined, then everything was fine. It's the standard way for Node.js callbacks. :)
+  </p>
 
-</div>
+{% endcapture %}
+
+{% include main.html %}

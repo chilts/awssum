@@ -5,7 +5,11 @@ title   : Loading
 tagline : How to require()
 sitemap : true
 ---
-<div class="content content-loading">
+{% capture menu %}
+  {% include menu-index.html %}
+{% endcapture %}
+
+{% capture main %}
 
   <h1>Loading AwsSum</h1>
 
@@ -35,4 +39,7 @@ sitemap : true
   });
   </pre>
 
-</div>
+{% endcapture %}
+
+{% include main.html %}
+
