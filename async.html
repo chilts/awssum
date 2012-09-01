@@ -24,15 +24,15 @@ sitemap : true
     everything went well you're free to use the result for whatever purpose you require:
   </p>
 
-  <pre>
-  service.Operation(function(err, result) {
-      if (err) {
-          console.log('An error has occurred', err);
-          return;
-      }
-      console.log('Buckets', result);
-  });
-  </pre>
+{% highlight javascript %}
+service.Operation(function(err, result) {
+    if (err) {
+        console.log('An error has occurred', err);
+        return;
+    }
+    console.log('Buckets', result);
+});
+{% endhighlight %}
 
   <p>
     Pretty much all calls you'll ever make will look fairly similar to the one above. If you're using some kind of flow
