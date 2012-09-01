@@ -36,14 +36,64 @@ var s3 = new S3({
     'region'          : amazon.US_EAST_1,
 });
 
+fmt.line();
+fmt.title('s3.ListBuckets');
+
+fmt.field('Region',          s3.region());
+fmt.field('EndPoint',        s3.host() );
+fmt.field('AccessKeyId',     s3.accessKeyId() );
+fmt.field('SecretAccessKey', s3.secretAccessKey().substr(0, 3) + '...' );
+fmt.field('AwsAccountId',    s3.awsAccountId() );
+
+fmt.line();
+
 s3.ListBuckets(function(err, data) {
     fmt.title('Amazon:S3 - ListBuckets');
-    fmt.msg("listing all the buckets (no options given) - expecting success");
     fmt.dump(err,  'Error');
     fmt.dump(data, 'Data');
     fmt.line();
 });
 {% endhighlight %}
+
+  <p>
+    This would give output similar to the following:
+  </p>
+
+<pre>
+-------------------------------------------------------------------------------
+--- s3.ListBuckets ------------------------------------------------------------
+Region               : us-east-1
+EndPoint             : s3.amazonaws.com
+AccessKeyId          : 0WCKW7T9QFZ63ZBSPTR2
+SecretAccessKey      : +/7...
+AwsAccountId         : undefined
+-------------------------------------------------------------------------------
+listing all the buckets (no options given) - expecting success
+Error : null
+Data : { StatusCode: 200,
+  Headers:
+   { 'x-amz-id-2': 'rV+gG0bhM8Xn/x/AbKuld8omz0rd6bXmrIVo37i86jzj0q6POFxEXj3GVd43CV0d',
+     'x-amz-request-id': 'ACAC6AC3A8197DFA',
+     date: 'Sat, 01 Sep 2012 01:28:55 GMT',
+     'content-type': 'application/xml',
+     'transfer-encoding': 'chunked',
+     server: 'AmazonS3' },
+  Body:
+   { ListAllMyBucketsResult:
+      { '@': { xmlns: 'http://s3.amazonaws.com/doc/2006-03-01/' },
+        Owner:
+         { ID: '74c...',
+           DisplayName: 'MyDisplayName' },
+        Buckets:
+         { Bucket:
+            [ { Name: 'my-bucket-1',
+                CreationDate: '2008-01-06T10:04:16.000Z' },
+              { Name: 'another-bucket',
+                CreationDate: '2008-03-09T08:27:30.000Z' },
+              { Name: 'a-third-bucket',
+                CreationDate: '2011-02-20T01:59:36.000Z' } ] } } } }
+-------------------------------------------------------------------------------
+</pre>
 
   <p>
     Let's take each stanza one at a time.
