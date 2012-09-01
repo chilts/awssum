@@ -37,7 +37,7 @@ var s3 = new S3({
 });
 
 fmt.line();
-fmt.title('s3.ListBuckets');
+fmt.title('Credentials');
 
 fmt.field('Region',          s3.region());
 fmt.field('EndPoint',        s3.host() );
@@ -61,14 +61,14 @@ s3.ListBuckets(function(err, data) {
 
 <pre>
 -------------------------------------------------------------------------------
---- s3.ListBuckets ------------------------------------------------------------
+--- Credentials ---------------------------------------------------------------
 Region               : us-east-1
 EndPoint             : s3.amazonaws.com
 AccessKeyId          : 0WC...
 SecretAccessKey      : +/7...
 AwsAccountId         : undefined
 -------------------------------------------------------------------------------
-listing all the buckets (no options given) - expecting success
+--- Amazon:S3 - ListBuckets ---------------------------------------------------
 Error : null
 Data : { StatusCode: 200,
   Headers:
