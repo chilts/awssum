@@ -1,0 +1,40 @@
+---
+id      : amazon-ec2
+layout  : default
+title   : Amazon EC2
+tagline : Elastic Compute Cloud
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-ec2.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h2>Loading AwsSum's Amazon EC2</h2>
+
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var Ec2 = awssum.load('amazon/ec2').Ec2;
+
+var ec2 = new Ec2({
+    'accessKeyId'     : process.env.accessKeyId,
+    'secretAccessKey' : process.env.secretAccessKey,
+    'region'          : amazon.US_EAST_1
+});
+{% endhighlight %}
+
+  <h2>Examples</h2>
+  <h3 name="DescribeInstances">
+    DescribeInstances
+    <small><a href="http://goo.gl/">(Open docs on AWS)</a></small>
+  </h3>
+
+  <p>
+    ...
+  </p>
+
+{% endcapture %}
+
+{% include main.html %}

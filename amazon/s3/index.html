@@ -6,11 +6,11 @@ tagline : Simple Storage Service
 sitemap : true
 ---
 {% capture menu %}
+  {% include menu-amazon-s3.html %}
+{% endcapture %}
 
   <li><a href="/amazon/">&laquo; back</li>
   <li class="tab-amazon-s3 nav-header">&laquo; Amazon S3</li>
-  <li><a href="#loading">Loading</a></li>
-  <li><a href="#regions">Regions/EndPoints</a></li>
 
   <li class="nav-header">Operations on the Service</li>
   <li><a target="_new" href="#ListBuckets">ListBuckets</a></li>
