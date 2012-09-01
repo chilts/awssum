@@ -101,12 +101,12 @@ Data : { StatusCode: 200,
 
   <h2>Loading AwsSum and your Service</h2>
 
-<pre>
+{% highlight javascript %}
 var fmt = require('fmt');
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
 var S3 = awssum.load('amazon/s3').S3;
-</pre>
+{% endhighlight %}
 
   <p>
     Here we're loading one helper module (<code>fmt</code>) and the relevant parts of AwsSum. In this case we're using
@@ -115,12 +115,12 @@ var S3 = awssum.load('amazon/s3').S3;
 
   <h2>Reading your Credentials from your Environment</h2>
 
-<pre>
+{% highlight javascript %}
 var env             = process.env;
 var accessKeyId     = env.ACCESS_KEY_ID;
 var secretAccessKey = env.SECRET_ACCESS_KEY;
 var awsAccountId    = env.AWS_ACCOUNT_ID;
-</pre>
+{% endhighlight %}
 
   <p>
     For our examples, we're not going to past our AwsAccountId, AccessKeyId or SecretAccessKey here, so instead we're
@@ -130,13 +130,13 @@ var awsAccountId    = env.AWS_ACCOUNT_ID;
 
   <h2>Creating the Service Object</h2>
 
-<pre>
+{% highlight javascript %}
 var s3 = new S3({
     'accessKeyId'     : accessKeyId,
     'secretAccessKey' : secretAccessKey,
     'region'          : amazon.US_EAST_1,
 });
-</pre>
+{% endhighlight %}
 
   <p>
     Here we're creating the S3 object on which you can call your operations. If you need to call operations in a
@@ -148,17 +148,17 @@ var s3 = new S3({
     your SQS service prior to creating this service object.
   </p>
 
-<pre>
+{% highlight javascript %}
 var sqs = new Sqs({
     'accessKeyId'     : accessKeyId,
     'secretAccessKey' : secretAccessKey,
     'region'          : amazon.US_WEST_1,
 });
-</pre>
+{% endhighlight %}
 
   <h2>Performing the Operation</h2>
 
-<pre>
+{% highlight javascript %}
 s3.ListBuckets(function(err, data) {
     fmt.title('Amazon:S3 - ListBuckets');
     fmt.msg("listing all the buckets (no options given) - expecting success");
@@ -166,7 +166,7 @@ s3.ListBuckets(function(err, data) {
     fmt.dump(data, 'Data');
     fmt.line();
 });
-</pre>
+{% endhighlight %}
 
   <p>
     Don't let the <code>fmt.*</code> calls put you off (just <code>npm install fmt</code> to use them). Instead, we're
