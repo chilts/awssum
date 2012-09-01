@@ -1,0 +1,97 @@
+---
+id      : examples-incremental-backoff
+layout  : default
+title   : Incremental Backoff
+tagline : Playing nicely
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-examples.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h2>Incremental Backoff</h2>
+
+  <p>
+    AwsSum subscribes to the Node.js way of doing things which is to do one thing only and do it well. If you require
+    higher level intelligence or super-cow powers, the best way is to combine it with other modules (that do one thing
+    and do it well).
+  </p>
+
+  <p>
+    Therefore, incremental backoff is something that is not automatically done in AwsSum. You should do this yourself
+    since only you know your own code and the circumstances it is running in as well as what kind of call you are
+    doing.
+  </p>
+
+  <h2>Using 'oibackoff'</h2>
+
+  <p>
+    Here is an example of using <a href="http://github.com/appsattic/oibackoff">oibackoff</a> to put a file to S3,
+    retrying a few times before failure. We're using an exponential backoff algorithm, trying a maxiumum o 5 times,
+    whilst increasing our wait by 0.2s, 0.4s, etc each failure. Once the call suceeds, the backoff algorithm suceeds
+    and we carry on.
+  </p>
+
+{% highlight javascript %}
+// load up various packages
+var fmt = require('fmt');
+var oibackoff = require('oibackoff');
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var S3 = awssum.load('amazon/s3').S3;
+
+// get the env vars for our secrets
+var env             = process.env;
+var accessKeyId     = env.ACCESS_KEY_ID;
+var secretAccessKey = env.SECRET_ACCESS_KEY;
+var awsAccountId    = env.AWS_ACCOUNT_ID;
+
+// create the S3 service object
+var s3 = new S3({
+    'accessKeyId' : accessKeyId,
+    'secretAccessKey' : secretAccessKey,
+    'region' : amazon.US_EAST_1
+});
+
+// create the backoff function
+var backoff = oibackoff.backoff({
+    algorithm  : 'exponential',
+    delayRatio : 0.2,
+    maxTries   : 5,
+});
+
+// the args we want to send to PutObject
+var args = {
+    BucketName    : 'my-bucket',
+    ObjectName    : 'test-object.txt',
+    ContentLength : 14,
+    Body          : "Hello, World!\n",
+};
+
+// Method (1): Create a function which can be backedoff
+
+function put(args, callback) {
+    s3.PutObject(args, callback);
+}
+
+backoff(fn, args, function(err, data) {
+    fmt.title("Amazon:S3:PutObject");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+// Method (2): Use bind to create a function which can be backed off
+
+backoff(s3.PutObject.bind(s3), args, function(err, data) {
+    fmt.title("Amazon:S3:PutObject");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}
