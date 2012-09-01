@@ -1,0 +1,52 @@
+---
+id      : examples-index
+layout  : default
+title   : Examples
+tagline : Combining with other packages
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-examples.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h2>Examples</h2>
+
+  <p>
+    This section is designed for you to see a few other ways of doing things with AwsSum. It is also to document
+    some other packages which either compliment or build on AwsSum.
+  </p>
+
+  <h3>Complimentary Packages</h3>
+
+  <ul>
+    <li><a href="https://github.com/appsattic/oibackoff">oibackoff</a> - an incremental backoff generator
+      <ul>
+        <li><a href="">Example usng oibackoff</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Packages which use AwsSum</h3>
+
+  <p>
+    Since AwsSum is designed to be a one-to-one mapping of each WebAPI, it isn't always the friendliest way to use
+    them. Instead, it is designed so that higher level packages can use it in a more friendly way. Here are some
+    examples:
+  </p>
+
+  <ul>
+    <li><a href="https://github.com/appsattic/connect-stream-s3">connect-stream-s3</a> - Streaming connect middleware for uploading files to Amazon S3</li>
+    <li><a href="https://github.com/appsattic/connect-error-amazon-ses">connect-error-amazon-ses</a> - send connect errors to an email address using Amazon:SES</li>
+    <li></li>
+  </ul>
+
+  <p>
+    If you would like your project to appear here, please <a href="/">contact me</a> via email
+    or <a href="https://twitter.com/andychilton">Twitter</a>.
+  </p>
+
+{% endcapture %}
+
+{% include main.html %}
