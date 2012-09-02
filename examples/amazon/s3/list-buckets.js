@@ -32,13 +32,6 @@ s3.ListBuckets(function(err, data) {
     fmt.line();
 });
 
-s3.ListBuckets(undefined, function(err, data) {
-    fmt.msg("listing all the buckets (undefined options) - expecting success");
-    fmt.dump(err,  'Error');
-    fmt.dump(data, 'Data');
-    fmt.line();
-});
-
 s3.ListBuckets({}, function(err, data) {
     fmt.msg("listing all the buckets (empty options) - expecting success");
     fmt.dump(err,  'Error');
