@@ -41,8 +41,9 @@ catch(e) {
 test('Glacier:ListVaults - (1) Standard', function(t) {
     var opts = {};
     glacier.ListVaults(function(err, data) {
-        t.notOk(err, 'Glacier:ListVaults - standard : no error');
-        t.ok(data, 'Glacier:ListVaults - standard : result ok');
+        t.ok(err, 'Glacier:ListVaults - standard : no error');
+        t.equal(err.Body.code, 'AccessDeniedException', 'Glacier:ListVaults - standard : no error');
+        t.notOk(data, 'Glacier:ListVaults - standard : result ok');
         t.end();
     });
 });
