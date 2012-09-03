@@ -16,13 +16,19 @@ sitemap : true
   <p>
     After installing AwsSum, you are now able to load it into your programs ready for use. So that the entire suite of
     AwsSum libraries aren't loaded, you just load the base package and then any others you required. For example, to
-    load Amazon S3 you load AwsSum, then the Amazon package (so that we can get at some constants defined there) and
-    finally the S3 package:
+    load Amazon S3 you always load AwsSum and the Amazon package (so that we can get at some constants defined there) :
   </p>
 
 {% highlight javascript %}
 var awssum = require('awssum');
 var amazon = awssum.load('amazon/amazon');
+{% endhighlight %}
+
+  <p>
+    and in this example only the S3 package:
+  </p>
+
+{% highlight javascript %}
 var S3 = awssum.load('amazon/s3').S3;
 {% endhighlight %}
 
