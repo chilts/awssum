@@ -1,0 +1,38 @@
+---
+id      : tools-index
+layout  : default
+title   : Tools
+tagline : Using AwsSum is Awesome
+sitemap : true
+---
+{% capture menu %}
+  <li><a href="/">&laquo; back</a></li>
+  {% include menu-tools.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h2>Packages which use AwsSum</h2>
+
+  <p>
+    Since AwsSum is designed to be a one-to-one mapping of each WebAPI, it isn't always the friendliest way to use
+    them. Instead, it is designed so that higher level packages can use it in a more friendly way. Here are some
+    examples laid into categories.
+  </p>
+
+  <ul>
+    <li><a href="/tools/awssum-scripts.html">AwsSum Scripts</a> - example scripts to AWS</li>
+    <li><a href="/tools/connect-middleware.html">Connect Middleware</a> - doing stuff before you know it</li>
+    <li><a href="/tools/s3-related.html">Tools for S3</a>
+    <li><a href="/tools/build-tools.html">Build Tools</a>
+    <li><a href="/tools/misc.html">Misc</a>
+  </ul>
+
+  <p>
+    If you would like your project to appear here, please <a href="/">contact me</a> via email
+    or <a href="https://twitter.com/andychilton">Twitter</a>.
+  </p>
+
+{% endcapture %}
+
+{% include main.html %}

@@ -1,0 +1,51 @@
+---
+id      : tools-connect-middleware
+layout  : default
+title   : Connect Middleware
+tagline : Doing stuff before you know it
+sitemap : true
+---
+{% capture menu %}
+  <li><a href="/">&laquo; back</a></li>
+  {% include menu-tools.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>Connect Middleware using AwsSum</h1>
+
+  <p>
+    <a href="http://senchalabs.github.com/connect">Connect</a> and <a href="http://expressjs.com/">Express</a> are
+    brilliant, lovely and amazing tools. And we can harness the power of them and AwsSum inside some connect
+    middleware. There are many things you could do, but here are a few already written for you.
+  </p>
+
+  <h2>connect-stream-s3</h2>
+  <ul>
+    <li><a href="https://github.com/appsattic/connect-stream-s3">Git Repo</a></li>
+    <li><a href="https://npmjs.org/package/connect-stream-s3">npm</a></li>
+  </ul>
+  <p>
+    This middleware lets you upload files directly from a form straight into Amazon S3. By
+    using <code>app.use(express.bodyParser());</code>, we end up with a file on disk, which we can then stream into
+    S3. By doing it this way, we can easily re-try if the S3 operation fails. Give it a go!
+  </p>
+
+  <h2>connect-error-amazon-s3</h2>
+  <ul>
+    <li><a href="https://github.com/appsattic/connect-error-amazon-s3">Git Repo</a></li>
+    <li><a href="https://npmjs.org/package/connect-error-amazon-ses">npm</a></li>
+  </ul>
+  <p>
+    This middleware lets you send connect/express errors to an email address. Generally you wouldn't use this for
+    production but for testing or staging it could be a godsend.
+  </p>
+
+  <h2>Any others?</h2>
+  <p>
+    If you think your package or tool requires mention, please get in touch with me. :)
+  </p>
+
+{% endcapture %}
+
+{% include main.html %}

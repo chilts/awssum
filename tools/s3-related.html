@@ -1,0 +1,44 @@
+---
+id      : tools-s3-related
+layout  : default
+title   : S3 Related
+tagline : Files up, files down, pipes everywhere
+sitemap : true
+---
+{% capture menu %}
+  <li><a href="/">&laquo; back</a></li>
+  {% include menu-tools.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>S3 Related Tools</h1>
+
+  <p>
+    I can't link to or review everything which uses AwsSum, but here is a selection of links here.
+  </p>
+
+  <ul>
+    <li>
+      <a href="https://github.com/jolira/s3-store">s3-store</a>
+      (<a href="https://npmjs.org/package/s3-store">npm</a>)
+      - A simple data-store for the jolira-replicator using Amazon S3</li>
+    <li>
+      <a href="https://github.com/B2MSolutions/node-ec2-each"></a>
+      (<a href="https://npmjs.org/package/ec2-each">npm</a>)
+      - Iterate ec2 instances and do things
+    </li>
+    <li>
+      <a href="https://github.com/jfromaniello/fstream-s3">fstream-s3</a>
+      (<a href="https://npmjs.org/package/fstream-s3">npm</a>)
+      - Advanced FS streaming to amazon s3 for Node
+    </li>
+  </ul>
+
+  <p>
+    If you think your package or tool requires mention, please get in touch with me. :)
+  </p>
+
+{% endcapture %}
+
+{% include main.html %}

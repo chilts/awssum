@@ -1,0 +1,34 @@
+---
+id      : examples-index
+layout  : default
+title   : Examples
+tagline : Combining with other packages
+sitemap : true
+---
+{% capture menu %}
+  <li><a href="/">&laquo; back</a></li>
+  {% include menu-misc.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h2>Examples</h2>
+
+  <p>
+    This section is designed for you to see a few other ways of doing things with AwsSum. It is also to document
+    some other packages which either compliment or build on AwsSum.
+  </p>
+
+  <h3>Complimentary Packages</h3>
+
+  <ul>
+    <li><a href="https://github.com/appsattic/oibackoff">oibackoff</a> - an incremental backoff generator
+      <ul>
+        <li><a href="">Example usng oibackoff</a></li>
+      </ul>
+    </li>
+  </ul>
+
+{% endcapture %}
+
+{% include main.html %}
