@@ -1,0 +1,7 @@
+---
+# Remember to set url in your _config.yml file!
+title : Sitemap
+sitemap: false
+---
+{% for page in site.pages %}
+{% if page.sitemap %}{{ site.url }}{{ page.url }}{% endif %}{% endfor %}
