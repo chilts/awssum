@@ -169,9 +169,10 @@ s3.ListBuckets(function(err, data) {
 {% endhighlight %}
 
   <p>
-    Don't let the <code>fmt.*</code> calls put you off (just <code>npm install fmt</code> to use them). Instead, we're
-    just interested in <code>err</code> and <code>data</code> here. If <code>err</code> is defined, then something went
-    wrong. If <code>data</code> is defined, then everything was fine. It's the standard way for Node.js callbacks. :)
+    Don't let the <code>fmt.*</code> calls put you off (just <code>npm install fmt</code> to use them). <code>fmt</code> 
+    is a command line output module. Instead, we're just interested in <code>err</code> and <code>data</code> here. 
+    If <code>err</code> is defined, then something went wrong. If <code>data</code> is defined, then everything was fine.  
+    It's the standard way for Node.js callbacks. :)
   </p>
 
 {% endcapture %}
