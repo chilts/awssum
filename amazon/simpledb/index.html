@@ -25,20 +25,11 @@ var sdb = new SimpleDB({
 });
 {% endhighlight %}
 
-  <h2>Examples</h2>
-  <h3 name="Select">
-    Select
-    <small><a href="http://goo.gl/GTsSZ">(Open docs on AWS)</a></small>
-  </h3>
+  <h2>Operations</h2>
 
-{% highlight javascript %}
-sdb.Select({SelectExpression:'SELECT * FROM '+config.sdb.name+" WHERE session = '"+value+"'",ConsistentRead:true},callback);
-sdb.Select({},function(err, data) {
-    fmt.title("Amazon:SimpleDB:Select - ");
-    fmt.dump(err, 'Error');
-    fmt.dump(data, 'Data');
-});
-{% endhighlight %}
+  <p>
+    Please see the menu on the left for all operations and examples.
+  </p>
 
 {% endcapture %}
 

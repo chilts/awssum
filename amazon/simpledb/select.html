@@ -1,0 +1,34 @@
+---
+id      : amazon-simpledb-select
+layout  : default
+title   : Amazon:SimpleDB:Select
+tagline : Get attributes for item names
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-simpledb.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    Select
+    <small>(<a href="http://goo.gl/N93md">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+var expr = "SELECT * FROM " + config.sdb.name + " WHERE session = '" + value + "'";
+
+sdb.Select({
+    SelectExpression : expr,
+    ConsistentRead : true
+}, function(err, data) {
+    fmt.title("Amazon:SimpleDB:Select");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

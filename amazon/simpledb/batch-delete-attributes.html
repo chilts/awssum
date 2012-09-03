@@ -1,0 +1,46 @@
+---
+id      : amazon-simpledb-batch-delete-attributes
+layout  : default
+title   : Amazon:SimpleDB:BatchDeleteAttributes
+tagline : Multiple DeleteAttributes in a single call
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-simpledb.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    BatchDeleteAttributes
+    <small>(<a href="http://goo.gl/aC9Ek">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+var items = [ 'the-pie', 'chilts', 'ben' ];
+var attributeNames = [
+    [ 'favourite-color', 'lucky-number' ],
+    [ 'favourite-color', 'lucky-number' ],
+    [ 'favourite-color', 'lucky-number' ],
+];
+var attributeValues = [
+    [ 'red',   2 ],
+    [ 'green', 3 ],
+    [ 'blue',  4 ],
+];
+
+sdb.BatchDeleteAttributes({
+    DomainName       : 'test',
+    ItemName         : items,
+    AttributeName    : attributeNames,
+    AttributeValue   : attributeValues,
+}, function(err, data) {
+    fmt.msg("putting three objects - expecting success");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}
