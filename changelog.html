@@ -1,0 +1,41 @@
+---
+id      : changelog
+layout  : default
+title   : Changelog
+tagline : What's the difference?
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-index.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>ChangeLog</h1>
+
+  <h2>Release v0.10.0</h2>
+
+  <p>Services:</p>
+
+  <ul>
+    <li>fixes in CloudSearch</li>
+    <li>fixes in Glacier</li>
+    <li>fixes for STS</li>
+    <li>fixes in CloudFormation</li>
+    <li>some EC2 updates</li>
+  </ul>
+
+  <p>Code:</p>
+
+  <ul>
+    <li>ability to use your own HTTP Agent :)</li>
+    <li>added new tagging options to S3</li>
+    <li>lots more examples</li>
+    <li>ability to use tokens rather than personal credentials (thanks Joey van Dijk)</li>
+    <li>groundwork for future options</li>
+    <li>more unit/integration tests</li>
+  </ul>
+
+{% endcapture %}
+
+{% include main.html %}
