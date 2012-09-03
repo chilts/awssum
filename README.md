@@ -16,11 +16,12 @@ NodeJS client libraries for talking to lots of Web Service APIs.
 
 IRC : Come and say hello in #awssum on Freenode. :)
 
-Note: that I am looking for sponsorship for various libraries, especially larger ones such as GitHub, PayPal and
-Flickr. Please contact me.
-
 Btw: [AwsSum is being used](https://twitter.com/andychilton/status/235501828878520321) at
 [Medium.com](https://medium.com/)! Yay!
+
+# NEW SITE! #
+
+[AwsSum now has a new docs site](http://awssum.io/). This README.md will eventually disappear in favour of that site.
 
 # How to get AwsSum #
 
