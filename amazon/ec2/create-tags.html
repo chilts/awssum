@@ -13,11 +13,18 @@ sitemap : true
 
   <h1>
     CreateTags
-    <small>(<a href="">Open docs on AWS</a>)</small>
+    <small>(<a href="http://goo.gl/Vmkqc">Open docs on AWS</a>)</small>
   </h1>
 
 {% highlight javascript %}
-ec2.CreateTags({}, function(err, data) {
+var args = {
+    ResourceId : [ 'ami-1a2b3c4d', 'i-7f4d3a2b' ],
+    Tag        : [
+        { Key : 'WebServer', Value : ''           },
+        { Key : 'stack',     Value : 'Production' },
+    ]
+};
+ec2.CreateTags(args, function(err, data) {
     fmt.title("Amazon:EC2:CreateTags");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -26,7 +33,8 @@ ec2.CreateTags({}, function(err, data) {
 
   <h2>Args</h2>
 
-  <p>...</p>
+  <p><strong>ResourceId</strong>: an array of resources.</p>
+  <p><strong>Tag</strong>: an array of objects which contain Key and Value.</p>
 
   <h2>Result</h2>
 
