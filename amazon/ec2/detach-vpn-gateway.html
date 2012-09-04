@@ -1,7 +1,7 @@
 ---
-id      : amazon-ec2-detach-internetgateway
+id      : amazon-ec2-detach-vpn-gateway
 layout  : default
-title   : Amazon:EC2:DetachInternetgateway
+title   : Amazon:EC2:DetachVpnGateway
 tagline : ???
 sitemap : true
 ---
@@ -12,13 +12,13 @@ sitemap : true
 {% capture main %}
 
   <h1>
-    DetachInternetgateway
+    DetachVpngateway
     <small>(<a href="">Open docs on AWS</a>))</small>
   </h1>
 
 {% highlight javascript %}
-ec2.DetachInternetgateway({}, function(err, data) {
-    fmt.title("Amazon:EC2:DetachInternetgateway");
+ec2.DetachVpnGateway({}, function(err, data) {
+    fmt.title("Amazon:EC2:DetachVpnGateway");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

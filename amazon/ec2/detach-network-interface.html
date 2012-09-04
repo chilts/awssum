@@ -1,7 +1,7 @@
 ---
-id      : amazon-ec2-detach-networkinterface
+id      : amazon-ec2-detach-network-interface
 layout  : default
-title   : Amazon:EC2:DetachNetworkinterface
+title   : Amazon:EC2:DetachNetworkInterface
 tagline : ???
 sitemap : true
 ---
@@ -17,8 +17,8 @@ sitemap : true
   </h1>
 
 {% highlight javascript %}
-ec2.DetachNetworkinterface({}, function(err, data) {
-    fmt.title("Amazon:EC2:DetachNetworkinterface");
+ec2.DetachNetworkInterface({}, function(err, data) {
+    fmt.title("Amazon:EC2:DetachNetworkInterface");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
