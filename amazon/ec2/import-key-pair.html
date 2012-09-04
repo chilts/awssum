@@ -1,0 +1,39 @@
+---
+id      : amazon-ec2-import-key-pair
+layout  : default
+title   : Amazon:EC2:ImportKeyPair
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-ec2.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    ImportKeyPair
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+ec2.ImportKeyPair({}, function(err, data) {
+    fmt.title("Amazon:EC2:ImportKeyPair");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+  <h2>Args</h2>
+
+  <p>...</p>
+
+  <h2>Result</h2>
+
+{% highlight %}
+...
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}
