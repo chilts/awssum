@@ -1,0 +1,39 @@
+---
+id      : amazon-simpledb-domain-metadata
+layout  : default
+title   : Amazon:SimpleDB:DomainMetadata
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-simpledb.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    DomainMetadata
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+sdb.DomainMetadata({}, function(err, data) {
+    fmt.title("Amazon:SimpleDB:DomainMetadata");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+  <h2>Args</h2>
+
+  <p>...</p>
+
+  <h2>Result</h2>
+
+{% highlight %}
+...
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

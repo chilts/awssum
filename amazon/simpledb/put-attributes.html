@@ -1,0 +1,39 @@
+---
+id      : amazon-simpledb-put-attributes
+layout  : default
+title   : Amazon:SimpleDB:PutAttributes
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-simpledb.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    PutAttributes
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+sdb.PutAttributes({}, function(err, data) {
+    fmt.title("Amazon:SimpleDB:PutAttributes");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+  <h2>Args</h2>
+
+  <p>...</p>
+
+  <h2>Result</h2>
+
+{% highlight %}
+...
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}
