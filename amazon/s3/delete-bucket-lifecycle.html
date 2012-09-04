@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-delete-bucket-lifecycle
+layout  : default
+title   : Amazon:S3:DeleteBucketLifecycle
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    DeleteBucketLifecycle
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.DeleteBucketLifecycle({}, function(err, data) {
+    fmt.title("Amazon:S3:DeleteBucketLifecycle");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

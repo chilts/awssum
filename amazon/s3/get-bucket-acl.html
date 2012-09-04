@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-get-bucket-acl
+layout  : default
+title   : Amazon:S3:GetBucketAcl
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    GetBucketAcl
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.GetBucketAcl({}, function(err, data) {
+    fmt.title("Amazon:S3:GetBucketAcl");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

@@ -1,0 +1,33 @@
+---
+id      : amazon-s3-abort-multipart-upload
+layout  : default
+title   : Amazon:S3:AbortMultipartUpload
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    AbortMultipartUpload
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.AbortMultipartUpload({
+    BucketName : 'my-bucket',
+    ObjectName : 'my-object.txt',
+    UploadId   : 'xxx',
+}, function(err, data) {
+    fmt.title("Amazon:S3:AbortMultipartUpload");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

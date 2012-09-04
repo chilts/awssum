@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-delete-bucket-policy
+layout  : default
+title   : Amazon:S3:DeleteBucketPolicy
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    DeleteBucketPolicy
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.DeleteBucketPolicy({}, function(err, data) {
+    fmt.title("Amazon:S3:DeleteBucketPolicy");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

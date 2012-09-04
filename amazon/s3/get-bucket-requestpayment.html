@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-get-bucket-requestpayment
+layout  : default
+title   : Amazon:S3:GetBucketRequestpayment
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    GetBucketRequestpayment
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.GetBucketRequestpayment({}, function(err, data) {
+    fmt.title("Amazon:S3:GetBucketRequestpayment");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

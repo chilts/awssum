@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-put-bucket-acl
+layout  : default
+title   : Amazon:S3:PutBucketAcl
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    PutBucketAcl
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.PutBucketAcl({}, function(err, data) {
+    fmt.title("Amazon:S3:PutBucketAcl");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

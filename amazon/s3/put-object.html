@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-put-object
+layout  : default
+title   : Amazon:S3:PutObject
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    PutObject
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.PutObject({}, function(err, data) {
+    fmt.title("Amazon:S3:PutObject");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

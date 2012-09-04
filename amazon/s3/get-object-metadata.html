@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-get-object-metadata
+layout  : default
+title   : Amazon:S3:GetObjectMetadata
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    GetObjectMetadata
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.GetObjectMetadata({}, function(err, data) {
+    fmt.title("Amazon:S3:GetObjectMetadata");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

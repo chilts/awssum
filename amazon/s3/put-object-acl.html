@@ -1,0 +1,29 @@
+---
+id      : amazon-s3-put-object-acl
+layout  : default
+title   : Amazon:S3:PutObjectAcl
+tagline : ???
+sitemap : true
+---
+{% capture menu %}
+  { include menu-amazon-s3.html }
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    PutObjectAcl
+    <small>(<a href="">Open docs on AWS</a>))</small>
+  </h1>
+
+{% highlight javascript %}
+s3.PutObjectAcl({}, function(err, data) {
+    fmt.title("Amazon:S3:PutObjectAcl");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}
