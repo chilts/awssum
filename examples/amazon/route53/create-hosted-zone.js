@@ -16,7 +16,7 @@ var r53 = new Route53({
 
 fmt.field('Region', r53.region() );
 fmt.field('EndPoint', r53.host() );
-fmt.field('AccessKeyId', r53.accessKeyId() );
+fmt.field('AccessKeyId', r53.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', r53.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', r53.awsAccountId() );
 

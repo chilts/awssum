@@ -16,7 +16,7 @@ var swf = new Swf({
 
 fmt.field('Region', swf.region() );
 fmt.field('EndPoint', swf.host() );
-fmt.field('AccessKeyId', swf.accessKeyId() );
+fmt.field('AccessKeyId', swf.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', swf.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', swf.awsAccountId() );
 

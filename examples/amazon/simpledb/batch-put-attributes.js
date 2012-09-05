@@ -17,7 +17,7 @@ var sdb = new SimpleDB({
 
 fmt.field('Region', sdb.region() );
 fmt.field('EndPoint', sdb.host() );
-fmt.field('AccessKeyId', sdb.accessKeyId() );
+fmt.field('AccessKeyId', sdb.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', sdb.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', sdb.awsAccountId() );
 

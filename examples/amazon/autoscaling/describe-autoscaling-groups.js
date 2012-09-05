@@ -16,7 +16,7 @@ var as = new AutoScaling({
 
 fmt.field('Region', as.region() );
 fmt.field('EndPoint', as.host() );
-fmt.field('AccessKeyId', as.accessKeyId() );
+fmt.field('AccessKeyId', as.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', as.secretAccessKey().substr(0, 3) + '...' );
 
 as.DescribeAutoScalingGroups(function(err, data) {

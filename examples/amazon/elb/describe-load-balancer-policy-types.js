@@ -17,7 +17,7 @@ var elb = new Elb({
 
 fmt.field('Region', elb.region() );
 fmt.field('EndPoint', elb.host() );
-fmt.field('AccessKeyId', elb.accessKeyId() );
+fmt.field('AccessKeyId', elb.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', elb.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', elb.awsAccountId() );
 

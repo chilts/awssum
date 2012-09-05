@@ -17,7 +17,7 @@ var elastiCache = new ElastiCache({
 
 fmt.field('Region', elastiCache.region() );
 fmt.field('EndPoint', elastiCache.host() );
-fmt.field('AccessKeyId', elastiCache.accessKeyId() );
+fmt.field('AccessKeyId', elastiCache.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', elastiCache.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', elastiCache.awsAccountId() );
 

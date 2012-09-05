@@ -17,7 +17,7 @@ var sns = new Sns({
 
 fmt.field('Region', sns.region() );
 fmt.field('EndPoint', sns.host() );
-fmt.field('AccessKeyId', sns.accessKeyId() );
+fmt.field('AccessKeyId', sns.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', sns.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', sns.awsAccountId() );
 

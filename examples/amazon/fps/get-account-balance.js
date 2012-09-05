@@ -17,7 +17,7 @@ var fps = new Fps({
 
 fmt.field('Region', fps.region() );
 fmt.field('EndPoint', fps.host() );
-fmt.field('AccessKeyId', fps.accessKeyId() );
+fmt.field('AccessKeyId', fps.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', fps.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', fps.awsAccountId() );
 

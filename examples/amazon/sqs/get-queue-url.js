@@ -17,7 +17,7 @@ var sqs = new Sqs({
 
 fmt.field('Region', sqs.region() );
 fmt.field('EndPoint', sqs.host() );
-fmt.field('AccessKeyId', sqs.accessKeyId() );
+fmt.field('AccessKeyId', sqs.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', sqs.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', sqs.awsAccountId() );
 

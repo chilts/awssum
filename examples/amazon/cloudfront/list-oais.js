@@ -17,7 +17,7 @@ var cloudFront = new CloudFront({
 
 fmt.field('Region', cloudFront.region() );
 fmt.field('EndPoint', cloudFront.host() );
-fmt.field('AccessKeyId', cloudFront.accessKeyId() );
+fmt.field('AccessKeyId', cloudFront.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', cloudFront.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', cloudFront.awsAccountId() );
 

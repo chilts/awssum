@@ -24,7 +24,7 @@ var ddbWest = new DynamoDB({
 
 fmt.field('Region', ddb.region() );
 fmt.field('EndPoint', ddb.host() );
-fmt.field('AccessKeyId', ddb.accessKeyId() );
+fmt.field('AccessKeyId', ddb.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', ddb.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', ddb.awsAccountId() );
 

@@ -17,7 +17,7 @@ var sts = new Sts({
 
 fmt.field('Region', sts.region() );
 fmt.field('EndPoint', sts.host() );
-fmt.field('AccessKeyId', sts.accessKeyId() );
+fmt.field('AccessKeyId', sts.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', sts.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', sts.awsAccountId() );
 

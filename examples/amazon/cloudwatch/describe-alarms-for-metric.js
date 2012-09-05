@@ -17,7 +17,7 @@ var cloudwatch = new CloudWatch({
 
 fmt.field('Region', cloudwatch.region() );
 fmt.field('EndPoint', cloudwatch.host() );
-fmt.field('AccessKeyId', cloudwatch.accessKeyId() );
+fmt.field('AccessKeyId', cloudwatch.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', cloudwatch.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', cloudwatch.awsAccountId() );
 

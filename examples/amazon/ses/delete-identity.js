@@ -16,7 +16,7 @@ var ses = new Ses({
 
 fmt.field('Region', ses.region() );
 fmt.field('EndPoint', ses.host() );
-fmt.field('AccessKeyId', ses.accessKeyId() );
+fmt.field('AccessKeyId', ses.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', ses.secretAccessKey().substr(0, 3) + '...' );
 fmt.field('AwsAccountId', ses.awsAccountId() );
 

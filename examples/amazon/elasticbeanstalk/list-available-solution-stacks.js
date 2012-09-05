@@ -16,7 +16,7 @@ var eb = new ElasticBeanstalk({
 
 fmt.field('Region', eb.region() );
 fmt.field('EndPoint', eb.host() );
-fmt.field('AccessKeyId', eb.accessKeyId() );
+fmt.field('AccessKeyId', eb.accessKeyId().substr(0, 3) + '...' );
 fmt.field('SecretAccessKey', eb.secretAccessKey().substr(0, 3) + '...' );
 
 eb.ListAvailableSolutionStacks(function(err, data) {
