@@ -1,7 +1,7 @@
 {
     "name": "awssum",
     "description": "NodeJS modules for talking to IaaS providers, such as Amazon AWS, RackspaceCloud, OpenStack!",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "author": {
         "name":"Andrew Chilton",
         "email":"chilts@appsattic.com",
