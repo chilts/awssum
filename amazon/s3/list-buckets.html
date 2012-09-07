@@ -2,7 +2,7 @@
 id      : amazon-s3-list-buckets
 layout  : default
 title   : Amazon S3
-tagline : ALl your buckets are belong to you
+tagline : ...
 sitemap : true
 ---
 {% capture menu %}
@@ -13,50 +13,25 @@ sitemap : true
 
   <h1>
     ListBuckets
-    <small>(<a href="http://goo.gl/ZXuPe">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTServiceGET.html">Open docs on AWS</a>)</small>
   </h1>
-
-{% highlight javascript %}
-s3.ListBuckets(function(err, data) {
-    fmt.title("Amazon:S3:ListBuckets");
-    fmt.dump(err, 'Error');
-    fmt.dump(data, 'Data');
-});
-{% endhighlight %}
 
   <h2>Args</h2>
 
+  
   <p>This operation doesn't take any arguments.</p>
+  
+
+  <h2>Examples</h2>
+
+{% highlight javascript %}
+
+{% endhighlight %}
 
   <h2>Result</h2>
 
 {% highlight javascript %}
-Error : null
-Data : {
-  StatusCode: 200,
-  Headers:
-   { 'x-amz-id-2': '3Od0xSwoqnwm5qILWLsNbf6VpzlIrZBkyFUGAHi87s4xwFvy0iqgPe+CdGzlZkjR',
-     'x-amz-request-id': '8616722C572657D0',
-     date: 'Tue, 04 Sep 2012 07:57:38 GMT',
-     'content-type': 'application/xml',
-     'transfer-encoding': 'chunked',
-     server: 'AmazonS3' },
-  Body:
-   { ListAllMyBucketsResult:
-      { '@': { xmlns: 'http://s3.amazonaws.com/doc/2006-03-01/' },
-        Owner:
-         { ID: 'XXX',
-           DisplayName: 'XXX' },
-        Buckets:
-         { Bucket:
-            [ { Name: 'my-bucket',
-                CreationDate: '2008-01-06T10:04:16.000Z' },
-              { Name: 'another-bucket',
-                CreationDate: '2008-03-09T08:27:30.000Z' },
-              { Name: 'files',
-                CreationDate: '2008-03-09T09:02:53.000Z' },
-              { Name: 'files',
-                CreationDate: '2011-02-20T01:59:36.000Z' } ] } } } }
+
 {% endhighlight %}
 
 {% endcapture %}

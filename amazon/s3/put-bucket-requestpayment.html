@@ -16,6 +16,17 @@ sitemap : true
     <small>(<a href="">Open docs on AWS</a>)</small>
   </h1>
 
+  <h2>Args</h2>
+
+  <dl>
+    <dt>BucketName</dt>
+    <dd>The name of the bucket to act on</dd>
+    <dt></dt>
+    <dd></dd>
+  </dl>
+
+  <h2>Example</h2>
+
 {% highlight javascript %}
 s3.PutBucketRequestpayment({}, function(err, data) {
     fmt.title("Amazon:S3:PutBucketRequestpayment");
@@ -23,10 +34,6 @@ s3.PutBucketRequestpayment({}, function(err, data) {
     fmt.dump(data, 'Data');
 });
 {% endhighlight %}
-
-  <h2>Args</h2>
-
-  <p>...</p>
 
   <h2>Result</h2>
 

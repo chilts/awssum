@@ -2,7 +2,7 @@
 id      : amazon-s3-delete-bucket-tagging
 layout  : default
 title   : Amazon S3
-tagline : ???
+tagline : ...
 sitemap : true
 ---
 {% capture menu %}
@@ -13,25 +13,25 @@ sitemap : true
 
   <h1>
     DeleteBucketTagging
-    <small>(<a href="">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketDELETEtagging.html">Open docs on AWS</a>)</small>
   </h1>
-
-{% highlight javascript %}
-s3.DeleteBucketTagging({}, function(err, data) {
-    fmt.title("Amazon:S3:DeleteBucketTagging");
-    fmt.dump(err, 'Error');
-    fmt.dump(data, 'Data');
-});
-{% endhighlight %}
 
   <h2>Args</h2>
 
-  <p>...</p>
+  
+  <p>This operation doesn't take any arguments.</p>
+  
+
+  <h2>Examples</h2>
+
+{% highlight javascript %}
+
+{% endhighlight %}
 
   <h2>Result</h2>
 
 {% highlight javascript %}
-...
+
 {% endhighlight %}
 
 {% endcapture %}
