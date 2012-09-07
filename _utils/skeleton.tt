@@ -1,0 +1,46 @@
+---
+id      : [% provider %]-[% service %]-[% operation_name %]
+layout  : default
+title   : [% Provider %] [% Service %]
+tagline : [% tagline %]
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-[% provider %]-[% service %].html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    [% OperationName %]
+    <small>(<a href="[% url %]">Open docs on AWS</a>)</small>
+  </h1>
+
+  <h2>Args</h2>
+
+  [% IF params.length %]
+  <dl>
+    [% FOR param IN params %]
+    <dt>[% param.name | html %][% IF param.req == 'req' %]<span class="">*</span>[% END %]</dt>
+    <dd>([% param.type | html %])[% param.desc | html %]</dd>
+    [% END %]
+  </dl>
+  [% ELSE %]
+  <p>This operation doesn't take any arguments.</p>
+  [% END %]
+
+  <h2>Examples</h2>
+
+{% highlight javascript %}
+[% examples | html %]
+{% endhighlight %}
+
+  <h2>Result</h2>
+
+{% highlight javascript %}
+[% results | html %]
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}
