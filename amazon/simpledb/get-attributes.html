@@ -1,37 +1,37 @@
 ---
 id      : amazon-simpledb-get-attributes
 layout  : default
-title   : Amazon:SimpleDB:GetAttributes
-tagline : ???
+title   : Amazon SimpleDB
+tagline : ...
 sitemap : true
 ---
 {% capture menu %}
-  { include menu-amazon-simpledb.html }
+  {% include menu-amazon-simpledb.html %}
 {% endcapture %}
 
 {% capture main %}
 
   <h1>
     GetAttributes
-    <small>(<a target="_new" href="">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonSimpleDB/latest/DeveloperGuide/SDB_API_GetAttributes.html">Open docs on AWS</a>)</small>
   </h1>
-
-{% highlight javascript %}
-sdb.GetAttributes({}, function(err, data) {
-    fmt.title("Amazon:SimpleDB:GetAttributes");
-    fmt.dump(err, 'Error');
-    fmt.dump(data, 'Data');
-});
-{% endhighlight %}
 
   <h2>Args</h2>
 
-  <p>...</p>
+  
+  <p>This operation doesn't take any arguments.</p>
+  
+
+  <h2>Examples</h2>
+
+{% highlight javascript %}
+
+{% endhighlight %}
 
   <h2>Result</h2>
 
 {% highlight javascript %}
-...
+
 {% endhighlight %}
 
 {% endcapture %}
