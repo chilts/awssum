@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 //
-// integration/amazon-glacier.js - integration tests for Amazon Storage Gateway
+// integration/amazon-glacier.js - integration tests for Amazon Glacier
 //
 // Copyright (c) 2012 AppsAttic Ltd - http://www.appsattic.com/
 // Written by Andrew Chilton <chilts@appsattic.com>
