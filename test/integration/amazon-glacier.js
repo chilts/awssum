@@ -10,6 +10,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 // requires
 
+var fmt = require('fmt');
 var fs = require('fs');
 var test = require('tap').test;
 var awssum = require('../../');
@@ -41,9 +42,12 @@ catch(e) {
 test('Glacier:ListVaults - (1) Standard', function(t) {
     var opts = {};
     glacier.ListVaults(function(err, data) {
-        t.ok(err, 'Glacier:ListVaults - standard : no error');
-        t.equal(err.Body.code, 'AccessDeniedException', 'Glacier:ListVaults - standard : no error');
-        t.notOk(data, 'Glacier:ListVaults - standard : result ok');
+        console.log(err);
+        fmt.dump(data);
+        t.notOk(err, 'Glacier:ListVaults - standard : no error');
+        t.ok(data, 'Glacier:ListVaults - standard : result ok');
+        t.equal(data.StatusCode, 200, 'Glacier:ListVaults - standard : no error');
+        t.equal(data.Body.VaultList[0].VaultName, 'test-vault', 'Glacier:ListVaults - standard : no error');
         t.end();
     });
 });
