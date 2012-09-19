@@ -59,6 +59,7 @@ var operations = {};
 var examplesFile;
 var examples = {};
 var template;
+var menu;
 
 step(
     function loadExampleFile(err) {
@@ -140,12 +141,13 @@ step(
     },
     function loadTemplate(err) {
         var next = this;
+        console.log('Reading .template.html ... ');
         fs.readFile('.template.html', function(err, data) {
             if (err) {
                 next(err);
                 return;
             }
-            console.log(data.toString('utf8'));
+            console.log('Reading .template.html ... done');
             template = handlebars.compile(data.toString('utf8'));
             next();
         });
@@ -158,10 +160,6 @@ step(
 
         Object.keys(service).sort().forEach(function(name, i) {
             console.log('Making operation data structure for ' + name);
-            console.log(' - ' + providerName);
-            console.log(' - ' + map[providerName]);
-            console.log(' - ' + serviceName);
-            console.log(' - ' + map[serviceName]);
 
             operations[name] = {
                 'ProviderName'  : map[providerName],
@@ -193,10 +191,10 @@ step(
 
             // ToDo: remove the default params from the service[name].args
         });
-        next(null, operations);
+        next();
     },
-    function processOperations(err, operations) {
-        var next = this;
+    function processOperations(err) {
+        var nextStep = this;
         if (err) {
             throw err;
         }
@@ -210,7 +208,6 @@ step(
                 console.log('Writing ' + filename);
                 operation[filename] = filename;
 
-                // var html = template.render(operation);
                 var html = template(operation);
 
                 fs.writeFile(filename, html, 'utf8', function(err) {
@@ -219,8 +216,49 @@ step(
             })
             .seq(function() {
                 console.log('Written all operation files');
+                nextStep();
             })
         ;
+    },
+    function processMenu(err) {
+        var next = this;
+        if (err) {
+            throw err;
+        }
+
+        var filename = '_includes/menu-' + providerName + '-' + serviceName + '.html';
+        console.log('Generating ' + filename);
+
+        var forMenu = {
+            'ProviderName'  : map[providerName],
+            'providername'  : providerName,
+            'ServiceName'   : map[serviceName],
+            'servicename'   : serviceName,
+        };
+
+        forMenu.operations = Object.keys(service).map(function(name) {
+            return {
+                OperationName : name,
+                operationName : camelCaseToDashSeparated(name),
+            };
+        });
+
+        var out = [];
+        out.push('  <li><a href="/' + providerName + '/">&laquo; back</a></li>\n');
+        out.push('  <li class="tab-' + providerName + '-' + serviceName + ' nav-header">' + map[providerName] + ' ' + map[serviceName] + '</li>\n');
+
+        Object.keys(service).sort().forEach(function(name, i) {
+            out.push('  <li class="tab-' + providerName + '-' + serviceName + '-' + camelCaseToDashSeparated(name) + '">\n');
+            out.push('    <a href="/' + providerName + '/' + serviceName + '/' + name + '.html">' + name + '</a>\n');
+            out.push('  </li>\n');
+        });
+
+        console.log('Contains ' + out.length + ' line(s)');
+
+        console.log('Writing file ' + filename + ' ...');
+        fs.writeFile(filename, out.join(''), 'utf8', function(err) {
+            console.log('Writing file ' + filename + ' ... done');
+        });
     }
 );
 
