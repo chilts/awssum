@@ -249,7 +249,7 @@ step(
 
         Object.keys(service).sort().forEach(function(name, i) {
             out.push('  <li class="tab-' + providerName + '-' + serviceName + '-' + camelCaseToDashSeparated(name) + '">\n');
-            out.push('    <a href="/' + providerName + '/' + serviceName + '/' + name + '.html">' + name + '</a>\n');
+            out.push('    <a href="/' + providerName + '/' + serviceName + '/' + camelCaseToDashSeparated(name) + '.html">' + name + '</a>\n');
             out.push('  </li>\n');
         });
 
