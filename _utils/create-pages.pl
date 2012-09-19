@@ -14,7 +14,9 @@ unless ( $provider && $service && $filename ) {
     exit 2;
 }
 
-my $cfg = Config::IniFiles->new( -file => $filename );
+my $path = lc($provider) . q{/} . lc($service) . q{/};
+
+my $cfg = Config::IniFiles->new( -file => $path . $filename );
 unless ( $cfg ) {
     print join(qq{\n}, @Config::IniFiles::errors);
     print qq{\n};
@@ -22,12 +24,12 @@ unless ( $cfg ) {
 }
 
 my $template = Template->new({
-    INCLUDE_PATH => '../../_utils/',
+    INCLUDE_PATH => './_utils/',
 });
 
 for my $section ( $cfg->Sections() ) {
-    print qq{Making } . lc($provider) . q{/} . lc($service) . qq{/$section.html ... };
-    create_html($cfg, $section);
+    print qq{Making } . $path . qq{/$section.html ... };
+    create_html($cfg, $path . $section);
     print qq{done\n};
 }
 
@@ -42,12 +44,12 @@ sub create_html {
         Service        => $service,
         service        => lc $service,
         operation_name => $operation,
-        OperationName  => $cfg->val($operation, 'name'     ),
-        tagline        => $cfg->val($operation, 'tagline'  ),
-        url            => $cfg->val($operation, 'url'      ),
-        examples       => $cfg->val($operation, 'examples' ) || '',
-        results        => $cfg->val($operation, 'results'  ) || '',
-        errors         => $cfg->val($operation, 'errors'   ) || '',
+        # OperationName  => $cfg->val($operation, 'name'     ),
+        # tagline        => $cfg->val($operation, 'tagline'  ),
+        # url            => $cfg->val($operation, 'url'      ),
+        # examples       => $cfg->val($operation, 'examples' ) || '',
+        # results        => $cfg->val($operation, 'results'  ) || '',
+        # errors         => $cfg->val($operation, 'errors'   ) || '',
     };
     print Dumper($vars);
 

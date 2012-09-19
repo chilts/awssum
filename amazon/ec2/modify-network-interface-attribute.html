@@ -2,7 +2,7 @@
 id      : amazon-ec2-modify-network-interface-attribute
 layout  : default
 title   : Amazon EC2
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -13,16 +13,39 @@ sitemap : true
 
   <h1>
     ModifyNetworkInterfaceAttribute
-    <small>(<a href="...">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-ModifyNetworkInterfaceAttribute.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>Action (*)</dt>
+    <dd>param</dd>
   
+    <dt>NetworkInterfaceId (*)</dt>
+    <dd>param</dd>
+  
+    <dt>Description (*)</dt>
+    <dd>param-data</dd>
+  
+    <dt>SecurityGroupId (*)</dt>
+    <dd>param-array</dd>
+  
+    <dt>SourceDestCheck (*)</dt>
+    <dd>param-data</dd>
+  
+    <dt>Attachment (*)</dt>
+    <dd>param-data</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

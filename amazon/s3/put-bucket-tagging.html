@@ -2,7 +2,7 @@
 id      : amazon-s3-put-bucket-tagging
 layout  : default
 title   : Amazon S3
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -13,16 +13,33 @@ sitemap : true
 
   <h1>
     PutBucketTagging
-    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketGETtagging.html">Open docs on AWS</a>)</small>
+    <small>(<a href="">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>BucketName (*)</dt>
+    <dd>special</dd>
   
+    <dt>tagging (*)</dt>
+    <dd>resource</dd>
+  
+    <dt>Tags (*)</dt>
+    <dd>special</dd>
+  
+    <dt>Event (*)</dt>
+    <dd>special</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

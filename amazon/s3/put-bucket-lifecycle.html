@@ -2,7 +2,7 @@
 id      : amazon-s3-put-bucket-lifecycle
 layout  : default
 title   : Amazon S3
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -16,13 +16,27 @@ sitemap : true
     <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketPUTlifecycle.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>BucketName (*)</dt>
+    <dd>special</dd>
   
+    <dt>lifecycle (*)</dt>
+    <dd>resource</dd>
+  
+    <dt>Rules (*)</dt>
+    <dd>special</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

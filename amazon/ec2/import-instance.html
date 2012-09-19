@@ -2,7 +2,7 @@
 id      : amazon-ec2-import-instance
 layout  : default
 title   : Amazon EC2
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -13,16 +13,60 @@ sitemap : true
 
   <h1>
     ImportInstance
-    <small>(<a href="...">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-ImportInstance.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>Action (*)</dt>
+    <dd>param</dd>
   
+    <dt>Description (*)</dt>
+    <dd>param</dd>
+  
+    <dt>Architecture (*)</dt>
+    <dd>param</dd>
+  
+    <dt>SecurityGroup (*)</dt>
+    <dd>param-array</dd>
+  
+    <dt>UserData (*)</dt>
+    <dd>param</dd>
+  
+    <dt>InstanceType (*)</dt>
+    <dd>param</dd>
+  
+    <dt>Placement (*)</dt>
+    <dd>param-data</dd>
+  
+    <dt>Monitoring (*)</dt>
+    <dd>param-data</dd>
+  
+    <dt>SubnetId (*)</dt>
+    <dd>param</dd>
+  
+    <dt>InstanceInitiatedShutdownBehavior (*)</dt>
+    <dd>param</dd>
+  
+    <dt>PrivateIpAddress (*)</dt>
+    <dd>param</dd>
+  
+    <dt>DiskImage (*)</dt>
+    <dd>param-data</dd>
+  
+    <dt>Platform (*)</dt>
+    <dd>param</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

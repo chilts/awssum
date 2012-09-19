@@ -2,7 +2,7 @@
 id      : amazon-ec2-delete-route
 layout  : default
 title   : Amazon EC2
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -13,16 +13,30 @@ sitemap : true
 
   <h1>
     DeleteRoute
-    <small>(<a href="...">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DeleteRoute.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>Action (*)</dt>
+    <dd>param</dd>
   
+    <dt>RouteTableId (*)</dt>
+    <dd>param</dd>
+  
+    <dt>DestinationCidrBlock (*)</dt>
+    <dd>param</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

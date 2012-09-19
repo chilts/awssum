@@ -2,7 +2,7 @@
 id      : amazon-s3-get-object
 layout  : default
 title   : Amazon S3
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -13,16 +13,51 @@ sitemap : true
 
   <h1>
     GetObject
-    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTObjectGETacl.html">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTObjectGET.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>BucketName (*)</dt>
+    <dd>special</dd>
   
+    <dt>ObjectName (*)</dt>
+    <dd>special</dd>
+  
+    <dt>Range (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ResponseContentType (*)</dt>
+    <dd>param</dd>
+  
+    <dt>ResponseContentLanguage (*)</dt>
+    <dd>param</dd>
+  
+    <dt>ResponseExpires (*)</dt>
+    <dd>param</dd>
+  
+    <dt>ResponseCacheControl (*)</dt>
+    <dd>param</dd>
+  
+    <dt>ResponseContentDisposition (*)</dt>
+    <dd>param</dd>
+  
+    <dt>ResponseContentEncoding (*)</dt>
+    <dd>param</dd>
+  
+    <dt>VersionId (*)</dt>
+    <dd>param</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

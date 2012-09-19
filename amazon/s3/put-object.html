@@ -2,7 +2,7 @@
 id      : amazon-s3-put-object
 layout  : default
 title   : Amazon S3
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -16,13 +16,78 @@ sitemap : true
     <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTObjectPUT.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>BucketName (*)</dt>
+    <dd>special</dd>
   
+    <dt>ObjectName (*)</dt>
+    <dd>special</dd>
+  
+    <dt>CacheControl (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ContentDisposition (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ContentEncoding (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ContentLength (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ContentMD5 (*)</dt>
+    <dd>header-base64</dd>
+  
+    <dt>ContentType (*)</dt>
+    <dd>header</dd>
+  
+    <dt>Expect (*)</dt>
+    <dd>header</dd>
+  
+    <dt>Expires (*)</dt>
+    <dd>header</dd>
+  
+    <dt>Acl (*)</dt>
+    <dd>header</dd>
+  
+    <dt>MetaData (*)</dt>
+    <dd>special</dd>
+  
+    <dt>ServerSideEncryption (*)</dt>
+    <dd>header</dd>
+  
+    <dt>StorageClass (*)</dt>
+    <dd>header</dd>
+  
+    <dt>Body (*)</dt>
+    <dd>body</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
+<h2>Streaming File Uploads</h2>
+<p>This example let&#x27;s you see how easy it is to stream a file to S3.</p>
+<pre>s3.PutObject({}, function(err, data) {
+   // ...
+});
+</pre>
+
+
+
+<h2>Streaming File Uploads (the 2nd PutObject example)</h2>
+<p>This example let&#x27;s you see how easy it is to stream a file to S3.</p>
+
+
+
+
 
 {% highlight javascript %}
 

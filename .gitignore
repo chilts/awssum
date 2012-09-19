@@ -1,3 +1,5 @@
+amazon/*/operations.ini
+node_modules/
 _drafts/
 _site/
 *~

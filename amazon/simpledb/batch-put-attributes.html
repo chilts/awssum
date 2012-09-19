@@ -2,7 +2,7 @@
 id      : amazon-simpledb-batch-put-attributes
 layout  : default
 title   : Amazon SimpleDB
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -16,13 +16,36 @@ sitemap : true
     <small>(<a href="http://docs.amazonwebservices.com/AmazonSimpleDB/latest/DeveloperGuide/SDB_API_BatchPutAttributes.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>Action (*)</dt>
+    <dd>param</dd>
   
+    <dt>DomainName (*)</dt>
+    <dd>param</dd>
+  
+    <dt>ItemName (*)</dt>
+    <dd>param-array-set</dd>
+  
+    <dt>AttributeName (*)</dt>
+    <dd>param-2d-array-set</dd>
+  
+    <dt>AttributeValue (*)</dt>
+    <dd>param-2d-array-set</dd>
+  
+    <dt>AttributeReplace (*)</dt>
+    <dd>param-2d-array-set</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

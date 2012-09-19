@@ -2,7 +2,7 @@
 id      : amazon-s3-put-object-acl
 layout  : default
 title   : Amazon S3
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -16,13 +16,51 @@ sitemap : true
     <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTObjectPUTacl.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>acl (*)</dt>
+    <dd>resource</dd>
   
+    <dt>BucketName (*)</dt>
+    <dd>special</dd>
+  
+    <dt>ObjectName (*)</dt>
+    <dd>special</dd>
+  
+    <dt>CacheControl (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ContentDisposition (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ContentEncoding (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ContentMD5 (*)</dt>
+    <dd>header-base64</dd>
+  
+    <dt>ContentType (*)</dt>
+    <dd>header</dd>
+  
+    <dt>Expect (*)</dt>
+    <dd>header</dd>
+  
+    <dt>Expires (*)</dt>
+    <dd>header</dd>
+  
+    <dt>Acl (*)</dt>
+    <dd>header</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

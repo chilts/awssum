@@ -2,7 +2,7 @@
 id      : amazon-s3-put-bucket-versioning
 layout  : default
 title   : Amazon S3
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -13,16 +13,33 @@ sitemap : true
 
   <h1>
     PutBucketVersioning
-    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketPUTwebsite.html">Open docs on AWS</a>)</small>
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketPUTVersioningStatus.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>BucketName (*)</dt>
+    <dd>special</dd>
   
+    <dt>versioning (*)</dt>
+    <dd>resource</dd>
+  
+    <dt>Status (*)</dt>
+    <dd>special</dd>
+  
+    <dt>MfaDelete (*)</dt>
+    <dd>special</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 

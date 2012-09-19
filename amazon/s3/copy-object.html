@@ -2,7 +2,7 @@
 id      : amazon-s3-copy-object
 layout  : default
 title   : Amazon S3
-tagline : ...
+tagline : 
 sitemap : true
 ---
 {% capture menu %}
@@ -16,13 +16,48 @@ sitemap : true
     <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTObjectCOPY.html">Open docs on AWS</a>)</small>
   </h1>
 
-  <h2>Args</h2>
+  <h2>Params</h2>
 
+
+  <dl>
   
-  <p>This operation doesn't take any arguments.</p>
+    <dt>Acl (*)</dt>
+    <dd>header</dd>
   
+    <dt>SourceBucket (*)</dt>
+    <dd>special</dd>
+  
+    <dt>SourceObject (*)</dt>
+    <dd>special</dd>
+  
+    <dt>MetadataDirective (*)</dt>
+    <dd>header</dd>
+  
+    <dt>CopySourceIfMatch (*)</dt>
+    <dd>header</dd>
+  
+    <dt>CopySourceIfNoneMatch (*)</dt>
+    <dd>header</dd>
+  
+    <dt>CopySourceIfUnmodifiedSince (*)</dt>
+    <dd>header</dd>
+  
+    <dt>CopySourceIfModifiedSince (*)</dt>
+    <dd>header</dd>
+  
+    <dt>ServerSideEncryption (*)</dt>
+    <dd>header</dd>
+  
+    <dt>StorageClass (*)</dt>
+    <dd>header</dd>
+  
+  </dl>
+
+
 
   <h2>Examples</h2>
+
+
 
 {% highlight javascript %}
 
