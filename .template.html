@@ -1,0 +1,55 @@
+---
+id      : {{ providername }}-{{ servicename }}-{{ operationname }}
+layout  : default
+title   : {{ ProviderName }} {{ ServiceName }}
+tagline : {{ tagline }}
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-{{ providername }}-{{ servicename }}.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    {{ OperationName }}
+    <small>(<a href="{{& url }}">Open docs on AWS</a>)</small>
+  </h1>
+
+  <h2>Params</h2>
+
+{{#if params.length}}
+  <dl>
+  {{#params}}
+    <dt>{{name}} ({{#required}}*{{/required}}{{^required}}*{{/required}})</dt>
+    <dd>{{type}}</dd>
+  {{/params}}
+  </dl>
+{{/if}}
+{{^params}}
+  <p>This operation doesn't take any arguments.</p>
+{{/params}}
+
+  <h2>Examples</h2>
+
+{{#examples}}
+{{#if title}}<h2>{{title}}</h2>{{/if}}
+{{#if intro}}<p>{{intro}}</p>{{/if}}
+{{#if example}}<pre>{{example}}</pre>{{/if}}
+{{#if error}}<pre>{{error}}</pre>{{/if}}
+{{#if result}}<pre>{{result}}</pre>{{/if}}
+{{/examples}}
+
+{% highlight javascript %}
+
+{% endhighlight %}
+
+  <h2>Result</h2>
+
+{% highlight javascript %}
+
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

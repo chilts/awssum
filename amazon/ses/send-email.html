@@ -1,0 +1,83 @@
+---
+id      : amazon-ses-send-email
+layout  : default
+title   : Amazon SES
+tagline : 
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-ses.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    SendEmail
+    <small>(<a href="http://docs.amazonwebservices.com/ses/latest/APIReference/API_SendEmail.html">Open docs on AWS</a>)</small>
+  </h1>
+
+  <h2>Params</h2>
+
+
+  <dl>
+  
+    <dt>Action (*)</dt>
+    <dd>form</dd>
+  
+    <dt>ToAddresses (*)</dt>
+    <dd>form-array</dd>
+  
+    <dt>CcAddresses (*)</dt>
+    <dd>form-array</dd>
+  
+    <dt>BccAddresses (*)</dt>
+    <dd>form-array</dd>
+  
+    <dt>Subject (*)</dt>
+    <dd>form</dd>
+  
+    <dt>SubjectCharset (*)</dt>
+    <dd>form</dd>
+  
+    <dt>Html (*)</dt>
+    <dd>form</dd>
+  
+    <dt>HtmlCharset (*)</dt>
+    <dd>form</dd>
+  
+    <dt>Text (*)</dt>
+    <dd>form</dd>
+  
+    <dt>TextCharset (*)</dt>
+    <dd>form</dd>
+  
+    <dt>ReplyToAddresses (*)</dt>
+    <dd>form-array</dd>
+  
+    <dt>ReturnPath (*)</dt>
+    <dd>form</dd>
+  
+    <dt>Source (*)</dt>
+    <dd>form</dd>
+  
+  </dl>
+
+
+
+  <h2>Examples</h2>
+
+
+
+{% highlight javascript %}
+
+{% endhighlight %}
+
+  <h2>Result</h2>
+
+{% highlight javascript %}
+
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

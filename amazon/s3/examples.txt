@@ -1,0 +1,23 @@
+name    : PutObject
+title   : Streaming File Uploads
+intro   : This example let's you see how easy it is to stream a file to S3.
+example : <<EOF
+s3.PutObject({}, function(err, data) {
+   // ...
+});
+EOF
+error   : <<EOF
+EOF
+result  : <<EOF
+EOF
+---
+name    : PutObject
+title   : Streaming File Uploads (the 2nd PutObject example)
+intro   : This example let's you see how easy it is to stream a file to S3.
+example : <<EOF
+EOF
+error   : <<EOF
+EOF
+result  : <<EOF
+EOF
+---

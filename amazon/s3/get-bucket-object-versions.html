@@ -1,0 +1,65 @@
+---
+id      : amazon-s3-get-bucket-object-versions
+layout  : default
+title   : Amazon S3
+tagline : 
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-s3.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    GetBucketObjectVersions
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketGETVersion.html">Open docs on AWS</a>)</small>
+  </h1>
+
+  <h2>Params</h2>
+
+
+  <dl>
+  
+    <dt>BucketName (*)</dt>
+    <dd>special</dd>
+  
+    <dt>versions (*)</dt>
+    <dd>resource</dd>
+  
+    <dt>Delimiter (*)</dt>
+    <dd>param</dd>
+  
+    <dt>KeyMarker (*)</dt>
+    <dd>param</dd>
+  
+    <dt>MaxKeys (*)</dt>
+    <dd>param</dd>
+  
+    <dt>Prefix (*)</dt>
+    <dd>param</dd>
+  
+    <dt>VersionIdMarker (*)</dt>
+    <dd>param</dd>
+  
+  </dl>
+
+
+
+  <h2>Examples</h2>
+
+
+
+{% highlight javascript %}
+
+{% endhighlight %}
+
+  <h2>Result</h2>
+
+{% highlight javascript %}
+
+{% endhighlight %}
+
+{% endcapture %}
+
+{% include main.html %}

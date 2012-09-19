@@ -1,0 +1,12 @@
+{
+    "name" : "awssum-gh-pages",
+    "description" : "The documentation site at http://awssum.io/",
+    "private" : true,
+    "version" : "0.0.0",
+    "homepage" : "http://awssum.io/",
+    "devDependencies" : {
+        "step" : ">= 0.2.5",
+        "seq" : ">= 0.3.5",
+        "handlebars" : ">= 1.0.7"
+    }
+}
