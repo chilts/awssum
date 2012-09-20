@@ -36,19 +36,19 @@ sitemap : true
 {{#if title}}<h2>{{title}}</h2>{{/if}}
 {{#if intro}}<p>{{{intro}}}</p>{{/if}}
 {{#if example}}
-{% highlight javascript %}
+<pre>
 {{{example}}}
-{% endhighlight %}
+</pre>
 {{/if}}
 {{#if error}}
-{% highlight javascript %}
+<pre>
 {{{error}}}
-{% endhighlight %}
+</pre>
 {{/if}}
 {{#if result}}
-{% highlight javascript %}
+<pre>
 {{{result}}}
-{% endhighlight %}
+</pre>
 {{/if}}
 {{/examples}}
 

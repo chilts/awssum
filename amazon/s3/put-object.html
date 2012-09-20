@@ -76,7 +76,7 @@ sitemap : true
 <h2>Uploading a String as the Object</h2>
 <p>This example shows how to upload a string as the object.</p>
 
-{% highlight javascript %}
+<pre>
 var body = &quot;Hello, World!\n&quot;;
 
 var params = {
@@ -91,7 +91,7 @@ s3.PutObject(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 
-{% endhighlight %}
+</pre>
 
 
 
@@ -99,7 +99,7 @@ s3.PutObject(params, function(err, data) {
 <h2>Uploading some MetaData with your Object</h2>
 <p>By using the <code>MetaData</code> param, you can set metadata on your object.</p>
 
-{% highlight javascript %}
+<pre>
 var body = &quot;Hello, World!\n&quot;;
 
 var params = {
@@ -118,7 +118,7 @@ s3.PutObject(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 
-{% endhighlight %}
+</pre>
 
 
 
@@ -126,7 +126,7 @@ s3.PutObject(params, function(err, data) {
 <h2>Setting a Cache-Control header on your object</h2>
 <p>Just use the <code>CacheControl</code> parameter.</p>
 
-{% highlight javascript %}
+<pre>
 var body = &quot;Hello, World!\n&quot;;
 
 var params = {
@@ -143,7 +143,7 @@ s3.PutObject(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 
-{% endhighlight %}
+</pre>
 
 
 
@@ -151,7 +151,7 @@ s3.PutObject(params, function(err, data) {
 <h2>Putting a Buffer to S3 as the Object</h2>
 <p>This example is similar to putting a string, except </p>
 
-{% highlight javascript %}
+<pre>
 var buf = fs.readFileSync(__filename);
 
 var params = {
@@ -166,7 +166,7 @@ s3.PutObject(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 
-{% endhighlight %}
+</pre>
 
 
 
@@ -174,7 +174,7 @@ s3.PutObject(params, function(err, data) {
 <h2>Streaming a File</h2>
 <p>To stream anything to S3, just create a stream and pass it to the <code>Body</code>. Unfortunately S3 requires the <code>ContentLength</code> so you'll have to somehow get this in advance. Here, we're using <code>fs.stat()</code> to do this for us.</p>
 
-{% highlight javascript %}
+<pre>
 // you must run fs.stat to get the file size for the content-length header (s3 requires this)
 fs.stat(__filename, function(err, file_info) {
     if (err) {
@@ -197,7 +197,7 @@ fs.stat(__filename, function(err, file_info) {
     });
 });
 
-{% endhighlight %}
+</pre>
 
 
 
