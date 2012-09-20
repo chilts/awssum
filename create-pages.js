@@ -107,6 +107,9 @@ step(
                 // if we're in a heredoc
                 if ( line === 'EOF' ) {
                     if ( heredoc ) {
+                        // heredoc is finished, so escape it here (handlebars does stupid escaping)
+                        current[heredoc] = escape(current[heredoc]);
+
                         // turn heredoc off
                         heredoc = false;
                     }
@@ -273,6 +276,14 @@ function camelCaseToDashSeparated(name) {
 
 function readExamplesTxt(name) {
     console.log('Reading ' + name);
+}
+
+function escape(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
 }
 
 // ----------------------------------------------------------------------------

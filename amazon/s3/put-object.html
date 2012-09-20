@@ -80,15 +80,15 @@ sitemap : true
 var body = &quot;Hello, World!\n&quot;;
 
 var params = {
-    BucketName    : &#x27;pie-18&#x27;,
-    ObjectName    : &#x27;test-object.txt&#x27;,
+    BucketName    : 'pie-18',
+    ObjectName    : 'test-object.txt',
     ContentLength : Buffer.byteLength(body),
     Body          : body,
 };
 
 s3.PutObject(params, function(err, data) {
-    fmt.dump(err, &#x27;Error&#x27;);
-    fmt.dump(data, &#x27;Data&#x27;);
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 {% endhighlight %}
@@ -97,25 +97,25 @@ s3.PutObject(params, function(err, data) {
 
 
 <h2>Uploading some MetaData with your Object</h2>
-<p>By using the &lt;code&gt;MetaData&lt;/code&gt; param, you can set metadata on your object.</p>
+<p>By using the <code>MetaData</code> param, you can set metadata on your object.</p>
 
 {% highlight javascript %}
 var body = &quot;Hello, World!\n&quot;;
 
 var params = {
-    BucketName    : &#x27;pie-18&#x27;,
-    ObjectName    : &#x27;test-object-with-metadata.txt&#x27;,
+    BucketName    : 'pie-18',
+    ObjectName    : 'test-object-with-metadata.txt',
     MetaData      : {
-        &#x27;Username&#x27; : &#x27;chilts&#x27;,
-        &#x27;UniqueId&#x27; : &#x27;629f3b9b-49bb-4d0b-b38b-21ad9b132e90&#x27;
+        'Username' : 'chilts',
+        'UniqueId' : '629f3b9b-49bb-4d0b-b38b-21ad9b132e90'
     },
     ContentLength : Buffer.byteLength(body),
     Body          : body,
 };
 
 s3.PutObject(params, function(err, data) {
-    fmt.dump(err, &#x27;Error&#x27;);
-    fmt.dump(data, &#x27;Data&#x27;);
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 {% endhighlight %}
@@ -124,23 +124,23 @@ s3.PutObject(params, function(err, data) {
 
 
 <h2>Setting a Cache-Control header on your object</h2>
-<p>Just use the &lt;code&gt;CacheControl&lt;/code&gt; parameter.</p>
+<p>Just use the <code>CacheControl</code> parameter.</p>
 
 {% highlight javascript %}
 var body = &quot;Hello, World!\n&quot;;
 
 var params = {
-    BucketName    : &#x27;pie-18&#x27;,
-    ObjectName    : &#x27;test-cache.txt&#x27;,
+    BucketName    : 'pie-18',
+    ObjectName    : 'test-cache.txt',
     ContentLength : Buffer.byteLength(body),
     Body          : body,
-    CacheControl  : &#x27;max-age=3600&#x27;
+    CacheControl  : 'max-age=3600'
 };
 
 s3.PutObject(params, function(err, data) {
     fmt.msg(&quot;putting an object with cache-control to pie-18 - expecting success&quot;);
-    fmt.dump(err, &#x27;Error&#x27;);
-    fmt.dump(data, &#x27;Data&#x27;);
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 {% endhighlight %}
@@ -155,15 +155,15 @@ s3.PutObject(params, function(err, data) {
 var buf = fs.readFileSync(__filename);
 
 var params = {
-    BucketName    : &#x27;pie-18&#x27;,
-    ObjectName    : &#x27;buffer-file.txt&#x27;,
+    BucketName    : 'pie-18',
+    ObjectName    : 'buffer-file.txt',
     ContentLength : buf.length,
     Body          : buf,
 };
 
 s3.PutObject(params, function(err, data) {
-    fmt.dump(err, &#x27;Error&#x27;);
-    fmt.dump(data, &#x27;Data&#x27;);
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
 });
 
 {% endhighlight %}
@@ -172,28 +172,28 @@ s3.PutObject(params, function(err, data) {
 
 
 <h2>Streaming a File</h2>
-<p>To stream anything to S3, just create a stream and pass it to the &lt;code&gt;Body&lt;/code&gt;. Unfortunately S3 requires the &lt;code&gt;ContentLength&lt;/code&gt; so you&#x27;ll have to somehow get this in advance. Here, we&#x27;re using &lt;code&gt;fs.stat()&lt;/code&gt; to do this for us.</p>
+<p>To stream anything to S3, just create a stream and pass it to the <code>Body</code>. Unfortunately S3 requires the <code>ContentLength</code> so you'll have to somehow get this in advance. Here, we're using <code>fs.stat()</code> to do this for us.</p>
 
 {% highlight javascript %}
 // you must run fs.stat to get the file size for the content-length header (s3 requires this)
 fs.stat(__filename, function(err, file_info) {
     if (err) {
-        fmt.dump(err, &#x27;Error reading file&#x27;);
+        fmt.dump(err, 'Error reading file');
         return;
     }
 
     var bodyStream = fs.createReadStream( __filename );
 
     var params = {
-        BucketName    : &#x27;pie-18&#x27;,
+        BucketName    : 'pie-18',
         ObjectName    : __filename,
         ContentLength : file_info.size,
         Body          : bodyStream
     };
 
     s3.PutObject(params, function(err, data) {
-        fmt.dump(err, &#x27;Error&#x27;);
-        fmt.dump(data, &#x27;Data&#x27;);
+        fmt.dump(err, 'Error');
+        fmt.dump(data, 'Data');
     });
 });
 

@@ -34,20 +34,20 @@ sitemap : true
 
 {{#examples}}
 {{#if title}}<h2>{{title}}</h2>{{/if}}
-{{#if intro}}<p>{{intro}}</p>{{/if}}
+{{#if intro}}<p>{{{intro}}}</p>{{/if}}
 {{#if example}}
 {% highlight javascript %}
-{{example}}
+{{{example}}}
 {% endhighlight %}
 {{/if}}
 {{#if error}}
 {% highlight javascript %}
-{{error}}
+{{{error}}}
 {% endhighlight %}
 {{/if}}
 {{#if result}}
 {% highlight javascript %}
-{{result}}
+{{{result}}}
 {% endhighlight %}
 {{/if}}
 {{/examples}}
