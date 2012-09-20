@@ -107,3 +107,55 @@ fs.stat(__filename, function(err, file_info) {
 });
 EOF
 ---
+name    : PutBucketAcl
+title   : Using canned ACL to allow full control to an email address
+intro   : The Grant* params allow you to set canned ACLs onto your bucket. Check the format you must use against the Amazon docs.
+example : <<EOF
+var params = {
+    BucketName : 'pie-18',
+    // similar thing for all the other Grant* params
+    GrantFullControl  : 'emailAddress="andychilton@gmail.com"',
+};
+
+s3.PutBucketAcl(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutBucketAcl
+title   : Using the full AccessControlPolicy
+intro   : Specifying your own <code>AccessControlPolicy</code> means you can have complete control over your ACL, but it means you have to do a little bit more work to get the format correct.
+example : <<EOF
+var params = {
+    BucketName         : 'pie-18',
+    AccessControlPolicy  : {
+        Owner : {
+            ID : 'sdfgd',
+            DisplayName : 'something',
+        },
+        AccessControlList : [
+            {
+                Grant : {
+                    Grantee : {
+                        _attr :  {
+                            'xmlns:xsi' : 'http://www.w3.org/2001/XMLSchema-instance',
+                            'xsi:type' : 'CanonicalUser',
+                        },
+                        ID : '1111-2222-3333',
+                        DisplayName : 'a name'
+                    },
+                    Permission : 'READ',
+                },
+            },
+        ]
+    },
+};
+
+s3.PutBucketAcl(params, function(err, data) {
+    // gives a 400 saying that 1111-2222-3333 is an invalid CanonicalUser/ID
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
