@@ -6,7 +6,6 @@ all: $(AMAZON_SERVICES) $(OPENSTACK_SERVICES)
 
 $(AMAZON_SERVICES):
 	mkdir -p amazon/$@
-	touch amazon/$@/examples.txt
 	touch amazon/$@/index.html
 	./create-pages.js amazon $@
 

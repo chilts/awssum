@@ -73,31 +73,135 @@ sitemap : true
   <h2>Examples</h2>
 
 
-<h2>Streaming File Uploads</h2>
-<p>This example let&#x27;s you see how easy it is to stream a file to S3.</p>
-<pre>s3.PutObject({}, function(err, data) {
-   // ...
+<h2>Uploading a String as the Object</h2>
+<p>This example shows how to upload a string as the object.</p>
+
+{% highlight javascript %}
+var body = &quot;Hello, World!\n&quot;;
+
+var params = {
+    BucketName    : &#x27;pie-18&#x27;,
+    ObjectName    : &#x27;test-object.txt&#x27;,
+    ContentLength : Buffer.byteLength(body),
+    Body          : body,
+};
+
+s3.PutObject(params, function(err, data) {
+    fmt.dump(err, &#x27;Error&#x27;);
+    fmt.dump(data, &#x27;Data&#x27;);
 });
-</pre>
-
-
-
-<h2>Streaming File Uploads (the 2nd PutObject example)</h2>
-<p>This example let&#x27;s you see how easy it is to stream a file to S3.</p>
-
-
-
-
-
-{% highlight javascript %}
 
 {% endhighlight %}
 
-  <h2>Result</h2>
+
+
+
+<h2>Uploading some MetaData with your Object</h2>
+<p>By using the &lt;code&gt;MetaData&lt;/code&gt; param, you can set metadata on your object.</p>
 
 {% highlight javascript %}
+var body = &quot;Hello, World!\n&quot;;
+
+var params = {
+    BucketName    : &#x27;pie-18&#x27;,
+    ObjectName    : &#x27;test-object-with-metadata.txt&#x27;,
+    MetaData      : {
+        &#x27;Username&#x27; : &#x27;chilts&#x27;,
+        &#x27;UniqueId&#x27; : &#x27;629f3b9b-49bb-4d0b-b38b-21ad9b132e90&#x27;
+    },
+    ContentLength : Buffer.byteLength(body),
+    Body          : body,
+};
+
+s3.PutObject(params, function(err, data) {
+    fmt.dump(err, &#x27;Error&#x27;);
+    fmt.dump(data, &#x27;Data&#x27;);
+});
 
 {% endhighlight %}
+
+
+
+
+<h2>Setting a Cache-Control header on your object</h2>
+<p>Just use the &lt;code&gt;CacheControl&lt;/code&gt; parameter.</p>
+
+{% highlight javascript %}
+var body = &quot;Hello, World!\n&quot;;
+
+var params = {
+    BucketName    : &#x27;pie-18&#x27;,
+    ObjectName    : &#x27;test-cache.txt&#x27;,
+    ContentLength : Buffer.byteLength(body),
+    Body          : body,
+    CacheControl  : &#x27;max-age=3600&#x27;
+};
+
+s3.PutObject(params, function(err, data) {
+    fmt.msg(&quot;putting an object with cache-control to pie-18 - expecting success&quot;);
+    fmt.dump(err, &#x27;Error&#x27;);
+    fmt.dump(data, &#x27;Data&#x27;);
+});
+
+{% endhighlight %}
+
+
+
+
+<h2>Putting a Buffer to S3 as the Object</h2>
+<p>This example is similar to putting a string, except </p>
+
+{% highlight javascript %}
+var buf = fs.readFileSync(__filename);
+
+var params = {
+    BucketName    : &#x27;pie-18&#x27;,
+    ObjectName    : &#x27;buffer-file.txt&#x27;,
+    ContentLength : buf.length,
+    Body          : buf,
+};
+
+s3.PutObject(params, function(err, data) {
+    fmt.dump(err, &#x27;Error&#x27;);
+    fmt.dump(data, &#x27;Data&#x27;);
+});
+
+{% endhighlight %}
+
+
+
+
+<h2>Streaming a File</h2>
+<p>To stream anything to S3, just create a stream and pass it to the &lt;code&gt;Body&lt;/code&gt;. Unfortunately S3 requires the &lt;code&gt;ContentLength&lt;/code&gt; so you&#x27;ll have to somehow get this in advance. Here, we&#x27;re using &lt;code&gt;fs.stat()&lt;/code&gt; to do this for us.</p>
+
+{% highlight javascript %}
+// you must run fs.stat to get the file size for the content-length header (s3 requires this)
+fs.stat(__filename, function(err, file_info) {
+    if (err) {
+        fmt.dump(err, &#x27;Error reading file&#x27;);
+        return;
+    }
+
+    var bodyStream = fs.createReadStream( __filename );
+
+    var params = {
+        BucketName    : &#x27;pie-18&#x27;,
+        ObjectName    : __filename,
+        ContentLength : file_info.size,
+        Body          : bodyStream
+    };
+
+    s3.PutObject(params, function(err, data) {
+        fmt.dump(err, &#x27;Error&#x27;);
+        fmt.dump(data, &#x27;Data&#x27;);
+    });
+});
+
+{% endhighlight %}
+
+
+
+
 
 {% endcapture %}
 
