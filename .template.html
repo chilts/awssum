@@ -21,8 +21,8 @@ sitemap : true
 {{#if params.length}}
   <dl>
   {{#params}}
-    <dt>{{name}} ({{#required}}*{{/required}}{{^required}}*{{/required}})</dt>
-    <dd>{{type}}</dd>
+    <dt>{{name}} ({{#required}}required{{/required}}{{^required}}optional{{/required}})</dt>
+    <dd>{{note}} ({{type}})</dd>
   {{/params}}
   </dl>
 {{/if}}

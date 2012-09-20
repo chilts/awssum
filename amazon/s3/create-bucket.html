@@ -21,11 +21,26 @@ sitemap : true
 
   <dl>
   
-    <dt>BucketName (*)</dt>
-    <dd>special</dd>
+    <dt>BucketName (required)</dt>
+    <dd> (special)</dd>
   
-    <dt>Acl (*)</dt>
-    <dd>header</dd>
+    <dt>Acl (optional)</dt>
+    <dd> (header)</dd>
+  
+    <dt>GrantRead (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantWrite (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantReadAcp (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantWriteAcp (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantFullControl (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
   
   </dl>
 

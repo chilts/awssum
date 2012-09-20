@@ -183,6 +183,7 @@ step(
                         name     : argName,
                         required : service[name].args[argName].required,
                         type     : service[name].args[argName].type,
+                        note     : service[name].args[argName].note,
                     };
                 });
             }

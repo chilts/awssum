@@ -21,35 +21,50 @@ sitemap : true
 
   <dl>
   
-    <dt>Acl (*)</dt>
-    <dd>header</dd>
+    <dt>SourceBucket (required)</dt>
+    <dd> (special)</dd>
   
-    <dt>SourceBucket (*)</dt>
-    <dd>special</dd>
+    <dt>SourceObject (required)</dt>
+    <dd> (special)</dd>
   
-    <dt>SourceObject (*)</dt>
-    <dd>special</dd>
+    <dt>MetadataDirective (optional)</dt>
+    <dd> (header)</dd>
   
-    <dt>MetadataDirective (*)</dt>
-    <dd>header</dd>
+    <dt>CopySourceIfMatch (optional)</dt>
+    <dd> (header)</dd>
   
-    <dt>CopySourceIfMatch (*)</dt>
-    <dd>header</dd>
+    <dt>CopySourceIfNoneMatch (optional)</dt>
+    <dd> (header)</dd>
   
-    <dt>CopySourceIfNoneMatch (*)</dt>
-    <dd>header</dd>
+    <dt>CopySourceIfUnmodifiedSince (optional)</dt>
+    <dd> (header)</dd>
   
-    <dt>CopySourceIfUnmodifiedSince (*)</dt>
-    <dd>header</dd>
+    <dt>CopySourceIfModifiedSince (optional)</dt>
+    <dd> (header)</dd>
   
-    <dt>CopySourceIfModifiedSince (*)</dt>
-    <dd>header</dd>
+    <dt>ServerSideEncryption (optional)</dt>
+    <dd> (header)</dd>
   
-    <dt>ServerSideEncryption (*)</dt>
-    <dd>header</dd>
+    <dt>StorageClass (optional)</dt>
+    <dd> (header)</dd>
   
-    <dt>StorageClass (*)</dt>
-    <dd>header</dd>
+    <dt>Acl (optional)</dt>
+    <dd> (header)</dd>
+  
+    <dt>GrantRead (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantWrite (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantReadAcp (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantWriteAcp (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+  
+    <dt>GrantFullControl (optional)</dt>
+    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
   
   </dl>
 
