@@ -46,4 +46,60 @@ test('S3:GetBucketTagging - Standard', function(t) {
     });
 });
 
+test('S3:PutBucketAcl - InvalidArgument', function(t) {
+    var params = {
+        BucketName         : 'pie-18',
+        AccessControlPolicy  : {
+            Owner : {
+                ID : 'sdfgd',
+                DisplayName : 'something',
+            },
+            AccessControlList : [
+                {
+                    Grant : {
+                        Grantee : {
+                            _attr :  {
+                                'xmlns:xsi' : 'http://www.w3.org/2001/XMLSchema-instance',
+                                'xsi:type' : 'CanonicalUser',
+                            },
+                            ID : '1111-2222-3333',
+                            DisplayName : 'a name'
+                        },
+                        Permission : 'READ',
+                    },
+                },
+            ]
+        },
+    };
+
+    s3.PutBucketAcl(params, function(err, data) {
+        t.ok(err, 'S3:PutBucketAcl - InvalidArgument');
+        t.notOk(data, 'S3:PutBucketAcl - InvalidArgument');
+        t.equal(err.StatusCode, 400, 'S3:PutBucketAcl - checking status code');
+        t.equal(err.Body.Error.Code, 'InvalidArgument', 'S3:PutBucketAcl - checking error code');
+        t.equal(err.Body.Error.ArgumentName, 'CanonicalUser/ID', 'S3:PutBucketAcl - checking argument name');
+        t.equal(err.Body.Error.ArgumentValue, '1111-2222-3333', 'S3:PutBucketAcl - checking argument value');
+
+        t.end();
+    });
+});
+
+test('S3:PutBucketAcl - InvalidArgument', function(t) {
+    var params = {
+        BucketName : 'pie-18',
+        // similar thing for all the other Grant* params
+        GrantFullControl  : 'emailAddress="andychilton@gmail.com"',
+    };
+
+    s3.PutBucketAcl(params, function(err, data) {
+        t.notOk(err, 'S3:PutBucketAcl - no error');
+        t.ok(data, 'S3:PutBucketAcl - ok');
+
+        t.equal(data.StatusCode, 200, 'S3:PutBucketAcl - checking status code');
+        t.equal(data.Body, '', 'S3:PutBucketAcl - empty body');
+
+        t.end();
+    });
+});
+
 // --------------------------------------------------------------------------------------------------------------------

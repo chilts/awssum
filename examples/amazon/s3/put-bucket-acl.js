@@ -22,11 +22,27 @@ fmt.field('AwsAccountId', s3.awsAccountId() );
 
 var options = {
     BucketName         : 'pie-18',
-    OwnerId            : 'chilts',
-    DisplayName        : 'me@example.com',
-    GranteeId          : 'chilts',
-    GranteeDisplayName : 'you@example.com',
-    Permission         : 'READ',
+    AccessControlPolicy  : {
+        Owner : {
+            ID : 'sdfgd',
+            DisplayName : 'something',
+        },
+        AccessControlList : [
+            {
+                Grant : {
+                    Grantee : {
+                        _attr :  {
+                            'xmlns:xsi' : 'http://www.w3.org/2001/XMLSchema-instance',
+                            'xsi:type' : 'CanonicalUser',
+                        },
+                        ID : '1111-2222-3333',
+                        DisplayName : 'a name'
+                    },
+                    Permission : 'READ',
+                },
+            },
+        ]
+    },
 };
 
 s3.PutBucketAcl(options, function(err, data) {
