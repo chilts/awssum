@@ -39,7 +39,7 @@ catch(e) {
 // just check one request, checks the signature to be honest
 test('Cloudsearch: DescribeDomains - (1) Standard', function(t) {
     var opts = {};
-    cs.ListGateways(function(err, data) {
+    cs.DescribeDomains(function(err, data) {
         t.notOk(err, 'CloudSearch:DescribeDomains - standard : no error');
         t.ok(data, 'CloudSearch:DescribeDomains - standard : result ok');
         t.end();
