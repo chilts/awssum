@@ -13,16 +13,45 @@ sitemap : true
 
   <h1>ChangeLog</h1>
 
-  <h2>Release v0.10.1</h2>
+  <h2>Release v0.11.0 (2012-09-21)</h2>
+
+  <p>New Services:</p>
+
+  <ul>
+    <li>(none)</li>
+  </ul>
+
+  <p>Features:</p>
+
+  <ul>
+    <li>make many of the examples/ more consistent</li>
+    <li>add some Amazon:IAM examples</li>
+    <li>Correct the AccessControlList in Amazon:S3 PutBucket, PutBucketAcl, PutObject, PutObjectAcl and CopyObject operations</li>
+    <li>Factor out AWS Signature v2.</li>
+    <li>Convert Amazon:DynamoDB use Signature v4, rather than Amazon:STS - should make your apps faster</li>
+    <li>Convert Amazon:IAM use Signature v4</li>
+    <li>Add AWS docs url into each operation to help with autogenerating the docs</li>
+    <li>More integration tests for Amazon DynamoDB, CloudSearch, Glacier, IAM and S3</li>
+  </ul>
 
   <p>Fixes:</p>
 
   <ul>
-    <li>Added AP_SOUTHEAST_1 for Amazon:ElasticBeanstalk</li>
-    <li>Fix xml2js at version v0.1.14 since v0.2.x has radically different behaviour</li>
+    <li>Add Grant* params to Amazon:S3 PutBucket, PutBucketAcl, PutObject, PutObjectAcl and CopyObject operations</li>
+    <li>(*) Rename Amazon:EC2 EnableVolumeIO to EnableVolumeIo to make it more compatible with other operation names</li>
   </ul>
 
-  <h2>Release v0.10.0</h2>
+  <p>Note: (*) Denotes a backwards incompatible change.</p>
+
+  <h2>Release v0.10.1 (2012-09-06)</h2>
+
+  <p>Fixes:</p>
+
+  <ul>
+    <li>Fix the dependency on xml2js to version 0.1.14 since the format has changed</li>
+  </ul>
+
+  <h2>Release v0.10.0 (2012-09-03)</h2>
 
   <p>Services:</p>
 
