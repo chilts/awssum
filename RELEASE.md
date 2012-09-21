@@ -5,6 +5,7 @@
 
     $ vi package.json # change the version number
 
+    BRANCH=0.11
     RELEASE=0.11.0
 
     git commit -m "Bump version number to v$RELEASE" package.json RELEASE.md
@@ -17,8 +18,8 @@ Create the tag:
 
 Start the branch (if this is the start of a vx.y.0 series):
 
-    git branch vx.y
-    git push origin vx.y
+    git branch v$BRANCH
+    git push origin v$BRANCH
 
 Then, in a /tmp/ directory:
 
@@ -39,7 +40,7 @@ Then finally, change the topic on #awssum on Freenode:
 
 ... and update http://awssum.io/ ...
 
-    _config.yml
-    changelog.html
+    vi _config.yml
+    vi changelog.html
 
 (Ends)
