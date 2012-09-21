@@ -88,7 +88,7 @@ sitemap : true
   <h2>Examples</h2>
 
 
-<h2>Uploading a String as the Object</h2>
+<h3>Uploading a String as the Object</h3>
 <p>This example shows how to upload a string as the object.</p>
 
 <pre>
@@ -111,7 +111,7 @@ s3.PutObject(params, function(err, data) {
 
 
 
-<h2>Uploading some MetaData with your Object</h2>
+<h3>Uploading some MetaData with your Object</h3>
 <p>By using the <code>MetaData</code> param, you can set metadata on your object.</p>
 
 <pre>
@@ -138,7 +138,7 @@ s3.PutObject(params, function(err, data) {
 
 
 
-<h2>Setting a Cache-Control header on your object</h2>
+<h3>Setting a Cache-Control header on your object</h3>
 <p>Just use the <code>CacheControl</code> parameter.</p>
 
 <pre>
@@ -163,7 +163,7 @@ s3.PutObject(params, function(err, data) {
 
 
 
-<h2>Putting a Buffer to S3 as the Object</h2>
+<h3>Putting a Buffer to S3 as the Object</h3>
 <p>This example is similar to putting a string, except </p>
 
 <pre>
@@ -186,7 +186,7 @@ s3.PutObject(params, function(err, data) {
 
 
 
-<h2>Streaming a File</h2>
+<h3>Streaming a File</h3>
 <p>To stream anything to S3, just create a stream and pass it to the <code>Body</code>. Unfortunately S3 requires the <code>ContentLength</code> so you'll have to somehow get this in advance. Here, we're using <code>fs.stat()</code> to do this for us.</p>
 
 <pre>
