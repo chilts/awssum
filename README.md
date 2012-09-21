@@ -158,7 +158,7 @@ Currently AwsSum has coverage of the following services:
     <tr>
       <td></td>
       <td>DynamoDB</td>
-      <td>X-Amzn-Authorization &quot;AWS3&quot; (HmacSHA256)</td>
+      <td>Signature v4, (Hmac256)</td>
       <td>✔</td>
       <td>13/13 (100%)</td>
     </tr>
@@ -186,7 +186,7 @@ Currently AwsSum has coverage of the following services:
     <tr>
       <td></td>
       <td>Identity and Access Management (IAM)</td>
-      <td>Signature v2, (HmacSHA256)</td>
+      <td>Signature v4, (Hmac256)</td>
       <td>✔</td>
       <td>69/69 (100%)</td>
     </tr>
