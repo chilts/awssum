@@ -14,7 +14,7 @@ var fs = require('fs');
 var test = require('tap').test;
 var awssum = require('../../');
 var amazon = awssum.load('amazon/amazon');
-var cs = awssum.load('amazon/cloudsearch').Cloudsearch;
+var CloudSearch = awssum.load('amazon/cloudsearch').CloudSearch;
 var inspect = require('eyes').inspector();
 
 // --------------------------------------------------------------------------------------------------------------------
