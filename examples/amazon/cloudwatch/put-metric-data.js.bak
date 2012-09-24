@@ -22,7 +22,7 @@ console.log( 'SecretAccessKey :', cloudwatch.secretAccessKey().substr(0, 3) + '.
 console.log( 'AwsAccountId :',    cloudwatch.awsAccountId() );
 
 cloudwatch.PutMetricData({
-		MetricData : [{
+		MetricData : {
             MetricName : 'Counter',
             Unit : 'Count',
             Value : 1/*,
@@ -31,7 +31,7 @@ cloudwatch.PutMetricData({
                 { Name : 'InstanceId',   Value : 'i-aaba32d5', },
                 { Name : 'InstanceType', Value : 'm1.micro',    }
             ]*/
-        }],
+        },
 		Namespace  : 'Namespace'
 	},
 	function(err, data) {
