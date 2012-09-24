@@ -25,20 +25,40 @@ cloudwatch.PutMetricData({
 		MetricData : [{
             MetricName : 'Counter',
             Unit : 'Count',
-            Value : 1/*,
-			Timestamp: new Date().toISOString()*//*,
+            Value : 1,
+			Timestamp: new Date().toISOString(),
             Dimensions : [
                 { Name : 'InstanceId',   Value : 'i-aaba32d5', },
                 { Name : 'InstanceType', Value : 'm1.micro',    }
-            ]*/
+            ]
         }],
 		Namespace  : 'Namespace'
 	},
 	function(err, data) {
-		console.log("\nPutting metrics - expecting success");
+		console.log("\nPutting count metrics - expecting success");
 		inspect(err, 'Error');
 		inspect(data, 'Data');
 	});
     
+cloudwatch.PutMetricData({
+		MetricData : [{
+            MetricName : 'Time',
+            Unit : 'Milliseconds',
+            StatisticValues: {
+					Minimum: 3,
+					Maximum: 1500,
+					Sum: 3000,
+					SampleCount: 10
+				}
+        }],
+		Namespace  : 'Namespace'
+	},
+	function(err, data) {
+		console.log("\nPutting metrics with statistics- expecting success");
+		inspect(err, 'Error');
+		inspect(data, 'Data');
+	});
+    
+  
   
 
