@@ -64,7 +64,7 @@ var fullControlReadAll = {
                     Permission: 'FULL_CONTROL',
                     Grantee: {
                         // still me
-                        ID : '74c8e3f53559684f9e237235317c5394007636f46a3683632eaf3001d12d485e',
+                        ID : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                         _attr : {
                             'xsi:type' : 'CanonicalUser',
                             'xmlns:xsi' : 'http://www.w3.org/2001/XMLSchema-instance',
@@ -84,13 +84,13 @@ var fullControlReadAll = {
             ],
         },
         Owner: {
-            ID: '74c8e3f53559684f9e237235317c5394007636f46a3683632eaf3001d12d485e',
+            ID: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         }
     }
 };
 
 s3.PutObjectAcl(fullControlReadAll, function(err, data) {
-    fmt.msg("putting an object with an AccessControlPolicy to pie-18 - expecting success");
+    fmt.msg("putting an object acl with a large AccessControlPolicy to pie-18 - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
