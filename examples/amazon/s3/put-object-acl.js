@@ -43,3 +43,54 @@ s3.PutObjectAcl(optionsFound, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+
+var fullControlReadAll = {
+    BucketName : 'pie-18',
+    ObjectName : 'test-object-for-complex-acl.txt',
+    AccessControlPolicy: {
+        AccessControlList: {
+            Grant: [
+                {
+                    Permission: 'FULL_CONTROL',
+                    Grantee: {
+                        EmailAddress : 'admin@appsattic.com',
+                        _attr : {
+                            'xsi:type' : 'AmazonCustomerByEmail',
+                            'xmlns:xsi' : 'http://www.w3.org/2001/XMLSchema-instance',
+                        },
+                    },
+                },
+                {
+                    Permission: 'FULL_CONTROL',
+                    Grantee: {
+                        // still me
+                        ID : '74c8e3f53559684f9e237235317c5394007636f46a3683632eaf3001d12d485e',
+                        _attr : {
+                            'xsi:type' : 'CanonicalUser',
+                            'xmlns:xsi' : 'http://www.w3.org/2001/XMLSchema-instance',
+                        },
+                    },
+                },
+                {
+                    Permission: 'READ',
+                    Grantee: {
+                        URI : 'http://acs.amazonaws.com/groups/global/AllUsers',
+                        _attr : {
+                            'xsi:type' : 'Group',
+                            'xmlns:xsi' : 'http://www.w3.org/2001/XMLSchema-instance',
+                        },
+                    },
+                },
+            ],
+        },
+        Owner: {
+            ID: '74c8e3f53559684f9e237235317c5394007636f46a3683632eaf3001d12d485e',
+        }
+    }
+};
+
+s3.PutObjectAcl(fullControlReadAll, function(err, data) {
+    fmt.msg("putting an object with an AccessControlPolicy to pie-18 - expecting success");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
