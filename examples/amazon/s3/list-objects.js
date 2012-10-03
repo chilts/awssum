@@ -60,3 +60,13 @@ s3.ListObjects(options2, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+
+var options3 = {
+    BucketName : 'pie-18',
+};
+
+s3.ListObjects(options3, function(err, data) {
+    fmt.msg("listing all objects - expecting success");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
