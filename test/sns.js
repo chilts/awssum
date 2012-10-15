@@ -37,13 +37,14 @@ test("create sns object", function (t) {
     var sns = new Sns({
         accessKeyId : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId : 'aws_account_id',
+        awsAccountId : '1111-2222-3333',
         region : amazon.US_WEST_1
     });
 
     t.equal('access_key_id', sns.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sns.secretAccessKey(), 'Secret Access Key set properly');
-    t.equal('aws_account_id', sns.awsAccountId(), 'AWS Account ID set properly');
+    t.equal('111122223333', sns.awsAccountId(), 'AWS Account ID set properly');
+    t.equal('1111-2222-3333', sns._awsAccountId(), 'AWS Account ID set properly');
     t.equal('us-west-1', sns.region(), 'Region is set properly');
 
     t.end();
@@ -53,31 +54,31 @@ test("test all endpoints", function (t) {
     var sns1 = new Sns({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_EAST_1
     });
     var sns2 = new Sns({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
     var sns3 = new Sns({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.EU_WEST_1
     });
     var sns4 = new Sns({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.AP_SOUTHEAST_1
     });
     var sns5 = new Sns({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.AP_NORTHEAST_1
     });
 

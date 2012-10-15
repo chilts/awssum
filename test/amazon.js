@@ -42,7 +42,7 @@ test("test our own esc(...)", function (t) {
     var amz = new amazon.Amazon({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
 
@@ -69,11 +69,35 @@ test("test our own esc(...)", function (t) {
     t.end();
 });
 
+test("test awsAccountId", function (t) {
+    var amz1 = new amazon.Amazon({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : '1111-2222-3333',
+        region          : amazon.US_WEST_1
+    });
+
+    t.equal(amz1.awsAccountId(), '111122223333', 'AwsAccountId is normalised');
+    t.equal(amz1._awsAccountId(), '1111-2222-3333', '_AwsAccountId with underscores');
+
+    var amz2 = new amazon.Amazon({
+        accessKeyId     : 'access_key_id',
+        secretAccessKey : 'secret_access_key',
+        awsAccountId    : '111122223333',
+        region          : amazon.US_WEST_1
+    });
+
+    t.equal(amz2.awsAccountId(), '111122223333', 'AwsAccountId is left as-is');
+    t.equal(amz2._awsAccountId(), '1111-2222-3333', '_AwsAccountId with added underscores');
+
+    t.end();
+});
+
 test("test strToSign", function (t) {
     var amz = new amazon.Amazon({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '111122223333',
         region          : amazon.US_WEST_1
     });
 
@@ -98,7 +122,7 @@ test("test signature", function (t) {
     var amz = new amazon.Amazon({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
     var strToSign;

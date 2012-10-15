@@ -38,13 +38,14 @@ test("create sqs object", function (t) {
     var sqs = new Sqs({
         accessKeyId : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId : 'aws_account_id',
+        awsAccountId : '1111-2222-3333',
         region : amazon.US_WEST_1
     });
 
     t.equal('access_key_id', sqs.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', sqs.secretAccessKey(), 'Secret Access Key set properly');
-    t.equal('aws_account_id', sqs.awsAccountId(), 'AWS Account ID set properly');
+    t.equal('111122223333', sqs.awsAccountId(), 'a - AWS Account ID set properly');
+    t.equal('1111-2222-3333', sqs._awsAccountId(), 'b - AWS Account ID set properly');
     t.equal('us-west-1', sqs.region(), 'Region is set properly');
 
     t.end();
@@ -54,31 +55,31 @@ test("test all endpoints", function (t) {
     var sqs1 = new Sqs({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_EAST_1
     });
     var sqs2 = new Sqs({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
     var sqs3 = new Sqs({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.EU_WEST_1
     });
     var sqs4 = new Sqs({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.AP_SOUTHEAST_1
     });
     var sqs5 = new Sqs({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.AP_NORTHEAST_1
     });
 
@@ -95,7 +96,7 @@ test("test our own escape(...)", function (t) {
     var sqs = new Sqs({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
 

@@ -35,7 +35,7 @@ test("AwsSum.prototype.send tests", function(t) {
     var s3 = new S3({
         accessKeyId     : 'key',
         secretAccessKey : 'secret',
-        awsAccountId    : 'account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_EAST_1
     });
     s3.request = function(options) {
@@ -104,7 +104,7 @@ test("AwsSum.prototype.request properly streams body contents", function(t) {
     var s3 = new S3({
         accessKeyId     : 'key',
         secretAccessKey : 'secret',
-        awsAccountId    : 'account_id',
+        awsAccountId    : '111122223333',
         region          : amazon.US_EAST_1
     });
     var fakeServer = http.createServer(function(req, res) {

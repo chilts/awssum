@@ -37,13 +37,14 @@ test("create s3 object", function (t) {
     var s3 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
 
     t.equal('access_key_id', s3.accessKeyId(), 'Access Key ID set properly');
     t.equal('secret_access_key', s3.secretAccessKey(), 'Secret Access Key set properly');
-    t.equal('aws_account_id', s3.awsAccountId(), 'AWS Account ID set properly');
+    t.equal('111122223333', s3.awsAccountId(), 'a - AWS Account ID set properly');
+    t.equal('1111-2222-3333', s3._awsAccountId(), 'b - AWS Account ID set properly');
     t.equal('us-west-1', s3.region(), 'Region is set properly');
 
     t.end();
@@ -53,31 +54,31 @@ test("test all endpoints", function (t) {
     var s31 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_EAST_1
     });
     var s32 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
     var s33 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.EU_WEST_1
     });
     var s34 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.AP_SOUTHEAST_1
     });
     var s35 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.AP_NORTHEAST_1
     });
 
@@ -94,7 +95,7 @@ test("test strToSign", function (t) {
     var s3 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
 
@@ -219,7 +220,7 @@ test("test signature", function (t) {
     var s3 = new S3({
         accessKeyId     : 'access_key_id',
         secretAccessKey : 'secret_access_key',
-        awsAccountId    : 'aws_account_id',
+        awsAccountId    : '1111-2222-3333',
         region          : amazon.US_WEST_1
     });
 
