@@ -29,12 +29,15 @@ test("load amazon", function (t) {
     t.end();
 });
 
-test("create amazon object", function (t) {
+test("check amazon regions", function (t) {
     t.equal('us-east-1',      amazon.US_EAST_1,      'US East 1'     );
     t.equal('us-west-1',      amazon.US_WEST_1,      'US West 1'     );
     t.equal('eu-west-1',      amazon.EU_WEST_1,      'EU West 1'     );
     t.equal('ap-southeast-1', amazon.AP_SOUTHEAST_1, 'AP SouthEast 1');
     t.equal('ap-northeast-1', amazon.AP_NORTHEAST_1, 'AP NorthEast 1');
+    t.equal('ap-northeast-1', amazon.AP_NORTHEAST_1, 'AP NorthEast 1');
+    t.equal('ap-southeast-1', amazon.AP_SOUTHEAST_1, 'AP SouthEast 1');
+    t.equal('us-gov-west-1',  amazon.US_GOV_WEST_1,  'US Gov West 1' );
     t.end();
 });
 
