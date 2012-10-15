@@ -6,6 +6,15 @@ jshint:
 test: clean
 	./node_modules/.bin/tap test/*.js test/integration/*.js
 
+contributors:
+	echo "# Contributors #" > CONTRIBUTORS.md
+	echo                   >> CONTRIBUTORS.md
+	echo '```'             >> CONTRIBUTORS.md
+	git log --pretty=format:"%an <%ae>" | sort | uniq -c | sort -n -r >> CONTRIBUTORS.md
+	echo '```'             >> CONTRIBUTORS.md
+	echo                   >> CONTRIBUTORS.md
+	echo "(Ends)"          >> CONTRIBUTORS.md
+
 clean:
 	find . -name '*~' -exec rm {} ';'
 
