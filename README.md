@@ -443,6 +443,8 @@ in 'err' but nothing in 'data'.
 
 Written by [Andrew Chilton](http://chilts.org/) - [Blog](http://chilts.org/blog/) - [Twitter](https://twitter.com/andychilton).
 
+Please see the [CONTRIBUTORS](https://github.com/appsattic/node-awssum/blob/master/CONTRIBUTORS.md) file for all authors.
+
 # License #
 
 The MIT License : http://opensource.org/licenses/MIT
