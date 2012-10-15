@@ -24,11 +24,25 @@ var options = {
     BucketName : 'pie-18',
     Objects : [
         'nothing-here.txt',
-        { ObjectName : 'another-missing-file.txt' },
+        { Key : 'another-missing-file.txt' },
     ]
 };
 
 s3.DeleteMultipleObjects(options, function(err, data) {
+    fmt.msg("deleting multiple objects from pie-18 - expecting success");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+var options2 = {
+    BucketName : 'pie-18',
+    Objects : [
+        'nothing-@-here.txt',
+        { Key : 'another-missing-file.txt' },
+    ]
+};
+
+s3.DeleteMultipleObjects(options2, function(err, data) {
     fmt.msg("deleting multiple objects from pie-18 - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
