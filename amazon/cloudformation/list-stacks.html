@@ -37,6 +37,36 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all stacks</h3>
+<p>This example shows how you can see </p>
+
+<h4>Example</h4>
+<pre>
+cf.ListStacks(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+  Headers:
+   { 'x-amzn-requestid': '6e72a656-1bc9-11e2-ae64-0db27520d1bd',
+     'content-type': 'text/xml',
+     'content-length': '275',
+     date: 'Sun, 21 Oct 2012 21:51:12 GMT' },
+  Body:
+   { ListStacksResponse:
+      { '@': { xmlns: 'http://cloudformation.amazonaws.com/doc/2010-05-15/' },
+        ListStacksResult: { StackSummaries: {} },
+        ResponseMetadata: { RequestId: '6e72a656-1bc9-11e2-ae64-0db27520d1bd' } } } }
+
+</pre>
+
+
 
 {% endcapture %}
 

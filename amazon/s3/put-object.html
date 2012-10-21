@@ -91,6 +91,7 @@ sitemap : true
 <h3>Uploading a String as the Object</h3>
 <p>This example shows how to upload a string as the object.</p>
 
+<h4>Example</h4>
 <pre>
 var body = &quot;Hello, World!\n&quot;;
 
@@ -114,6 +115,7 @@ s3.PutObject(params, function(err, data) {
 <h3>Uploading some MetaData with your Object</h3>
 <p>By using the <code>MetaData</code> param, you can set metadata on your object.</p>
 
+<h4>Example</h4>
 <pre>
 var body = &quot;Hello, World!\n&quot;;
 
@@ -141,6 +143,7 @@ s3.PutObject(params, function(err, data) {
 <h3>Setting a Cache-Control header on your object</h3>
 <p>Just use the <code>CacheControl</code> parameter.</p>
 
+<h4>Example</h4>
 <pre>
 var body = &quot;Hello, World!\n&quot;;
 
@@ -166,6 +169,7 @@ s3.PutObject(params, function(err, data) {
 <h3>Putting a Buffer to S3 as the Object</h3>
 <p>This example is similar to putting a string, except </p>
 
+<h4>Example</h4>
 <pre>
 var buf = fs.readFileSync(__filename);
 
@@ -189,6 +193,7 @@ s3.PutObject(params, function(err, data) {
 <h3>Streaming a File</h3>
 <p>To stream anything to S3, just create a stream and pass it to the <code>Body</code>. Unfortunately S3 requires the <code>ContentLength</code> so you'll have to somehow get this in advance. Here, we're using <code>fs.stat()</code> to do this for us.</p>
 
+<h4>Example</h4>
 <pre>
 // you must run fs.stat to get the file size for the content-length header (s3 requires this)
 fs.stat(__filename, function(err, file_info) {

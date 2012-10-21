@@ -58,6 +58,7 @@ sitemap : true
 <h3>Using canned ACL to allow full control to an email address</h3>
 <p>The Grant* params allow you to set canned ACLs onto your bucket. Check the format you must use against the Amazon docs.</p>
 
+<h4>Example</h4>
 <pre>
 var params = {
     BucketName : 'pie-18',
@@ -78,6 +79,7 @@ s3.PutBucketAcl(params, function(err, data) {
 <h3>Using the full AccessControlPolicy</h3>
 <p>Specifying your own <code>AccessControlPolicy</code> means you can have complete control over your ACL, but it means you have to do a little bit more work to get the format correct.</p>
 
+<h4>Example</h4>
 <pre>
 var params = {
     BucketName         : 'pie-18',
