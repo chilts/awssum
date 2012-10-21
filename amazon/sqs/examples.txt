@@ -1,0 +1,32 @@
+name    : SendMessage
+title   : Send a message onto a SQS queue
+intro   : This example shows how send a message onto a SQS queue to process later in order.
+example : <<EOF
+var params = {
+    aCertainType:'csv',
+    orAnotherProperty:'like a string',
+    yetAnotherProperty:true
+};
+var custom = {
+    QueueName : 'yourQueueName',
+    MessageBody : JSON.stringify(params)
+};
+sqs.SendMessage(custom,function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ReceiveMessage
+title   : Receive a message from a SQS queue
+intro   : This example shows how to receive a message from a SQS queue to process and later execute SQS.DeleteMessage to clean up the SQS queue.
+example : <<EOF
+var custom = {
+    QueueName : 'yourQueueName'
+};
+sqs.ReceiveMessage(custom,function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---

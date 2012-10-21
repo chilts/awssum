@@ -1,0 +1,23 @@
+name    : ListHostedZones
+title   : Show all hosted zones
+intro   : This example shows how to list all hosted zones in your account.
+example : <<EOF
+r53.ListHostedZones({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListHostedZones
+title   : Show a specific hosted zone
+intro   : This example shows how to filter only one hosted zone in your request.
+example : <<EOF
+var params = {
+	HostedZone:'/hostedzone/asd78a6d987a68d'
+}
+r53.ListHostedZones(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
