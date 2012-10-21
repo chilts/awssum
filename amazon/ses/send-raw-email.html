@@ -40,6 +40,45 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Send a simple email with specific charsets.</h3>
+<p>This example shows how to send an e-mail with a specific charset. You can add all kinds of files, but read the supported filetypes by AWS SES and use the appropriate filetypes. Use BASE_64 as the encoding for the string which starts below with FD87697... Ensure you have verified your send e-mail address (and receive e-amil address if you are not in production mode).</p>
+
+<pre>
+var message = '';
+message     += &quot;To: example@domain.com\n&quot;;
+message     += &quot;From: mail@anotherdomain.com\n&quot;;
+message     += &quot;Subject: Example SES mail (raw)\n&quot;;
+message     += &quot;MIME-Version: 1.0\n&quot;;
+message     += 'Content-Type: multipart/mixed; boundary=&quot;aRandomString_with_signs_or_9879497q8w7r8number\n&quot;';
+message     += &quot;\n&quot;;
+message     += &quot;--aRandomString_with_signs_or_9879497q8w7r8number\n&quot;;
+message     += 'Content-Type: text/plain; charset=&quot;utf-8&quot;\n';
+message     += &quot;Content-Transfer-Encoding: 7bit\n&quot;;
+message     += &quot;Content-Disposition: inline\n&quot;;
+message     += &quot;\n&quot;;
+message     += &quot;Dear new tester,\n\n&quot;;
+message     += &quot;Attached is the file you requested.\n&quot;;
+message     += &quot;\n\n&quot;;
+message     += &quot;--aRandomString_with_signs_or_9879497q8w7r8number\n&quot;;
+message     += &quot;Content-ID: \&lt;77987_SOME_WEIRD_TOKEN_BUT_UNIQUE_SO_SOMETIMES_A_@domain.com_IS_ADDED\&gt;\n&quot;;
+message     += 'Content-Type: application/pdf; name=&quot;somename.pdf&quot;\n';
+message     += &quot;Content-Transfer-Encoding: base64\n&quot;;
+message     += 'Content-Disposition: attachment; filename=&quot;somename.pdf&quot;\n';
+message     += &quot;\n&quot;;
+message     += &quot;FD87697F8SDF986S78DF6S8F7DG67FS6G987FS6DG9876FDS87G6FSD789G70897SVDFS90887S9D7G7FDS6FG9DSF7G9FDS77FG8&quot;;
+message     += &quot;\n&quot;;
+message     += &quot;--aRandomString_with_signs_or_9879497q8w7r8number--\n&quot;;
+
+ses.SendRawEmail({ RawMessage : message }, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

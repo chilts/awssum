@@ -43,6 +43,23 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Receive a message from a SQS queue</h3>
+<p>This example shows how to receive a message from a SQS queue to process and later execute SQS.DeleteMessage to clean up the SQS queue.</p>
+
+<pre>
+var custom = {
+    QueueName : 'yourQueueName'
+};
+sqs.ReceiveMessage(custom,function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

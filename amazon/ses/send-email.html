@@ -67,6 +67,53 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Send a simple email</h3>
+<p>This example shows how to send an e-mail without an attachment. Ensure you have verified your send e-mail address (and receive e-amil address if you are not in production mode).</p>
+
+<pre>
+var params = {
+    ToAddresses    : ['example@domain.com'],
+    CcAddresses    : ['email@domain.com'],
+    BccAddresses   : ['contact@domain.com'],
+    Text           : 'This is an e-mail to test SES.\n\nThis is another line of text.',
+    Html           : '&lt;p&gt;This is an e-mail to test SES.&lt;br /&gt;This is another line of text',
+    Subject        : 'Example SES mail',
+    Source         : 'mail@anotherdomain.com'
+};
+ses.SendEmail(mail,function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Send a simple email with specific charsets.</h3>
+<p>This example shows how to send an e-mail with a specific charset. Ensure you have verified your send e-mail address (and receive e-amil address if you are not in production mode).</p>
+
+<pre>
+var params = {
+    ToAddresses    : ['example@domain.com'],
+    Text           : 'This is an e-mail to test SES with a smiley ☺.\n\nThis is another line of text.',
+    TextCharset    : 'UTF-8',
+    Html           : '&lt;p&gt;This is an e-mail to test SES with a smiley ☺.&lt;br /&gt;This is another line of text',
+    HtmlCharset    : 'UTF-8',
+    Subject        : 'Example SES mail',
+    SubjectCharset : 'UTF-8',
+    Source         : 'mail@anotherdomain.com'
+};
+ses.SendEmail(mail,function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

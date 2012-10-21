@@ -34,6 +34,37 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Show all hosted zones</h3>
+<p>This example shows how to list all hosted zones in your account.</p>
+
+<pre>
+r53.ListHostedZones({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Show a specific hosted zone</h3>
+<p>This example shows how to filter only one hosted zone in your request.</p>
+
+<pre>
+var params = {
+	HostedZone:'/hostedzone/asd78a6d987a68d'
+}
+r53.ListHostedZones(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
