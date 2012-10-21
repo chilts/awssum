@@ -1,0 +1,74 @@
+name    : SendEmail
+title   : Send a simple email
+intro   : This example shows how to send an e-mail without an attachment. Ensure you have verified your send e-mail address (and receive e-amil address if you are not in production mode).
+example : <<EOF
+var params = {
+    ToAddresses    : ['example@domain.com'],
+    CcAddresses    : ['email@domain.com'],
+    BccAddresses   : ['contact@domain.com'],
+    Text           : 'This is an e-mail to test SES.\n\nThis is another line of text.',
+    Html           : '<p>This is an e-mail to test SES.<br />This is another line of text',
+    Subject        : 'Example SES mail',
+    Source         : 'mail@anotherdomain.com'
+};
+ses.SendEmail(mail,function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : SendEmail
+title   : Send a simple email with specific charsets.
+intro   : This example shows how to send an e-mail with a specific charset. Ensure you have verified your send e-mail address (and receive e-amil address if you are not in production mode).
+example : <<EOF
+var params = {
+    ToAddresses    : ['example@domain.com'],
+    Text           : 'This is an e-mail to test SES with a smiley ☺.\n\nThis is another line of text.',
+    TextCharset    : 'UTF-8',
+    Html           : '<p>This is an e-mail to test SES with a smiley ☺.<br />This is another line of text',
+    HtmlCharset    : 'UTF-8',
+    Subject        : 'Example SES mail',
+    SubjectCharset : 'UTF-8',
+    Source         : 'mail@anotherdomain.com'
+};
+ses.SendEmail(mail,function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : SendRawEmail
+title   : Send a simple email with specific charsets.
+intro   : This example shows how to send an e-mail with a specific charset. You can add all kinds of files, but read the supported filetypes by AWS SES and use the appropriate filetypes. Use BASE_64 as the encoding for the string which starts below with FD87697... Ensure you have verified your send e-mail address (and receive e-amil address if you are not in production mode).
+example : <<EOF
+var message = '';
+message     += "To: example@domain.com\n";
+message     += "From: mail@anotherdomain.com\n";
+message     += "Subject: Example SES mail (raw)\n";
+message     += "MIME-Version: 1.0\n";
+message     += 'Content-Type: multipart/mixed; boundary="aRandomString_with_signs_or_9879497q8w7r8number\n"';
+message     += "\n";
+message     += "--aRandomString_with_signs_or_9879497q8w7r8number\n";
+message     += 'Content-Type: text/plain; charset="utf-8"\n';
+message     += "Content-Transfer-Encoding: 7bit\n";
+message     += "Content-Disposition: inline\n";
+message     += "\n";
+message     += "Dear new tester,\n\n";
+message     += "Attached is the file you requested.\n";
+message     += "\n\n";
+message     += "--aRandomString_with_signs_or_9879497q8w7r8number\n";
+message     += "Content-ID: \<77987_SOME_WEIRD_TOKEN_BUT_UNIQUE_SO_SOMETIMES_A_@domain.com_IS_ADDED\>\n";
+message     += 'Content-Type: application/pdf; name="somename.pdf"\n';
+message     += "Content-Transfer-Encoding: base64\n";
+message     += 'Content-Disposition: attachment; filename="somename.pdf"\n';
+message     += "\n";
+message     += "FD87697F8SDF986S78DF6S8F7DG67FS6G987FS6DG9876FDS87G6FSD789G70897SVDFS90887S9D7G7FDS6FG9DSF7G9FDS77FG8";
+message     += "\n";
+message     += "--aRandomString_with_signs_or_9879497q8w7r8number--\n";
+
+ses.SendRawEmail({ RawMessage : message }, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
