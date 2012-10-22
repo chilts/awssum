@@ -31,6 +31,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Get information about a hosted zone</h3>
+<p>This example shows how to retrieve information about a hosted zone (like for example the nameservers).</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    HostedZoneId:'newdomain.com'
+}
+r53.GetHostedZone(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

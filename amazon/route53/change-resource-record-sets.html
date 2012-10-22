@@ -34,6 +34,41 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Change a or all recordssets of a hosted domain</h3>
+<p>This example shows how to delete a subdomain (CNAME) and redirect it to another ip-address.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    HostedZoneId   : 'owndomain.com',
+    Comment        : 'Some text to remember why you made this change.',
+    Changes        : [
+                        {
+                            Action          : 'DELETE',
+                            Name            : 'test.owndomain.com',
+                            Type            : 'CNAME',
+                            Ttl             : '60',
+                            ResourceRecords : ['123.456.789.012']
+                        },
+                        {
+                            Action          : 'CREATE',
+                            Name            : 'test.owndomain.com',
+                            Type            : 'CNAME',
+                            Ttl             : '120',
+                            ResourceRecords : ['789.012.345.678']
+                        }
+                     ]
+}
+r53.ChangeResourceRecordSets(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

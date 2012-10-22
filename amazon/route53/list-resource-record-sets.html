@@ -43,6 +43,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Show all recordsets of a hosted zone</h3>
+<p>This example shows how to retrieve all recordsets of a specific hosted zone.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    HostedZoneId:'owndomain.com'
+}
+r53.ListResourceRecordSets(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

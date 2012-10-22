@@ -31,6 +31,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete an existing hosted zone in Route53</h3>
+<p>This example shows how to delete a specific hosted zone (/domain).</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    Name:'newdomain.com'
+}
+r53.DeleteHostedZone(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
