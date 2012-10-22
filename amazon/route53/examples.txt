@@ -13,9 +13,106 @@ title   : Show a specific hosted zone
 intro   : This example shows how to filter only one hosted zone in your request.
 example : <<EOF
 var params = {
-	HostedZone:'/hostedzone/asd78a6d987a68d'
+    HostedZone:'/hostedzone/asd78a6d987a68d'
 }
 r53.ListHostedZones(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListResourceRecordSets
+title   : Show all recordsets of a hosted zone
+intro   : This example shows how to retrieve all recordsets of a specific hosted zone.
+example : <<EOF
+var params = {
+    HostedZoneId:'owndomain.com'
+}
+r53.ListResourceRecordSets(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ChangeResourceRecordSets
+title   : Change a or all recordssets of a hosted domain
+intro   : This example shows how to delete a subdomain (CNAME) and redirect it to another ip-address.
+example : <<EOF
+var params = {
+    HostedZoneId   : 'owndomain.com',
+    Comment        : 'Some text to remember why you made this change.',
+    Changes        : [
+                        {
+                            Action          : 'DELETE',
+                            Name            : 'test.owndomain.com',
+                            Type            : 'CNAME',
+                            Ttl             : '60',
+                            ResourceRecords : ['123.456.789.012']
+                        },
+                        {
+                            Action          : 'CREATE',
+                            Name            : 'test.owndomain.com',
+                            Type            : 'CNAME',
+                            Ttl             : '120',
+                            ResourceRecords : ['789.012.345.678']
+                        }
+                     ]
+}
+r53.ChangeResourceRecordSets(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateHostedZone
+title   : Create a new hosted zone in Route53
+intro   : This example shows how to make a new hosted zone (/domain).
+example : <<EOF
+var params = {
+    Name            : 'newdomain.com',
+    CallerReference : 'some_unique_string_to_ensure_that_this_action_will_not_be_called_twice:numbers_can_be_used_too',
+    Comment         : 'Created a new hosted zone.'
+}
+r53.CreateHostedZone(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetHostedZone
+title   : Get information about a hosted zone
+intro   : This example shows how to retrieve information about a hosted zone (like for example the nameservers).
+example : <<EOF
+var params = {
+    HostedZoneId:'newdomain.com'
+}
+r53.GetHostedZone(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetChange
+title   : Get information about a hosted zone
+intro   : This example shows how to retrieve information about a hosted zone (like for example the nameservers).
+example : <<EOF
+var params = {
+    ChangeId:'some_unique_identifier_received_in_response_of:route53.ChangeResourceRecordSets()'
+}
+r53.GetChange(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteHostedZone
+title   : Delete an existing hosted zone in Route53
+intro   : This example shows how to delete a specific hosted zone (/domain).
+example : <<EOF
+var params = {
+    Name:'newdomain.com'
+}
+r53.DeleteHostedZone(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
