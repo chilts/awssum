@@ -26,6 +26,12 @@ s3.GetBucketAcl({ BucketName : 'pie-17' }, function(err, data) {
     fmt.dump(data, 'Data');
 });
 
+s3.GetBucketCors({ BucketName : 'pie-17' }, function(err, data) {
+    fmt.msg("get bucket cors");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
 s3.GetBucketPolicy({ BucketName : 'pie-17' }, function(err, data) {
     fmt.msg("get bucket policy - expecting failure, no policy exists");
     fmt.dump(err, 'Error');
