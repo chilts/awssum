@@ -1,0 +1,40 @@
+---
+id      : amazon-s3-get-bucket-cors
+layout  : default
+title   : Amazon S3
+tagline : 
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-s3.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    GetBucketCors
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTBucketGETcors.html">Open docs on AWS</a>)</small>
+  </h1>
+
+  <h2>Params</h2>
+
+
+  <dl>
+  
+    <dt>BucketName (required)</dt>
+    <dd> (special)</dd>
+  
+    <dt>cors (required)</dt>
+    <dd> (resource)</dd>
+  
+  </dl>
+
+
+
+  <h2>Examples</h2>
+
+
+
+{% endcapture %}
+
+{% include main.html %}

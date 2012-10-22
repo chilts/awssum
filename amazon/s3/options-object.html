@@ -1,0 +1,43 @@
+---
+id      : amazon-s3-options-object
+layout  : default
+title   : Amazon S3
+tagline : 
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-s3.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    OptionsObject
+    <small>(<a href="http://docs.amazonwebservices.com/AmazonS3/latest/API/RESTOPTIONSobject.html">Open docs on AWS</a>)</small>
+  </h1>
+
+  <h2>Params</h2>
+
+
+  <dl>
+  
+    <dt>Origin (required)</dt>
+    <dd> (header)</dd>
+  
+    <dt>AccessControlRequestMethod (required)</dt>
+    <dd> (header)</dd>
+  
+    <dt>AccessControlRequestHeaders (optional)</dt>
+    <dd> (header)</dd>
+  
+  </dl>
+
+
+
+  <h2>Examples</h2>
+
+
+
+{% endcapture %}
+
+{% include main.html %}
