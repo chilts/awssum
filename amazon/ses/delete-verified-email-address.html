@@ -34,6 +34,21 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>(deprecated) Delete a verified email address</h3>
+<p>This example shows how to delete a verified email address only. Notice the difference with SES.DeleteIdentity that is used for unverified email addresses and/or domains.</p>
+
+<h4>Example</h4>
+<pre>
+ses.DeleteVerifiedEmailAddress({EmailAddress:'email@domain.com'},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

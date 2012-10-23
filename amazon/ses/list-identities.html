@@ -40,6 +40,21 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all identities </h3>
+<p>This example shows how to list all identies (email addresses and domains) regardless of its verification status.</p>
+
+<h4>Example</h4>
+<pre>
+ses.ListIdentities({},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

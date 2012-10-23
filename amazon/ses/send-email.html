@@ -81,7 +81,7 @@ var params = {
     Subject        : 'Example SES mail',
     Source         : 'mail@anotherdomain.com'
 };
-ses.SendEmail(mail,function(err,data){
+ses.SendEmail(params,function(err,data){
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -106,7 +106,7 @@ var params = {
     SubjectCharset : 'UTF-8',
     Source         : 'mail@anotherdomain.com'
 };
-ses.SendEmail(mail,function(err,data){
+ses.SendEmail(params,function(err,data){
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

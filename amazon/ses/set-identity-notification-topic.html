@@ -40,6 +40,44 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Set an identity notification (SNS) topic</h3>
+<p>This example shows how to set the notification (SNS) topic per identity to publish bounce and complaint notifications to.</p>
+
+<h4>Example</h4>
+<pre>
+ses.SetIdentityNotificationTopic({Identity:'email@domain.com',NotificationType:'Bounce',SnsTopic:'arn:aws:sns:us-east-1:123456789012:exampleTopic'},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+ses.SetIdentityNotificationTopic({Identity:'domain.com',NotificationType:'Complaint',SnsTopic:'arn:aws:sns:us-east-1:123456789012:exampleTopic'},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Delete an identity notification (SNS) topic</h3>
+<p>This example shows how to delete the notification (SNS) topic per identity to publish bounce and complaint notifications to.</p>
+
+<h4>Example</h4>
+<pre>
+ses.SetIdentityNotificationTopic({Identity:'email@domain.com',NotificationType:'Bounce',SnsTopic:''},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+ses.SetIdentityNotificationTopic({Identity:'domain.com',NotificationType:'Complaint',SnsTopic:''},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

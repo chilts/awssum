@@ -31,6 +31,21 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Get the send statistics</h3>
+<p>This example shows how to show the statistics of all email traffic for the last 2 weeks as a list of data points.</p>
+
+<h4>Example</h4>
+<pre>
+ses.GetSendStatistics({},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

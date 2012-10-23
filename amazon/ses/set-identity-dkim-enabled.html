@@ -37,6 +37,25 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Set identity DKIM to enabled/disabled</h3>
+<p>This example shows how to enable/disable DKIM on a identity (domain/email address).</p>
+
+<h4>Example</h4>
+<pre>
+ses.SetIdentityDkimEnabled({Identity:'email@domain.com',DkimEnabled:true},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+ses.SetIdentityDkimEnabled({Identity:'domain.com',DkimEnabled:false},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

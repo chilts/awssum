@@ -34,6 +34,21 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Verify an email adress </h3>
+<p>This example shows how to verify an email address. Afterwards an email will be sent to the specified email adress where you have to click on a link to verify its existence. It replaces SES.VerifyEmailAddress.</p>
+
+<h4>Example</h4>
+<pre>
+ses.VerifyEmailIdentity({EmailAddress:'anotheremail@domain.com'},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

@@ -34,6 +34,21 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Verify a domain</h3>
+<p>This example shows how to verify a domain. Please visit <a href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide/InitialSetup.DomainVerification.html">here</a> for more information.</p>
+
+<h4>Example</h4>
+<pre>
+ses.VerifyDomainIdentity({Domain:'domain.com'},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

@@ -31,6 +31,21 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all verified email addresses</h3>
+<p>This example shows how to list all verified email addresses that need to be verified before you can sent emails from those email addresses.</p>
+
+<h4>Example</h4>
+<pre>
+ses.ListVerifiedEmailAddresses({},function(err,data){
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
