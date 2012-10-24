@@ -35,10 +35,15 @@ sitemap : true
 
 
 <h3>Show all hosted zones</h3>
-<p>This example shows how to list all hosted zones in your account.</p>
+<p>This example shows how to list all hosted zones in your account. If you are not passing any parameters, then you may omit the param object.</p>
 
 <h4>Example</h4>
 <pre>
+r53.ListHostedZones(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
 r53.ListHostedZones({}, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -55,7 +60,7 @@ r53.ListHostedZones({}, function(err, data) {
 <h4>Example</h4>
 <pre>
 var params = {
-    HostedZone:'/hostedzone/asd78a6d987a68d'
+    HostedZone : '/hostedzone/asd78a6d987a68d',
 }
 r53.ListHostedZones(params, function(err, data) {
     fmt.dump(err, 'Error');

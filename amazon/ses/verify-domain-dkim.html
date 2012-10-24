@@ -39,7 +39,7 @@ sitemap : true
 
 <h4>Example</h4>
 <pre>
-ses.VerifyDomainDkim({Domain:'domain.com'},function(err,data){
+ses.VerifyDomainDkim({ Domain : 'domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

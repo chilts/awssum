@@ -43,22 +43,23 @@ var params = {
     HostedZoneId   : 'owndomain.com',
     Comment        : 'Some text to remember why you made this change.',
     Changes        : [
-                        {
-                            Action          : 'DELETE',
-                            Name            : 'test.owndomain.com',
-                            Type            : 'CNAME',
-                            Ttl             : '60',
-                            ResourceRecords : ['123.456.789.012']
-                        },
-                        {
-                            Action          : 'CREATE',
-                            Name            : 'test.owndomain.com',
-                            Type            : 'CNAME',
-                            Ttl             : '120',
-                            ResourceRecords : ['789.012.345.678']
-                        }
-                     ]
-}
+        {
+            Action          : 'DELETE',
+            Name            : 'test.owndomain.com',
+            Type            : 'CNAME',
+            Ttl             : '60',
+            ResourceRecords : ['123.456.789.012'],
+        },
+        {
+            Action          : 'CREATE',
+            Name            : 'test.owndomain.com',
+            Type            : 'CNAME',
+            Ttl             : '120',
+            ResourceRecords : ['789.012.345.678'],
+        },
+     ]
+};
+
 r53.ChangeResourceRecordSets(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');

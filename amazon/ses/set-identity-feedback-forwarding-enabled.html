@@ -42,11 +42,20 @@ sitemap : true
 
 <h4>Example</h4>
 <pre>
-ses.SetIdentityFeedbackForwardingEnabled({Identity:'email@domain.com',ForwardingEnabled:true},function(err,data){
+var params1 = {
+    Identity          : 'email@domain.com',
+    ForwardingEnabled : true,
+};
+ses.SetIdentityFeedbackForwardingEnabled(params1, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.SetIdentityFeedbackForwardingEnabled({Identity:'domain.com',ForwardingEnabled:false},function(err,data){
+
+var params1 = {
+    Identity          : 'email@domain.com',
+    ForwardingEnabled : false,
+};
+ses.SetIdentityFeedbackForwardingEnabled(params2, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

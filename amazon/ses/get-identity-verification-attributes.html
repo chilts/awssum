@@ -39,7 +39,10 @@ sitemap : true
 
 <h4>Example</h4>
 <pre>
-ses.GetIdentityNotificationAttributes({Identities:['email@domain.com','domain.com']},function(err,data){
+var params = {
+    Identities : [ 'email@domain.com', 'domain.com' ],
+};
+ses.GetIdentityNotificationAttributes(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

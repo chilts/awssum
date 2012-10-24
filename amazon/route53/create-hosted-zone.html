@@ -44,9 +44,10 @@ sitemap : true
 <pre>
 var params = {
     Name            : 'newdomain.com',
-    CallerReference : 'some_unique_string_to_ensure_that_this_action_will_not_be_called_twice:numbers_can_be_used_too',
+    CallerReference : 'unique_string_to_ensure_action_will_not_be_called_twice_1234',
     Comment         : 'Created a new hosted zone.'
 }
+
 r53.CreateHostedZone(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');

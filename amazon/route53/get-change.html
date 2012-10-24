@@ -37,8 +37,9 @@ sitemap : true
 <h4>Example</h4>
 <pre>
 var params = {
-    ChangeId:'some_unique_identifier_received_in_response_of:route53.ChangeResourceRecordSets()'
+    ChangeId : 'the-id-you-received-from-route53.ChangeResourceRecordSets()',
 }
+
 r53.GetChange(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');

@@ -39,11 +39,11 @@ sitemap : true
 
 <h4>Example</h4>
 <pre>
-ses.DeleteIdentity({Identity:'email@domain.com'},function(err,data){
+ses.DeleteIdentity({ Identity : 'email@domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.DeleteIdentity({Identity:'domain.com'},function(err,data){
+ses.DeleteIdentity({ Identity : 'domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

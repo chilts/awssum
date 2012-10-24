@@ -49,7 +49,7 @@ sitemap : true
 <h4>Example</h4>
 <pre>
 var params = {
-    HostedZoneId:'owndomain.com'
+    HostedZoneId : 'owndomain.com',
 }
 r53.ListResourceRecordSets(params, function(err, data) {
     fmt.dump(err, 'Error');

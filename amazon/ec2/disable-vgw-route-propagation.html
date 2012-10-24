@@ -1,0 +1,43 @@
+---
+id      : amazon-ec2-disable-vgw-route-propagation
+layout  : default
+title   : Amazon EC2
+tagline : 
+sitemap : true
+---
+{% capture menu %}
+  {% include menu-amazon-ec2.html %}
+{% endcapture %}
+
+{% capture main %}
+
+  <h1>
+    DisableVgwRoutePropagation
+    <small>(<a href="http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/ApiReference-query-DisableVGWRoutePropagation.html">Open docs on AWS</a>)</small>
+  </h1>
+
+  <h2>Params</h2>
+
+
+  <dl>
+  
+    <dt>Action (required)</dt>
+    <dd> (param)</dd>
+  
+    <dt>RouteTableId (required)</dt>
+    <dd> (param)</dd>
+  
+    <dt>GatewayId (required)</dt>
+    <dd> (param)</dd>
+  
+  </dl>
+
+
+
+  <h2>Examples</h2>
+
+
+
+{% endcapture %}
+
+{% include main.html %}

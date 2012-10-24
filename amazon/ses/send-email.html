@@ -79,9 +79,9 @@ var params = {
     Text           : 'This is an e-mail to test SES.\n\nThis is another line of text.',
     Html           : '&lt;p&gt;This is an e-mail to test SES.&lt;br /&gt;This is another line of text',
     Subject        : 'Example SES mail',
-    Source         : 'mail@anotherdomain.com'
+    Source         : 'mail@anotherdomain.com',
 };
-ses.SendEmail(params,function(err,data){
+ses.SendEmail(params, function(err, data){
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -104,9 +104,9 @@ var params = {
     HtmlCharset    : 'UTF-8',
     Subject        : 'Example SES mail',
     SubjectCharset : 'UTF-8',
-    Source         : 'mail@anotherdomain.com'
+    Source         : 'mail@anotherdomain.com',
 };
-ses.SendEmail(params,function(err,data){
+ses.SendEmail(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

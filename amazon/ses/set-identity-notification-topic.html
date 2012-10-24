@@ -45,11 +45,22 @@ sitemap : true
 
 <h4>Example</h4>
 <pre>
-ses.SetIdentityNotificationTopic({Identity:'email@domain.com',NotificationType:'Bounce',SnsTopic:'arn:aws:sns:us-east-1:123456789012:exampleTopic'},function(err,data){
+var bounce = {
+    Identity         : 'email@domain.com',
+    NotificationType : 'Bounce',
+    SnsTopic         : 'arn:aws:sns:us-east-1:123456789012:exampleTopic',
+};
+ses.SetIdentityNotificationTopic(bounce, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.SetIdentityNotificationTopic({Identity:'domain.com',NotificationType:'Complaint',SnsTopic:'arn:aws:sns:us-east-1:123456789012:exampleTopic'},function(err,data){
+
+var complaint = {
+    Identity         : 'domain.com',
+    NotificationType : 'Complaint',
+    SnsTopic         : 'arn:aws:sns:us-east-1:123456789012:exampleTopic'
+};
+ses.SetIdentityNotificationTopic(complaint, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -64,11 +75,22 @@ ses.SetIdentityNotificationTopic({Identity:'domain.com',NotificationType:'Compla
 
 <h4>Example</h4>
 <pre>
-ses.SetIdentityNotificationTopic({Identity:'email@domain.com',NotificationType:'Bounce',SnsTopic:''},function(err,data){
+var noBounce = {
+    Identity         : 'email@domain.com',
+    NotificationType : 'Bounce',
+    SnsTopic         : '',
+};
+ses.SetIdentityNotificationTopic(noBounce, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.SetIdentityNotificationTopic({Identity:'domain.com',NotificationType:'Complaint',SnsTopic:''},function(err,data){
+
+var noComplaint = {
+    Identity         : 'domain.com',
+    NotificationType : 'Complaint',
+    SnsTopic         : '',
+};
+ses.SetIdentityNotificationTopic(noComplaint, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
