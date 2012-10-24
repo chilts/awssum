@@ -1,7 +1,7 @@
 # Contributors #
 
 ```
-    643 Andrew Chilton <chilts@appsattic.com>
+    650 Andrew Chilton <chilts@appsattic.com>
      16 Andrew Chilton <andychilton@gmail.com>
       8 Nathan Friedly <nathan@nfriedly.com>
       6 Ashish <ashish@itcutives.com>
@@ -17,6 +17,7 @@
       1 Matt Weagle <mweagle@gmail.com>
       1 Laurent Bédubourg <laurent@labe.me>
       1 JT <jt@gosquared.com>
+      1 Joe Lynch <joe.b.lynch@gmail.com>
       1 Joachim Kainz <jfk@jolira.com>
       1 gildas-lormeau <gildas.lormeau@gmail.com>
       1 bsorbo <bsorbo@gmail.com>
