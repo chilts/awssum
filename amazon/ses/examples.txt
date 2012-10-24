@@ -9,9 +9,9 @@ var params = {
     Text           : 'This is an e-mail to test SES.\n\nThis is another line of text.',
     Html           : '<p>This is an e-mail to test SES.<br />This is another line of text',
     Subject        : 'Example SES mail',
-    Source         : 'mail@anotherdomain.com'
+    Source         : 'mail@anotherdomain.com',
 };
-ses.SendEmail(params,function(err,data){
+ses.SendEmail(params, function(err, data){
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -29,9 +29,9 @@ var params = {
     HtmlCharset    : 'UTF-8',
     Subject        : 'Example SES mail',
     SubjectCharset : 'UTF-8',
-    Source         : 'mail@anotherdomain.com'
+    Source         : 'mail@anotherdomain.com',
 };
-ses.SendEmail(params,function(err,data){
+ses.SendEmail(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -76,7 +76,7 @@ name    : ListVerifiedEmailAddresses
 title   : List all verified email addresses
 intro   : This example shows how to list all verified email addresses that need to be verified before you can sent emails from those email addresses.
 example : <<EOF
-ses.ListVerifiedEmailAddresses({},function(err,data){
+ses.ListVerifiedEmailAddresses({}, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -86,7 +86,7 @@ name    : ListIdentities
 title   : List all identities 
 intro   : This example shows how to list all identies (email addresses and domains) regardless of its verification status.
 example : <<EOF
-ses.ListIdentities({},function(err,data){
+ses.ListIdentities({}, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -96,7 +96,7 @@ name    : GetSendQuota
 title   : Get the quota status on the amount of emails sent
 intro   : This example shows how to show the status on how many emails are sent and are yet possible to be sent.
 example : <<EOF
-ses.GetSendQuota({},function(err,data){
+ses.GetSendQuota({}, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -106,7 +106,7 @@ name    : GetSendStatistics
 title   : Get the send statistics
 intro   : This example shows how to show the statistics of all email traffic for the last 2 weeks as a list of data points.
 example : <<EOF
-ses.GetSendStatistics({},function(err,data){
+ses.GetSendStatistics({}, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -116,11 +116,11 @@ name    : DeleteIdentity
 title   : Delete an identity
 intro   : This example shows how to delete an identity (e-mail or domain) regardless if it is verified or not. It replaces SES.DeleteVerifiedEmailAddress.
 example : <<EOF
-ses.DeleteIdentity({Identity:'email@domain.com'},function(err,data){
+ses.DeleteIdentity({ Identity : 'email@domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.DeleteIdentity({Identity:'domain.com'},function(err,data){
+ses.DeleteIdentity({ Identity : 'domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -131,7 +131,7 @@ name    : DeleteVerifiedEmailAddress
 title   : (deprecated) Delete a verified email address
 intro   : This example shows how to delete a verified email address only. Notice the difference with SES.DeleteIdentity that is used for unverified email addresses and/or domains.
 example : <<EOF
-ses.DeleteVerifiedEmailAddress({EmailAddress:'email@domain.com'},function(err,data){
+ses.DeleteVerifiedEmailAddress({ EmailAddress : 'email@domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -141,7 +141,7 @@ name    : VerifyEmailAddress
 title   : (deprecated) Verify an email adress 
 intro   : This example shows how to verify an email address. Afterwards an email will be sent to the specified email adress where you have to click on a link to verify its existence.
 example : <<EOF
-ses.VerifyEmailAddress({EmailAddress:'anotheremail@domain.com'},function(err,data){
+ses.VerifyEmailAddress({ EmailAddress : 'anotheremail@domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -151,7 +151,7 @@ name    : VerifyEmailIdentity
 title   : Verify an email adress 
 intro   : This example shows how to verify an email address. Afterwards an email will be sent to the specified email adress where you have to click on a link to verify its existence. It replaces SES.VerifyEmailAddress.
 example : <<EOF
-ses.VerifyEmailIdentity({EmailAddress:'anotheremail@domain.com'},function(err,data){
+ses.VerifyEmailIdentity({ EmailAddress : 'anotheremail@domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -161,7 +161,7 @@ name    : VerifyDomainIdentity
 title   : Verify a domain
 intro   : This example shows how to verify a domain. Please visit <a href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide/InitialSetup.DomainVerification.html">here</a> for more information.
 example : <<EOF
-ses.VerifyDomainIdentity({Domain:'domain.com'},function(err,data){
+ses.VerifyDomainIdentity({ Domain : 'domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -171,7 +171,7 @@ name    : VerifyDomainDkim
 title   : Verify a domain DKIM entry
 intro   : This example shows how to verify a domain DKIM entry in its DNS. Please visit <a href="http://docs.amazonwebservices.com/ses/latest/DeveloperGuide/DKIM.EasyDKIM.DNSRecords.html">here</a> for more information.
 example : <<EOF
-ses.VerifyDomainDkim({Domain:'domain.com'},function(err,data){
+ses.VerifyDomainDkim({ Domain : 'domain.com' }, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -181,7 +181,10 @@ name    : GetIdentityDkimAttributes
 title   : Get identity DKIM attributes
 intro   : This example shows how to get identity DKIM attributes to verify its DNS settings.
 example : <<EOF
-ses.GetIdentityDkimAttributes({Identities:['email@domain.com','domain.com']},function(err,data){
+var params = {
+    Identities : [ 'email@domain.com', 'domain.com' ],
+};
+ses.GetIdentityDkimAttributes(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -191,7 +194,10 @@ name    : GetIdentityNotificationAttributes
 title   : Get identity notification attributes
 intro   : This example shows how to get identity notification attributes for bounce and complaints notifications.
 example : <<EOF
-ses.GetIdentityNotificationAttributes({Identities:['email@domain.com','domain.com']},function(err,data){
+var params = {
+    Identities : [ 'email@domain.com', 'domain.com' ],
+};
+ses.GetIdentityNotificationAttributes(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -201,7 +207,10 @@ name    : GetIdentityNotificationAttributes
 title   : Get identity notification attributes
 intro   : This example shows how to get identity notification attributes for bounce and complaints notifications.
 example : <<EOF
-ses.GetIdentityNotificationAttributes({Identities:['email@domain.com','domain.com']},function(err,data){
+var params = {
+    Identities : [ 'email@domain.com', 'domain.com' ],
+};
+ses.GetIdentityNotificationAttributes(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -211,7 +220,10 @@ name    : GetIdentityVerificationAttributes
 title   : Get identity verification attributes
 intro   : This example shows how to get identity verification attributes for verification status/tokens.
 example : <<EOF
-ses.GetIdentityNotificationAttributes({Identities:['email@domain.com','domain.com']},function(err,data){
+var params = {
+    Identities : [ 'email@domain.com', 'domain.com' ],
+};
+ses.GetIdentityNotificationAttributes(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -221,11 +233,20 @@ name    : SetIdentityDkimEnabled
 title   : Set identity DKIM to enabled/disabled
 intro   : This example shows how to enable/disable DKIM on a identity (domain/email address).
 example : <<EOF
-ses.SetIdentityDkimEnabled({Identity:'email@domain.com',DkimEnabled:true},function(err,data){
+var params1 = {
+    Identity    : 'email@domain.com',
+    DkimEnabled : true,
+};
+ses.SetIdentityDkimEnabled(params1, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.SetIdentityDkimEnabled({Identity:'domain.com',DkimEnabled:false},function(err,data){
+
+var params2 = {
+    Identity    : 'email@domain.com',
+    DkimEnabled : false,
+};
+ses.SetIdentityDkimEnabled(params2, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -235,11 +256,20 @@ name    : SetIdentityFeedbackForwardingEnabled
 title   : Set identity feedback forwarding to enabled/disabled
 intro   : This example shows how to enable/disable feedback forwarding on a identity (domain/email address). It is important for bounce and complaint notifications.
 example : <<EOF
-ses.SetIdentityFeedbackForwardingEnabled({Identity:'email@domain.com',ForwardingEnabled:true},function(err,data){
+var params1 = {
+    Identity          : 'email@domain.com',
+    ForwardingEnabled : true,
+};
+ses.SetIdentityFeedbackForwardingEnabled(params1, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.SetIdentityFeedbackForwardingEnabled({Identity:'domain.com',ForwardingEnabled:false},function(err,data){
+
+var params1 = {
+    Identity          : 'email@domain.com',
+    ForwardingEnabled : false,
+};
+ses.SetIdentityFeedbackForwardingEnabled(params2, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -249,11 +279,22 @@ name    : SetIdentityNotificationTopic
 title   : Set an identity notification (SNS) topic
 intro   : This example shows how to set the notification (SNS) topic per identity to publish bounce and complaint notifications to.
 example : <<EOF
-ses.SetIdentityNotificationTopic({Identity:'email@domain.com',NotificationType:'Bounce',SnsTopic:'arn:aws:sns:us-east-1:123456789012:exampleTopic'},function(err,data){
+var bounce = {
+    Identity         : 'email@domain.com',
+    NotificationType : 'Bounce',
+    SnsTopic         : 'arn:aws:sns:us-east-1:123456789012:exampleTopic',
+};
+ses.SetIdentityNotificationTopic(bounce, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.SetIdentityNotificationTopic({Identity:'domain.com',NotificationType:'Complaint',SnsTopic:'arn:aws:sns:us-east-1:123456789012:exampleTopic'},function(err,data){
+
+var complaint = {
+    Identity         : 'domain.com',
+    NotificationType : 'Complaint',
+    SnsTopic         : 'arn:aws:sns:us-east-1:123456789012:exampleTopic'
+};
+ses.SetIdentityNotificationTopic(complaint, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -263,11 +304,22 @@ name    : SetIdentityNotificationTopic
 title   : Delete an identity notification (SNS) topic
 intro   : This example shows how to delete the notification (SNS) topic per identity to publish bounce and complaint notifications to.
 example : <<EOF
-ses.SetIdentityNotificationTopic({Identity:'email@domain.com',NotificationType:'Bounce',SnsTopic:''},function(err,data){
+var noBounce = {
+    Identity         : 'email@domain.com',
+    NotificationType : 'Bounce',
+    SnsTopic         : '',
+};
+ses.SetIdentityNotificationTopic(noBounce, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-ses.SetIdentityNotificationTopic({Identity:'domain.com',NotificationType:'Complaint',SnsTopic:''},function(err,data){
+
+var noComplaint = {
+    Identity         : 'domain.com',
+    NotificationType : 'Complaint',
+    SnsTopic         : '',
+};
+ses.SetIdentityNotificationTopic(noComplaint, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
