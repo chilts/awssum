@@ -357,4 +357,22 @@ sdb.GetAttributes(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:35:48 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { GetAttributesResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        GetAttributesResult:
+         { Attribute:
+            [ { Name: 'age', Value: '31' },
+              { Name: 'height', Value: 'six ft' } ] },
+        ResponseMetadata:
+         { RequestId: '46eb260a-cab1-6a69-3645-d62fff27e252',
+           BoxUsage: '0.0000093282' } } } }
+EOF
 ---
