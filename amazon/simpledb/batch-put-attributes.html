@@ -46,6 +46,40 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Update &amp; validate data of items</h3>
+<p>This example shows how to update multiple items at once and ensure previous property values are overwritten. You can add a maximum of 25 item changes!</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : [
+                        'record1',
+                        'record2'
+                      ],
+    AttributeName   : [
+                        ['name'],
+                        ['name']
+                      ],
+    AttributeValue  : [
+                        ['my_name'],
+                        ['another_name']
+                      ],
+    AttributeReplace: [
+                        true,
+                        true
+                      ]
+};
+sdb.BatchPutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

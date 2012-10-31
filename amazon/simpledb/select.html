@@ -40,6 +40,61 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all attributes from a domain</h3>
+<p>This example shows how to list all attributes of the items stored in a domain.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    SelectExpression : 'SELECT * FROM an_unique_string'
+};
+sdb.Select(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List a specific attribute from a domain</h3>
+<p>This example shows how to list a specific attribute of the items stored in a domain.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    SelectExpression : 'SELECT id,name FROM an_unique_string'
+};
+sdb.Select(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List the most recent data from a domain</h3>
+<p>This example shows how to list the most recent data from a domain.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    SelectExpression : 'SELECT * FROM an_unique_string',
+    ConsistentRead   : true
+};
+sdb.Select(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

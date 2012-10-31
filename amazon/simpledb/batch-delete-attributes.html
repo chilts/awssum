@@ -43,6 +43,37 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete data of multiple items</h3>
+<p>This example shows how to delete specific attributes of multiple items. You can add a maximum of 25 item changes!</p>
+
+<h4>Example</h4>
+<pre>
+// if &quot;record1&quot; or &quot;record2&quot; items exist with &quot;name&quot; and &quot;age&quot; properties, code below will delete only &quot;name&quot; property
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : [
+                        'record1',
+                        'record2'
+                      ],
+    AttributeName   : [
+                        ['name'],
+                        ['name']
+                      ],
+    AttributeValue  : [
+                        ['my_name'],
+                        ['another_name']
+                      ]
+};
+sdb.BatchDeleteAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

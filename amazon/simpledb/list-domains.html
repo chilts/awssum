@@ -37,6 +37,39 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all domains</h3>
+<p>This example shows how to list all domains.</p>
+
+<h4>Example</h4>
+<pre>
+sdb.ListDomains({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List a specific amount of domains</h3>
+<p>This example shows how to list only 10 domains.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    MaxNumberOfDomains : 10
+};
+sdb.ListDomains(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

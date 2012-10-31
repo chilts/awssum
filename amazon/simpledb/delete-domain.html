@@ -34,6 +34,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete a domain</h3>
+<p>This example shows how to delete a domain to send store messages in.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    DomainName : an_unique_string'
+};
+sdb.DeleteDomain(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

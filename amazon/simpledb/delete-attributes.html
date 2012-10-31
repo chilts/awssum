@@ -49,6 +49,50 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete data of an item</h3>
+<p>This example shows how to delete all attributes (will delete the item). </p>
+
+<h4>Example</h4>
+<pre>
+// if &quot;record1&quot; item exists with &quot;name&quot; and &quot;age&quot; properties, code below will delete item
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 32]
+};
+sdb.DeleteAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Delete data of an item</h3>
+<p>This example shows how to delete specific attributes.</p>
+
+<h4>Example</h4>
+<pre>
+// if &quot;record1&quot; item exists with &quot;name&quot; and &quot;age&quot; properties, code below will delete only &quot;name&quot; property
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name'],
+    AttributeValue  : ['my_name']
+};
+sdb.DeleteAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

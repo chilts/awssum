@@ -55,6 +55,94 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Add data as an item (first time)</h3>
+<p>This example shows how to add an item ("record") to a domain for the first time.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 30]
+};
+sdb.PutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Update data in an item</h3>
+<p>This example shows how to update an item in your domain without replacing previous attribute ('column') values.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 31]
+};
+sdb.PutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Update data in an item</h3>
+<p>This example shows how to update an item in your domain by replacing previous attribute ('column') values.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 32],
+    AttributeReplace: [false,true],
+};
+sdb.PutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Update &amp; validate data of an item</h3>
+<p>This example shows how to update and validate an item if it is updated correctly. This can be useful when inserting data into items that need/miss specific attributes.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 32],
+    ExpectedName    : ['name'],
+    ExpectedValue   : ['my_name'],
+};
+sdb.PutAttributes(params, function(err, data) {
+    // will error when the value is not updated correctly due to the provided expected properties
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
