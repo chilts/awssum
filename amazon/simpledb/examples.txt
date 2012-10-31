@@ -1,0 +1,259 @@
+name    : CreateDomain
+title   : Create a domain
+intro   : This example shows how to create a domain to send store messages in.
+example : <<EOF
+var params = {
+    DomainName : an_unique_string'
+};
+sdb.CreateDomain(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteDomain
+title   : Delete a domain
+intro   : This example shows how to delete a domain to send store messages in.
+example : <<EOF
+var params = {
+    DomainName : an_unique_string'
+};
+sdb.DeleteDomain(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListDomains
+title   : List all domains
+intro   : This example shows how to list all domains.
+example : <<EOF
+sdb.ListDomains({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListDomains
+title   : List a specific amount of domains
+intro   : This example shows how to list only 10 domains.
+example : <<EOF
+var params = {
+    MaxNumberOfDomains : 10
+};
+sdb.ListDomains(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DomainMetadata
+title   : Show metadata for a specific domain
+intro   : This example shows how to show metadata for a specific domain.
+example : <<EOF
+var params = {
+    DomainName : an_unique_string'
+};
+sdb.DomainMetadata(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : Select
+title   : List all attributes from a domain
+intro   : This example shows how to list all attributes of the items stored in a domain.
+example : <<EOF
+var params = {
+    SelectExpression : 'SELECT * FROM an_unique_string'
+};
+sdb.Select(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : Select
+title   : List a specific attribute from a domain
+intro   : This example shows how to list a specific attribute of the items stored in a domain.
+example : <<EOF
+var params = {
+    SelectExpression : 'SELECT id,name FROM an_unique_string'
+};
+sdb.Select(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : Select
+title   : List the most recent data from a domain
+intro   : This example shows how to list the most recent data from a domain.
+example : <<EOF
+var params = {
+    SelectExpression : 'SELECT * FROM an_unique_string',
+    ConsistentRead   : true
+};
+sdb.Select(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutAttributes
+title   : Add data as an item (first time)
+intro   : This example shows how to add an item ("record") to a domain for the first time.
+example : <<EOF
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 30]
+};
+sdb.PutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutAttributes
+title   : Update data in an item
+intro   : This example shows how to update an item in your domain without replacing previous attribute ('column') values.
+example : <<EOF
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 31]
+};
+sdb.PutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutAttributes
+title   : Update data in an item
+intro   : This example shows how to update an item in your domain by replacing previous attribute ('column') values.
+example : <<EOF
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 32],
+    AttributeReplace: [false,true],
+};
+sdb.PutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutAttributes
+title   : Update & validate data of an item
+intro   : This example shows how to update and validate an item if it is updated correctly. This can be useful when inserting data into items that need/miss specific attributes.
+example : <<EOF
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 32],
+    ExpectedName    : ['name'],
+    ExpectedValue   : ['my_name'],
+};
+sdb.PutAttributes(params, function(err, data) {
+    // will error when the value is not updated correctly due to the provided expected properties
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : BatchPutAttributes
+title   : Update & validate data of items
+intro   : This example shows how to update multiple items at once and ensure previous property values are overwritten. You can add a maximum of 25 item changes!
+example : <<EOF
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : [
+                        'record1',
+                        'record2'
+                      ],
+    AttributeName   : [
+                        ['name'],
+                        ['name']
+                      ],
+    AttributeValue  : [
+                        ['my_name'],
+                        ['another_name']
+                      ],
+    AttributeReplace: [
+                        true,
+                        true
+                      ]
+};
+sdb.BatchPutAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteAttributes
+title   : Delete data of an item
+intro   : This example shows how to delete all attributes (will delete the item). 
+example : <<EOF
+// if "record1" item exists with "name" and "age" properties, code below will delete item
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name', 'age'],
+    AttributeValue  : ['my_name', 32]
+};
+sdb.DeleteAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteAttributes
+title   : Delete data of an item
+intro   : This example shows how to delete specific attributes.
+example : <<EOF
+// if "record1" item exists with "name" and "age" properties, code below will delete only "name" property
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : 'record1',
+    AttributeName   : ['name'],
+    AttributeValue  : ['my_name']
+};
+sdb.DeleteAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : BatchDeleteAttributes
+title   : Delete data of multiple items
+intro   : This example shows how to delete specific attributes of multiple items. You can add a maximum of 25 item changes!
+example : <<EOF
+// if "record1" or "record2" items exist with "name" and "age" properties, code below will delete only "name" property
+var params = {
+    DomainName      : 'an_unique_string',
+    ItemName        : [
+                        'record1',
+                        'record2'
+                      ],
+    AttributeName   : [
+                        ['name'],
+                        ['name']
+                      ],
+    AttributeValue  : [
+                        ['my_name'],
+                        ['another_name']
+                      ]
+};
+sdb.BatchDeleteAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
