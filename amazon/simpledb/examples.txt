@@ -10,6 +10,20 @@ sdb.CreateDomain(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:28:27 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { CreateDomainResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        ResponseMetadata:
+         { RequestId: 'dfa10399-bfda-e465-989c-6cd0bbe36202',
+           BoxUsage: '0.0055590278' } } } }
+EOF
 ---
 name    : DeleteDomain
 title   : Delete a domain
@@ -23,6 +37,20 @@ sdb.DeleteDomain(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:30:49 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { DeleteDomainResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        ResponseMetadata:
+         { RequestId: '5ff54bab-672b-04f5-18cf-f6b4bdf05fa8',
+           BoxUsage: '0.0055590278' } } } }
+EOF
 ---
 name    : ListDomains
 title   : List all domains
@@ -32,6 +60,25 @@ sdb.ListDomains({}, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:31:32 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { ListDomainsResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        ListDomainsResult:
+         { DomainName:
+            [ 'Account',
+              'Domain1',
+              'Record' ] },
+        ResponseMetadata:
+         { RequestId: '2e12896d-5bda-4aca-44e6-1fcd67648cd0',
+           BoxUsage: '0.0000071759' } } } }
 EOF
 ---
 name    : ListDomains
@@ -52,12 +99,34 @@ title   : Show metadata for a specific domain
 intro   : This example shows how to show metadata for a specific domain.
 example : <<EOF
 var params = {
-    DomainName : an_unique_string'
+    DomainName : 'test-domain'
 };
 sdb.DomainMetadata(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:29:15 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { DomainMetadataResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        DomainMetadataResult:
+         { ItemCount: '3',
+           ItemNamesSizeBytes: '16',
+           AttributeNameCount: '2',
+           AttributeNamesSizeBytes: '27',
+           AttributeValueCount: '6',
+           AttributeValuesSizeBytes: '15',
+           Timestamp: '1351672156' },
+        ResponseMetadata:
+         { RequestId: '9f3560e0-e244-f466-51cb-6e5f02bef8e9',
+           BoxUsage: '0.0000071759' } } } }
 EOF
 ---
 name    : Select
@@ -196,10 +265,24 @@ sdb.BatchPutAttributes(params, function(err, data) {
     fmt.dump(data, 'Data');
 });
 EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:24:30 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { BatchPutAttributesResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        ResponseMetadata:
+         { RequestId: '1a07fb93-bb0c-8b20-bf3d-8d380cd7d1ab',
+           BoxUsage: '0.0000461838' } } } }
+EOF
 ---
 name    : DeleteAttributes
 title   : Delete data of an item
-intro   : This example shows how to delete all attributes (will delete the item). 
+intro   : This example shows how to delete all attributes (will delete the item).
 example : <<EOF
 // if "record1" item exists with "name" and "age" properties, code below will delete item
 var params = {
@@ -252,6 +335,24 @@ var params = {
                       ]
 };
 sdb.BatchDeleteAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetAttributes
+title   : Get a specific set of attributes from the item, rather than the entire item.
+intro   : This example shows how to get the age and height attributes for a particular Item.
+example : <<EOF
+var params = {
+    DomainName : 'person',
+    ItemName   : 'chilts',
+    AttributeName : [
+        'age', 'height'
+    ],
+};
+sdb.GetAttributes(params, function(err, data) {
+    fmt.msg("getting chilts - expecting success");
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
