@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 //
-// integration/amazon-s3.js - integration tests for Amazon S3
+// integration/amazon-s3-multipart.js - integration tests for Amazon S3
 //
 // Copyright (c) 2012 AppsAttic Ltd - http://www.appsattic.com/
 // Written by Andrew Chilton <chilts@appsattic.com>
