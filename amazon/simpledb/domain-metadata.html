@@ -40,7 +40,7 @@ sitemap : true
 <h4>Example</h4>
 <pre>
 var params = {
-    DomainName : an_unique_string'
+    DomainName : 'test-domain'
 };
 sdb.DomainMetadata(params, function(err, data) {
     fmt.dump(err, 'Error');
@@ -50,6 +50,31 @@ sdb.DomainMetadata(params, function(err, data) {
 </pre>
 
 
+
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:29:15 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { DomainMetadataResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        DomainMetadataResult:
+         { ItemCount: '3',
+           ItemNamesSizeBytes: '16',
+           AttributeNameCount: '2',
+           AttributeNamesSizeBytes: '27',
+           AttributeValueCount: '6',
+           AttributeValuesSizeBytes: '15',
+           Timestamp: '1351672156' },
+        ResponseMetadata:
+         { RequestId: '9f3560e0-e244-f466-51cb-6e5f02bef8e9',
+           BoxUsage: '0.0000071759' } } } }
+
+</pre>
 
 
 

@@ -79,6 +79,23 @@ sdb.BatchPutAttributes(params, function(err, data) {
 
 
 
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:24:30 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { BatchPutAttributesResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        ResponseMetadata:
+         { RequestId: '1a07fb93-bb0c-8b20-bf3d-8d380cd7d1ab',
+           BoxUsage: '0.0000461838' } } } }
+
+</pre>
+
 
 
 {% endcapture %}

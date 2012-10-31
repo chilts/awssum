@@ -51,6 +51,28 @@ sdb.ListDomains({}, function(err, data) {
 
 
 
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers:
+   { 'content-type': 'text/xml',
+     'transfer-encoding': 'chunked',
+     date: 'Wed, 31 Oct 2012 08:31:32 GMT',
+     server: 'Amazon SimpleDB' },
+  Body:
+   { ListDomainsResponse:
+      { '@': { xmlns: 'http://sdb.amazonaws.com/doc/2009-04-15/' },
+        ListDomainsResult:
+         { DomainName:
+            [ 'Account',
+              'Domain1',
+              'Record' ] },
+        ResponseMetadata:
+         { RequestId: '2e12896d-5bda-4aca-44e6-1fcd67648cd0',
+           BoxUsage: '0.0000071759' } } } }
+
+</pre>
+
 
 <h3>List a specific amount of domains</h3>
 <p>This example shows how to list only 10 domains.</p>

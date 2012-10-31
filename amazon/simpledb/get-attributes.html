@@ -43,6 +43,29 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Get a specific set of attributes from the item, rather than the entire item.</h3>
+<p>This example shows how to get the age and height attributes for a particular Item.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    DomainName : 'person',
+    ItemName   : 'chilts',
+    AttributeName : [
+        'age', 'height'
+    ],
+};
+sdb.GetAttributes(params, function(err, data) {
+    fmt.msg(&quot;getting chilts - expecting success&quot;);
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
