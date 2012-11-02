@@ -2,16 +2,16 @@ name    : SendMessage
 title   : Send a message onto a SQS queue
 intro   : This example shows how send a message onto a SQS queue to process later in order.
 example : <<EOF
-var params = {
-    aCertainType:'csv',
-    orAnotherProperty:'like a string',
-    yetAnotherProperty:true
-};
 var custom = {
-    QueueName : 'yourQueueName',
-    MessageBody : JSON.stringify(params)
+    aCertainType       : 'csv',
+    orAnotherProperty  : 'like a string',
+    yetAnotherProperty : true,
 };
-sqs.SendMessage(custom,function(err,data){
+var params = {
+    QueueName   : 'yourQueueName',
+    MessageBody : JSON.stringify(custom),
+};
+sqs.SendMessage(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -21,10 +21,74 @@ name    : ReceiveMessage
 title   : Receive a message from a SQS queue
 intro   : This example shows how to receive a message from a SQS queue to process and later execute SQS.DeleteMessage to clean up the SQS queue.
 example : <<EOF
-var custom = {
+var params = {
     QueueName : 'yourQueueName'
 };
-sqs.ReceiveMessage(custom,function(err,data){
+sqs.ReceiveMessage(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateQueue
+title   : Create a SQS queue
+intro   : This example shows how to create a queue to put messages onto.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName'
+};
+sqs.CreateQueue(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateQueue
+title   : Create a SQS queue with specific attributes
+intro   : This example shows how to create a queue to put messages onto. It shows how to adjust some default properties of a send SQS message onto this queue like the time (30 seconds) it will timeout before it is visible again for other SQS-processes.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : ['VisibilityTimeout'],
+    AttributeValue  : [30]
+};
+sqs.CreateQueue(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteQueue
+title   : Delete a SQS queue
+intro   : This example shows how to delete a queue.
+example : <<EOF
+var params = {
+    QueueName : 'yourQueueName',
+};
+sqs.DeleteQueue(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListQueues
+title   : List all queues
+intro   : This example shows how to list all queues
+example : <<EOF
+sqs.ListQueues({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListQueues
+title   : List all queues with a specific prefix
+intro   : This example shows how to list all queues starting with a specific prefix ("_dev")
+example : <<EOF
+var params = {
+    QueueNamePrefix : '_dev'
+}
+sqs.ListQueues(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

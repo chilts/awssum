@@ -1,0 +1,42 @@
+name    : Get
+title   : List instance metadata
+intro   : This example shows how to list instance metadata. This can only be run inside an instance!
+example : <<EOF
+sdb.Get(function(err, data) {
+    //fails
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+sdb.Get({},function(err, data) {
+    //fails
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+var params = {
+    Version  : 'latest',
+    Category : '/'
+};
+sdb.Get(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+var params = {
+    Version  : 'latest',
+    Category : '/meta-data/'
+};
+sdb.Get(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListApiVersions
+title   : List all instance metadata versions
+intro   : This example shows how to list all versions of instance metadata endpoints. This can only be run inside an instance!
+example : <<EOF
+sdb.ListApiVersions(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
