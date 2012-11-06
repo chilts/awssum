@@ -79,3 +79,16 @@ s3.PutObject(optionsWithCacheControl, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+
+var paramsWithUnicodeObjectName = {
+    BucketName    : 'pie-18',
+    ObjectName    : 'München.txt',
+    ContentLength : Buffer.byteLength(body),
+    Body          : body,
+};
+
+s3.PutObject(paramsWithUnicodeObjectName, function(err, data) {
+    fmt.msg("putting an object name with unicode to pie-18 - expecting success");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
