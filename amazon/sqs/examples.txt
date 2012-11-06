@@ -1,6 +1,6 @@
 name    : SendMessage
 title   : Send a message onto a SQS queue
-intro   : This example shows how send a message onto a SQS queue to process later in order.
+intro   : This example shows how to send a message onto a SQS queue to process later in order.
 example : <<EOF
 var custom = {
     aCertainType       : 'csv',
@@ -15,6 +15,42 @@ sqs.SendMessage(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+EOF
+---
+name    : SendMessageBatch
+title   : Send a batch of messages onto a SQS queue
+intro   : This example shows how to send a batch of messages (maximum of 10 and per message maximum of 64 kB) onto a SQS queue to process later in order. The Id-property needs to be unique and can be used in combination with the returned MessageId (see its result) into your own database/system. Using DelaySeconds makes it possible to hide a certain message a little bit longer (maximum of 900s = 15 minutes).
+example : <<EOF
+var params = {
+    QueueName   : 'yourQueueName',
+    Id          : ['uniqueIdentifier1','uniqueIdentifier2'],
+    MessageBody : [JSON.stringify({name:'Hello World',age:30}),JSON.stringify({name:'Bye Bye World',age:20})],
+    DelaySeconds: [undefined,20]
+};
+sqs.SendMessageBatch(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': '9664f577-9c82-59bd-92ec-bc8b265a2b46',
+     'content-type': 'text/xml',
+     'content-length': '494' },
+  Body: 
+   { SendMessageBatchResponse: 
+      { '@': { xmlns: 'http://queue.amazonaws.com/doc/2011-10-01/' },
+        SendMessageBatchResult: 
+         { SendMessageBatchResultEntry: 
+            [ { Id: 'uniqueIdentifier1',
+                MessageId: '9e923943-e848-467c-925c-07978d237598',
+                MD5OfMessageBody: '87b2b729e784cecb135a06d7b3e483de' },
+              { Id: 'uniqueIdentifier2',
+                MessageId: '3bdb86ce-c194-422c-9694-e3fc38b473aa',
+                MD5OfMessageBody: '15f1705b29d2aca7308f01c50c766c22' },
+            ] },
+        ResponseMetadata: { RequestId: '58d0c18a-6765-5ed1-9b4f-8898d31d05ae' } } } }
 EOF
 ---
 name    : ReceiveMessage
@@ -89,6 +125,166 @@ var params = {
     QueueNamePrefix : '_dev'
 }
 sqs.ListQueues(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetQueueUrl
+title   : List the URL of a certain queue
+intro   : This example shows how to list the URL of a certain queue. This can be useful in combination with the QueueOwnerAWSAccountId-property you can add to the params to retrieve other queues from other accounts to send messages to or process them.
+example : <<EOF
+var params = {
+    QueueName : 'yourQueueName'
+}
+sqs.GetQueueUrl(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetQueueAttributes
+title   : List the attributes of a SQS queue.
+intro   : This example shows how to list the attributes of a SQS queue. The AttributeName is uppercase-sensitive so "all" will not work, but "All" will!
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : 'All'
+}
+sqs.GetQueueAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetQueueAttributes
+title   : List a specific attribute of a SQS queue.
+intro   : This example shows how to list a specific attribute (like when the queue was created) of a SQS queue. The AttributeName is uppercase-sensitive so "createdtimestamp" will not work, but "CreatedTimestamp" will! Use the array to add more attributes to embed in the response.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : ['CreatedTimestamp']
+}
+sqs.GetQueueAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteMessageBatch
+title   : Delete a batch of messages from a SQS queue
+intro   : This example shows how to delete a batch of messages (maximum of 10) from a SQS queue to process later in order. Use the Id and ReceiptHandler provided by the response after you received a message to process.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    Id              : ['9e923943-e848-467c-925c-07978d237598','c4a3ebbd-32b0-4002-912b-58fc2a466ab5'],
+    ReceiptHandle   : ['gH2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXB4egXJwpdOuhkUZkYMAwgq8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn0DoBDC8aobfWPfMkw2WnTYysprMBG6zfMpovVTEv/BQxdURnYUBSy3xpVyi2VYLoT+2wfTR5Bnl8Ahn7lCan5bhrdV96t5PZQ=', 'gH2qdC6bjNu4uetfi3ehraNUYfsLUF6l1UNeSCV7wcq0e31koLju3LrdxOfu5qwh/+S3hj6WEy9RPCUs883HyOBNBKLfyx0yA31d3FdiW0ykxNIMe4GjSAhYNFHUY/2ioVLTkY1A63F/bRaEGRTTHNCwC5l3THP2mJJ5Lc2UiDJP4zCGKbLtzNOMOABObHC24iL9AwbT2OQLlFnJU5btroaQl23pVwZZWaiaZSzyTvPuuyYb8WRVYrqo1wJZWiGwxpVyi2VYLoRGqxm5qGQenoArC0TbVK1+jdXX48e6cLI=']
+};
+sqs.DeleteMessageBatch(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': '9664f599-9c82-59bd-92ec-bc8b265a2b46',
+     'content-type': 'text/xml',
+     'content-length': '494' },
+  Body: 
+   { DeleteMessageBatchResponse: 
+      { '@': { xmlns: 'http://queue.amazonaws.com/doc/2011-10-01/' },
+        DeleteMessageBatchResult: 
+         { DeleteMessageBatchResultEntry: 
+            [ { Id: 'c4a3ebbd-32b0-4002-912b-58fc2a466ab5' },
+              { Id: '9e923943-e848-467c-925c-07978d237598' } ] },
+        ResponseMetadata: { RequestId: '9664f599-9c82-59bd-92ec-bc8b265a2b46' } } } }
+EOF
+---
+name    : DeleteMessage
+title   : Delete a specific message from a SQS queue.
+intro   : This example shows how to delete a specific message from a SQS queue.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    ReceiptHandle   : 'gH2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXDF9nYKO6ir02WWUq+cLOUS8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn1YbcnLUfDKUvlWOm/ydmoG4AWpGj3zc/0iXi0HB3TLog3/IugISNtuxpVyi2VYLoSq2Z1DXCAF5rVVWIcaTKOtu+25hgk0bpQ='
+}
+sqs.DeleteMessage(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : SetQueueAttributes
+title   : Set a specific attribute of a SQS queue.
+intro   : This example shows how to set a specific attribute of a SQS queue. Valid attributes are VisibilityTimeout, Policy, MaximumMessageSize, MessageRetentionPeriod or DelaySeconds. No Array is allowed, so you need to update per attribute.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : 'DelaySeconds',
+    AttributeValue  : 30
+}
+sqs.SetQueueAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ChangeMessageVisibility
+title   : Update the VisibilityTimeout property of a specific message in a SQS queue.
+intro   : This example shows how to update the VisibilityTimeout property of a specific message in a SQS queue. No Array is allowed, so you need to update the visibility per message.
+example : <<EOF
+var params = {
+    QueueName           : 'yourQueueName',
+    VisibilityTimeout   : 40,
+    ReceiptHandle       : 'gH2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXDF9nYKO6ir02WWUq+cLOUS8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn1YbcnLUfDKUvlWOm/ydmoG4AWpGj3zc/0iXi0HB3TLog3/IugISNtuxpVyi2VYLoSq2Z1DXCAF5rVVWIcaTKOtu+25hgk0bpQ='
+}
+sqs.ChangeMessageVisibility(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ChangeMessageVisibilityBatch
+title   : Update a batch of messages with their VisibilityTimeout property in a SQS queue.
+intro   : This example shows how to update a batch of messages with their VisibilityTimeout property in a SQS queue.
+example : <<EOF
+var params = {
+    QueueName           : 'yourQueueName',
+    Id                  : ['c4a3ebbd-32b0-4002-912b-58fc2a466ab5','9e923943-e848-467c-925c-07978d237598' ],
+    ReceiptHandle       : ['gH2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXDF9nYKO6ir02WWUq+cLOUS8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn1YbcnLUfDKUvlWOm/ydmoG4AWpGj3zc/0iXi0HB3TLog3/IugISNtuxpVyi2VYLoSq2Z1DXCAF5rVVWIcaTKOtu+25hgk0bpQ=','xx2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXDF9nYKO6ir02WWUq+cLOUS8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn1YbcnLUfDKUvlWOm/ydmoG4AWpGj3zc/0iXi0HB3TLog3/IugISNtuxpVyi2VYLoSq2Z1DXCAF5rVVWIcaTKOtu+25hgk0bpA='],
+    VisibilityTimeout   : [20,0]
+}sqs.ChangeMessageVisibilityBatch(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : AddPermission
+title   : Share access to a SQS queue.
+intro   : This example shows how to share access to a SQS queue. Ensure the AWSAccountId has NO hyphens ('-'). This example shows also how to differentiate between other users that may or may not send or receive a message. ActionName allows the following values: SendMessage, ReceiveMessage, DeleteMessage, ChangeMessageVisibility, GetQueueAttributes or GetQueueUrl. Ensure you use AwsAccountId and not AWSAccountId while Awssum will take care of that change.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    Label           : 'uniquePurposeName',
+    AwsAccountId    : ['123456789101','123456789102'],
+    ActionName      : ['SendMessage','ReceiveMessage']
+}
+sqs.AddPermission(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : RemovePermission
+title   : Delete access to a SQS queue.
+intro   : This example shows how to delete access to a SQS queue.
+example : <<EOF
+var params = {
+    QueueName       : 'yourQueueName',
+    Label           : 'uniquePurposeName'
+}
+sqs.RemovePermission(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
