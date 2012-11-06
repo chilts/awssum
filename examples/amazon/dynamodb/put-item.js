@@ -68,3 +68,16 @@ ddb.PutItem(user3, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+
+// test a non-unicode character
+ddb.PutItem({
+    TableName : 'test',
+    Item : {
+        id : { S : '1' },
+        data : { S : 'München' },
+    },
+}, function(err, data) {
+    fmt.msg("a unicode character - expecting failure, fails conditional");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});

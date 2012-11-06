@@ -53,3 +53,14 @@ sqs.SendMessage(optionsMyQueueDelayed, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+
+var paramsWithUnicode = {
+    QueueName    : 'my-queue',
+    MessageBody  : 'München',
+};
+
+sqs.SendMessage(paramsWithUnicode, function(err, data) {
+    fmt.msg("Sending a message with unicode in it - expecting success");
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});

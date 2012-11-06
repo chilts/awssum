@@ -48,4 +48,42 @@ test('DynamoDB:ListTables - (1) Standard', function(t) {
     });
 });
 
+test('DynamoDB:PutItem - (2) without unicode character', function(t) {
+    var opts = {};
+
+    dynamodb.PutItem({
+        TableName : 'test',
+        Item : {
+            id : { S : '1' },
+            data : { S : 'Munich' },
+        },
+    }, function(err, data) {
+        console.log(data);
+        t.ok(err, 'DynamoDB:PutItem - (2) without unicode character');
+        t.equal(err.StatusCode, 400, 'Table test does not exist');
+        t.equal(err.Body.message, 'Requested resource not found', 'Error message');
+        t.end();
+    });
+
+});
+
+test('DynamoDB:PutItem - (3) with unicode character', function(t) {
+    var opts = {};
+
+    dynamodb.PutItem({
+        TableName : 'test',
+        Item : {
+            id : { S : '1' },
+            data : { S : 'München' },
+        },
+    }, function(err, data) {
+        console.log(err);
+        t.ok(err, 'DynamoDB:PutItem - (2) without unicode character');
+        t.equal(err.StatusCode, 400, 'Table test does not exist');
+        t.equal(err.Body.message, 'Requested resource not found', 'Error message');
+        t.end();
+    });
+
+});
+
 // --------------------------------------------------------------------------------------------------------------------

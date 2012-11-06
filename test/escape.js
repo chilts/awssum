@@ -28,8 +28,15 @@ test("test our own esc(...)", function (t) {
 
     var url = 'http://example.com/request';
     var escUrl = esc(url);
-    console.log(url, escUrl);
     t.equal(escUrl, 'http%3A%2F%2Fexample.com%2Frequest', 'Escaping of a URL');
+
+    var unicode = 'München';
+    var escUnicode = esc(unicode);
+    t.equal(escUnicode, 'M%C3%BCnchen', 'Escaping of a char with Unicode in it');
+
+    var percent = '%';
+    var escPercent = esc(percent);
+    t.equal(escPercent, '%25', 'Escaping of the % sign (so it only happens once)');
 
     t.end();
 });
