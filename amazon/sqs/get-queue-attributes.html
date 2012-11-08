@@ -37,6 +37,44 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List the attributes of a SQS queue.</h3>
+<p>This example shows how to list the attributes of a SQS queue. The AttributeName is uppercase-sensitive so "all" will not work, but "All" will!</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : 'All'
+}
+sqs.GetQueueAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List a specific attribute of a SQS queue.</h3>
+<p>This example shows how to list a specific attribute (like when the queue was created) of a SQS queue. The AttributeName is uppercase-sensitive so "createdtimestamp" will not work, but "CreatedTimestamp" will! Use the array to add more attributes to embed in the response.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : ['CreatedTimestamp']
+}
+sqs.GetQueueAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

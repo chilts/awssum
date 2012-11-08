@@ -34,6 +34,39 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all queues</h3>
+<p>This example shows how to list all queues</p>
+
+<h4>Example</h4>
+<pre>
+sqs.ListQueues({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List all queues with a specific prefix</h3>
+<p>This example shows how to list all queues starting with a specific prefix ("_dev")</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueNamePrefix : '_dev'
+}
+sqs.ListQueues(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

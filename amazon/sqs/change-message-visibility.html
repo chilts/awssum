@@ -40,6 +40,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Update the VisibilityTimeout property of a specific message in a SQS queue.</h3>
+<p>This example shows how to update the VisibilityTimeout property of a specific message in a SQS queue. No Array is allowed, so you need to update the visibility per message.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName           : 'yourQueueName',
+    VisibilityTimeout   : 40,
+    ReceiptHandle       : 'gH2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXDF9nYKO6ir02WWUq+cLOUS8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn1YbcnLUfDKUvlWOm/ydmoG4AWpGj3zc/0iXi0HB3TLog3/IugISNtuxpVyi2VYLoSq2Z1DXCAF5rVVWIcaTKOtu+25hgk0bpQ='
+}
+sqs.ChangeMessageVisibility(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

@@ -26,6 +26,21 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all instance metadata versions</h3>
+<p>This example shows how to list all versions of instance metadata endpoints. This can only be run inside an instance!</p>
+
+<h4>Example</h4>
+<pre>
+sdb.ListApiVersions(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

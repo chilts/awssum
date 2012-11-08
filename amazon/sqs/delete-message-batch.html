@@ -40,6 +40,44 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete a batch of messages from a SQS queue</h3>
+<p>This example shows how to delete a batch of messages (maximum of 10) from a SQS queue to process later in order. Use the Id and ReceiptHandler provided by the response after you received a message to process.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName       : 'yourQueueName',
+    Id              : ['9e923943-e848-467c-925c-07978d237598','c4a3ebbd-32b0-4002-912b-58fc2a466ab5'],
+    ReceiptHandle   : ['gH2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXB4egXJwpdOuhkUZkYMAwgq8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn0DoBDC8aobfWPfMkw2WnTYysprMBG6zfMpovVTEv/BQxdURnYUBSy3xpVyi2VYLoT+2wfTR5Bnl8Ahn7lCan5bhrdV96t5PZQ=', 'gH2qdC6bjNu4uetfi3ehraNUYfsLUF6l1UNeSCV7wcq0e31koLju3LrdxOfu5qwh/+S3hj6WEy9RPCUs883HyOBNBKLfyx0yA31d3FdiW0ykxNIMe4GjSAhYNFHUY/2ioVLTkY1A63F/bRaEGRTTHNCwC5l3THP2mJJ5Lc2UiDJP4zCGKbLtzNOMOABObHC24iL9AwbT2OQLlFnJU5btroaQl23pVwZZWaiaZSzyTvPuuyYb8WRVYrqo1wJZWiGwxpVyi2VYLoRGqxm5qGQenoArC0TbVK1+jdXX48e6cLI=']
+};
+sqs.DeleteMessageBatch(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': '9664f599-9c82-59bd-92ec-bc8b265a2b46',
+     'content-type': 'text/xml',
+     'content-length': '494' },
+  Body: 
+   { DeleteMessageBatchResponse: 
+      { '@': { xmlns: 'http://queue.amazonaws.com/doc/2011-10-01/' },
+        DeleteMessageBatchResult: 
+         { DeleteMessageBatchResultEntry: 
+            [ { Id: 'c4a3ebbd-32b0-4002-912b-58fc2a466ab5' },
+              { Id: '9e923943-e848-467c-925c-07978d237598' } ] },
+        ResponseMetadata: { RequestId: '9664f599-9c82-59bd-92ec-bc8b265a2b46' } } } }
+
+</pre>
+
+
 
 {% endcapture %}
 

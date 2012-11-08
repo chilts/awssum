@@ -40,6 +40,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Set a specific attribute of a SQS queue.</h3>
+<p>This example shows how to set a specific attribute of a SQS queue. Valid attributes are VisibilityTimeout, Policy, MaximumMessageSize, MessageRetentionPeriod or DelaySeconds. No Array is allowed, so you need to update per attribute.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : 'DelaySeconds',
+    AttributeValue  : 30
+}
+sqs.SetQueueAttributes(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

@@ -43,6 +43,27 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Share access to a SQS queue.</h3>
+<p>This example shows how to share access to a SQS queue. Ensure the AWSAccountId has NO hyphens ('-'). This example shows also how to differentiate between other users that may or may not send or receive a message. ActionName allows the following values: SendMessage, ReceiveMessage, DeleteMessage, ChangeMessageVisibility, GetQueueAttributes or GetQueueUrl. Ensure you use AwsAccountId and not AWSAccountId while Awssum will take care of that change.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName       : 'yourQueueName',
+    Label           : 'uniquePurposeName',
+    AwsAccountId    : ['123456789101','123456789102'],
+    ActionName      : ['SendMessage','ReceiveMessage']
+}
+sqs.AddPermission(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

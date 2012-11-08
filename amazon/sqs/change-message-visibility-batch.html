@@ -43,6 +43,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Update a batch of messages with their VisibilityTimeout property in a SQS queue.</h3>
+<p>This example shows how to update a batch of messages with their VisibilityTimeout property in a SQS queue.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName           : 'yourQueueName',
+    Id                  : ['c4a3ebbd-32b0-4002-912b-58fc2a466ab5','9e923943-e848-467c-925c-07978d237598' ],
+    ReceiptHandle       : ['gH2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXDF9nYKO6ir02WWUq+cLOUS8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn1YbcnLUfDKUvlWOm/ydmoG4AWpGj3zc/0iXi0HB3TLog3/IugISNtuxpVyi2VYLoSq2Z1DXCAF5rVVWIcaTKOtu+25hgk0bpQ=','xx2qdC6bjNv9VUWO+U492aNUYfsLUF6lheIGSXHeZAIR8LJmnJGMXDF9nYKO6ir02WWUq+cLOUS8TjG0r7g1tjJq2fIvNog9VottmC/a8zma0Lmtng/GxaBOcdUXaDCW222J0LM0nvD8ayKYYFiaK746Ue06+deovCKfhFCincR5WwRUWPA6t6iXoGeHny3fZKyaMkvYVn1YbcnLUfDKUvlWOm/ydmoG4AWpGj3zc/0iXi0HB3TLog3/IugISNtuxpVyi2VYLoSq2Z1DXCAF5rVVWIcaTKOtu+25hgk0bpA='],
+    VisibilityTimeout   : [20,0]
+}sqs.ChangeMessageVisibilityBatch(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

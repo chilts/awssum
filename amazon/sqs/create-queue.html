@@ -40,6 +40,44 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Create a SQS queue</h3>
+<p>This example shows how to create a queue to put messages onto.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName       : 'yourQueueName'
+};
+sqs.CreateQueue(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>Create a SQS queue with specific attributes</h3>
+<p>This example shows how to create a queue to put messages onto. It shows how to adjust some default properties of a send SQS message onto this queue like the time (30 seconds) it will timeout before it is visible again for other SQS-processes.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName       : 'yourQueueName',
+    AttributeName   : ['VisibilityTimeout'],
+    AttributeValue  : [30]
+};
+sqs.CreateQueue(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

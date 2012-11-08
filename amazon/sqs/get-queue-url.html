@@ -37,6 +37,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List the URL of a certain queue</h3>
+<p>This example shows how to list the URL of a certain queue. This can be useful in combination with the QueueOwnerAWSAccountId-property you can add to the params to retrieve other queues from other accounts to send messages to or process them.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName : 'yourQueueName'
+}
+sqs.GetQueueUrl(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

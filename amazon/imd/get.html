@@ -34,6 +34,43 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List instance metadata</h3>
+<p>This example shows how to list instance metadata. This can only be run inside an instance!</p>
+
+<h4>Example</h4>
+<pre>
+sdb.Get(function(err, data) {
+    //fails
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+sdb.Get({},function(err, data) {
+    //fails
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+var params = {
+    Version  : 'latest',
+    Category : '/'
+};
+sdb.Get(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+var params = {
+    Version  : 'latest',
+    Category : '/meta-data/'
+};
+sdb.Get(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

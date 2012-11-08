@@ -41,20 +41,20 @@ sitemap : true
 
 
 <h3>Send a message onto a SQS queue</h3>
-<p>This example shows how send a message onto a SQS queue to process later in order.</p>
+<p>This example shows how to send a message onto a SQS queue to process later in order.</p>
 
 <h4>Example</h4>
 <pre>
-var params = {
+var custom = {
     aCertainType       : 'csv',
     orAnotherProperty  : 'like a string',
     yetAnotherProperty : true,
 };
-var custom = {
+var params = {
     QueueName   : 'yourQueueName',
-    MessageBody : JSON.stringify(params),
+    MessageBody : JSON.stringify(custom),
 };
-sqs.SendMessage(custom, function(err, data) {
+sqs.SendMessage(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

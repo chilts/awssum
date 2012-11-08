@@ -43,6 +43,50 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Send a batch of messages onto a SQS queue</h3>
+<p>This example shows how to send a batch of messages (maximum of 10 and per message maximum of 64 kB) onto a SQS queue to process later in order. The Id-property needs to be unique and can be used in combination with the returned MessageId (see its result) into your own database/system. Using DelaySeconds makes it possible to hide a certain message a little bit longer (maximum of 900s = 15 minutes).</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    QueueName   : 'yourQueueName',
+    Id          : ['uniqueIdentifier1','uniqueIdentifier2'],
+    MessageBody : [JSON.stringify({name:'Hello World',age:30}),JSON.stringify({name:'Bye Bye World',age:20})],
+    DelaySeconds: [undefined,20]
+};
+sqs.SendMessageBatch(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': '9664f577-9c82-59bd-92ec-bc8b265a2b46',
+     'content-type': 'text/xml',
+     'content-length': '494' },
+  Body: 
+   { SendMessageBatchResponse: 
+      { '@': { xmlns: 'http://queue.amazonaws.com/doc/2011-10-01/' },
+        SendMessageBatchResult: 
+         { SendMessageBatchResultEntry: 
+            [ { Id: 'uniqueIdentifier1',
+                MessageId: '9e923943-e848-467c-925c-07978d237598',
+                MD5OfMessageBody: '87b2b729e784cecb135a06d7b3e483de' },
+              { Id: 'uniqueIdentifier2',
+                MessageId: '3bdb86ce-c194-422c-9694-e3fc38b473aa',
+                MD5OfMessageBody: '15f1705b29d2aca7308f01c50c766c22' },
+            ] },
+        ResponseMetadata: { RequestId: '58d0c18a-6765-5ed1-9b4f-8898d31d05ae' } } } }
+
+</pre>
+
+
 
 {% endcapture %}
 

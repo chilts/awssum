@@ -48,10 +48,10 @@ sitemap : true
 
 <h4>Example</h4>
 <pre>
-var custom = {
-    QueueName : 'yourQueueName',
+var params = {
+    QueueName : 'yourQueueName'
 };
-sqs.ReceiveMessage(custom, function(err, data) {
+sqs.ReceiveMessage(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
