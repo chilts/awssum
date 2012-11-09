@@ -11,7 +11,15 @@ sitemap : true
 
 {% capture main %}
 
-  <h2>Amazon IMD</h2>
+  <h2>Loading AwsSum's Amazon IMD</h2>
+  
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var Imd = awssum.load('amazon/imd').Imd;
+
+var imd = new Imd();
+{% endhighlight %}
 
 {% endcapture %}
 
