@@ -1,0 +1,122 @@
+name    : GetSessionToken
+title   : Get session token
+intro   : This example shows how to get default temporary security credentials. 
+example : <<EOF
+sqs.GetSessionToken({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+result: <<EOF
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': '3d324a62-2973-11e2-ae41-79f1af3bd71f',
+     'content-type': 'text/xml',
+     'content-length': '808',
+     date: 'Thu, 08 Nov 2012 07:09:29 GMT' },
+  Body: 
+  {
+      GetSessionTokenResponse: 
+      {'@': { xmlns: 'https://sts.amazonaws.com/doc/2011-06-15/' },
+        GetSessionTokenResult:
+            { Credentials: 
+                { SessionToken: 'AQoDYXdzEBAawAEttT0Xk79cmqvyh3N6f24TwXyXRPN//tIBFKpX3BEuflIf/lt0fp6vS6e80oabccD7n3pN8j6hihR0n1L0X13BFCUzEritaxpYncz860lUBm0Y6Oh4ML1+9rn0opWAzPxY1Cgt7Nrf5NNXjs9mj/yedaQPxZe7q2GUAZBJ+0Xev7WLqF1caKZ4R2oaU7IqID1udcRNFZevzO+7Pa40NjqW2fIJ1c3mL3BVpdTfE8VoThGAjE4MBTNUKzEZgS9jkPQgqbXthAU=',
+                    SecretAccessKey: '0Bb9qB4mtdneMF02TqP7GeXs/xhU7Ic5IrPfBnpl',
+                    Expiration: '2012-11-08T19:09:29.926Z',
+                    AccessKeyId: 'ASIAJEMHOHKAKBBCW3LQ' 
+                }
+            }
+       },
+       ResponseMetadata: { RequestId: '3d324a62-2973-11e2-ae41-79f1af3bd71f' } 
+  }
+}
+EOF
+---
+name    : GetSessionToken
+title   : Get session token for 14 hours
+intro   : This example shows how to get temporary security credentials that last 14 hours. Your temporary credentials can last between 1 and 36 hours and are default set to 12 hours.
+example : <<EOF
+var params = {
+    DurationSeconds : 50400
+}
+sqs.GetSessionToken(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetSessionToken
+title   : Get session token through your MFA-device
+intro   : This example shows how to get temporary security credentials through an connected MFA-device.
+example : <<EOF
+var params = {
+    SerialNumber : 'arn:aws:iam::123456789012:mfa/user',
+    TokenCode    : '123456'
+}
+/* OR
+var params = {
+    SerialNumber : 'GAHT12345678',
+    TokenCode    : '123456'
+}
+*/
+sqs.GetSessionToken(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetFederationToken
+title   : Get federation token for specific IAM user
+intro   : This example shows how to get temporary security credentials for a specific IAM user. Your temporary credentials can last between 1 and 36 hours and are default set to 12 hours (DurationSeconds).
+example : <<EOF
+var params = {
+    Name            : 'uniquename',
+    DurationSeconds : 50400
+}
+sqs.GetFederationToken(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': 'e7d734a2-2971-11e2-b5f2-0b6d4b944a6d',
+     'content-type': 'text/xml',
+     'content-length': '1070',
+     date: 'Thu, 08 Nov 2012 06:59:56 GMT' },
+  Body: 
+  { GetFederationTokenResponse: 
+      { '@': { xmlns: 'https://sts.amazonaws.com/doc/2011-06-15/' },
+        GetFederationTokenResult: 
+            { Credentials: 
+                { SessionToken: 'AQoDYXdzEBAa4AHZpqYTNJ+BRuddfeWK1BK4taC6AE16d5Ubj0/Duw0KoO6cDiqO33GZSg8xxKk6TN1w19adSb75Kx+COYCUkIpZ0tazyLA/PV6f1i+YQogFuuVA1KSGcj9B1tEGGOXIeXAaXIsIIxW01BwLeWfp7SNL/b1or17d/ACjHsQFPUc8rD6Z9XNTL1jxOPeByz669m0DWdyTht4DZ44T9wqjVEKWvipbRogkYTgBuZJd5GRPOv5I4CHCUROVfdbauBg4u8x/btsvd8PO/UW/1nSwmKB/yeA/8XQUDSWTbso2HDcMiCDtsO2EBQ==',
+                 SecretAccessKey: 'vh6+WeDvZjD2yU9OQNS6gSwdKwbGjLcAAK87vvCd',
+                 Expiration: '2012-11-08T07:59:57.228Z',
+                 AccessKeyId: 'ASIAJDRTJKPR7CCIZL6A' 
+                },
+              FederatedUser: 
+                { Arn: 'arn:aws:sts::264958299490:federated-user/uniquename',
+                  FederatedUserId: '264958299490:uniquename' },
+              PackedPolicySize: '4' 
+            }
+      }
+      ResponseMetadata: { RequestId: 'e7d734a2-2971-11e2-b5f2-0b6d4b944a6d' } 
+  }
+}
+EOF
+---
+name    : GetFederationToken
+title   : Get federation token with a specific policy
+intro   : This example shows how to get temporary security credentials with a specific policy. You will standard IAM policies and in this case it will allow all services on all resources. It will use the default duration (12 hours) while we omitted the DurationSeconds-property.
+example : <<EOF
+var params = {
+    Name    : 'uniquename',
+    Policy  :'{"Statement": [{"Effect": "Allow","Action": "*","Resource": "*"}]}'
+}
+sqs.GetFederationToken(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
