@@ -43,6 +43,84 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all saved metrics</h3>
+<p>This example shows how to list all saved metrics.</p>
+
+<h4>Example</h4>
+<pre>
+cw.ListMetrics({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+cw.ListMetrics(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': 'db663d89-2a35-11e2-979b-a7ae25374ec4',
+     'content-type': 'text/xml',
+     'content-length': '21555',
+     date: 'Fri, 09 Nov 2012 06:22:37 GMT' },
+  Body: 
+   { ListMetricsResponse: 
+      { '@': { xmlns: 'http://monitoring.amazonaws.com/doc/2010-08-01/' },
+        ListMetricsResult: 
+         { Metrics: 
+            { member: 
+               [ { Dimensions: { member: { Name: 'VolumeId', Value: 'vol-3eb61914' } },
+                   MetricName: 'VolumeTotalReadTime',
+                   Namespace: 'AWS/EBS' },
+                 { Dimensions: { member: { Name: 'VolumeId', Value: 'vol-c28f20e8' } },
+                   MetricName: 'VolumeReadOps',
+                   Namespace: 'AWS/EBS' },
+                 { Dimensions: { member: { Name: 'QueueName', Value: 'ochtendtest' } },
+                   MetricName: 'NumberOfMessagesSent',
+                   Namespace: 'AWS/SQS' },
+                 { Dimensions: { member: { Name: 'VolumeId', Value: 'vol-c28f20e8' } },
+                   MetricName: 'VolumeTotalWriteTime',
+                   Namespace: 'AWS/EBS' },
+                 { Dimensions: { member: { Name: 'VolumeId', Value: 'vol-2a993200' } },
+                   MetricName: 'VolumeTotalWriteTime',
+                   Namespace: 'AWS/EBS' },
+                 { Dimensions: { member: { Name: 'InstanceId', Value: 'i-79ea3031' } },
+                   MetricName: 'DiskWriteOps',
+                   Namespace: 'AWS/EC2' },
+                 { Dimensions: { member: { Name: 'InstanceId', Value: 'i-5026b11b' } },
+                   MetricName: 'DiskWriteBytes',
+                   Namespace: 'AWS/EC2' } ] } },
+        ResponseMetadata: { RequestId: 'db663d89-2a35-11e2-979b-a7ae25374ec4' } } } }
+}
+
+</pre>
+
+
+<h3>List all saved metrics</h3>
+<p>This example shows how to list all saved metrics.</p>
+
+<h4>Example</h4>
+<pre>
+cw.ListMetrics({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+cw.ListMetrics(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

@@ -39,12 +39,12 @@ sitemap : true
 
 <h4>Example</h4>
 <pre>
-sdb.Get(function(err, data) {
+imd.Get(function(err, data) {
     //fails
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
-sdb.Get({},function(err, data) {
+imd.Get({},function(err, data) {
     //fails
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -53,7 +53,7 @@ var params = {
     Version  : 'latest',
     Category : '/'
 };
-sdb.Get(params,function(err, data) {
+imd.Get(params,function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
@@ -61,7 +61,7 @@ var params = {
     Version  : 'latest',
     Category : '/meta-data/'
 };
-sdb.Get(params,function(err, data) {
+imd.Get(params,function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

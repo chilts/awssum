@@ -40,6 +40,74 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Get federation token for specific IAM user</h3>
+<p>This example shows how to get temporary security credentials for a specific IAM user. Your temporary credentials can last between 1 and 36 hours and are default set to 12 hours (DurationSeconds).</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    Name            : 'uniquename',
+    DurationSeconds : 50400
+}
+sqs.GetFederationToken(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': 'e7d734a2-2971-11e2-b5f2-0b6d4b944a6d',
+     'content-type': 'text/xml',
+     'content-length': '1070',
+     date: 'Thu, 08 Nov 2012 06:59:56 GMT' },
+  Body: 
+  { GetFederationTokenResponse: 
+      { '@': { xmlns: 'https://sts.amazonaws.com/doc/2011-06-15/' },
+        GetFederationTokenResult: 
+            { Credentials: 
+                { SessionToken: 'AQoDYXdzEBAa4AHZpqYTNJ+BRuddfeWK1BK4taC6AE16d5Ubj0/Duw0KoO6cDiqO33GZSg8xxKk6TN1w19adSb75Kx+COYCUkIpZ0tazyLA/PV6f1i+YQogFuuVA1KSGcj9B1tEGGOXIeXAaXIsIIxW01BwLeWfp7SNL/b1or17d/ACjHsQFPUc8rD6Z9XNTL1jxOPeByz669m0DWdyTht4DZ44T9wqjVEKWvipbRogkYTgBuZJd5GRPOv5I4CHCUROVfdbauBg4u8x/btsvd8PO/UW/1nSwmKB/yeA/8XQUDSWTbso2HDcMiCDtsO2EBQ==',
+                 SecretAccessKey: 'vh6+WeDvZjD2yU9OQNS6gSwdKwbGjLcAAK87vvCd',
+                 Expiration: '2012-11-08T07:59:57.228Z',
+                 AccessKeyId: 'ASIAJDRTJKPR7CCIZL6A' 
+                },
+              FederatedUser: 
+                { Arn: 'arn:aws:sts::264958299490:federated-user/uniquename',
+                  FederatedUserId: '264958299490:uniquename' },
+              PackedPolicySize: '4' 
+            }
+      }
+      ResponseMetadata: { RequestId: 'e7d734a2-2971-11e2-b5f2-0b6d4b944a6d' } 
+  }
+}
+
+</pre>
+
+
+<h3>Get federation token with a specific policy</h3>
+<p>This example shows how to get temporary security credentials with a specific policy. You will standard IAM policies and in this case it will allow all services on all resources. It will use the default duration (12 hours) while we omitted the DurationSeconds-property.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    Name    : 'uniquename',
+    Policy  :'{&quot;Statement&quot;: [{&quot;Effect&quot;: &quot;Allow&quot;,&quot;Action&quot;: &quot;*&quot;,&quot;Resource&quot;: &quot;*&quot;}]}'
+}
+sqs.GetFederationToken(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
