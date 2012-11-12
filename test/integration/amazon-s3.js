@@ -174,4 +174,21 @@ test('S3:GetObject - With a Range Header', function(t) {
     });
 });
 
+test('S3:PutObject - with unicode', function(t) {
+    var body = "Hello, World!\n";
+
+    var args = {
+        BucketName    : bucket,
+        ObjectName    : 'münchen.txt',
+        ContentLength : Buffer.byteLength(body),
+        Body          : body,
+    };
+
+    s3.PutObject(args, function(err, data) {
+        t.equal(err, null, 'S3:PutObject - with unicode : Error should be null');
+        t.ok(data, 'S3:PutObject - with unicode : data ok');
+        t.end();
+    });
+});
+
 // --------------------------------------------------------------------------------------------------------------------
