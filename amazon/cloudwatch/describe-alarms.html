@@ -49,6 +49,61 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all alarms</h3>
+<p>This example shows how to list all alarms.</p>
+
+<h4>Example</h4>
+<pre>
+cw.DescribeAlarms({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+cw.DescribeAlarms(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List all alarms with a specific state</h3>
+<p>This example shows how to list all alarms with a specific state. Values of StateValue can be "OK", "ALARM" or "INSUFFICIENT_DATA".</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    StateValue : 'INSUFFICIENT_DATA'
+}
+cw.DescribeAlarms(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List all alarms with a specific state</h3>
+<p>This example shows how to list all alarms with a specific state. Values of StateValue can be "OK", "ALARM" or "INSUFFICIENT_DATA".</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    StateValue : 'INSUFFICIENT_DATA'
+}
+cw.DescribeAlarms(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

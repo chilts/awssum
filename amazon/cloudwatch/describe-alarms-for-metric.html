@@ -49,6 +49,30 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all alarms for a specific metric</h3>
+<p>This example shows how to list all alarms for a specific metric.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    MetricName  : 'ConsumedReadCapacityUnits',
+    Namespace   : 'AWS/DynamoDB',
+    Dimensions  : [
+        { Name : 'TableName', Value : 'test' },
+        { Name : 'TableName', Value : 'test-tweets' }
+    ],
+    Unit        : 'Count'
+}
+cw.DescribeAlarmsForMetric(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

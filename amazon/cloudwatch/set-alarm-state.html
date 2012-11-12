@@ -43,6 +43,29 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Set a state for a specific alarm</h3>
+<p>This example shows how to set a state for a specific alarm. State values can be "OK", "ALARM" or "INSUFFICIENT_DATA".</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    AlarmName   : 'yourAlarmName',
+    StateReason : 'Set because of a test, but need to be descriptive of why this is needed. Maximum of 1023 characters.',
+    StateValue  : 'OK'
+}
+cw.SetAlarmState(params, function(err, data) {
+    if(err){
+        fmt.dump(err, 'Error');
+    }else{
+        fmt.dump(data, 'Data');
+    }
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

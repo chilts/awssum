@@ -55,6 +55,32 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List a specific statistic of a metric</h3>
+<p>This example shows how to list a specific statistic of a metric. Ensure you use the correct Date definition (ISO8601) and watch out with (non)capitalized definitions of Unit and Statistics, they need to be "Capitalized".</p>
+
+<h4>Example</h4>
+<pre>
+var dt = new Date();
+dt.setDate(dt.getDate()-1);
+var params = {
+    MetricName  : 'yourMetricName',
+    Namespace   : 'test',
+    Period      : 60,
+    Statistics  : ['Sum'],
+    Unit        : 'Seconds',
+    StartTime   : dt.toISOString('8601'),
+    EndTime     : new Date().toISOString('8601')
+}
+cw.GetMetricStatistics(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

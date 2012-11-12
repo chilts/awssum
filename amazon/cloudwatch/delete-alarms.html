@@ -34,6 +34,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete an alarm</h3>
+<p>This example shows how to delete an alarm. You can delete a maximum of 100 in 1 call.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    AlarmNames : ['yourAlarmName','anotherAlarmName']
+}
+cw.DeleteAlarms(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
