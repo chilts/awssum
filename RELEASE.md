@@ -5,8 +5,8 @@
 
     $ vi package.json # change the version number
 
-    BRANCH=0.11
-    RELEASE=0.11.0
+    BRANCH=0.12
+    RELEASE=0.12.0
 
     git commit -m "Bump version number to v$RELEASE" package.json RELEASE.md
     git push origin master
