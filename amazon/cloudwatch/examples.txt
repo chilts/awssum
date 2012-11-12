@@ -63,3 +63,221 @@ cw.ListMetrics(function(err, data) {
 });
 EOF
 ---
+name    : DescribeAlarms
+title   : List all alarms
+intro   : This example shows how to list all alarms.
+example : <<EOF
+cw.DescribeAlarms({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+cw.DescribeAlarms(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DescribeAlarms
+title   : List all alarms with a specific state
+intro   : This example shows how to list all alarms with a specific state. Values of StateValue can be "OK", "ALARM" or "INSUFFICIENT_DATA".
+example : <<EOF
+var params = {
+    StateValue : 'INSUFFICIENT_DATA'
+}
+cw.DescribeAlarms(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DescribeAlarms
+title   : List all alarms with a specific state
+intro   : This example shows how to list all alarms with a specific state. Values of StateValue can be "OK", "ALARM" or "INSUFFICIENT_DATA".
+example : <<EOF
+var params = {
+    StateValue : 'INSUFFICIENT_DATA'
+}
+cw.DescribeAlarms(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DescribeAlarmsForMetric
+title   : List all alarms for a specific metric
+intro   : This example shows how to list all alarms for a specific metric.
+example : <<EOF
+var params = {
+    MetricName  : 'ConsumedReadCapacityUnits',
+    Namespace   : 'AWS/DynamoDB',
+    Dimensions  : [
+        { Name : 'TableName', Value : 'test' },
+        { Name : 'TableName', Value : 'test-tweets' }
+    ],
+    Unit        : 'Count'
+}
+cw.DescribeAlarmsForMetric(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DescribeAlarmHistory
+title   : List a specific alarm history
+intro   : This example shows how to list a specific alarm history.
+example : <<EOF
+var params = {
+    AlarmName : 'checkEC2'
+}
+cw.DescribeAlarmHistory(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteAlarms
+title   : Delete an alarm
+intro   : This example shows how to delete an alarm. You can delete a maximum of 100 in 1 call.
+example : <<EOF
+var params = {
+    AlarmNames : ['yourAlarmName','anotherAlarmName']
+}
+cw.DeleteAlarms(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : GetMetricStatistics
+title   : List a specific statistic of a metric
+intro   : This example shows how to list a specific statistic of a metric. Ensure you use the correct Date definition (ISO8601) and watch out with (non)capitalized definitions of Unit and Statistics, they need to be "Capitalized".
+example : <<EOF
+var dt = new Date();
+dt.setDate(dt.getDate()-1);
+var params = {
+    MetricName  : 'yourMetricName',
+    Namespace   : 'test',
+    Period      : 60,
+    Statistics  : ['Sum'],
+    Unit        : 'Seconds',
+    StartTime   : dt.toISOString('8601'),
+    EndTime     : new Date().toISOString('8601')
+}
+cw.GetMetricStatistics(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : SetAlarmState
+title   : Set a state for a specific alarm
+intro   : This example shows how to set a state for a specific alarm. State values can be "OK", "ALARM" or "INSUFFICIENT_DATA".
+example : <<EOF
+var params = {
+    AlarmName   : 'yourAlarmName',
+    StateReason : 'Set because of a test, but need to be descriptive of why this is needed. Maximum of 1023 characters.',
+    StateValue  : 'OK'
+}
+cw.SetAlarmState(params, function(err, data) {
+    if(err){
+        fmt.dump(err, 'Error');
+    }else{
+        fmt.dump(data, 'Data');
+    }
+});
+EOF
+---
+name    : EnableAlarmActions
+title   : Enable actions for a specific alarm
+intro   : This example shows how to enable actions for a specific alarm.
+example : <<EOF
+var params = {
+    AlarmNames : ['yourAlarmName']
+}
+cw.EnableAlarmActions(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DisableAlarmActions
+title   : Disable actions for a specific alarm
+intro   : This example shows how to disable actions for a specific alarm.
+example : <<EOF
+var params = {
+    AlarmNames : ['yourAlarmName']
+}
+cw.DisableAlarmActions(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutMetricAlarm
+title   : Create/update an alarm
+intro   : This example shows how to create/update an alarm. ComparisonOperator values can be "GreaterThanOrEqualToThreshold", "GreaterThanThreshold", "LessThanThreshold" or "LessThanOrEqualToThreshold".
+example : <<EOF
+var params = {
+    AlarmName           : 'yourAlarmName',
+    MetricName          : 'CPUUtilization',
+    Namespace           : 'test',
+    Period              : 60,
+    Statistic           : 'Average',
+    Threshold           : 40,
+    ComparisonOperator  : 'GreaterThanOrEqualToThreshold',
+    EvaluationPeriods   : 6
+}
+cw.PutMetricAlarm(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutMetricData
+title   : Publish metric data points to Cloudwatch
+intro   : This example shows how to publish metric data points to Cloudwatch.
+example : <<EOF
+var params = {
+    MetricData : [
+    {
+        MetricName  : 'Counter',
+        Unit        : 'Count',
+        Value       : 1,
+        Timestamp   : new Date().toISOString(8601),
+        Dimensions  : [
+            { Name : 'InstanceId',   Value : 'i-aaba32d5' },
+            { Name : 'InstanceType', Value : 'm1.micro' }
+        ]
+    }],
+    Namespace : 'test'
+}
+cw.PutMetricData(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : PutMetricData
+title   : Publish metric (time) data points to Cloudwatch
+intro   : This example shows how to publish metric (time) data points to Cloudwatch.
+example : <<EOF
+var params = {
+    MetricData : [
+    {
+        MetricName      : 'Time',
+        Unit            : 'Milliseconds',
+        StatisticValues : {
+            Minimum: 3,
+            Maximum: 1500,
+            Sum: 3000,
+            SampleCount: 10
+        }
+    }],
+    Namespace : 'test'
+}
+cw.PutMetricData(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
