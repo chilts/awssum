@@ -13,6 +13,32 @@ sitemap : true
 
   <h1>ChangeLog</h1>
 
+  <h2>Release v0.12.0 (2012-11-13)</h2>
+
+  <p>Features:</p>
+
+  <ul>
+    <li>Added support for the Sydney region (AP_SOUTHEAST_2)</li>
+    <li>Now uses your AwsAccountId in format 111122223333 or 1111-2222-3333 where AWS requires it</li>
+    <li>Added support for PriceClass for Amazon:CloudFront</li>
+    <li>Added support for Amazon:EC2 resersed instance marketplace</li>
+    <li>Added support for CORS on AmazonS3 buckets</li>
+    <li>lots more examples</li>
+    <li>More unit and integration tests</li>
+  </ul>
+
+  <p>Fixes:</p>
+
+  <ul>
+    <li>Now escapes Unicode properly in all requests</li>
+    <li>Fix up Amazon:S3 PutObjectAcl and PutBucketAcl for the full XML Access Control Lists (thanks GreenQloud)</li>
+    <li>Many fixes related to parameter names, types and whether they are required</li>
+  </ul>
+
+  <p>
+    And a huge array of examples for http://awssum.io/ - thanks to <a href="http://www.techtribe.nl/">Joey van Dijk</a>.
+  </p>
+
   <h2>Release v0.11.0 (2012-09-21)</h2>
 
   <p>New Services:</p>
