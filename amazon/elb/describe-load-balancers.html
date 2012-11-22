@@ -37,6 +37,74 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Show all elastic load balancers</h3>
+<p>This example shows how to list all elastic load balancers.</p>
+
+<h4>Example</h4>
+<pre>
+elb.DescribeLoadBalancers(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+elb.DescribeLoadBalancers({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+  { StatusCode: 200,
+    Headers: 
+    { 'x-amzn-requestid': 'd92c5965-3470-11e2-8460-777e58d78a47',
+      'content-type': 'text/xml',
+      'content-length': '1951',
+      date: 'Thu, 22 Nov 2012 06:50:05 GMT' },
+    Body: 
+    { DescribeLoadBalancersResponse: 
+      { '@': { xmlns: 'http://elasticloadbalancing.amazonaws.com/doc/2011-08-15/' },
+        DescribeLoadBalancersResult: 
+        { LoadBalancerDescriptions: 
+          { member: 
+            { CanonicalHostedZoneNameID: 'Z3NF1Z3NOM5OY2',
+              CanonicalHostedZoneName: 'test-1044477091.eu-west-1.elb.amazonaws.com',
+              LoadBalancerName: 'test',
+              CreatedTime: '2012-11-22T06:49:57.090Z',
+              SourceSecurityGroup: 
+                { OwnerAlias: 'amazon-elb',
+                  GroupName: 'amazon-elb-sg' },
+                  DNSName: 'test-1044477091.eu-west-1.elb.amazonaws.com',
+                  HealthCheck: 
+                  { Interval: '30',
+                    Target: 'HTTP:80/index.html',
+                    HealthyThreshold: '10',
+                    Timeout: '5',
+                    UnhealthyThreshold: '2' },
+                  ListenerDescriptions: 
+                  { member: 
+                    { PolicyNames: {},
+                      Listener: 
+                      { Protocol: 'HTTP',
+                        LoadBalancerPort: '80',
+                        InstanceProtocol: 'HTTP',
+                        InstancePort: '80' } } },
+                  Instances: { member: { InstanceId: 'i-5026b11b' } },
+                  BackendServerDescriptions: {},
+                  Policies: 
+                  { AppCookieStickinessPolicies: {},
+                    OtherPolicies: {},
+                    LBCookieStickinessPolicies: {} },
+                  AvailabilityZones: { member: 'eu-west-1a' } } } },
+        ResponseMetadata: { RequestId: 'd92c5965-3470-11e2-8460-777e58d78a47' } } } }
+});
+
+</pre>
+
+
 
 {% endcapture %}
 

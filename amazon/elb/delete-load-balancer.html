@@ -34,6 +34,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete a loadbalancer</h3>
+<p>This example shows how to delete a loadbalancer.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+  LoadBalancerName : 'test'
+}
+elb.DeleteLoadBalancer(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
