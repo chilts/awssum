@@ -11,7 +11,19 @@ sitemap : true
 
 {% capture main %}
 
-  <h2>Amazon ELB</h2>
+  <h2>Loading AwsSum's Amazon ELB</h2>
+
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var Elb = awssum.load('amazon/elb').Elb;
+
+var elb = new Elb({
+  'accessKeyId'     : process.env.accessKeyId,
+  'secretAccessKey' : process.env.secretAccessKey,
+  'region'          : amazon.US_EAST_1
+});
+{% endhighlight %}
 
 {% endcapture %}
 

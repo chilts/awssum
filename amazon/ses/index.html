@@ -11,7 +11,18 @@ sitemap : true
 
 {% capture main %}
 
-  <h2>Amazon SES</h2>
+  <h2>Loading AwsSum's Amazon SES</h2>
+
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var Ses = awssum.load('amazon/ses').Ses;
+
+var ses = new Ses({
+  'accessKeyId'     : process.env.accessKeyId,
+  'secretAccessKey' : process.env.secretAccessKey
+});
+{% endhighlight %}
 
 {% endcapture %}
 

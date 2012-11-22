@@ -11,7 +11,19 @@ sitemap : true
 
 {% capture main %}
 
-  <h2>Amazon SQS</h2>
+  <h2>Loading AwsSum's Amazon SQS</h2>
+
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var Sqs = awssum.load('amazon/sqs').Sqs;
+
+var sqs = new Sqs({
+  'accessKeyId'     : process.env.accessKeyId,
+  'secretAccessKey' : process.env.secretAccessKey,
+  'region'          : amazon.US_EAST_1
+});
+{% endhighlight %}
 
 {% endcapture %}
 
