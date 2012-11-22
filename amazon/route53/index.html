@@ -11,7 +11,19 @@ sitemap : true
 
 {% capture main %}
 
-  <h2>Amazon Route53</h2>
+  <h2>Loading AwsSum's Amazon Route53</h2>
+
+{% highlight javascript %}
+var awssum = require('awssum');
+var amazon = awssum.load('amazon/amazon');
+var Route53 = awssum.load('amazon/route53').Route53;
+
+var r53 = new Route53({
+  'accessKeyId'     : process.env.accessKeyId,
+  'secretAccessKey' : process.env.secretAccessKey,
+  'region'          : amazon.US_EAST_1
+});
+{% endhighlight %}
 
 {% endcapture %}
 
