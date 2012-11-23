@@ -63,9 +63,28 @@ title   : Delete a loadbalancer
 intro   : This example shows how to delete a loadbalancer.
 example : <<EOF
 var params = {
-  LoadBalancerName : 'test'
+    LoadBalancerName : 'test'
 }
 elb.DeleteLoadBalancer(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateLoadBalancer
+title   : Create a loadbalancer
+intro   : This example shows how to create a loadbalancer.
+example : <<EOF
+var params = {
+    LoadBalancerName : 'test',
+    Listeners : [{
+      LoadBalancerPort : 80,
+      Protocol : 'http',
+      InstancePort : 3000
+    }],
+    AvailabilityZones: [amazon.EU_WEST_1+'a']
+}
+elb.CreateLoadBalancer(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
