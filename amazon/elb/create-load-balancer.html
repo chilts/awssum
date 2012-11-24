@@ -46,6 +46,30 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Create a loadbalancer</h3>
+<p>This example shows how to create a loadbalancer.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    LoadBalancerName : 'test',
+    Listeners : [{
+      LoadBalancerPort : 80,
+      Protocol : 'http',
+      InstancePort : 3000
+    }],
+    AvailabilityZones: [amazon.EU_WEST_1+'a']
+}
+elb.CreateLoadBalancer(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
