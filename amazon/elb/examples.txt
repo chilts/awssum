@@ -90,3 +90,44 @@ elb.CreateLoadBalancer(params, function(err, data) {
 });
 EOF
 ---
+name    : DescribeLoadBalancerPolicies
+title   : List all loadbalancer policies available
+intro   : This example shows how to list all loadbalancer policies available. This is useful to determine which SSL negotations are available. If you don't have any loadbalancers this will provide you with all options available.
+example : <<EOF
+elb.DescribeLoadBalancerPolicies({},function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+elb.DescribeLoadBalancerPolicies(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DescribeLoadBalancerPolicies
+title   : List all policies of a specific loadbalancer
+intro   : This example shows how to list all policies of a specific loadbalancer.
+example : <<EOF
+var params = {
+  LoadBalancerName : 'test'
+}
+elb.DescribeLoadBalancerPolicies(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DescribeLoadBalancerPolicyTypes
+title   : List all policy types available
+intro   : This example shows how to list all policy types available. Think about cookie and SSL settings to support in a loadbalancer.
+example : <<EOF
+elb.DescribeLoadBalancerPolicies({},function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+elb.DescribeLoadBalancerPolicies(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
