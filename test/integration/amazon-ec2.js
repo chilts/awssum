@@ -15,7 +15,6 @@ var test = require('tap').test;
 var awssum = require('../../');
 var amazon = awssum.load('amazon/amazon');
 var Ec2 = awssum.load('amazon/ec2').Ec2;
-var inspect = require('eyes').inspector();
 
 // --------------------------------------------------------------------------------------------------------------------
 
