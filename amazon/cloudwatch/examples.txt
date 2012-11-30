@@ -83,7 +83,7 @@ intro   : This example shows how to list all alarms with a specific state. Value
 example : <<EOF
 var params = {
     StateValue : 'INSUFFICIENT_DATA'
-}
+};
 cw.DescribeAlarms(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -96,7 +96,7 @@ intro   : This example shows how to list all alarms with a specific state. Value
 example : <<EOF
 var params = {
     StateValue : 'INSUFFICIENT_DATA'
-}
+};
 cw.DescribeAlarms(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -115,7 +115,7 @@ var params = {
         { Name : 'TableName', Value : 'test-tweets' }
     ],
     Unit        : 'Count'
-}
+};
 cw.DescribeAlarmsForMetric(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -128,7 +128,7 @@ intro   : This example shows how to list a specific alarm history.
 example : <<EOF
 var params = {
     AlarmName : 'checkEC2'
-}
+};
 cw.DescribeAlarmHistory(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -141,7 +141,7 @@ intro   : This example shows how to delete an alarm. You can delete a maximum of
 example : <<EOF
 var params = {
     AlarmNames : ['yourAlarmName','anotherAlarmName']
-}
+};
 cw.DeleteAlarms(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
@@ -162,11 +162,60 @@ var params = {
     Unit        : 'Seconds',
     StartTime   : dt.toISOString('8601'),
     EndTime     : new Date().toISOString('8601')
-}
+};
 cw.GetMetricStatistics(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
+EOF
+---
+name    : GetMetricStatistics
+title   : List CPU usage in a hour
+intro   : This example shows how to list CPU usage in a hour. Important to note is when you use default monitoring without Dimensions-parameter you will not get any information. Use, like below, an exact InstanceId to list all metrics you like to show. If detailed monitoring is on, you may ignore the Dimensions-property if you want to list all responses. Cloudwatch can not only provide standard metrics but also your own custom metrics. Ensure you use the correct Date definition (ISO8601) and watch out with (non)capitalized definitions of Unit and Statistics, they need to be "Capitalized".
+(Credits to Paul Howes)
+example : <<EOF
+var hourInMilliseconds = 1000 * 60 * 60;
+var endTime = new Date();
+var startTime = new Date(endTime.getTime() - hourInMilliseconds);
+var params = {
+    MetricName  : 'CPUUtilization',
+    Namespace   : 'AWS/EC2',
+    Period      : 60,
+    Statistics  : ['Average'],
+    Unit        : ['Percent'],
+    Dimensions  : [{ Name: 'InstanceId', Value: 'i-1234fake' }],
+    StartTime   : startTime.toISOString('8601'),
+    EndTime     : endTime.toISOString('8601')
+};
+cw.GetMetricStatistics(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': '67e1c18f-3ac6-11e2-8d6a-5f7cd605490f',
+     'content-type': 'text/xml',
+     'content-length': '1681',
+     date: 'Fri, 30 Nov 2012 08:17:39 GMT' },
+  Body: 
+   { GetMetricStatisticsResponse: 
+      { '@': { xmlns: 'http://monitoring.amazonaws.com/doc/2010-08-01/' },
+        GetMetricStatisticsResult: 
+         { Datapoints: 
+            { member: 
+               [ { Timestamp: '2012-11-30T07:43:00Z',
+                   Unit: 'Percent',
+                   Average: '0.23399999999999999' },
+                 { Timestamp: '2012-11-30T08:08:00Z',
+                   Unit: 'Percent',
+                   Average: '0.242' }
+               ] 
+            },
+           Label: 'CPUUtilization' 
+         },
+        ResponseMetadata: { RequestId: '67e1c18f-3ac6-11e2-8d6a-5f7cd605490f' } } } }
 EOF
 ---
 name    : SetAlarmState

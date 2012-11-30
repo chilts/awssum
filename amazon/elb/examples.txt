@@ -131,3 +131,17 @@ elb.DescribeLoadBalancerPolicies(function(err, data) {
 });
 EOF
 ---
+name    : RegisterInstancesWithLoadBalancer
+title   : Register a or multiple instances with a loadbalancer
+intro   : This example shows how to register an instance with a loadbalancer.
+example : <<EOF
+var params = {
+    Instances           : [{InstanceId:'i-1234fake'}],
+    LoadBalancerName    : 'test'
+};
+elb.RegisterInstancesWithLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
