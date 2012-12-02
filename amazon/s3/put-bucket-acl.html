@@ -18,39 +18,85 @@ sitemap : true
 
   <h2>Params</h2>
 
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Param Name</th>
+      <th>Required</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
 
-  <dl>
   
-    <dt>BucketName (required)</dt>
-    <dd> (special)</dd>
+    <tr>
+      <td>BucketName</td>
+      <td>required</td>
+      <td>special</td>
+      <td></td>
+    </tr>
   
-    <dt>acl (optional)</dt>
-    <dd> (resource)</dd>
+    <tr>
+      <td>acl</td>
+      <td>optional</td>
+      <td>resource</td>
+      <td></td>
+    </tr>
   
-    <dt>AccessControlPolicy (optional)</dt>
-    <dd>A data structure which will be converted into a &amp;lt;AccessControlPolicy&amp;gt; XML document. (special)</dd>
+    <tr>
+      <td>AccessControlPolicy</td>
+      <td>optional</td>
+      <td>special</td>
+      <td>A data structure which will be converted into a &amp;lt;AccessControlPolicy&amp;gt; XML document.</td>
+    </tr>
   
-    <dt>Acl (optional)</dt>
-    <dd>Values: private, public-read, public-read-write, authenticated-read. (header)</dd>
+    <tr>
+      <td>Acl</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>Values: private, public-read, public-read-write, authenticated-read.</td>
+    </tr>
   
-    <dt>GrantRead (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantRead</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantWrite (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantWrite</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantReadAcp (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantReadAcp</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantWriteAcp (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantWriteAcp</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantFullControl (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantFullControl</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-  </dl>
 
 
+  </tbody>
+</table>
 
   <h2>Examples</h2>
 

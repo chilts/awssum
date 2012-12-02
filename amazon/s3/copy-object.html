@@ -18,57 +18,127 @@ sitemap : true
 
   <h2>Params</h2>
 
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Param Name</th>
+      <th>Required</th>
+      <th>Type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
 
-  <dl>
   
-    <dt>SourceBucket (required)</dt>
-    <dd> (special)</dd>
+    <tr>
+      <td>SourceBucket</td>
+      <td>required</td>
+      <td>special</td>
+      <td></td>
+    </tr>
   
-    <dt>SourceObject (required)</dt>
-    <dd> (special)</dd>
+    <tr>
+      <td>SourceObject</td>
+      <td>required</td>
+      <td>special</td>
+      <td></td>
+    </tr>
   
-    <dt>MetadataDirective (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>MetadataDirective</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>CopySourceIfMatch (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>CopySourceIfMatch</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>CopySourceIfNoneMatch (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>CopySourceIfNoneMatch</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>CopySourceIfUnmodifiedSince (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>CopySourceIfUnmodifiedSince</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>CopySourceIfModifiedSince (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>CopySourceIfModifiedSince</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>ServerSideEncryption (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>ServerSideEncryption</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>StorageClass (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>StorageClass</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>Acl (optional)</dt>
-    <dd> (header)</dd>
+    <tr>
+      <td>Acl</td>
+      <td>optional</td>
+      <td>header</td>
+      <td></td>
+    </tr>
   
-    <dt>GrantRead (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantRead</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantWrite (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantWrite</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantReadAcp (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantReadAcp</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantWriteAcp (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantWriteAcp</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-    <dt>GrantFullControl (optional)</dt>
-    <dd>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url. (header)</dd>
+    <tr>
+      <td>GrantFullControl</td>
+      <td>optional</td>
+      <td>header</td>
+      <td>A comma-separated list of one or more grantees (of the format type=value). Type must be emailAddress, id or url.</td>
+    </tr>
   
-  </dl>
 
 
+  </tbody>
+</table>
 
   <h2>Examples</h2>
 
