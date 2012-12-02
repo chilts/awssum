@@ -94,7 +94,7 @@ sitemap : true
 <pre>
 var params = {
     AlarmName : 'checkEC2'
-}
+};
 cw.DescribeAlarmHistory(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');

@@ -59,6 +59,43 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all loadbalancer policies available</h3>
+<p>This example shows how to list all loadbalancer policies available. This is useful to determine which SSL negotations are available. If you don't have any loadbalancers this will provide you with all options available.</p>
+
+<h4>Example</h4>
+<pre>
+elb.DescribeLoadBalancerPolicies({},function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+elb.DescribeLoadBalancerPolicies(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
+<h3>List all policies of a specific loadbalancer</h3>
+<p>This example shows how to list all policies of a specific loadbalancer.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+  LoadBalancerName : 'test'
+}
+elb.DescribeLoadBalancerPolicies(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

@@ -100,7 +100,7 @@ var params = {
         { Name : 'TableName', Value : 'test-tweets' }
     ],
     Unit        : 'Count'
-}
+};
 cw.DescribeAlarmsForMetric(params, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
