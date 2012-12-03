@@ -10,7 +10,7 @@
 
 ```
 
-NodeJS client libraries for talking to lots of Web Service APIs.
+NodeJS client libraries for talking to IaaS APIs such as Amazon and Rackspace.
 
 [![Build Status](https://secure.travis-ci.org/appsattic/node-awssum.png?branch=master)](http://travis-ci.org/appsattic/node-awssum)
 
@@ -261,38 +261,6 @@ Currently AwsSum has coverage of the following services:
       <td>19/19 (100%)</td>
     </tr>
 
-    <tr>
-      <td>Twitter</td>
-      <td>Twitter</td>
-      <td>OAuth 1.0a</td>
-      <td>✔</td>
-      <td>98/101</td>
-    </tr>
-
-    <tr>
-      <td>Tumblr</td>
-      <td>Tumblr</td>
-      <td>OAuth 1.0a</td>
-      <td>✔</td>
-      <td>0/???</td>
-    </tr>
-
-    <tr>
-      <td>Xero</td>
-      <td>Xero</td>
-      <td>OAuth 1.0a</td>
-      <td>✔</td>
-      <td>~12/~40?</td>
-    </tr>
-
-    <tr>
-      <td>Yahoo!</td>
-      <td>Contacts</td>
-      <td>OAuth 1.0a</td>
-      <td>✔</td>
-      <td>3/???</td>
-    </tr>
-
   </tbody>
 </table>
 
@@ -306,10 +274,8 @@ In future releases we will be targeting (in no particular order):
     * Files ([Request or Sponsor Development][sponsor])
     * LoadBalances ([Request or Sponsor Development][sponsor])
     * DNS ([Request or Sponsor Development][sponsor])
-* Flickr ([Request or Sponsor Development][sponsor])
 * PayPal ([Request or Sponsor Development][sponsor])
-* some Google services ([Request or Sponsor Development][sponsor])
-* URL shorteners ([Request or Sponsor Development][sponsor])
+* SendGrid ([Request or Sponsor Development][sponsor])
 * anything else you'd like? ([Request or Sponsor Development][sponsor])
 
 There are lots of services out there, so please [Request or Sponsor Development][sponsor] if you'd like one
