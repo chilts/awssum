@@ -133,13 +133,88 @@ EOF
 ---
 name    : RegisterInstancesWithLoadBalancer
 title   : Register a or multiple instances with a loadbalancer
-intro   : This example shows how to register an instance with a loadbalancer.
+intro   : This example shows how to register an instance with a loadbalancer. Keep in mind that an instance can stick in "out of order" mode when it is initiated in a availability zone that the loadbalancer is not using. It will shows this inside the webconsole but will say "Could not find EC2 instance". It will also take some time before the status of the instance inside the loadbalancer is fully initiated. This is important to know if you want to quickly want to add instances.
 example : <<EOF
 var params = {
     Instances           : [{InstanceId:'i-1234fake'}],
     LoadBalancerName    : 'test'
 };
 elb.RegisterInstancesWithLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeregisterInstancesFromLoadBalancer
+title   : Deregister a or multiple instances with a loadbalancer
+intro   : This example shows how to deregister an instance with a loadbalancer. Keep in mind that you can only deregister instances that are running and fully connected to a loadbalancer, so "out of order" means it is not yet connected and cannot be deregistered!
+example : <<EOF
+var params = {
+    Instances           : [{InstanceId:'i-1234fake'}],
+    LoadBalancerName    : 'test'
+};
+elb.DeregisterInstancesFromLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DescribeInstanceHealth
+title   : List instance health of an instance in a loadbalancer
+intro   : This example shows how to list instance health of an instance in a loadbalancer. 
+example : <<EOF
+var params = {
+    Instances           : [{InstanceId:'i-1234fake'}],
+    LoadBalancerName    : 'test'
+};
+elb.DescribeInstanceHealth(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': 'd055cafb-3de3-11e2-8460-777e58d78a47',
+     'content-type': 'text/xml',
+     'content-length': '534',
+     date: 'Tue, 04 Dec 2012 07:25:43 GMT' },
+  Body: 
+   { DescribeInstanceHealthResponse: 
+      { '@': { xmlns: 'http://elasticloadbalancing.amazonaws.com/doc/2011-11-15/' },
+        DescribeInstanceHealthResult: 
+         { InstanceStates: 
+            { member: 
+               { Description: 'N/A',
+                 InstanceId: 'i-1234fake',
+                 State: 'InService',
+                 ReasonCode: 'N/A' } } },
+        ResponseMetadata: { RequestId: 'd055cafb-3de3-11e2-8460-777e58d78a47' } } } }
+EOF
+---
+name    : DisableAvailabilityZonesForLoadBalancer
+title   : Disable (an) availability zone(s) for a loadbalancer
+intro   : This example shows how to disable (an) availability zone(s) for a loadbalancer.
+example : <<EOF
+var params = {
+    AvailabilityZones   : ['eu-west-1a','eu-west-1b']
+    LoadBalancerName    : 'test'
+};
+elb.DisableAvailabilityZonesForLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : EnableAvailabilityZonesForLoadBalancer
+title   : Enable (an) availability zone(s) for a loadbalancer
+intro   : This example shows how to enable (an) availability zone(s) for a loadbalancer.
+example : <<EOF
+var params = {
+    AvailabilityZones   : ['eu-west-1a','eu-west-1b']
+    LoadBalancerName    : 'test'
+};
+elb.EnableAvailabilityZonesForLoadBalancer(params,function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
