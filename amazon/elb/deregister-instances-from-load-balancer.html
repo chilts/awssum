@@ -59,6 +59,25 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Deregister a or multiple instances with a loadbalancer</h3>
+<p>This example shows how to deregister an instance with a loadbalancer. Keep in mind that you can only deregister instances that are running and fully connected to a loadbalancer, so "out of order" means it is not yet connected and cannot be deregistered!</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    Instances           : [{InstanceId:'i-1234fake'}],
+    LoadBalancerName    : 'test'
+};
+elb.DeregisterInstancesFromLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

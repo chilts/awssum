@@ -59,6 +59,25 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Enable (an) availability zone(s) for a loadbalancer</h3>
+<p>This example shows how to enable (an) availability zone(s) for a loadbalancer.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    AvailabilityZones   : ['eu-west-1a','eu-west-1b']
+    LoadBalancerName    : 'test'
+};
+elb.EnableAvailabilityZonesForLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

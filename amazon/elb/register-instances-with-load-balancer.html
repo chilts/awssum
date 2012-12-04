@@ -60,7 +60,7 @@ sitemap : true
 
 
 <h3>Register a or multiple instances with a loadbalancer</h3>
-<p>This example shows how to register an instance with a loadbalancer.</p>
+<p>This example shows how to register an instance with a loadbalancer. Keep in mind that an instance can stick in "out of order" mode when it is initiated in a availability zone that the loadbalancer is not using. It will shows this inside the webconsole but will say "Could not find EC2 instance". It will also take some time before the status of the instance inside the loadbalancer is fully initiated. This is important to know if you want to quickly want to add instances.</p>
 
 <h4>Example</h4>
 <pre>

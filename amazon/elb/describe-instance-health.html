@@ -59,6 +59,47 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List instance health of an instance in a loadbalancer</h3>
+<p>This example shows how to list instance health of an instance in a loadbalancer. </p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    Instances           : [{InstanceId:'i-1234fake'}],
+    LoadBalancerName    : 'test'
+};
+elb.DescribeInstanceHealth(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amzn-requestid': 'd055cafb-3de3-11e2-8460-777e58d78a47',
+     'content-type': 'text/xml',
+     'content-length': '534',
+     date: 'Tue, 04 Dec 2012 07:25:43 GMT' },
+  Body: 
+   { DescribeInstanceHealthResponse: 
+      { '@': { xmlns: 'http://elasticloadbalancing.amazonaws.com/doc/2011-11-15/' },
+        DescribeInstanceHealthResult: 
+         { InstanceStates: 
+            { member: 
+               { Description: 'N/A',
+                 InstanceId: 'i-1234fake',
+                 State: 'InService',
+                 ReasonCode: 'N/A' } } },
+        ResponseMetadata: { RequestId: 'd055cafb-3de3-11e2-8460-777e58d78a47' } } } }
+
+</pre>
+
+
 
 {% endcapture %}
 
