@@ -27,8 +27,6 @@ fmt.field('AwsAccountId', s3.awsAccountId() );
 
 // ----------------------------------------------------------------------------
 
-var writeStream1 = fs.createWriteStream('/tmp/test-object.txt');
-
 var options1 = {
     BucketName : 'pie-18',
     ObjectName : 'test-object.txt',
@@ -36,11 +34,22 @@ var options1 = {
 
 s3.GetObject(options1, { stream : true }, function(err, data) {
     fmt.msg("getting an object from pie-18 - expecting success");
-    fmt.dump(err, 'Error');
+
+    if (err) {
+        fmt.dump(err.Headers, 'Error');
+        // you could do something with err.Stream here
+        return;
+    }
+
+    fmt.dump(data.StatusCode, 'Data.StatusCode');
     fmt.dump(data.Headers, 'Data.Headers');
 
+    // open a file to stream this response to
+    var writeStream1 = fs.createWriteStream('/tmp/test-object.txt');
+
     data.Stream.on('data', function(chunk) {
-        console.log('got a chunk of data for test-object.txt:' + chunk.toString());
+        console.log('got a chunk of data for test-object.txt:');
+        console.log(chunk);
     });
 
     data.Stream.on('end', function(chunk) {
@@ -61,8 +70,6 @@ s3.GetObject(options1, { stream : true }, function(err, data) {
 
 // ----------------------------------------------------------------------------
 
-var writeStream2 = fs.createWriteStream('/tmp/object-does-not-exist.txt');
-
 var options2 = {
     BucketName : 'pie-18',
     ObjectName : 'object-does-not-exist.txt',
@@ -70,11 +77,22 @@ var options2 = {
 
 s3.GetObject(options2, { stream : true }, function(err, data) {
     fmt.msg("getting an object from pie-18 - expecting failure");
-    fmt.dump(err, 'Error');
+
+    if (err) {
+        fmt.dump(err.Headers, 'Error');
+        // you could do something with err.Stream here
+        return;
+    }
+
+    fmt.dump(data.StatusCode, 'Data.StatusCode');
     fmt.dump(data.Headers, 'Data.Headers');
 
+    // open a file to stream this response to
+    var writeStream2 = fs.createWriteStream('/tmp/object-does-not-exist.txt');
+
     data.Stream.on('data', function(chunk) {
-        console.log('got a chunk of data for object-does-not-exist.txt:' + chunk.toString());
+        console.log('got a chunk of data for object-does-not-exist.txt:');
+        console.log(chunk);
     });
 
     data.Stream.on('end', function(chunk) {
