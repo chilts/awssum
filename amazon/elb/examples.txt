@@ -71,6 +71,34 @@ elb.DeleteLoadBalancer(params, function(err, data) {
 });
 EOF
 ---
+name    : DeleteLoadBalancerPolicy
+title   : Delete a loadbalancer policy
+intro   : This example shows how to delete a loadbalancer policy.
+example : <<EOF
+var params = {
+    PolicyName        : 'policyName',
+    LoadBalancerName  : 'test'
+}
+elb.DeleteLoadBalancerPolicy(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteLoadBalancerListeners
+title   : Delete (a) loadbalancer listener(s)
+intro   : This example shows how to delete (a) loadbalancer listener(s).
+example : <<EOF
+var params = {
+    LoadBalancerPorts : [80,8080],
+    LoadBalancerName  : 'test'
+}
+elb.DeleteLoadBalancerListeners(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
 name    : CreateLoadBalancer
 title   : Create a loadbalancer
 intro   : This example shows how to create a loadbalancer.
@@ -338,7 +366,7 @@ elb.CreateLoadBalancerPolicy(params,function(err, data) {
 });
 EOF
 ---
-name    : DetachLoadBalancerFromSubnets
+name    : DetachLoadBalancersFromSubnets
 title   : (VPC only!) Detach a loadbalancer from (a) specific subnet(s)
 intro   : This example shows how to detach a loadbalancer from (a) specific subnet(s).
 example : <<EOF
@@ -346,13 +374,13 @@ var params = {
     Subnets             : ['my-subnet']
     LoadBalancerName    : 'test'
 };
-elb.DetachLoadBalancerFromSubnets(params,function(err, data) {
+elb.DetachLoadBalancersFromSubnets(params,function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
 EOF
 ---
-name    : SetLoadBalancerListenerSSLCertificate
+name    : SetLoadBalancerListenerSslCertificate
 title   : Attach a ssl certificate on a loadbalancer
 intro   : This example shows how to attach a ssl certificate on a loadbalancer. See more information at http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html
 example : <<EOF
@@ -361,7 +389,7 @@ var params = {
     LoadBalancerPort    : 80,
     LoadBalancerName    : 'test'
 };
-elb.SetLoadBalancerListenerSSLCertificate(params,function(err, data) {
+elb.SetLoadBalancerListenerSslCertificate(params,function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });

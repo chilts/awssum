@@ -66,6 +66,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Attach a ssl certificate on a loadbalancer</h3>
+<p>This example shows how to attach a ssl certificate on a loadbalancer. See more information at http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    SSLCertificateId    : 'sslCertificateIdentifier',
+    LoadBalancerPort    : 80,
+    LoadBalancerName    : 'test'
+};
+elb.SetLoadBalancerListenerSslCertificate(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
