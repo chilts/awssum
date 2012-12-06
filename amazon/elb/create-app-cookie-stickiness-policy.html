@@ -66,6 +66,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Create an app cookie stickiness policy</h3>
+<p>This example shows how to create an app stickiness policy. It ensures stickiness with cookies through http/https.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    CookieName          : 'testCookie'
+    PolicyName          : 'testPolicy',
+    LoadBalancerName    : 'test'
+};
+elb.CreateAppCookieStickinessPolicy(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

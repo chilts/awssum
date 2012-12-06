@@ -80,6 +80,32 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Create a policy onto a loadbalancer</h3>
+<p>This example shows how to create a policy on a loadbalancer. [Issue] Any remarks/corrections are welcome! </p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    PolicyName            : 'testLB',
+    PolicyTypeName        : 'testPolicy',
+    PolicyAttributes      : [
+      {
+        AttributeName     : 'attribute',
+        AttributeValue    : 20
+      }
+    ],
+    LoadBalancerName      : 'test'
+};
+elb.CreateLoadBalancerPolicy(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

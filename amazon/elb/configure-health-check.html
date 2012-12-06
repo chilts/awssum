@@ -87,6 +87,29 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Enable a healthcheck on a loadbalancer</h3>
+<p>This example shows how to enable a healthcheck on a loadbalancer. Ensure that you have a timeout that is less than the interval. In this case it will target through http port 80 (and you can add a path with folders behind it (see documentation)).</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    Target              : 'http:80/',
+    HealthyThreshold    : 10,
+    Interval            : 60,
+    Timeout             : 30,
+    UnhealthyThreshold  : 3,
+    LoadBalancerName    : 'test'
+};
+elb.ConfigureHealthCheck(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

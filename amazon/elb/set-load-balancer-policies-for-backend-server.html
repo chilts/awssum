@@ -66,6 +66,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Attach policies onto a loadbalancer</h3>
+<p>This example shows how to attach policies onto a loadbalancer. Replaces the current set of policies associated with a port on which the back-end server is listening with a new set of policies, like done after a CreateLoadBalancer action.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    PolicyNames       : ['policyName1','policyName2'],
+    InstancePort      : 80,
+    LoadBalancerName  : 'test'
+};
+elb.SetLoadBalancerPoliciesForBackendServer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

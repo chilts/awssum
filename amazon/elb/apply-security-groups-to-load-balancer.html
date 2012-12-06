@@ -59,6 +59,25 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>(VPC only!) Link a security group to a loadbalancer</h3>
+<p>This example shows how to link a security group to a loadbalancer.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    SecurityGroups      : ['quicklaunch-1','my-security-group-1']
+    LoadBalancerName    : 'test'
+};
+elb.ApplySecurityGroupsToLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

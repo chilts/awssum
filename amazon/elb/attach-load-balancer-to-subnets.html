@@ -59,6 +59,25 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>(VPC only!) Attach a loadbalancer to (a) specific subnet(s)</h3>
+<p>This example shows how to attach a loadbalancer to (a) specific subnet(s).</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    Subnets             : ['my-subnet']
+    LoadBalancerName    : 'test'
+};
+elb.AttachLoadBalancerToSubnets(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

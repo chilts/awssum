@@ -66,6 +66,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Define the expiration period of a cookie on a loadbalancer</h3>
+<p>This example shows how to define the expiration period of a cookie on a loadbalancer. It is only available with cookies through http/https.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    CookieExpirationPeriod  : 10000,
+    PolicyName              : 'testPolicyExpiration',
+    LoadBalancerName        : 'test'
+};
+elb.CreateLBCookieStickinessPolicy(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

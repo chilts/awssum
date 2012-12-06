@@ -66,6 +66,26 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Updates policy of a loadbalancer listener</h3>
+<p>This example shows how to update policy of a loadbalancer listener. You can associate multiple policies with a listener.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    PolicyNames       : ['policyName1','policyName2'],
+    LoadBalancerPort  : 80,
+    LoadBalancerName  : 'test'
+};
+elb.SetLoadBalancerPoliciesOfListener(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
