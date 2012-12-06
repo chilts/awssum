@@ -220,3 +220,180 @@ elb.EnableAvailabilityZonesForLoadBalancer(params,function(err, data) {
 });
 EOF
 ---
+name    : ApplySecurityGroupsToLoadBalancer
+title   : (VPC only!) Link a security group to a loadbalancer
+intro   : This example shows how to link a security group to a loadbalancer.
+example : <<EOF
+var params = {
+    SecurityGroups      : ['quicklaunch-1','my-security-group-1']
+    LoadBalancerName    : 'test'
+};
+elb.ApplySecurityGroupsToLoadBalancer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : AttachLoadBalancerToSubnets
+title   : (VPC only!) Attach a loadbalancer to (a) specific subnet(s)
+intro   : This example shows how to attach a loadbalancer to (a) specific subnet(s).
+example : <<EOF
+var params = {
+    Subnets             : ['my-subnet']
+    LoadBalancerName    : 'test'
+};
+elb.AttachLoadBalancerToSubnets(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ConfigureHealthCheck
+title   : Enable a healthcheck on a loadbalancer
+intro   : This example shows how to enable a healthcheck on a loadbalancer. Ensure that you have a timeout that is less than the interval. In this case it will target through http port 80 (and you can add a path with folders behind it (see documentation)).
+example : <<EOF
+var params = {
+    Target              : 'http:80/',
+    HealthyThreshold    : 10,
+    Interval            : 60,
+    Timeout             : 30,
+    UnhealthyThreshold  : 3,
+    LoadBalancerName    : 'test'
+};
+elb.ConfigureHealthCheck(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateAppCookieStickinessPolicy
+title   : Create an app cookie stickiness policy
+intro   : This example shows how to create an app stickiness policy. It ensures stickiness with cookies through http/https.
+example : <<EOF
+var params = {
+    CookieName          : 'testCookie'
+    PolicyName          : 'testPolicy',
+    LoadBalancerName    : 'test'
+};
+elb.CreateAppCookieStickinessPolicy(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateLBCookieStickinessPolicy
+title   : Define the expiration period of a cookie on a loadbalancer
+intro   : This example shows how to define the expiration period of a cookie on a loadbalancer. It is only available with cookies through http/https.
+example : <<EOF
+var params = {
+    CookieExpirationPeriod  : 10000,
+    PolicyName              : 'testPolicyExpiration',
+    LoadBalancerName        : 'test'
+};
+elb.CreateLBCookieStickinessPolicy(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateLoadBalancerListeners
+title   : Create listener(s) onto a loadbalancer
+intro   : This example shows how to create listener(s) onto a loadbalancer. You can add multiple listeners to a loadbalancer, but no duplicates will be created.
+example : <<EOF
+var params = {
+    Listeners             : [
+      {
+        LoadBalancerPort  : 80,
+        Protocol          : 'http',
+        InstancePort      : 80,
+        InstanceProtocol  : 'http'
+      }
+    ],
+    LoadBalancerName      : 'test'
+};
+elb.CreateLoadBalancerListeners(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CreateLoadBalancerPolicy
+title   : Create a policy onto a loadbalancer
+intro   : This example shows how to create a policy on a loadbalancer. [Issue] Any remarks/corrections are welcome! 
+example : <<EOF
+var params = {
+    PolicyName            : 'testLB',
+    PolicyTypeName        : 'testPolicy',
+    PolicyAttributes      : [
+      {
+        AttributeName     : 'attribute',
+        AttributeValue    : 20
+      }
+    ],
+    LoadBalancerName      : 'test'
+};
+elb.CreateLoadBalancerPolicy(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DetachLoadBalancerFromSubnets
+title   : (VPC only!) Detach a loadbalancer from (a) specific subnet(s)
+intro   : This example shows how to detach a loadbalancer from (a) specific subnet(s).
+example : <<EOF
+var params = {
+    Subnets             : ['my-subnet']
+    LoadBalancerName    : 'test'
+};
+elb.DetachLoadBalancerFromSubnets(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : SetLoadBalancerListenerSSLCertificate
+title   : Attach a ssl certificate on a loadbalancer
+intro   : This example shows how to attach a ssl certificate on a loadbalancer. See more information at http://docs.amazonwebservices.com/IAM/latest/UserGuide/ManagingServerCerts.html
+example : <<EOF
+var params = {
+    SSLCertificateId    : 'sslCertificateIdentifier',
+    LoadBalancerPort    : 80,
+    LoadBalancerName    : 'test'
+};
+elb.SetLoadBalancerListenerSSLCertificate(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : SetLoadBalancerPoliciesForBackendServer
+title   : Attach policies onto a loadbalancer
+intro   : This example shows how to attach policies onto a loadbalancer. Replaces the current set of policies associated with a port on which the back-end server is listening with a new set of policies, like done after a CreateLoadBalancer action.
+example : <<EOF
+var params = {
+    PolicyNames       : ['policyName1','policyName2'],
+    InstancePort      : 80,
+    LoadBalancerName  : 'test'
+};
+elb.SetLoadBalancerPoliciesForBackendServer(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : SetLoadBalancerPoliciesOfListener
+title   : Updates policy of a loadbalancer listener
+intro   : This example shows how to update policy of a loadbalancer listener. You can associate multiple policies with a listener.
+example : <<EOF
+var params = {
+    PolicyNames       : ['policyName1','policyName2'],
+    LoadBalancerPort  : 80,
+    LoadBalancerName  : 'test'
+};
+elb.SetLoadBalancerPoliciesOfListener(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
