@@ -36,8 +36,13 @@ s3.GetObject(options1, { stream : true }, function(err, data) {
     fmt.msg("getting an object from pie-18 - expecting success");
 
     if (err) {
-        fmt.dump(err.Headers, 'Error');
-        // you could do something with err.Stream here
+        fmt.dump(err.StatusCode, 'Error.StatusCode');
+        fmt.dump(err.Code, 'Error.Code');
+        fmt.dump(err.Message, 'Error.Message');
+        fmt.dump(err.Headers, 'Error.Headers');
+        fmt.dump(err.OriginalError, 'Error.OriginalError');
+        // you could do something with err.Stream here, but only if it exists (if there was an ENOTFOUND then
+        // no stream will have been created)
         return;
     }
 
@@ -52,15 +57,15 @@ s3.GetObject(options1, { stream : true }, function(err, data) {
         console.log(chunk);
     });
 
-    data.Stream.on('end', function(chunk) {
+    data.Stream.on('end', function() {
         console.log('end emitted for test-object.txt');
     });
 
-    data.Stream.on('close', function(chunk) {
+    data.Stream.on('close', function() {
         console.log('close emitted for test-object.txt');
     });
 
-    data.Stream.on('error', function(chunk) {
+    data.Stream.on('error', function() {
         console.log('error emitted for test-object.txt');
     });
 
@@ -79,36 +84,37 @@ s3.GetObject(options2, { stream : true }, function(err, data) {
     fmt.msg("getting an object from pie-18 - expecting failure");
 
     if (err) {
-        fmt.dump(err.Headers, 'Error');
-        // you could do something with err.Stream here
+        fmt.dump(err.StatusCode, 'Error.StatusCode');
+        fmt.dump(err.Code, 'Error.Code');
+        fmt.dump(err.Message, 'Error.Message');
+        fmt.dump(err.Headers, 'Error.Headers');
+        fmt.dump(err.OriginalError, 'Error.OriginalError');
+
+        err.Stream.on('data', function(chunk) {
+            // since you are streaming this request, you may need to listen to 'data' events here
+            // and then decode the response (e.g. the XML or JSON) so that you know why the
+            // request failed!
+            console.log('got a chunk of data for object-does-not-exist.txt:');
+            console.log(chunk.toString('utf8'));
+        });
+
+        err.Stream.on('end', function() {
+            console.log('end emitted for object-does-not-exist.txt');
+        });
+
+        err.Stream.on('close', function() {
+            console.log('close emitted for object-does-not-exist.txt');
+        });
+
+        err.Stream.on('error', function() {
+            console.log('error emitted for object-does-not-exist.txt');
+        });
+
         return;
     }
 
-    fmt.dump(data.StatusCode, 'Data.StatusCode');
-    fmt.dump(data.Headers, 'Data.Headers');
-
-    // open a file to stream this response to
-    var writeStream2 = fs.createWriteStream('/tmp/object-does-not-exist.txt');
-
-    data.Stream.on('data', function(chunk) {
-        console.log('got a chunk of data for object-does-not-exist.txt:');
-        console.log(chunk);
-    });
-
-    data.Stream.on('end', function(chunk) {
-        console.log('end emitted for object-does-not-exist.txt');
-    });
-
-    data.Stream.on('close', function(chunk) {
-        console.log('close emitted for object-does-not-exist.txt');
-    });
-
-    data.Stream.on('error', function(chunk) {
-        console.log('error emitted for object-does-not-exist.txt');
-    });
-
-    // pipe the data into a file
-    data.Stream.pipe(writeStream2);
+    // we won't get here, since there will be an error
+    console.log("Program error (are you sure this object doesn't exist)");
 });
 
 // ----------------------------------------------------------------------------
