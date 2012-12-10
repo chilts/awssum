@@ -159,3 +159,42 @@ s3.PutBucketAcl(params, function(err, data) {
 });
 EOF
 ---
+name    : CreateBucket
+title   : Create a S3 bucket
+intro   : This example show how to create a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define which region your bucket will be made in.
+example : <<EOF
+var params = {
+    BucketName : 'awssumtest'
+};
+s3.CreateBucket(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : DeleteBucket
+title   : Delete a S3 bucket
+intro   : This example show how to delete a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define which region your bucket will be made/deleted in.
+example : <<EOF
+var params = {
+    BucketName : 'awssumtest'
+};
+s3.DeleteBucket(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : CheckBucket
+title   : Check if a S3 bucket exists
+intro   : This example show how to check if a S3 bucket exists without retrieving its contents (HEAD). Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.
+example : <<EOF
+var params = {
+    BucketName : 'awssumtest'
+};
+s3.CheckBucket(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
