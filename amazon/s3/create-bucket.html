@@ -87,6 +87,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Create a S3 bucket</h3>
+<p>This example show how to create a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define which region your bucket will be made in.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    BucketName : 'awssumtest'
+};
+s3.CreateBucket(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

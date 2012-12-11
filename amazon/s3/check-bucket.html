@@ -45,6 +45,24 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Check if a S3 bucket exists</h3>
+<p>This example show how to check if a S3 bucket exists without retrieving its contents (HEAD). Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    BucketName : 'awssumtest'
+};
+s3.CheckBucket(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
