@@ -52,6 +52,25 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>Delete an object inside a S3 bucket</h3>
+<p>This example show how to delete an object in a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    BucketName : 'awssumtest',
+    ObjectName : 'somefile.js'
+};
+s3.DeleteObject(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

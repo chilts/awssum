@@ -198,3 +198,17 @@ s3.CheckBucket(params, function(err, data) {
 });
 EOF
 ---
+name    : DeleteObject
+title   : Delete an object inside a S3 bucket
+intro   : This example show how to delete an object in a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.
+example : <<EOF
+var params = {
+    BucketName : 'awssumtest',
+    ObjectName : 'somefile.js'
+};
+s3.DeleteObject(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
