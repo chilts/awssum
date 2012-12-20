@@ -59,6 +59,65 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List if a call can be made (CORS)</h3>
+<p>This example show how to list if a call can be made from a specific origin (CORS). Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    BucketName : 'somebucket',
+    Origin : &quot;http://www.domain.com&quot;,
+    AccessControlRequestMethod : &quot;GET&quot;
+};
+s3.OptionsObject({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+<h4>Result</h4>
+<pre>
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amz-id-2': '4jarmON8BxKe67lu0WA1TrqlF/QWVIOTRQcXoY0J13hXF67hfwTnot47LUCmQTMF',
+     'x-amz-request-id': '55F2CDBB113E8C46',
+     date: 'Thu, 20 Dec 2012 07:04:58 GMT',
+     'access-control-allow-origin': 'http://www.domain.com',
+     'access-control-allow-methods': 'GET',
+     'access-control-max-age': '3000',
+     'access-control-allow-credentials': 'true',
+     'content-length': '0',
+     connection: 'close',
+     server: 'AmazonS3' },
+  Body: '' }
+
+</pre>
+
+
+<h3>List if a call can be made (CORS) with headers</h3>
+<p>This example show how to list if a call can be made from a specific origin (CORS) with headers. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.</p>
+
+<h4>Example</h4>
+<pre>
+var params = {
+    BucketName : 'somebucket',
+    Origin : &quot;http://www.domain.com&quot;,
+    AccessControlRequestMethod : &quot;GET&quot;,
+    AccessControlRequestHeaders : &quot;Authorization, x-code-value&quot;
+};
+s3.OptionsObject({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 

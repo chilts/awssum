@@ -40,6 +40,25 @@ sitemap : true
   <h2>Examples</h2>
 
 
+<h3>List all buckets in a region</h3>
+<p>This example show how to list all buckets in a region. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.</p>
+
+<h4>Example</h4>
+<pre>
+s3.ListBuckets(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+s3.ListBuckets({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+
+</pre>
+
+
+
+
 
 {% endcapture %}
 
