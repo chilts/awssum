@@ -164,7 +164,7 @@ title   : Create a S3 bucket
 intro   : This example show how to create a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define which region your bucket will be made in.
 example : <<EOF
 var params = {
-    BucketName : 'awssumtest'
+    BucketName : 'somebucket'
 };
 s3.CreateBucket(params, function(err, data) {
     fmt.dump(err, 'Error');
@@ -177,7 +177,7 @@ title   : Delete a S3 bucket
 intro   : This example show how to delete a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define which region your bucket will be made/deleted in.
 example : <<EOF
 var params = {
-    BucketName : 'awssumtest'
+    BucketName : 'somebucket'
 };
 s3.DeleteBucket(params, function(err, data) {
     fmt.dump(err, 'Error');
@@ -190,7 +190,7 @@ title   : Check if a S3 bucket exists
 intro   : This example show how to check if a S3 bucket exists without retrieving its contents (HEAD). Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.
 example : <<EOF
 var params = {
-    BucketName : 'awssumtest'
+    BucketName : 'somebucket'
 };
 s3.CheckBucket(params, function(err, data) {
     fmt.dump(err, 'Error');
@@ -203,10 +203,70 @@ title   : Delete an object inside a S3 bucket
 intro   : This example show how to delete an object in a S3 bucket. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.
 example : <<EOF
 var params = {
-    BucketName : 'awssumtest',
+    BucketName : 'somebucket',
     ObjectName : 'somefile.js'
 };
 s3.DeleteObject(params, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : ListBuckets
+title   : List all buckets in a region
+intro   : This example show how to list all buckets in a region. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.
+example : <<EOF
+s3.ListBuckets(function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+s3.ListBuckets({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
+name    : OptionsObject
+title   : List if a call can be made (CORS)
+intro   : This example show how to list if a call can be made from a specific origin (CORS). Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.
+example : <<EOF
+var params = {
+    BucketName : 'somebucket',
+    Origin : "http://www.domain.com",
+    AccessControlRequestMethod : "GET"
+};
+s3.OptionsObject({}, function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+result : <<EOF
+{ StatusCode: 200,
+  Headers: 
+   { 'x-amz-id-2': '4jarmON8BxKe67lu0WA1TrqlF/QWVIOTRQcXoY0J13hXF67hfwTnot47LUCmQTMF',
+     'x-amz-request-id': '55F2CDBB113E8C46',
+     date: 'Thu, 20 Dec 2012 07:04:58 GMT',
+     'access-control-allow-origin': 'http://www.domain.com',
+     'access-control-allow-methods': 'GET',
+     'access-control-max-age': '3000',
+     'access-control-allow-credentials': 'true',
+     'content-length': '0',
+     connection: 'close',
+     server: 'AmazonS3' },
+  Body: '' }
+EOF
+---
+name    : OptionsObject
+title   : List if a call can be made (CORS) with headers
+intro   : This example show how to list if a call can be made from a specific origin (CORS) with headers. Keep in mind that bucket names need to be lowercase! S3 buckets live in 1 region so configuring your S3 endpoint will define in which region you check if your bucket exists.
+example : <<EOF
+var params = {
+    BucketName : 'somebucket',
+    Origin : "http://www.domain.com",
+    AccessControlRequestMethod : "GET",
+    AccessControlRequestHeaders : "Authorization, x-code-value"
+};
+s3.OptionsObject({}, function(err, data) {
     fmt.dump(err, 'Error');
     fmt.dump(data, 'Data');
 });
