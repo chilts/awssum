@@ -30,6 +30,20 @@ imd.Get(params,function(err, data) {
 });
 EOF
 ---
+name    : Get
+title   : List instance IAM-role
+intro   : This example shows how to list instance IAM-role. This can only be run inside an instance!
+example : <<EOF
+var params = {
+    Version  : 'latest',
+    Category : '/meta-data/iam/security-credentials/your_iam_role_name'
+};
+imd.Get(params,function(err, data) {
+    fmt.dump(err, 'Error');
+    fmt.dump(data, 'Data');
+});
+EOF
+---
 name    : ListApiVersions
 title   : List all instance metadata versions
 intro   : This example shows how to list all versions of instance metadata endpoints. This can only be run inside an instance!
