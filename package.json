@@ -1,59 +1,44 @@
 {
-    "name": "awssum",
-    "description": "NodeJS modules for talking to IaaS providers, such as Amazon AWS and OpenStack.",
-    "version": "0.12.0",
-    "author": {
-        "name":"Andrew Chilton",
-        "email":"chilts@appsattic.com",
-        "url":"http://www.chilts.org/"
+    "name" : "awssum",
+    "description" : "NodeJS module to aid talking to Web Service APIs. Requires plugins.",
+    "version" : "1.0.0",
+
+    "main" : "awssum.js",
+    "engines" : {
+        "node" : ">= 0.6.0"
     },
-    "homepage": "https://github.com/appsattic/node-awssum",
-    "contributors": [],
-    "devDependencies": {
-        "tap": ">= 0.2.5",
-        "jshint": ">= 0.6.1",
-        "commander": ">= 0.6.0",
-        "eyes": ">= 0.1.7"
+    "devDependencies" : {
+        "tap" : "0.4.x"
     },
-    "dependencies": {
-        "fmt" : ">= 0.4.0",
-        "underscore": ">= 1.3.3",
-        "xml2js": "~ 0.1.14",
-        "dateformat": ">= 1.0.2-1.2.3",
-        "xml": ">= 0.0.7",
-        "data2xml": "0.4.x",
-        "passgen": ">= 1.0.1"
+    "dependencies" : {
+        "underscore" : "1.4.x",
+        "xml2js" : "0.2.x"
     },
-    "main": "lib/awssum.js",
-    "directories":  {
-        "lib": "lib"
-    },
-    "engines": {
-        "node": ">= 0.6.0"
-    },
-    "repository": {
-        "type" : "git",
-        "url": "git://github.com/appsattic/node-awssum.git"
-    },
-   "bugs" : {
-        "url" : "http://github.com/appsattic/node-awssum/issues",
-        "mail" : "chilts@appsattic.com"
-    },
-    "licenses": [{
-        "type": "MIT",
-        "url": "http://github.com/appsattic/node-awssum/raw/master/LICENSE"
-    }],
-    "keywords": [
-        "api",
-        "amazon","aws","ec2","simpledb","s3","sqs","ses","sns","route53","rds","elasticache","cloudfront","fps",
-                 "cloudformation","cloudwatch","dynamodb","iam","swf","autoscaling","cloudsearch","elb",
-                 "loadbalancing","emr","mapreduce","importexport","storagegateway","workflow","ebs","vpc","beanstalk",
-                 "glacier",
-        "greenqloud",
-        "rackspacecloud",
-        "openstack"
-    ],
     "scripts" : {
-        "test" : "tap test/*.js test/integration/*.js"
-    }
+        "test" : "tap test/*.js"
+    },
+
+    "homepage" : "https://awssum.io/",
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/awssum/awssum.git"
+    },
+    "bugs" : {
+        "url" : "http://github.com/awssum/awssum/issues",
+        "mail" : "andychilton@gmail.com"
+    },
+
+    "author" : {
+        "name" : "Andrew Chilton",
+        "email" : "andychilton@gmail.com",
+        "url" : "http://chilts.org/"
+    },
+    "contributors" : [],
+    "licenses" : [{
+        "type" : "MIT",
+        "url" : "http://github.com/appsattic/node-awssum/raw/master/LICENSE"
+    }],
+    "keywords" : [
+        "api", "apis", "webapi", "client"
+    ]
 }

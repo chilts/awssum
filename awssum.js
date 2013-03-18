@@ -19,17 +19,17 @@ var _ = require('underscore');
 var xml2js = require('xml2js');
 
 // our own
-var esc = require('./esc');
+var esc = require('./lib/esc.js');
 
 // load up package.json so that we can get the version string for the 'User-Agent'
-var userAgent = 'awssum/' + require('../package.json').version;
+var userAgent = 'awssum/' + require('./package.json').version;
 
 // --------------------------------------------------------------------------------------------------------------------
 // constants
 
 var MARK = 'awssum: ';
 
-var parser = new xml2js.Parser({ normalize : false, trim : false, explicitRoot : true });
+var parser = new xml2js.Parser({ normalize : false, trim : false, explicitRoot : true, explicitArray : false });
 
 var debug = false;
 
@@ -249,6 +249,24 @@ function setHeaderIfDefined(header, name, value) {
         header[name] = value;
     }
 }
+
+// do our own stringify query, since querystring.stringify doesn't do what we want (for AWS and others)
+function stringifyQuery(params) {
+    // console.log('Params :', params);
+    var query = _(params)
+        .chain()
+        .map(function(v, i) {
+            return _.isUndefined(v.value) ?
+                esc(v.name)
+                : esc(v.name) + '=' + esc(v.value)
+                ;
+        })
+        .join('&')
+        .value()
+    ;
+    // console.log('Query :', query);
+    return query;
+};
 
 // --------------------------------------------------------------------------------------------------------------------
 // AwsSum and functions to be overriden by inheriting class
@@ -895,7 +913,7 @@ AwsSum.prototype.request = function(options, callback) {
 
     // if we have any params, put them onto the path
     if ( options.params && options.params.length ) {
-        reqOptions.path += '?' + self.stringifyQuery( options.params );
+        reqOptions.path += '?' + stringifyQuery( options.params );
     }
 
     // if we have any JSON fields, stick it in the body
@@ -999,45 +1017,28 @@ AwsSum.prototype.request = function(options, callback) {
     return;
 };
 
-// do our own strigify query, since querystring.stringify doesn't do what we want (for AWS and others)
-AwsSum.prototype.stringifyQuery = function(params) {
-    var self = this;
-    // console.log('Params :', params);
-    var query = _(params)
-        .chain()
-        .map(function(v, i) {
-            return _.isUndefined(v.value) ?
-                esc(v.name)
-                : esc(v.name) + '=' + esc(v.value)
-                ;
-        })
-        .join('&')
-        .value()
-    ;
-    // console.log('Query :', query);
-    return query;
-};
-
 // --------------------------------------------------------------------------------------------------------------------
 // exports
 
-// utility for users of awssum
-exports.load = load;
-
-// utility functions for other awssum modules
-exports.addParam = addParam;
-exports.addParamIfDefined = addParamIfDefined;
-exports.addParamArray = addParamArray;
-exports.addParamArraySet = addParamArraySet;
-exports.addParam2dArray = addParam2dArray;
-exports.addParam2dArraySet = addParam2dArraySet;
+// utilities for AwsSum plugins to use when 
+exports.load                   = load;
+exports.esc                    = esc;
+exports.addParam               = addParam;
+exports.addParamIfDefined      = addParamIfDefined;
+exports.addParamArray          = addParamArray;
+exports.addParamArraySet       = addParamArraySet;
+exports.addParam2dArray        = addParam2dArray;
+exports.addParam2dArraySet     = addParam2dArraySet;
 exports.addParamArrayOfObjects = addParamArrayOfObjects;
-exports.addParamData = addParamData;
-exports.setHeader = setHeader;
-exports.setHeaderIfDefined = setHeaderIfDefined;
-exports.makeOperation = makeOperation;
+exports.addParamData           = addParamData;
+exports.setHeader              = setHeader;
+exports.setHeaderIfDefined     = setHeaderIfDefined;
+exports.stringifyQuery         = stringifyQuery;
 
-// and export Awssum so other modules can inherit from it
-exports.AwsSum = AwsSum;
+// these are
+exports.makeOperation          = makeOperation;
+
+// ... and export AwsSum so other modules can inherit from it
+exports.AwsSum                 = AwsSum;
 
 // --------------------------------------------------------------------------------------------------------------------
