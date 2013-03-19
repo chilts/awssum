@@ -91,8 +91,8 @@ Written by [Andrew Chilton](http://chilts.org/) - [Blog](http://chilts.org/blog/
 
 # License #
 
-* [2011-2013](http://appsattic.mit-license.org/2011/)
-* [2013-...](http://chilts.mit-license.org/2013/)
+* [Copyright 2011-2013 Apps Attic Ltd.  All rights reserved.](http://appsattic.mit-license.org/2011/)
+* [Copyright 2013 Andrew Chilton.  All rights reserved.](http://chilts.mit-license.org/2013/)
 
 (Ends)
 
