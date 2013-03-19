@@ -59,7 +59,8 @@ If you have written a plugin for AwsSum, please fork this repo and add it here (
 
 Coming soon:
 
-* [RedShift](https://github.com/awssum/awssum-amazon-redshift/)
+* [Amazon](https://github.com/awssum/awssum-amazon)
+    * [RedShift](https://github.com/awssum/awssum-amazon-redshift/)
 
 ## Writing a Plugin ##
 
