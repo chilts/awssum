@@ -30,11 +30,36 @@ developers to use, not for end-users. :)
 If you have written a plugin for AwsSum, please fork this repo and add it here (in alphabetical order):
 
 * [Amazon](https://github.com/awssum/awssum-amazon)
-    * [DynamoDB](https://github.com/awssum/awssum-amazon-dynamodb)
-    * [S3](https://github.com/awssum/awssum-amazon-s3)
+    * [IAm](https://github.com/awssum/awssum-amazon-iam/)
+    * [AutoScaling](https://github.com/awssum/awssum-amazon-autoscaling/)
+    * [IMd](https://github.com/awssum/awssum-amazon-imd/)
+    * [CloudFormation](https://github.com/awssum/awssum-amazon-cloudformation/)
+    * [ImportExport](https://github.com/awssum/awssum-amazon-importexport/)
+    * [CloudFront](https://github.com/awssum/awssum-amazon-cloudfront/)
+    * [RDS](https://github.com/awssum/awssum-amazon-rds/)
+    * [CloudSearch](https://github.com/awssum/awssum-amazon-cloudsearch/)
+    * [CloudWatch](https://github.com/awssum/awssum-amazon-cloudwatch/)
+    * [Route53](https://github.com/awssum/awssum-amazon-route53/)
+    * [DynamoDB](https://github.com/awssum/awssum-amazon-dynamodb/)
+    * [S3](https://github.com/awssum/awssum-amazon-s3/)
+    * [EC2](https://github.com/awssum/awssum-amazon-ec2/)
+    * [SES](https://github.com/awssum/awssum-amazon-ses/)
+    * [ElastiCache](https://github.com/awssum/awssum-amazon-elasticache/)
+    * [SimpleDB](https://github.com/awssum/awssum-amazon-simpledb/)
+    * [ElasticBeanstalk](https://github.com/awssum/awssum-amazon-elasticbeanstalk/)
+    * [SNS](https://github.com/awssum/awssum-amazon-sns/)
+    * [ELB](https://github.com/awssum/awssum-amazon-elb/)
+    * [SQS](https://github.com/awssum/awssum-amazon-sqs/)
+    * [EMR](https://github.com/awssum/awssum-amazon-emr/)
+    * [StorageGateway](https://github.com/awssum/awssum-amazon-storagegateway/)
+    * [FPS](https://github.com/awssum/awssum-amazon-fps/)
+    * [STS](https://github.com/awssum/awssum-amazon-sts/)
+    * [Glacier](https://github.com/awssum/awssum-amazon-glacier/)
+    * [SWF](https://github.com/awssum/awssum-amazon-swf/)
 
-(Note: currently, the new version of AwsSum is under development so this list will be filled out once AwsSum v1 is
-complete.)
+Coming soon:
+
+* [RedShift](https://github.com/awssum/awssum-amazon-redshift/)
 
 ## Writing a Plugin ##
 
@@ -47,8 +72,7 @@ In general then, you'd write two plugins with the following names:
 * awssum-&lt;provider&gt; - e.g. awssum-amazon, awssum-twitter
 * awssum-&lt;provider&gt;-&lt;service&gt; - e.g. awssum-amazon-s3, twitter-twitter
 
-For other examples, you might write ```awssum-openstack```, ```awssum-openstack-nova``` and
-```awssum-openstack-ketstone```.
+For other examples, you might write ```awssum-openstack```, ```awssum-openstack-nova``` and ```awssum-openstack-keystone```.
 
 This is good if in the future you want to write a new service for a provider, you only have to write the plugin for the
 new service. e.g. ```awssum-openstack-swift```.
