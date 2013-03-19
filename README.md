@@ -16,18 +16,20 @@ IRC : Come and say hello in #awssum on Freenode. :)
 
 # AwsSum v1 - Redesign #
 
-The initial version of AwsSum was a large install which carried many providers and services. Instead, the 'awssum'
-package is now the infrastructure which all other plugins can use.
+The initial version of AwsSum was a large install which carried many providers and services. Instead, ```AwsSum``` now
+has a plugin architecture.
+
+To use AwsSum, you will need to install a plugin to be able to talk to that service. This package is intended only for
+other developers to depend on, not for end-users. :)
 
 ## Usage ##
 
-To use AwsSum, you need to install an AwsSum plugin for the service you wish to provide (see the following
-list). Please follow the documentation for that plugin to be able to use the service. This package is for other
-developers to use, not for end-users. :)
+To use an AwsSum plugin, you need to install the plugin you need for the relevant service. Please follow the
+documentation for that plugin.
 
-## Existing Plugins ##
+## Plugins ##
 
-If you have written a plugin for AwsSum, please fork this repo and add it here (in alphabetical order):
+If you have written a plugin for AwsSum, please fork this repo and add it here:
 
 * [Amazon](https://github.com/awssum/awssum-amazon)
     * [IAm](https://github.com/awssum/awssum-amazon-iam/)
@@ -71,12 +73,12 @@ would be named 'twitter' and you'd probably use the same name for the service.
 In general then, you'd write two plugins with the following names:
 
 * awssum-&lt;provider&gt; - e.g. awssum-amazon, awssum-twitter
-* awssum-&lt;provider&gt;-&lt;service&gt; - e.g. awssum-amazon-s3, twitter-twitter
+* awssum-&lt;provider&gt;-&lt;service&gt; - e.g. awssum-amazon-s3, awssum-twitter-twitter
 
 For other examples, you might write ```awssum-openstack```, ```awssum-openstack-nova``` and ```awssum-openstack-keystone```.
 
-This is good if in the future you want to write a new service for a provider, you only have to write the plugin for the
-new service. e.g. ```awssum-openstack-swift```.
+Once the provider plugin exists, new services for that provider just need the ```awssum-<provider>-<service>``` to be
+written. e.g. ```awssum-openstack-swift```.
 
 ### peerDependencies ###
 
