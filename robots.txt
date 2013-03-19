@@ -1,4 +1,3 @@
 User-Agent: *
 Disallow: 
-
 Sitemap: http://awssum.io/sitemap.txt
