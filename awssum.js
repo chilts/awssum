@@ -293,6 +293,11 @@ var AwsSum = function(opts) {
         self._agent = opts.agent;
     }
 
+    // if we have been given a protocol, use that one
+    if ( opts.protocol ) {
+        self._protocol = opts.protocol;
+    }
+
     return self;
 };
 
@@ -301,6 +306,9 @@ AwsSum.prototype.agent = function() {
 };
 
 AwsSum.prototype.protocol = function() {
+    if ( this._protocol ) {
+        return this._protocol;
+    }
     return 'https';
 };
 
