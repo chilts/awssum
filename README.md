@@ -29,40 +29,8 @@ documentation for that plugin.
 
 ## Plugins ##
 
-If you have written a plugin for AwsSum, please fork this repo and add it here:
+[You can find all the AwsSum plugins on the NPM Registry with the `awssum-plugin` keyword.](https://npmjs.org/browse/keyword/awssum-plugin)
 
-* [Amazon](https://github.com/awssum/awssum-amazon)
-    * [IAm](https://github.com/awssum/awssum-amazon-iam/)
-    * [AutoScaling](https://github.com/awssum/awssum-amazon-autoscaling/)
-    * [IMd](https://github.com/awssum/awssum-amazon-imd/)
-    * [CloudFormation](https://github.com/awssum/awssum-amazon-cloudformation/)
-    * [ImportExport](https://github.com/awssum/awssum-amazon-importexport/)
-    * [CloudFront](https://github.com/awssum/awssum-amazon-cloudfront/)
-    * [RDS](https://github.com/awssum/awssum-amazon-rds/)
-    * [CloudSearch](https://github.com/awssum/awssum-amazon-cloudsearch/)
-    * [CloudWatch](https://github.com/awssum/awssum-amazon-cloudwatch/)
-    * [Route53](https://github.com/awssum/awssum-amazon-route53/)
-    * [DynamoDB](https://github.com/awssum/awssum-amazon-dynamodb/)
-    * [S3](https://github.com/awssum/awssum-amazon-s3/)
-    * [EC2](https://github.com/awssum/awssum-amazon-ec2/)
-    * [SES](https://github.com/awssum/awssum-amazon-ses/)
-    * [ElastiCache](https://github.com/awssum/awssum-amazon-elasticache/)
-    * [SimpleDB](https://github.com/awssum/awssum-amazon-simpledb/)
-    * [ElasticBeanstalk](https://github.com/awssum/awssum-amazon-elasticbeanstalk/)
-    * [SNS](https://github.com/awssum/awssum-amazon-sns/)
-    * [ELB](https://github.com/awssum/awssum-amazon-elb/)
-    * [SQS](https://github.com/awssum/awssum-amazon-sqs/)
-    * [EMR](https://github.com/awssum/awssum-amazon-emr/)
-    * [StorageGateway](https://github.com/awssum/awssum-amazon-storagegateway/)
-    * [FPS](https://github.com/awssum/awssum-amazon-fps/)
-    * [STS](https://github.com/awssum/awssum-amazon-sts/)
-    * [Glacier](https://github.com/awssum/awssum-amazon-glacier/)
-    * [SWF](https://github.com/awssum/awssum-amazon-swf/)
-
-Coming soon:
-
-* [Amazon](https://github.com/awssum/awssum-amazon)
-    * [RedShift](https://github.com/awssum/awssum-amazon-redshift/)
 
 ## Writing a Plugin ##
 
