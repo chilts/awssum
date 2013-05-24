@@ -31,33 +31,145 @@ documentation for that plugin.
 
 If you have written a plugin for AwsSum, please fork this repo and add it here:
 
-* [Amazon](https://github.com/awssum/awssum-amazon)
-    * [IAm](https://github.com/awssum/awssum-amazon-iam/)
-    * [AutoScaling](https://github.com/awssum/awssum-amazon-autoscaling/)
-    * [IMd](https://github.com/awssum/awssum-amazon-imd/)
-    * [CloudFormation](https://github.com/awssum/awssum-amazon-cloudformation/)
-    * [ImportExport](https://github.com/awssum/awssum-amazon-importexport/)
-    * [CloudFront](https://github.com/awssum/awssum-amazon-cloudfront/)
-    * [RDS](https://github.com/awssum/awssum-amazon-rds/)
-    * [CloudSearch](https://github.com/awssum/awssum-amazon-cloudsearch/)
-    * [CloudWatch](https://github.com/awssum/awssum-amazon-cloudwatch/)
-    * [Route53](https://github.com/awssum/awssum-amazon-route53/)
-    * [DynamoDB](https://github.com/awssum/awssum-amazon-dynamodb/)
-    * [S3](https://github.com/awssum/awssum-amazon-s3/)
-    * [EC2](https://github.com/awssum/awssum-amazon-ec2/)
-    * [SES](https://github.com/awssum/awssum-amazon-ses/)
-    * [ElastiCache](https://github.com/awssum/awssum-amazon-elasticache/)
-    * [SimpleDB](https://github.com/awssum/awssum-amazon-simpledb/)
-    * [ElasticBeanstalk](https://github.com/awssum/awssum-amazon-elasticbeanstalk/)
-    * [SNS](https://github.com/awssum/awssum-amazon-sns/)
-    * [ELB](https://github.com/awssum/awssum-amazon-elb/)
-    * [SQS](https://github.com/awssum/awssum-amazon-sqs/)
-    * [EMR](https://github.com/awssum/awssum-amazon-emr/)
-    * [StorageGateway](https://github.com/awssum/awssum-amazon-storagegateway/)
-    * [FPS](https://github.com/awssum/awssum-amazon-fps/)
-    * [STS](https://github.com/awssum/awssum-amazon-sts/)
-    * [Glacier](https://github.com/awssum/awssum-amazon-glacier/)
-    * [SWF](https://github.com/awssum/awssum-amazon-swf/)
+<table>
+  <thead>
+    <th>Provider</th>
+    <th>Service</th>
+    <th>Plugin</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon</td>
+      <td>Identity and Access Management</td>
+      <td>[awssum-amazon-iam](https://github.com/awssum/awssum-amazon-iam/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>AutoScaling</td>
+      <td>[awssum-amazon-autoscaling](https://github.com/awssum/awssum-amazon-autoscaling/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Instance MetaData</td>
+      <td>[awssum-amazon-imd](https://github.com/awssum/awssum-amazon-imd/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>CloudFormation</td>
+      <td>[awssum-amazon-cloudformation](https://github.com/awssum/awssum-amazon-cloudformation/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Import Export</td>
+      <td>[awssum-amazon-importexport](https://github.com/awssum/awssum-amazon-importexport/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>CloudFront</td>
+      <td>[awssum-amazon-cloudfront](https://github.com/awssum/awssum-amazon-cloudfront/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Relational Database Service</td>
+      <td>[awssum-amazon-rds](https://github.com/awssum/awssum-amazon-rds/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>CloudSearch</td>
+      <td>[awssum-amazon-cloudsearch](https://github.com/awssum/awssum-amazon-cloudsearch/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>CloudWatch</td>
+      <td>[awssum-amazon-cloudwatch](https://github.com/awssum/awssum-amazon-cloudwatch/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Route53</td>
+      <td>[awssum-amazon-route53](https://github.com/awssum/awssum-amazon-route53/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>DynamoDB</td>
+      <td>[awssum-amazon-dynamodb](https://github.com/awssum/awssum-amazon-dynamodb/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Simple Storage Service</td>
+      <td>[awssum-amazon-s3](https://github.com/awssum/awssum-amazon-s3/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Elastic Compute Cloud</td>
+      <td>[awssum-amazon-ec2](https://github.com/awssum/awssum-amazon-ec2/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Simple Email Service</td>
+      <td>[awssum-amazon-ses](https://github.com/awssum/awssum-amazon-ses/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>ElastiCache</td>
+      <td>[awssum-amazon-elasticache](https://github.com/awssum/awssum-amazon-elasticache/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>SimpleDB</td>
+      <td>[awssum-amazon-simpledb](https://github.com/awssum/awssum-amazon-simpledb/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>ElasticBeanstalk</td>
+      <td>[awssum-amazon-elasticbeanstalk](https://github.com/awssum/awssum-amazon-elasticbeanstalk/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Simple Notification Service</td>
+      <td>[awssum-amazon-sns](https://github.com/awssum/awssum-amazon-sns/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Elastic LoadBalancer</td>
+      <td>[awssum-amazon-elb](https://github.com/awssum/awssum-amazon-elb/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Simple Queue Service</td>
+      <td>[awssum-amazon-sqs](https://github.com/awssum/awssum-amazon-sqs/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Elastic MapReduce</td>
+      <td>[awssum-amazon-emr](https://github.com/awssum/awssum-amazon-emr/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>StorageGateway</td>
+      <td>[awssum-amazon-storagegateway](https://github.com/awssum/awssum-amazon-storagegateway/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Flexible Payments Service</td>
+      <td>[awssum-amazon-fps](https://github.com/awssum/awssum-amazon-fps/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Security Token Service</td>
+      <td>[awssum-amazon-sts](https://github.com/awssum/awssum-amazon-sts/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Glacier</td>
+      <td>[awssum-amazon-glacier](https://github.com/awssum/awssum-amazon-glacier/)</td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>Simple WorkFlow</td>
+      <td>[awssum-amazon-swf](https://github.com/awssum/awssum-amazon-swf/)</td>
+    </tr>
+  </tbody>
+</table>
 
 Coming soon:
 
