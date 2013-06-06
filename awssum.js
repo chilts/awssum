@@ -29,7 +29,14 @@ var userAgent = 'awssum/' + require('./package.json').version;
 
 var MARK = 'awssum: ';
 
-var parser = new xml2js.Parser({ normalize : false, trim : false, explicitRoot : true, explicitArray : false });
+var parser = new xml2js.Parser({
+    attrkey : '@',
+    valuekey : '#',
+    normalize : false,
+    trim : false,
+    explicitRoot : true,
+    explicitArray : false
+});
 
 var debug = false;
 
