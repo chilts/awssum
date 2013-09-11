@@ -8,14 +8,14 @@
         "node" : ">= 0.6.0"
     },
     "devDependencies" : {
-        "tap" : "0.4.x"
+        "tape" : "*"
     },
     "dependencies" : {
         "underscore" : "1.4.x",
         "xml2js" : "0.2.x"
     },
     "scripts" : {
-        "test" : "tap test/*.js"
+        "test" : "set -e; find test/ -name '*.js' -exec echo --- {} --- ';' -exec node {} ';'"
     },
 
     "homepage" : "https://awssum.io/",
