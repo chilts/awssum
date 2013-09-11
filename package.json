@@ -1,7 +1,7 @@
 {
     "name" : "awssum",
     "description" : "NodeJS module to aid talking to Web Service APIs. Requires plugins.",
-    "version" : "1.0.0",
+    "version" : "1.1.0",
 
     "main" : "awssum.js",
     "engines" : {
