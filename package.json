@@ -18,13 +18,13 @@
         "test" : "set -e; find test/ -name '*.js' -exec echo --- {} --- ';' -exec node {} ';'"
     },
 
-    "homepage" : "https://awssum.io/",
+    "homepage" : "http://awssum.io/",
     "repository" : {
         "type" : "git",
         "url" : "git://github.com/awssum/awssum.git"
     },
     "bugs" : {
-        "url" : "http://github.com/awssum/awssum/issues",
+        "url" : "https://github.com/awssum/awssum/issues",
         "email" : "andychilton@gmail.com"
     },
 
@@ -36,7 +36,7 @@
     "contributors" : [],
     "licenses" : [{
         "type" : "MIT",
-        "url" : "http://github.com/appsattic/node-awssum/raw/master/LICENSE"
+        "url" : "https://github.com/appsattic/node-awssum/raw/master/LICENSE"
     }],
     "keywords" : [
         "api", "apis", "webapi", "client"
