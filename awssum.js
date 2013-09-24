@@ -594,31 +594,32 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
 
     // ---
 
-    // build the body from either options.form, options.json or using operation.body
-
-    // build the body from either options.form, options.json or using operation.body
-    if ( operation.body ) {
-        if ( typeof operation.body === 'string' ) {
-            options.body = operation.body;
-        }
-        else if ( typeof operation.body === 'function' ) {
-            options.body = operation.body.apply(self, [ options, args ]);
-        }
-        else {
-            // since this is a program error, we're gonna throw this one
-            throw 'Unknown operation.body : ' + typeof operation.body;
-        }
-    } else if ( options.forms && options.forms.length ) {
-        var formParts = [];
-        options.forms.forEach(function(v, i) {
-           formParts[i] = v.name + "=" + escape(v.value);
-        });
-        options.body = formParts.join("&");
-        options.headers['content-type'] = 'application/x-www-form-urlencoded';
-    } else {
-        options.body = JSON.stringify(options.json);
-        if ( options.body === '{}' ) {
-            options.body = undefined;
+    // if we already have a body, just use it, or build the body from either options.form,
+    // options.json or using operation.body
+    if ( !options.body ) {
+        if ( operation.body ) {
+            if ( typeof operation.body === 'string' ) {
+                options.body = operation.body;
+            }
+            else if ( typeof operation.body === 'function' ) {
+                options.body = operation.body.apply(self, [ options, args ]);
+            }
+            else {
+                // since this is a program error, we're gonna throw this one
+                throw 'Unknown operation.body : ' + typeof operation.body;
+            }
+        } else if ( options.forms && options.forms.length ) {
+            var formParts = [];
+            options.forms.forEach(function(v, i) {
+                formParts[i] = v.name + "=" + escape(v.value);
+            });
+            options.body = formParts.join("&");
+            options.headers['content-type'] = 'application/x-www-form-urlencoded';
+        } else {
+            options.body = JSON.stringify(options.json);
+            if ( options.body === '{}' ) {
+                options.body = undefined;
+            }
         }
     }
 
