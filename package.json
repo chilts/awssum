@@ -36,7 +36,7 @@
     "contributors" : [],
     "licenses" : [{
         "type" : "MIT",
-        "url" : "https://github.com/appsattic/node-awssum/raw/master/LICENSE"
+        "url" : "https://github.com/awssum/awssum/raw/master/LICENSE"
     }],
     "keywords" : [
         "api", "apis", "webapi", "client"
