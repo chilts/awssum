@@ -483,18 +483,22 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
     // ---
 
     // build the host
-    options.host = self.host(args);
-    if ( operation.host ) {
-        if ( typeof operation.host === 'function' ) {
-            options.host = operation.host.apply(self, [ options, args ]);
-        }
-        else if ( typeof operation.host === 'string' ) {
-            options.host = operation.host;
-        }
-        else {
-            // since this is a program error, we're gonna throw this one
-            throw 'Unknown operation.host : ' + typeof operation.host;
-        }
+    if (operation.redirectHost) {
+      options.host = operation.redirectHost;
+    } else {
+      options.host = self.host(args);
+      if ( operation.host ) {
+          if ( typeof operation.host === 'function' ) {
+              options.host = operation.host.apply(self, [ options, args ]);
+          }
+          else if ( typeof operation.host === 'string' ) {
+              options.host = operation.host;
+          }
+          else {
+              // since this is a program error, we're gonna throw this one
+              throw 'Unknown operation.host : ' + typeof operation.host;
+          }
+      }
     }
 
     // ---
@@ -754,6 +758,27 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
             console.log('-------------------------------------------------------------------------------');
         }
 
+        if (res.statusCode == '307') {
+          var redirectHost = '';
+          parser.parseString(res.body.toString(), function (err, data) {
+              if ( err ) {
+                  result.Code    = 'AwsSum-ParseXml';
+                  result.Message = 'Something went wrong during the XML parsing';
+                  result.Error   = err;
+                  result.Body    = res.body.toString();
+              }
+              else {
+                  if (data.Error && data.Error.Endpoint) {
+                    redirectHost = data.Error.Endpoint;
+                  }
+              }
+          });
+          if (redirectHost !== '') {
+            operation.redirectHost = redirectHost;
+            self.send(operation, args, opts, callback);
+            return;
+          }
+        }
         // save the whole result in here
         var result = {};
 
