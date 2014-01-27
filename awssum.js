@@ -305,6 +305,11 @@ var AwsSum = function(opts) {
         self._protocol = opts.protocol;
     }
 
+    // if we have been given a path, use that one
+    if ( opts.path ) {
+        self._path = opts.path;
+    }
+
     return self;
 };
 
@@ -326,6 +331,9 @@ AwsSum.prototype.method = function() {
 // AwsSum.prototype.host // no default
 
 AwsSum.prototype.path = function() {
+    if ( this._path ) {
+        return this._path;
+    }
     return '/';
 };
 
