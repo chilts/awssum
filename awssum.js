@@ -754,18 +754,18 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
             console.log('Response:');
             console.log('- statusCode :', res.statusCode);
             console.log('- headers :', res.headers);
-            console.log('- body :', res.body.toString());
+            console.log('- body :', (res.body) ? res.body.toString() : '');
             console.log('-------------------------------------------------------------------------------');
         }
 
         if (res.statusCode == '307') {
           var redirectHost = '';
-          parser.parseString(res.body.toString(), function (err, data) {
+          parser.parseString((res.body) ? res.body.toString() : '', function (err, data) {
               if ( err ) {
                   result.Code    = 'AwsSum-ParseXml';
                   result.Message = 'Something went wrong during the XML parsing';
                   result.Error   = err;
-                  result.Body    = res.body.toString();
+                  result.Body    = (res.body) ? res.body.toString() : '';
               }
               else {
                   if (data.Error && data.Error.Endpoint) {
@@ -867,12 +867,12 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
             // decode the returned XML
             var ok = true;
             // Note: parseString is synchronous (not async)
-            parser.parseString(res.body.toString(), function (err, data) {
+            parser.parseString((res.body) ? res.body.toString() : '', function (err, data) {
                 if ( err ) {
                     result.Code    = 'AwsSum-ParseXml';
                     result.Message = 'Something went wrong during the XML parsing';
                     result.Error   = err;
-                    result.Body    = res.body.toString();
+                    result.Body    = (res.body) ? res.body.toString() : '';
                 }
                 else {
                     result.Body = data;
@@ -891,7 +891,11 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
         }
         else if ( extractBody === 'json' ) {
             // get the JSON (should this be in a try/catch?)
-            result.Body = JSON.parse(res.body.toString());
+            try {
+                result.Body = JSON.parse(res.body.toString());
+            } catch (e) {
+                result.Body = {};
+            }
         }
         else if ( extractBody === 'blob' ) {
             // just return the body
@@ -907,7 +911,7 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
         }
         else if ( extractBody === 'string' ) {
             // convert the body to a string
-            result.Body = res.body.toString();
+            result.Body = (res.body) ? res.body.toString() : '';
         }
         else if ( typeof extractBody === 'function' ) {
             result.Body = extractBody.apply(self, [ res ]);
