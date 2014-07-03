@@ -281,6 +281,7 @@ function stringifyQuery(params) {
 // function protocol()             -> string (the default protocol for the HTTP request, https or http)
 // function method()               -> string (the default method for the HTTP request)
 // function host()                 -> string (the host for this service/region)
+// function port()                 -> number (the port for this service/region)
 // function path()                 -> string (the default path for this service)
 // function addExtras()            -> side effect, adds extra whatever
 // function addCommonOptions(options, args) -> side effect, adds the common headers/params for this service
@@ -305,6 +306,16 @@ var AwsSum = function(opts) {
         self._protocol = opts.protocol;
     }
 
+    // if we have been given a port, use that one
+    if ( opts.port ) {
+        self._port = opts.port;
+    }
+
+    // if we have been given a path, use that one
+    if ( opts.path ) {
+        self._path = opts.path;
+    }
+
     return self;
 };
 
@@ -319,6 +330,18 @@ AwsSum.prototype.protocol = function() {
     return 'https';
 };
 
+AwsSum.prototype.port = function() {
+    var self = this;
+    if ( this._port ) {
+        return this._port;
+    }
+    if ( self.protocol() === 'http' ) {
+        return 80;
+    } else {
+        return 443;
+    }
+};
+
 AwsSum.prototype.method = function() {
     return 'GET';
 };
@@ -326,6 +349,9 @@ AwsSum.prototype.method = function() {
 // AwsSum.prototype.host // no default
 
 AwsSum.prototype.path = function() {
+    if ( this._path ) {
+        return this._path;
+    }
     return '/';
 };
 
@@ -499,6 +525,23 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
               throw 'Unknown operation.host : ' + typeof operation.host;
           }
       }
+    }
+
+    // ---
+
+    // build the port
+    options.port = self.port();
+    if ( operation.port) {
+        if ( typeof operation.port === 'function' ) {
+            options.port = operation.port.apply(self, [ options, args ]);
+        }
+        else if ( typeof operation.port === 'number' ) {
+            options.port = operation.port;
+        }
+        else {
+            // since this is a program error, we're gonna throw this one
+            throw 'Unknown operation.port : ' + typeof operation.port;
+        }
     }
 
     // ---
@@ -721,6 +764,7 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
         console.log('- method         : ', options.method);
         console.log('- protocol       : ', options.protocol);
         console.log('- host           : ', options.host);
+        console.log('- port           : ', options.port);
         console.log('- path           : ', options.path);
         console.log('- params         : ', options.params);
         console.log('- headers        : ', options.headers);
@@ -779,6 +823,7 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
             return;
           }
         }
+
         // save the whole result in here
         var result = {};
 
@@ -939,6 +984,7 @@ AwsSum.prototype.send = function(operation, args, opts, callback) {
 //
 // * options.method
 // * options.host
+// * options.port
 // * options.path
 // * options.params
 // * options.headers
@@ -956,6 +1002,7 @@ AwsSum.prototype.request = function(options, callback) {
     var reqOptions = {
         method  : options.method,
         host    : options.host,
+        port    : options.port,
         path    : options.path,
         headers : options.headers
     };
